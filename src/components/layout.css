@@ -595,3 +595,78 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+
+/* Custom CSS below *** Blogsby Edits ***/
+
+.user__page img {
+    float: left;
+    padding-right: 16px;
+}
+
+.navigation {
+  margin: 0 auto;
+  max-width: 960px;
+  width: 100%;
+  padding: 0px 0.65rem 1.45rem;
+}
+
+.navigation ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.navigation li {
+  float: left;
+}
+
+.navigation a:hover {
+  background-color: #e67e22;
+}
+
+.navigation a {
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  color: #34495e;
+}
+
+.navigation a:hover {
+  background-color: #e67e22;
+  color: white;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Styles transfered from inline files*/
+header {
+  background-color: white;
+}
+
+.inner-header {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 1.45rem 1.0875rem 1rem 1.0875rem;
+}
+
+.inner-header h1 {
+  margin: 0;
+  color: #e67e22;
+}
+.inner-header h1 a {
+  text-decoration: none;
+  color: #e67e22;
+}
+
+.posts article {
+  width: 300px;
+  float: left;
+  margin: 0.5rem 0;
+  padding: 0 0.5rem;
+}

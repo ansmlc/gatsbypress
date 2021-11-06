@@ -1,55 +1,81 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import * as React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-
-import Header from "./header"
-import "./layout.css"
-
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
+ import {
+   Box, 
+   Container 
+ } from "@chakra-ui/react"
+ import PropTypes from "prop-types"
+ import Nav from "./nav"
+ import Footer from "./footer"
+ import { useStaticQuery, graphql } from "gatsby"
+ 
+  const Layout = ({ children }) => {
+   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
+      allWpCategory {
+        nodes {
+          name
+          count
+          uri
         }
       }
-    }
-  `)
-
-  return (
-    <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `2rem`,
-          }}
-        >
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
-    </>
-  )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
-
-export default Layout
+      allFile(filter: {name: {eq: "gp-custom-logo"}}) {
+        edges {
+          node {
+            id
+            name
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
+      }
+      wp {
+        allSettings {
+          generalSettingsDescription
+          generalSettingsTitle
+        }
+      }
+      allWpMenu(filter: {name: {eq: "gp-menu-header"}}) {
+        nodes {
+          id
+          menuItems {
+            nodes {
+              label
+              url
+              id
+            }
+          }
+        }
+      } 
+      footer: allWpMenu(filter: {name: {eq: "gp-menu-footer"}}) {
+        nodes {
+          id
+          menuItems {
+            nodes {
+              label
+              url
+              id
+            }
+          }
+        }
+      }
+   }
+ `)
+   return (
+     <>
+     <Nav data={data} />
+       <Container maxW="container.lg">
+         <Box as="main">{children}</Box>
+       </Container>
+     <Footer data={data}/>
+     </>
+   )
+ }
+ 
+ 
+ Layout.propTypes = {
+   children: PropTypes.node.isRequired,
+ }
+ 
+ export default Layout
+ 

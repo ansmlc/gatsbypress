@@ -1,0 +1,55 @@
+import * as React from "react"
+import MenuItems from "./menuItems";
+import MenuToggle from "./menuToggle";
+import { 
+  Box,
+  Flex,
+  Container,
+  Image
+} from "@chakra-ui/react"
+import Logo from "./logo"
+
+
+const Nav = function ({ data })  {
+  const items = data?.allWpMenu?.nodes[0]?.menuItems?.nodes
+  console.log(items, 'menu items from navjs')
+  const title = data?.wp?.allSettings?.generalSettingsTitle
+  const logoMediaItem = data?.allFile?.edges[0]?.node
+  console.log(logoMediaItem, 'logoMediaItem')
+  console.log(items, 'items')
+  const [isOpen, setIsOpen] = React.useState(false)
+  const toggle = () => setIsOpen(!isOpen)
+    return (
+      <Box 
+      as="header" 
+      bg="white" 
+      d="flex" 
+      left="0" 
+      right="0" 
+      zIndex="2"
+      >
+        <Container maxW="container.lg">
+        <Flex
+          as="nav"
+          align="center"
+          justify="space-between"
+          wrap="wrap"
+          h="100%"
+          w="100%"
+          py={4}
+          bg="white"
+          color="gray.700"
+        >
+          <Logo
+            siteTitle={title}
+            siteLogo={logoMediaItem}
+          />            
+          <MenuToggle toggle={toggle} isOpen={isOpen} />
+          <MenuItems items={items} isOpen={isOpen}></MenuItems>
+        </Flex>
+        </Container>
+      </Box>
+    )
+}
+
+export default Nav
