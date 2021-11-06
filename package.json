@@ -5,7 +5,15 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@chakra-ui/gatsby-plugin": "^2.0.2",
+    "@chakra-ui/react": "^1.6.12",
+    "@emotion/react": "^11.5.0",
+    "@emotion/styled": "^11.3.0",
+    "@react-icons/all-files": "^4.1.0",
+    "@wordpress/block-library": "^6.0.2",
+    "framer-motion": "^4.1.17",
     "gatsby": "^4.1.0",
+    "gatsby-awesome-pagination": "^0.3.8",
     "gatsby-plugin-gatsby-cloud": "^4.1.0",
     "gatsby-plugin-image": "^2.1.0",
     "gatsby-plugin-manifest": "^4.1.0",
@@ -13,11 +21,13 @@
     "gatsby-plugin-react-helmet": "^5.1.0",
     "gatsby-plugin-sharp": "^4.1.0",
     "gatsby-source-filesystem": "^4.1.0",
+    "gatsby-source-wordpress": "^6.1.0",
     "gatsby-transformer-sharp": "^4.1.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "wysiwyg.css": "0.0.4"
   },
   "devDependencies": {
     "prettier": "^2.4.1"

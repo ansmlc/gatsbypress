@@ -1,11 +1,21 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `gatsbypress`, 
+    description: `Gatsby WordPress Starter`,
     author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    siteUrl: `localhost:8000`
   },
   plugins: [
+    "@chakra-ui/gatsby-plugin",
+    {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+       
+         // replace this url with the url of your wordpress install
+         // https://limomet.a2hosted.com/websby/graphql
+         url: `http://127.0.0.1/wpgatsby/graphql`,
+      },
+   },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     {
@@ -16,23 +26,43 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `dominantColor`,
+          quality: 65,
+          breakpoints: [750, 1080, 1366, 1920],
+          backgroundColor: `orange`,
+          tracedSVGOptions: {},
+          blurredOptions: {},
+          jpgOptions: {},
+          pngOptions: {},
+          webpOptions: {},
+          avifOptions: {},
+        }
+      }
+    },
     {
       resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        // This will impact how browsers show your PWA/website
-        // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
-      },
+        options: {
+          name: `gatsbypress`,
+          short_name: `gatsbypress`,
+          start_url: `/`,
+          background_color: `#f7f0eb`,
+          // This will impact how browsers show your PWA/website
+          // https://css-tricks.com/meta-theme-color-and-trickery/
+          // theme_color: `#663399`,
+          display: `standalone`,
+          icon: `src/images/gatsby-icon.png`
+        },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
+  
 }
+
+
