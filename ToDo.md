@@ -12,20 +12,20 @@
 ### Footer
 - [ x ] Set dynamic description
 - [ x ] Set dynamic menu items in footers
-- [   ] Add social buttons component in footer
+- [ x ] Add social buttons component in footer
 
 ### Author page
-- [  ] Fix number of posts / "undefined"
-- [  ] Limit number of post to last 10
-- [  ] Fix layout
+- [ x ] Fix number of posts / "undefined"
+- [ x ] Limit number of post to last 10
+- [ x ] Fix layout
 
 ###  Other
 - [ x ] refactor layout, nav and footer so place all queries in layout.js
 - [ x ] setup sourcing of logo from local folder (wp unreliable)
 - [ x ] setup theming with chakra-ui
 - [ x ] custom button component for primary and secondary buttons
-- [   ] fix breadcrumb vertical alignment
-- [   ] set all images to use blurred image placeholder while loading
+- [ x ] fix breadcrumb vertical alignment
+- [ x ] set all images to use blurred image placeholder while loading
 
 ### Mobile
 - [   ] fix hamburger menu icon

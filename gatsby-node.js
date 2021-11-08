@@ -58,7 +58,6 @@ if (result.errors) {
 // Create Author pages
 result.data.allWpUser.nodes.forEach(user => {
   createPage({
-    itemsPerPage: 10,
     path: `author/${user.slug}`,
     component: require.resolve(`./src/templates/userTemplate.js`),
     context: {

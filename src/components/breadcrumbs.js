@@ -27,7 +27,7 @@ const Crumb = ({ pageContext, data, otherContext }) => {
     isCategory? 
         theCrumb = 
         <Breadcrumb>
-            <BreadcrumbItem>
+            <BreadcrumbItem verticalAlign="bottom">
                 <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
             </BreadcrumbItem>     
             <BreadcrumbItem>
@@ -41,7 +41,7 @@ const Crumb = ({ pageContext, data, otherContext }) => {
     isPage? 
         theCrumb = 
         <Breadcrumb>
-            <BreadcrumbItem>
+            <BreadcrumbItem verticalAlign="bottom">
                 <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem isCurrentPage>
@@ -52,7 +52,7 @@ const Crumb = ({ pageContext, data, otherContext }) => {
     isTag? 
         theCrumb = 
         <Breadcrumb>
-            <BreadcrumbItem>
+            <BreadcrumbItem verticalAlign="bottom">
                 <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem>
@@ -65,7 +65,7 @@ const Crumb = ({ pageContext, data, otherContext }) => {
     :isAuthor?
         theCrumb = 
         <Breadcrumb>
-            <BreadcrumbItem>
+            <BreadcrumbItem verticalAlign="bottom">
                 <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem isCurrentPage>
@@ -75,7 +75,7 @@ const Crumb = ({ pageContext, data, otherContext }) => {
     :isPost? 
         theCrumb = 
         <Breadcrumb>   
-            <BreadcrumbItem>
+            <BreadcrumbItem verticalAlign="bottom">
                 <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem>
@@ -95,7 +95,7 @@ const Crumb = ({ pageContext, data, otherContext }) => {
     :isOther?
         theCrumb =
         <Breadcrumb>
-            <BreadcrumbItem>
+            <BreadcrumbItem verticalAlign="bottom">
                 <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem isCurrentPage>

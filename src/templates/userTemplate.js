@@ -41,7 +41,10 @@ export default function UserPage({ data, pageContext }) {
 }
 export const query = graphql`
   query($slug: String!) {
-    allWpPost(filter: {author: {node: {slug: {eq: $slug }}}}) {
+    allWpPost(
+      filter: {author: {node: {slug: {eq: $slug }}}}
+      limit: 9
+      ) {
       edges {
         node {
           author {

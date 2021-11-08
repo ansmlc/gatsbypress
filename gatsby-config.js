@@ -3,7 +3,13 @@ module.exports = {
     title: `gatsbypress`, 
     description: `Gatsby WordPress Starter`,
     author: `@gatsbyjs`,
-    siteUrl: `localhost:8000`
+    siteUrl: `localhost:8000`,
+    // Social icons URLs / If not using leave it empty ( `` ) / Do not delete field
+    facebookUrl:  `https://facebook.com`,
+    instagramUrl:  `https://instagram.com`,
+    linkedinUrl: `https://linkedin.com`,
+    youtubeUrl: `https://youtube.com`,
+    twitterUrl: `https://twitter.com`,
   },
   plugins: [
     {
