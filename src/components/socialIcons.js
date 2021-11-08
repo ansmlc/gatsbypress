@@ -49,7 +49,7 @@ const SocialIcons = ({ }) => {
         color="gray.700" 
         _hover={{ bg: "gray.200" }}
       >
-        <Icon as={FaFacebookF} w="18px" h="18px" />
+        <Icon as={FaFacebookF} w="16px" h="16px" />
       </Circle>
     </a>
   : facebookIcon = null
@@ -61,7 +61,7 @@ const SocialIcons = ({ }) => {
         color="gray.700"
         _hover={{ bg: "gray.200" }}
         >
-        <Icon as={AiFillInstagram} w="18px" h="18px"/>
+        <Icon as={AiFillInstagram} w="16px" h="16px"/>
       </Circle>
     </a>
   : instagramIcon = null
@@ -73,7 +73,7 @@ const SocialIcons = ({ }) => {
         color="gray.700"
         _hover={{ bg: "gray.200" }}
         >        
-        <Icon as={FaLinkedinIn} w="18px" h="18px"/>
+        <Icon as={FaLinkedinIn} w="16px" h="16px"/>
       </Circle>
     </a>
   : linkedinIcon = null
@@ -85,7 +85,7 @@ const SocialIcons = ({ }) => {
         color="gray.700"
         _hover={{ bg: "gray.200" }}
         >        
-        <Icon as={FaYoutube} w="18px" h="18px"/>
+        <Icon as={FaYoutube} w="16px" h="16px"/>
       </Circle>
     </a>
   : youtubeIcon = null
@@ -97,7 +97,7 @@ const SocialIcons = ({ }) => {
         color="gray.700"
         _hover={{ bg: "gray.200" }}
         >        
-        <Icon as={FaTwitter} w="18px" h="18px"/>
+        <Icon as={FaTwitter} w="16px" h="16px"/>
       </Circle>
     </a>
   : twitterIcon = null
@@ -105,7 +105,7 @@ const SocialIcons = ({ }) => {
   let allIcons = [facebookIcon, instagramIcon, youtubeIcon, linkedinIcon, twitterIcon]
 
   return(
-    <HStack spacing="12px">
+    <HStack spacing="14px">
       {allIcons}
     </HStack>
   )}

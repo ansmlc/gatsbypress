@@ -64,8 +64,8 @@ export default function PagePost({ data }) {
         <Box 
           className="wysiwyg"
           color="gray.800"
-          fontSize="normal"
-          padding="12"
+          padding={{ base: 4, md: 12 }}
+          paddingY={{ base: 6 }}
         >
           <div dangerouslySetInnerHTML={{ __html: page.content }} />
         </Box>

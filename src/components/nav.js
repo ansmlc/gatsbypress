@@ -22,9 +22,12 @@ const Nav = function ({ data })  {
   const toggle = () => setIsOpen(!isOpen)
     return (
       <Box 
-      bg={useColorModeValue('gray.50', 'gray.700')}
+      bg={{base: isOpen? "white" : "gray.50", md: "gray.50"}}
+      borderBottomLeftRadius={{ base: '2xl', md: '0'}}
+      borderBottomRightRadius={{ base: '2xl', md: '0'}}
+      // bg={useColorModeValue('gray.50', 'gray.700')}
       color={useColorModeValue('gray.700', 'gray.200')}
-      boxShadow={'inner'}
+      boxShadow={{base: isOpen? "lg" : "none", md: "none"}}
       as="header" 
       d="flex" 
       left="0" 

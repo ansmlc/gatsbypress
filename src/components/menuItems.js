@@ -7,8 +7,9 @@ import {
     Text,
     Stack
 } from "@chakra-ui/react"
+import SocialIcons from "./socialIcons"
 
-const MenuItems = ({ toggle, isOpen, items }) => {
+const MenuItems = ({ isOpen, items }) => {
 const prefixPage = '../../page'
 // Removed category links from now altogether. Return?
 // const prefixCat = '../..'
@@ -23,16 +24,21 @@ let pageMenuItems = []
 ))}
 return (
 <Box
-  display={{ base: isOpen ? "block" : "none", md: "block" }}
-  flexBasis={{ base: "100%", md: "auto" }}
+    transition={'all .7s ease'}
+    display={{ base: isOpen ? "block" : "none", md: "block" }}
+    h={{ base: isOpen ? "100%" : "0", md: "100%" }}
+   //  flexBasis={{ base: "100%", md: "auto" }}
 >
     <Stack
-        fontSize="sm"
-        spacing={8}
-        align="center"
-        justify={["center", "space-between", "flex-end", "flex-end"]}
-        direction={["column", "row", "row", "row"]}
-        p={[4, 4, 0, 0]}
+        transition={'all .7s ease'}
+        fontSize={{ base: "normal", md: "sm"}}
+        spacing={{ base: 6, md: 8}}
+        textAlign={'left'}
+       // marginLeft={{ base: "4", md: "0"}}
+        justify={["center", "center", "flex-end", "flex-end"]}
+        direction={["column", "column", "row", "row"]}
+        p={[8, 8, 0, 0]}
+        marginTop={{ base: "5", lg: "0"}}
     >
         <Box min-width="150px">
             <Link
@@ -73,6 +79,9 @@ return (
             >
                 Contact
             </Link>
+        </Box>
+        <Box paddingTop="10" display={{ base: "flex", md: "none" }}>
+            <SocialIcons />
         </Box>
     </Stack>
 </Box>

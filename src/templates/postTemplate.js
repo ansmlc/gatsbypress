@@ -91,7 +91,8 @@ export default function BlogPost({ data }) {
           className="wysiwyg"
           color="gray.800"
           fontSize="normal"
-          padding="12"
+          padding={{ base: 4, md: 12 }}
+          paddingY={{ base: 6 }}
         >
           <div dangerouslySetInnerHTML={{ __html: post.content }} />
           <Box mt="6">

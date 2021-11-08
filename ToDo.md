@@ -7,6 +7,10 @@
 - WordPress permalink settings set to 'Post Name'. Default category and tag base slugs. Main menu supports pages only. Posts and categories will not have proper URL structure. 
 - Author fields?
 
+
+### Personal 
+- Realized I am late in projects because I cannot perceieve tasks and amount of work in the future
+
 # TO DO 
 
 ### Footer
@@ -27,5 +31,18 @@
 - [ x ] fix breadcrumb vertical alignment
 - [ x ] set all images to use blurred image placeholder while loading
 
+### Frontpage
+- [   ] hero.js: Switch order of columns on mobile
+- [   ] hero.js: Refactor UI 
+- [   ] replace featured posts with featured pages based on page meta field
+
 ### Mobile
-- [   ] fix hamburger menu icon
+- [ x ] fix hamburger menu icon
+- [ x ] improve mobile menu UI
+
+### Polishing
+- [   ] add transitions
+- [   ] add scroll-reveal 
+
+### Cleanup 
+- [   ] sort components in folders
