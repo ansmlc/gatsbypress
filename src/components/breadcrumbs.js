@@ -8,7 +8,6 @@ import {
     Breadcrumb,
     BreadcrumbItem,
     BreadcrumbLink,
-    BreadcrumbSeparator,
   } from "@chakra-ui/react"
 
 const Crumb = ({ pageContext, data, otherContext }) => {
@@ -35,7 +34,7 @@ const Crumb = ({ pageContext, data, otherContext }) => {
                 <BreadcrumbLink as={Link} key="blog" to="../../blog">Blog</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem isCurrentPage>
-                <BreadcrumbLink as="span" fontStyle="italic" key="category">{pageContext.category}</BreadcrumbLink>
+                <BreadcrumbLink as={'p'} fontStyle="italic" key="category">{pageContext.category}</BreadcrumbLink>
             </BreadcrumbItem>
         </Breadcrumb>
     :
@@ -56,8 +55,11 @@ const Crumb = ({ pageContext, data, otherContext }) => {
             <BreadcrumbItem>
                 <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
             </BreadcrumbItem>
+            <BreadcrumbItem>
+                <BreadcrumbLink as={Link} key="blog" to="../../blog">Blog</BreadcrumbLink>
+            </BreadcrumbItem>
             <BreadcrumbItem isCurrentPage>
-                <BreadcrumbLink as={Link} key="tag" to="/">{pageContext.tag}</BreadcrumbLink>
+                <BreadcrumbLink as={'span'} fontStyle="italic" key="tag">{"#" + pageContext.tag}</BreadcrumbLink>
             </BreadcrumbItem>  
         </Breadcrumb>  
     :isAuthor?
@@ -67,7 +69,7 @@ const Crumb = ({ pageContext, data, otherContext }) => {
                 <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem isCurrentPage>
-                <BreadcrumbLink as={Link} key="author" to="/">{data.firstName + " " + data.lastName}</BreadcrumbLink>
+                <BreadcrumbLink as={'p'} key="author">{data?.name}</BreadcrumbLink>
             </BreadcrumbItem>
         </Breadcrumb>  
     :isPost? 
@@ -83,7 +85,7 @@ const Crumb = ({ pageContext, data, otherContext }) => {
                 <BreadcrumbLink 
                     as={Link} 
                     key="pagecategory" 
-                    to={"/../../category/" + data.categories?.nodes[0]?.slug}>{data.categories?.nodes[0]?.name}
+                    to={"../../category/" + data.categories?.nodes[0]?.slug}>{data.categories?.nodes[0]?.name}
                 </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem>
@@ -101,7 +103,7 @@ const Crumb = ({ pageContext, data, otherContext }) => {
             </BreadcrumbItem>
         </Breadcrumb>  
     :
-    theCrumb = "is none"
+    theCrumb = "No breadcrumbs to display."
     return (
         <Box
             fontSize="0.9rem"

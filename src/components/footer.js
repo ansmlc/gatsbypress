@@ -14,10 +14,11 @@ import {
 } from "gatsby"
 
 import Logo from "./logo"
+import SocialIcons from "./socialIcons";
 
 const ListHeader = ({ children }) => {
   return (
-    <Text fontWeight={'500'} fontSize={'lg'} mb={2}>
+    <Text color={useColorModeValue('gray.700', 'gray.100')} fontWeight={'500'} fontSize={'lg'} mb={2}>
       {children}
     </Text>
   );
@@ -35,21 +36,20 @@ const Footer = function ({ data }) {
   console.log(allMenuItems, 'footer menu');
   let catMenuItems = [];
   let pageMenuItems = [];
-  {allMenuItems?.menuItems?.nodes.map(item => (
+  {allMenuItems?.menuItems?.nodes?.map(item => (
     item.url.includes('category')?
-    catMenuItems.push(item)
-    :
-    pageMenuItems.push(item)
+    false : pageMenuItems.push(item)
   ))}
-  {data?.allWpCategory?.nodes.map(item => (
+  {data?.allWpCategory?.nodes?.map(item => (
     item.uri.includes('featured')?
     false : catMenuItems.push(item)
   ))}
   console.log(pageMenuItems, 'page items')
+  console.log(catMenuItems, 'cat items')
+
   return (
     <Box
       mt={10}
-      bg={useColorModeValue('gray.50', 'gray.900')}
       color={useColorModeValue('gray.700', 'gray.200')}>
       <Container 
         as={Stack} 
@@ -72,7 +72,7 @@ const Footer = function ({ data }) {
             <ListHeader>Menu</ListHeader>
             {pageMenuItems.map(pageItem => (
                 <Link 
-                    activeStyle={{ color: "red" }} 
+                    activeStyle={{ fontWeight: "bold" }} 
                     partiallyActive={true}  
                     to={prefixPage + pageItem.url.replace(/\s+/g, "-").toLowerCase()} 
                     key={pageItem.id}
@@ -86,7 +86,7 @@ const Footer = function ({ data }) {
             <ListHeader>Blog</ListHeader>
             {catMenuItems.map(catItem => (
                 <Link 
-                    activeStyle={{ color: "red" }} 
+                    activeStyle={{ fontWeight: "bold" }} 
                     partiallyActive={true}  
                     to={prefixCat + catItem.uri.replace(/\s+/g, "-").toLowerCase()} 
                     key={catItem.id}
@@ -98,6 +98,7 @@ const Footer = function ({ data }) {
           </Stack>
           <Stack align={'flex-start'}>
             <ListHeader>Social</ListHeader>
+            <SocialIcons/>
           </Stack>
         </SimpleGrid>
       </Container>
@@ -108,9 +109,8 @@ const Footer = function ({ data }) {
         left="0"
         right="0"
         zIndex="2"
-        borderTop="1px"
-        borderTopColor="lightgray"
         marginTop="2rem"
+        boxShadow="xl"
         centerContent
       >
         <Text mx="auto" my="1rem" align="center" fontSize="sm">

@@ -3,12 +3,13 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import { Box, Text, Image, Flex } from "@chakra-ui/react"
 import { GatsbyImage } from "gatsby-plugin-image"
-import PrimaryButton from "./button"
+import PrimaryButton from "./primaryButton"
 
 const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, orderBaseTxt, orderLgTxt, orderBaseImg, orderLgImg }) => (  
-    <Flex mb="5rem" textAlign="center" align={{base: "flex-start", lg: "center"}}  flexDir="row" flexWrap={{base: "wrap", lg: "nowrap"}}> 
+    <Flex my="16" textAlign="center" align={{base: "flex-start", lg: "center"}}  flexDir="row" flexWrap={{base: "wrap", lg: "nowrap"}}> 
         <Box order={{ base: orderBaseTxt, lg: orderLgTxt }}  w={{base: '100%', lg: '50%' }}> 
-            <Text as="h1" 
+            <Text 
+                as="h1" 
                 mb="1rem"
                 mt={{base: "1rem", lg: "0"}}
                 color={'gray.700'}
@@ -28,7 +29,7 @@ const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, ord
                     <div dangerouslySetInnerHTML={{ __html: featuredDesc }}/>
             </Text>
             <Link to={"../../post/" + featuredSlug.replace(/\s+/g, "-").toLowerCase()}>
-                <PrimaryButton>
+                <PrimaryButton arrowRight>
                     Read more
                 </PrimaryButton>
             </Link>

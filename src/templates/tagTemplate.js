@@ -6,6 +6,7 @@ import Pager from "../components/pager.js"
 import ListPosts from "../components/listPosts.js"
 import ArchiveTitle from "../components/archiveTitle"
 import { Box } from "@chakra-ui/react"
+import Crumb from "../components/breadcrumbs"
 
 export const query = graphql`
   query($slug: String!, $skip: Int!, $limit: Int!) {
@@ -62,7 +63,7 @@ export const query = graphql`
     }
   }
 `
-
+ 
 const TagTemplate = ({ data, pageContext }) => {
   //console.log(data)
   //console.log(pageContext)
@@ -71,7 +72,8 @@ const TagTemplate = ({ data, pageContext }) => {
   const hashTag = "#" + pageContext.tag 
   return (
     <Layout>
-      <SEO title={"Tag: " + pageContext.tag}/>
+      <SEO title={pageContext.tag}/>
+      <Crumb pageContext={pageContext} data={data}/>
       <ArchiveTitle title={hashTag} count={postCount}></ArchiveTitle>
       <ListPosts context={`blog`} posts={posts}/>
       <Box mt="4">

@@ -21,8 +21,9 @@ import * as React from "react"
       allFile(filter: {name: {eq: "gp-custom-logo"}}) {
         edges {
           node {
-            id
+            publicURL
             name
+            extension
             childImageSharp {
               gatsbyImageData
             }

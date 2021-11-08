@@ -10,7 +10,7 @@ import {
   Button,
   Image
 } from '@chakra-ui/react';
-import PrimaryButton from "./button"
+import PrimaryButton from "./primaryButton"
 
 const Hero = ({ heroHeading, heroText, heroSlug, heroImage }) => {
     return (
@@ -35,7 +35,7 @@ const Hero = ({ heroHeading, heroText, heroSlug, heroImage }) => {
             spacing={{ base: 4, sm: 6 }}
             direction={{ base: 'column', sm: 'row' }}>
               <Link to={"../../post/" + heroSlug.replace(/\s+/g, "-").toLowerCase()}>
-                <PrimaryButton>
+                <PrimaryButton arrowRight>
                   Read more
                 </PrimaryButton>
               </Link>
@@ -45,7 +45,8 @@ const Hero = ({ heroHeading, heroText, heroSlug, heroImage }) => {
                   size={'lg'}
                   fontWeight={'normal'}
                   px={6}
-                  >
+                  colorScheme={'gray'}
+                >
                   GitHub
                 </Button>
               </Link>

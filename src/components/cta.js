@@ -6,7 +6,7 @@ import {
   Stack,
   Link,
 } from "@chakra-ui/react";
-import PrimaryButton from "./button";
+import PrimaryButton from "./primaryButton";
 
 export default function Cta() {
   return (
@@ -51,7 +51,7 @@ export default function Cta() {
                 mt={{ base: 8, lg: 0 }}
                 shrink={{ lg: 0 }}
             >
-            <PrimaryButton>
+            <PrimaryButton arrowRight>
                 Contact us
             </PrimaryButton>
           </Stack>

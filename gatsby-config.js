@@ -6,14 +6,21 @@ module.exports = {
     siteUrl: `localhost:8000`
   },
   plugins: [
-    "@chakra-ui/gatsby-plugin",
+    {
+    resolve: "@chakra-ui/gatsby-plugin",
+      options: {
+        resetCSS: true,
+      },
+    },
     {
       resolve: `gatsby-source-wordpress`,
       options: {
        
          // replace this url with the url of your wordpress install
          // https://limomet.a2hosted.com/websby/graphql
-         url: `http://127.0.0.1/wpgatsby/graphql`,
+         // http://127.0.0.1/wpgatsby/graphql
+
+         url: `https://limomet.a2hosted.com/websby/graphql`,
       },
    },
     `gatsby-plugin-react-helmet`,
@@ -31,7 +38,7 @@ module.exports = {
       options: {
         defaults: {
           formats: [`auto`, `webp`],
-          placeholder: `dominantColor`,
+          placeholder: `blurred`,
           quality: 65,
           breakpoints: [750, 1080, 1366, 1920],
           backgroundColor: `orange`,

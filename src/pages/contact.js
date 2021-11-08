@@ -9,13 +9,15 @@ import {
     InputGroup,
     InputLeftElement,
     Textarea,
-    Text
+    Text,
+    useColorModeValue
   } from '@chakra-ui/react';
   import { BiEnvelope } from "@react-icons/all-files/bi/BiEnvelope"
   import { BiUser } from '@react-icons/all-files/bi/BiUser';
 import Layout from "../components/layout";
 import SEO from "../components/seo"
 import Crumb from "../components/breadcrumbs.js"
+import PrimaryButton from "../components/primaryButton";
 
   
 export default function Component ()  {
@@ -26,15 +28,21 @@ export default function Component ()  {
     <Text
         as="h1"
         fontWeight="bold"
-        fontSize="2rem"
-        marginTop="1rem"
-        marginBottom="2"
+        fontSize="3xl"
+        marginTop="4"
+        marginBottom="6"
         lineHeight="1.1"
     >
         Contact us
     </Text>
-    <Box bg="white" borderRadius="2xl" maxW={{base: '100%', md: '50%'}}>
-        <Box m={8} ml={0} color="#0B0E3F">
+    <Box 
+        bg={useColorModeValue('white', 'gray.700')}
+        borderRadius="2xl" 
+        maxW={{base: '100%', md: '50%'}}
+        p={{base: "6", md: "10"}}
+        boxShadow="2xl"
+    >
+        <Box color="#0B0E3F">
             <VStack spacing={5}>
             <FormControl id="name">
                 <FormLabel>Your Name</FormLabel>
@@ -67,13 +75,7 @@ export default function Component ()  {
                 />
             </FormControl>
             <FormControl id="name" float="right">
-                <Button
-                variant="solid"
-                bg="#0D74FF"
-                color="white"
-                _hover={{}}>
-                Send Message
-                </Button>
+            <PrimaryButton>Send Message</PrimaryButton>
             </FormControl>
             </VStack>
         </Box>

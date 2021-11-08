@@ -26,5 +26,6 @@ const archiveTitle = ({ title, count}) => {
       </Box>
     )
 }
+
 export default archiveTitle
     

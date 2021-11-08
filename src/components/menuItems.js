@@ -27,21 +27,22 @@ return (
   flexBasis={{ base: "100%", md: "auto" }}
 >
     <Stack
+        fontSize="sm"
         spacing={8}
         align="center"
         justify={["center", "space-between", "flex-end", "flex-end"]}
         direction={["column", "row", "row", "row"]}
         p={[4, 4, 0, 0]}
     >
-        <Box fontSize="sm" fontWeight="normal" color="gray.500" min-width="200px">
+        <Box min-width="150px">
             <Link
-            activeStyle={{ textDecoration: "underline" }}    
+            activeStyle={{ fontWeight: "bold" }}    
                 to="/" 
                 key="frontpage">Home</Link>
         </Box>
-        <Box fontSize="sm" fontWeight="normal" color="gray.500" min-width="200px">
+        <Box min-width="200px">
             <Link 
-                activeStyle={{ textDecoration: "underline" }}    
+                activeStyle={{ fontWeight: "bold" }}    
                 partiallyActive={true}             
                 to="/blog" 
                 key="blogpage"
@@ -52,9 +53,9 @@ return (
         }
 
         {pageMenuItems.map(pageItem => (
-            <Box fontSize="sm" fontWeight="normal" color="gray.500" min-width="200px">
+            <Box min-width="200px">
                 <Link 
-                    activeStyle={{ textDecoration: "underline" }}    
+                    activeStyle={{ fontWeight: "bold" }}    
                     partiallyActive={true}  
                     to={prefixPage + pageItem.url.replace(/\s+/g, "-").toLowerCase()} 
                     key={pageItem.id}
@@ -63,9 +64,9 @@ return (
                 </Link>   
             </Box>
         ))}
-        <Box fontSize="sm" fontWeight="normal" color="gray.500" min-width="200px">
+        <Box min-width="200px">
             <Link 
-                activeStyle={{ textDecoration: "underline" }}    
+                activeStyle={{ fontWeight: "bold" }}    
                 partiallyActive={true} 
                 to="/contact" 
                 key="contactpage"

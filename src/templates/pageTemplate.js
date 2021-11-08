@@ -12,7 +12,9 @@ import {
 import { 
   Box, 
   AspectRatio, 
-  Image 
+  Image,
+  Text,
+  useColorModeValue
 } from "@chakra-ui/react"
 
 export default function PagePost({ data }) {
@@ -23,8 +25,23 @@ export default function PagePost({ data }) {
     <Layout>
       <SEO title={page.title}/>
       <Crumb data={page}/>
-      <PageTitle title={page.title} />
-      <Box as="article">
+      <Text
+          as="h1"
+          fontWeight="bold"
+          fontSize="3xl"
+          marginTop="4"
+          marginBottom="6"
+          lineHeight="1.1"
+        >
+          {page.title}
+      </Text>
+      <Box 
+        as="article"
+        bg={useColorModeValue('white', 'gray.700')}
+        borderRadius="2xl"
+        overflow="hidden"
+        boxShadow="2xl"
+      >
         <AspectRatio maxW="1920px" ratio={16 / 9}>
           {image?
             <Image 
@@ -32,23 +49,23 @@ export default function PagePost({ data }) {
               image={getImage(image)} 
               alt={page.title}
               rounded={'2xl'} 
-              marginBottom="2"
+              roundedBottomLeft={0}
+              roundedBottomRight={0}
             /> 
             :
             <Image
               src="https://via.placeholder.com/1920x1080" 
               alt={page.title || ""}
               rounded={'2xl'} 
-              marginBottom="2"
-            />         
+              roundedBottomLeft={0}
+              roundedBottomRight={0}            />         
           }
         </AspectRatio>
         <Box 
-          as="div" 
           className="wysiwyg"
           color="gray.800"
           fontSize="normal"
-          padding="2"
+          padding="12"
         >
           <div dangerouslySetInnerHTML={{ __html: page.content }} />
         </Box>

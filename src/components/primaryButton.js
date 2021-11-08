@@ -1,24 +1,24 @@
 import React from 'react';
 import { BiRightArrowAlt } from "@react-icons/all-files/bi/BiRightArrowAlt"
-import { BiLeftArrowAlt } from "@react-icons/all-files/bi/BiLeftArrowAlt"
+import { BiLeftArrowAlt } from "@react-icons/all-files/bi/BiRightArrowAlt"
 import PropTypes from "prop-types"
 import {
   Button,
 } from '@chakra-ui/react';
 
-const SecondaryButton = ({ children, arrowLeft, arrowRight }) => {
+
+const PrimaryButton = ({ children, arrowLeft, arrowRight }) => {
     let theButton = ""
     arrowRight?
     theButton = 
-        <Button 
+            <Button 
             rounded={'full'}
             shadow="md"
             size={'lg'}
             fontWeight={'bold'}
             px={6}
-            colorScheme={'gray'}
+            colorScheme={'brand'}
             rightIcon={<BiRightArrowAlt />}
-            textDecoration={'none'}
         >
             {children}
         </Button>
@@ -31,8 +31,8 @@ const SecondaryButton = ({ children, arrowLeft, arrowRight }) => {
             size={'lg'}
             fontWeight={'bold'}
             px={6}
-            colorScheme={'gray'}
-            leftIcon={<BiLeftArrowAlt />}
+            colorScheme={'brand'}
+            lefetIcon={<BiLeftArrowAlt />}
         >
             {children}
         </Button>
@@ -44,7 +44,7 @@ const SecondaryButton = ({ children, arrowLeft, arrowRight }) => {
             size={'lg'}
             fontWeight={'bold'}
             px={6}
-            colorScheme={'gray'}
+            colorScheme={'brand'}
         >
            {children}
         </Button>    
@@ -53,9 +53,11 @@ return (
 )
 }
 
-SecondaryButton.propTypes = {
+PrimaryButton.propTypes = {
     children: PropTypes.node.isRequired,
 }
   
-export default SecondaryButton
+export default PrimaryButton
   
+  
+

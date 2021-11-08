@@ -4,76 +4,82 @@ import { graphql } from "gatsby"
 import Pager from "../components/pager.js"
 import ListPosts from "../components/listPosts.js"
 import Crumb from "../components/breadcrumbs.js"
-import ArchiveTitle from "../components/archiveTitle"
+import PageTitle from "../components/pageTitle.js"
+import { Avatar, Stack, Text } from "@chakra-ui/react"
 
 export default function UserPage({ data, pageContext }) {
-  const user = data?.allWpUser.nodes[0]
-  const posts = user?.posts?.nodes
+  const user = data?.allWpPost?.edges[0]?.node.author.node
+  const posts = data?.allWpPost?.edges
   const avatar = user?.avatar?.url
-  const userName = user.firstName + " " + user.lastName
   return (
     <Layout>
       <Crumb data={user}/>
-      <div className="media">
-      <ArchiveTitle title={userName}></ArchiveTitle>
-                <div className="media-left">
-                  <figure className="image is-128x128">
-                    <img src={avatar} alt="" />
-                  </figure>
-                </div>
-                <div className="media-content">
-                  <div className="content">     
-                      <p>{user.description}</p>                 
-                  </div>
-        </div>
-      </div>
-      <ListPosts context={`author`} posts={posts}/>
+      <PageTitle  title={user.name}></PageTitle>
+      <Stack marginY="6" direction={'row'} spacing={4} align={'start'}>
+        <Avatar 
+          size="xl"
+          src={avatar}
+          alt={'Author'}
+        />
+        <Stack maxW={{ base: "full", md: "50%"}} direction={'column'} spacing={0} fontSize={'normal'}>
+          <Text color={'gray.700'}>{user.description} </Text>
+        </Stack>
+      </Stack>
+      <Text 
+        as="h2"
+        fontSize="xl"
+        fontWeight="bold"
+        marginTop="6"
+        marginBottom="4"
+      >
+        {"Latest posts by " + user.name + ":"}
+      </Text>
+      <ListPosts context={`blog`} posts={posts}/>
       <Pager pageContext={pageContext} />
     </Layout>
   )
 }
 export const query = graphql`
   query($slug: String!) {
-    allWpUser(filter: { slug: { eq: $slug } }) {
-      nodes {
-        firstName
-        lastName
-        slug
-        url
-        id
-        description
-        nodeType
-        avatar {
-          url
-        }
-        posts {
-          nodes {
-            title
-            slug
-            date(formatString: "MMMM DD, YYYY")
-            excerpt
-            featuredImage {
-              node {
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData(
-                      placeholder: DOMINANT_COLOR
-                      formats: [WEBP, JPG]
-                      quality: 90
-                    )
-                  }
-                }   
-              }
-            }
-            tags {
-              nodes {
-                name
-                uri
+    allWpPost(filter: {author: {node: {slug: {eq: $slug }}}}) {
+      edges {
+        node {
+          author {
+            node {
+              nodeType
+              name
+              slug
+              description
+              avatar {
+                url
               }
             }
           }
+          title
+          slug
+          date(formatString: "MMMM DD, YYYY")
+          excerpt
+          featuredImage {
+            node {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(
+                    placeholder: DOMINANT_COLOR
+                    formats: [WEBP, JPG]
+                    quality: 90
+                  )
+                }
+              }   
+            }
+          }
+          tags {
+            nodes {
+              name
+              uri
+            }
+          }
         }
-      }  
+      }
     }
   }
 `

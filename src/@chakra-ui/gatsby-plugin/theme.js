@@ -3,6 +3,8 @@ import { extendTheme } from "@chakra-ui/react"
 
 // 2. Call `extendTheme` and pass your custom values
 const theme = extendTheme({
+  initialColorMode: "light",
+  useSystemColorMode: false,
   colors: {
     brand: {
       50: '#fff7f7', 
@@ -17,38 +19,46 @@ const theme = extendTheme({
       900: '#783131'
     },
     secondary: {
-      50: '#f2fcfe',
-      100: '#e6f8fd',
-      200: '#c0eefb',
-      300: '#99e3f9',
-      400: '#4dcff4',
-      500: '#01baef',
-      600: '#01a7d7',
-      700: '#018cb3',
-      800: '#01708f',
-      900: '#005b75',
+      50: '#E2F6FF',
+      100: '#CDF0FF',
+      200: '#A4E4FF',
+      300: '#7CD8FF',
+      400: '#53CBFF',
+      500: '#2ABFFF',
+      600: '#00A9F1',
+      700: '#0081B9',
+      800: '#005A81',
+      900: '#003349',
     },
- 
     gray: {
-      50: '#f7f7f7', 
-      100: '#f0f0f0', 
-      200: '#d9d9d9', 
-      300: '#c2c2c2', 
-      400: '#949494', 
-      500: '#666666', 
-      600: '#5c5c5c', 
-      700: '#4d4d4d', 
-      800: '#3d3d3d', 
-      900: '#323232'
-    }
+      50: '#F4F5F6', 
+      100: '#E9EBEE', 
+      200: '#D2D7DC', 
+      300: '#BBC2CA', 
+      400: '#A4AEB8', 
+      500: '#8D99A6', 
+      600: '#6E7D8D', 
+      700: '#55616D', 
+      800: '#3D454E', 
+      900: '#24292E'
+    },
   },
   styles: {
     global: {
+      body: {
+        backgroundColor: "gray.50"
+      },
       ".wysiwyg": {
         a: {
           color: "secondary.500",
           textDecoration: "underline"
         },
+      },
+      a: {
+        color: "gray.700"
+      },
+      p: {
+        color: "gray.700"
       },
     },
   },

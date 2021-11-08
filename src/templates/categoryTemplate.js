@@ -8,7 +8,7 @@ import ArchiveTitle from "../components/archiveTitle"
 import SelectBlogCategory from "../components/selectBlogCategory.js"
 import Crumb from "../components/breadcrumbs.js"
 import { 
-  Flex, 
+  Flex,  
   Spacer, 
   Box 
 } from "@chakra-ui/react"
@@ -86,7 +86,7 @@ const CategoryTemplate = ({ data, pageContext }) => {
   const menuItems = data.allWpCategory.nodes
   return (
     <Layout>
-      <SEO title={"Category: " + pageContext.category}/>
+      <SEO title={pageContext.category}/>
       <Crumb pageContext={pageContext} data={data}/>
       <Flex>
         <Box>

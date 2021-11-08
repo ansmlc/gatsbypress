@@ -5,7 +5,8 @@ import {
   Box,
   Flex,
   Container,
-  Image
+  Image,
+  useColorModeValue
 } from "@chakra-ui/react"
 import Logo from "./logo"
 
@@ -21,8 +22,10 @@ const Nav = function ({ data })  {
   const toggle = () => setIsOpen(!isOpen)
     return (
       <Box 
+      bg={useColorModeValue('gray.50', 'gray.700')}
+      color={useColorModeValue('gray.700', 'gray.200')}
+      boxShadow={'inner'}
       as="header" 
-      bg="white" 
       d="flex" 
       left="0" 
       right="0" 
@@ -37,8 +40,6 @@ const Nav = function ({ data })  {
           h="100%"
           w="100%"
           py={4}
-          bg="white"
-          color="gray.700"
         >
           <Logo
             siteTitle={title}

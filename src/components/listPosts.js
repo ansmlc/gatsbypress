@@ -14,14 +14,15 @@ import {
 } from "@chakra-ui/react"
 import { SimpleGrid } from "@chakra-ui/react"
 import { AspectRatio } from "@chakra-ui/react"
-import { PostInfo } from "../components/postInfo"
+import { useColorModeValue } from "@chakra-ui/color-mode"
 
 // Create Post Card Component
 const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postTags, postAuthor, key }) => {
   let postAuthorStack = ""
+  // Remove author if page is author page
   if (postAuthor) {
     postAuthorStack = 
-      <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
+      <Stack mt={4} direction={'row'} spacing={4} align={'center'}>
         <Avatar
           src={postAuthor.avatar.url}
           alt={'Author'}
@@ -36,12 +37,15 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
           <Text color={'gray.500'}><time>{postDate}</time></Text>
         </Stack>
       </Stack>
-  } else {
-    postAuthorStack =
-      <Text color={'gray.500'}><time>{postDate}</time></Text>
   }
   return (
-  <Box key={key} maxW="md">
+  <Box 
+    key={key} 
+    maxW="md"
+    bg={useColorModeValue('white', 'gray.700')}
+    borderRadius="2xl"
+    overflow="hidden"
+    boxShadow="2xl">
     {postImage ?
       <Link to={"../../post/" + postSlug.replace(/\s+/g, "-").toLowerCase()}>
         <AspectRatio ratio={16 / 9}>
@@ -49,7 +53,9 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
             as={GatsbyImage}
             image={postImage}
             alt={postTitle}
-            rounded={'2xl'} />
+            rounded={'2xl'} 
+            roundedBottomLeft={0}
+            roundedBottomRight={0} />
         </AspectRatio>
       </Link>
       :
@@ -58,15 +64,17 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
           <Image
             src="https://via.placeholder.com/1920x1080"
             alt={postTitle || ""}
-            rounded={'2xl'} />
+            rounded={'2xl'} 
+            roundedBottomLeft={0}
+            roundedBottomRight={0}/>
         </AspectRatio>
       </Link>}
-    <Box p="4">
-      <Box
+    <Box p="6">
+      <Box noOfLines={2}
         as="h2"
-        mb="2"
+        mb="3"
         fontWeight="semibold"
-        lineHeight="tight"
+        lineHeight="1.1"
         fontSize="1.4rem"
         fontWeight="bold"
       >
@@ -82,7 +90,7 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
         // Truncate text in case of large tags
       }
       <Text noOfLines={1} isTruncated>
-        {postTags.slice(0, 3).map(tag => (
+        {postTags?.slice(0, 3).map(tag => (
           <Text
             as={Link}
             display="inline"
@@ -97,15 +105,14 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
           </Text>
         ))}
       </Text>
-      <Box mt="2">
-        <Text
-          noOfLines={[3]}
-          color="gray"
-          fontSize="sm"
-        >
-          <div dangerouslySetInnerHTML={{ __html: postExcerpt }} />
-        </Text>
-      </Box> 
+      <Text
+        my="4"
+        noOfLines={[3]}
+        color="gray"
+        fontSize="sm"
+      >
+        <div dangerouslySetInnerHTML={{ __html: postExcerpt }} />
+      </Text>
       {postAuthorStack}
       <Spacer />
     </Box>

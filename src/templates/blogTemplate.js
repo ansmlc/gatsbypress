@@ -96,7 +96,7 @@ const BlogPage  = ({ pageContext, data }) => {
 
     return (
     <Layout>
-      <SEO title="Latest Posts" />
+      <SEO title="Blog" />
       <Box
             fontSize="0.9rem"
             textColor="gray.500"

@@ -2,40 +2,53 @@ import React from "react"
 import { Box, Text, Image } from "@chakra-ui/react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
+
 
 const Logo = ({siteTitle, siteLogo}) => {
-  const logo = siteLogo?.childImageSharp?.gatsbyImageData
   let theLogo = ""
-  console.log(logo, 'logo')
-  console.log(siteLogo, 'siteLogo')
 
-  logo ? 
-  theLogo = 
-  <Link to="/">
-    <Image
-      as={GatsbyImage}
-      maxWidth="125px"
-      height="auto"
-      image={logo}
-      alt={siteTitle}
-      title={siteTitle}
-    />
-  </Link>
-  :siteTitle ?
-  theLogo =
+  if (!siteLogo?.childImageSharp && siteLogo?.extension === 'svg') {
+    theLogo = 
+    <Link to="/" title={siteTitle}>
+      <Image
+        src={siteLogo?.publicURL}
+        alt={siteTitle}
+        maxW={'150px'}
+        height={'auto'}
+      />    
+    </Link>
+  } 
+  else if (siteLogo?.childImageSharp && siteLogo?.extension === 'png' || siteLogo?.extension === 'jpg') {
+    theLogo = 
+    <Link to="/" title={siteTitle}>
+      <Image
+        as={GatsbyImage}
+        maxWidth="125px"
+        height="auto"
+        image={siteLogo?.childImageSharp?.gatsbyImageData}
+        alt={siteTitle}
+        title={siteTitle}
+      />
+    </Link>
+  }
+  else if (siteTitle) {
+    theLogo =
     <Text fontSize="md" fontWeight="bold" color="gray.700">
-      <Link to={"/"}>
+      <Link to={"/"} title={siteTitle}>
           {"Hellooo" + siteTitle}
       </Link>
     </Text>
-  :
-  theLogo =
-  <Text fontSize="md" fontWeight="bold" color="gray.700">
-    <Link to={"/"}>
-        hi GatsbyPress
-    </Link>
-  </Text> 
+  } else {
+    theLogo =
+    <Text fontSize="md" fontWeight="bold" color="gray.700">
+      <Link to={"/"}>
+          GatsbyPress
+      </Link>
+   </Text> 
+  }
+  console.log(siteLogo, 'siteLogo')
+
   return (
     <Box>
       {theLogo}
@@ -44,8 +57,7 @@ const Logo = ({siteTitle, siteLogo}) => {
 }
 
 Logo.propTypes = {
-    siteTitle: PropTypes.string,
-    siteLogo: PropTypes.array
+    siteTitle: PropTypes.string
   }
   
 Logo.defaultProps = {
