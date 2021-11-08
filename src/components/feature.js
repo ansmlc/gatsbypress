@@ -1,13 +1,14 @@
 import * as React from "react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import { Box, Text, Image, Flex } from "@chakra-ui/react"
+import { Box, Text, Image, Flex, useColorModeValue} from "@chakra-ui/react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import PrimaryButton from "./primaryButton"
 
 const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, orderBaseTxt, orderLgTxt, orderBaseImg, orderLgImg }) => (  
-    <Flex my="16" textAlign="center" align={{base: "flex-start", lg: "center"}}  flexDir="row" flexWrap={{base: "wrap", lg: "nowrap"}}> 
-        <Box order={{ base: orderBaseTxt, lg: orderLgTxt }}  w={{base: '100%', lg: '50%' }}> 
+    <Flex my="16" textAlign="center" align={{base: "flex-start", lg: "center"}}  flexDir="row" flexWrap={{base: "wrap", lg: "nowrap"}}
+    overflow="hidden" boxShadow="xl" maxW="full" rounded="2xl" bg={useColorModeValue('white', 'gray.700')}> 
+        <Box p="8" order={{ base: orderBaseTxt, lg: orderLgTxt }} w={{base: '100%', lg: '50%' }}> 
             <Text 
                 as="h1" 
                 mb="1rem"
@@ -44,7 +45,11 @@ const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, ord
                 image={featuredImage}
                 alt={featuredTitle}
                 rounded={'2xl'} 
-                maxW={{base: '100%', lg: '80%'}}
+                borderBottomLeftRadius="0"
+                borderTopLeftRadius="0"
+                borderBottomRightRadius="0"
+                borderTopRightRadius="0"
+                maxW={{base: '100%', lg: '100%'}}
             />
             :
             <Image

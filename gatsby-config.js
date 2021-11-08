@@ -44,7 +44,7 @@ module.exports = {
       options: {
         defaults: {
           formats: [`auto`, `webp`],
-          placeholder: `blurred`,
+          placeholder: `dominantColor`,
           quality: 65,
           breakpoints: [750, 1080, 1366, 1920],
           backgroundColor: `orange`,

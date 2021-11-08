@@ -28,11 +28,9 @@ const HomePage = ({ data }) => {
             heading={'Featured'}
             subheading={'The following are posts in "featured" category'}
           />
-          <Box py="4" px="8" boxShadow="xl" w="full" rounded="2xl" bg={useColorModeValue('white', 'gray.700')}>
             <Features
               featured={featured}
             />
-          </Box>
           <SectionHeading
             heading={'Latest posts'}
             subheading={'The following are latest blog posts'}
@@ -118,8 +116,8 @@ export const query = graphql`
           localFile {
             childImageSharp {
               gatsbyImageData(
-                placeholder: BLURRED
-                formats: [AUTO, WEBP, AVIF]
+                placeholder: DOMINANT_COLOR
+                formats: [AUTO, WEBP]
                 quality: 82
               )
             }
