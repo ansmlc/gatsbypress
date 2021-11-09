@@ -4,11 +4,21 @@ import PropTypes from "prop-types"
 import { Box, Text, Image, Flex, useColorModeValue} from "@chakra-ui/react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import PrimaryButton from "./primaryButton"
+import { Badge, Icon } from "@chakra-ui/react"
+import { HiStar } from "@react-icons/all-files/hi/HiStar"
 
-const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, orderBaseTxt, orderLgTxt, orderBaseImg, orderLgImg }) => (  
-    <Flex my="16" textAlign="center" align={{base: "flex-start", lg: "center"}}  flexDir="row" flexWrap={{base: "wrap", lg: "nowrap"}}
-    overflow="hidden" boxShadow="xl" maxW="full" rounded="2xl" bg={useColorModeValue('white', 'gray.700')}> 
+const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, orderBaseTxt, orderLgTxt, orderBaseImg, orderLgImg, txtAlign }) => (  
+    <Flex my="16" textAlign={{ base: "left", md: txtAlign}} align={{base: "flex-start", lg: "center"}}  flexDir="row" flexWrap={{base: "wrap", lg: "nowrap"}}
+        overflow="hidden" boxShadow="2xl" maxW="full" rounded="2xl" bg={useColorModeValue('white', 'gray.700')}
+            data-sal="slide-up" data-sal-duration={600}> 
         <Box p="8" order={{ base: orderBaseTxt, lg: orderLgTxt }} w={{base: '100%', lg: '50%' }}> 
+            <Badge
+              colorScheme="secondary"
+              maxWidth="105px"
+              marginBottom="2"
+            >
+              <Icon as={HiStar} mt="-2px"/> Featured
+            </Badge>            
             <Text 
                 as="h1" 
                 mb="1rem"

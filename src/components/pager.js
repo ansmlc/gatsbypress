@@ -1,6 +1,5 @@
 import React from "react"
-import { Link as GatsbyLink } from "gatsby"
-import { Link } from "@chakra-ui/react"
+import { Link  } from "gatsby"
 import { Stack } from "@chakra-ui/react"
 import PrimaryButton from "./primaryButton"
 
@@ -10,12 +9,12 @@ const { previousPagePath, nextPagePath } = pageContext
   return (
     <Stack marginY="8" direction="row" spacing={4}>
       {previousPagePath && (
-        <Link as={GatsbyLink} to={`/${previousPagePath}`}>
+        <Link to={`/${previousPagePath}`}>
           <PrimaryButton arrowLeft>Previous page</PrimaryButton>
         </Link>
       )}
       {nextPagePath && (
-        <Link as={GatsbyLink} to={`/${nextPagePath}`}>
+        <Link to={`/${nextPagePath}`}>
           <PrimaryButton arrowRight>Next page</PrimaryButton>
         </Link>
       )}

@@ -12,6 +12,7 @@ module.exports = {
     twitterUrl: `https://twitter.com`,
   },
   plugins: [
+    `gatsby-plugin-scroll-reveal`,
     {
     resolve: "@chakra-ui/gatsby-plugin",
       options: {
@@ -47,7 +48,7 @@ module.exports = {
           placeholder: `dominantColor`,
           quality: 65,
           breakpoints: [750, 1080, 1366, 1920],
-          backgroundColor: `orange`,
+          backgroundColor: `transparent`,
           tracedSVGOptions: {},
           blurredOptions: {},
           jpgOptions: {},

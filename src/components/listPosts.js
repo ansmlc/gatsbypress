@@ -17,7 +17,7 @@ import { AspectRatio } from "@chakra-ui/react"
 import { useColorModeValue } from "@chakra-ui/color-mode"
 
 // Create Post Card Component
-const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postTags, postAuthor, key }) => {
+const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postTags, postAuthor, key, salAnimationDuration }) => {
   let postAuthorStack = ""
   // Remove author if page is author page
   if (postAuthor) {
@@ -39,7 +39,10 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
       </Stack>
   }
   return (
-  <Box 
+  <Box
+    data-sal="slide-up"
+    data-sal-delay={salAnimationDuration}
+    data-sal-duration={600}
     key={key} 
     maxW="md"
     bg={useColorModeValue('white', 'gray.700')}
@@ -143,9 +146,10 @@ const  AllPosts = ({ posts, context }) => {
   else if (context == 'blog') {
     console.log(allBlogPosts, 'allBlogPosts')
       return (
-        <SimpleGrid minChildWidth="240px" spacing="20px">
-          {allBlogPosts.map((post) => (
+        <SimpleGrid minChildWidth="240px" spacing="30px">
+          {allBlogPosts.map((post, i) => (
             <PostCard 
+              salAnimationDuration={i*100}
               key={post.node.id}
               postSlug={post.node.slug}
               postTitle={post.node.title}

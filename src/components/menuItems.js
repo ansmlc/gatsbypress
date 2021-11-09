@@ -16,7 +16,7 @@ const prefixPage = '../../page'
 const menuItems = items
 let catMenuItems = []
 let pageMenuItems = []
-{menuItems.map(item => (
+{menuItems?.map(item => (
     item.url.includes('category')?
     catMenuItems.push(item)
     :

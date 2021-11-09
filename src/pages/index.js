@@ -16,14 +16,17 @@ import PrimaryButton from "../components/primaryButton"
 const HomePage = ({ data }) => {
     const posts = data.post.edges  
     const featured = data?.featured?.nodes
+    console.log(posts, 'posts index')
     return (
       <Layout>
+        <Box alignItems="center">
           <Hero
             heroHeading={posts[0].node.title}
             heroText={posts[0].node.excerpt}
             heroSlug={posts[0].node.slug}
             heroImage={posts[0].node.featuredImage}
           />
+        </Box>
           <SectionHeading
             heading={'Featured'}
             subheading={'The following are posts in "featured" category'}
@@ -39,7 +42,7 @@ const HomePage = ({ data }) => {
             context={`blog`} 
             posts={posts}     
           />
-          <Center marginY="8" w="100%">
+          <Center marginY="16" w="100%">
             <Link to="/blog">
             <PrimaryButton arrowRight>
               Read our Blog
@@ -54,8 +57,8 @@ const HomePage = ({ data }) => {
 export const query = graphql`
   query HomePageQuery {
     post: allWpPost(
-        sort: { fields: [date], order: DESC }
-        limit: 4
+        sort: { fields: [date], order: ASC }
+        limit: 6
         filter: { categories: { nodes: { elemMatch: { slug: { ne: "featured" } } } } }
     ) 
     {

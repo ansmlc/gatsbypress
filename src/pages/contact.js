@@ -39,8 +39,9 @@ export default function Component ()  {
         bg={useColorModeValue('white', 'gray.700')}
         borderRadius="2xl" 
         maxW={{base: '100%', md: '50%'}}
-        p={{base: "6", md: "10"}}
+        p={{base: "6", md: "8"}}
         boxShadow="2xl"
+        data-sal="slide-up" data-sal-duration={600}
     >
         <Box color="#0B0E3F">
             <VStack spacing={5}>
@@ -75,7 +76,7 @@ export default function Component ()  {
                 />
             </FormControl>
             <FormControl id="name" float="right">
-            <PrimaryButton>Send Message</PrimaryButton>
+                <PrimaryButton arrowRight>Send Message</PrimaryButton>
             </FormControl>
             </VStack>
         </Box>

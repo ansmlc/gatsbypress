@@ -1,7 +1,8 @@
 import React from "react"
 import { 
   Box, 
-  Text } 
+  Text,
+  Heading } 
 from "@chakra-ui/react"
 import PageTitle from "./pageTitle"
 
@@ -12,16 +13,23 @@ const archiveTitle = ({ title, count}) => {
           w="100%" 
           pb={5}
         >
-        <PageTitle 
+        <Heading 
+          as="h3"
           title={title} 
-        />
+          fontSize="2xl"
+          fontWeight="bold"
+          color="gray.700"
+          display="inline"
+
+        >
+          {title}
+        </Heading>
         <Text 
           as="span"
-          fontSize="sm"
-          mb="1"
+          ml="2"
           textColor="gray"
         >
-        {count + " posts"}
+        {"(" + count + " posts)"}
         </Text>
       </Box>
     )

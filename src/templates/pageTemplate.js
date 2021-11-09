@@ -26,6 +26,8 @@ export default function PagePost({ data }) {
       <SEO title={page.title}/>
       <Crumb data={page}/>
       <Text
+          data-sal="slide-up"
+          data-sal-duration={800}
           as="h1"
           fontWeight="bold"
           fontSize="3xl"

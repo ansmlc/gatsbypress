@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { Box, Text } from "@chakra-ui/react"
 
 const SectionHeading = ({ heading, subheading }) => (
-  <Box marginTop={"6rem"} marginBottom={"3.5rem"} textAlign="center">
+  <Box marginY={14} textAlign="center">
     <Text as="h3"
       color={'gray.700'}
       fontWeight={700}

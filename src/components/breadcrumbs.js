@@ -30,7 +30,7 @@ const Crumb = ({ pageContext, data, otherContext }) => {
             <BreadcrumbItem verticalAlign="bottom">
                 <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
             </BreadcrumbItem>     
-            <BreadcrumbItem>
+            <BreadcrumbItem verticalAlign="bottom">
                 <BreadcrumbLink as={Link} key="blog" to="../../blog">Blog</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem isCurrentPage>

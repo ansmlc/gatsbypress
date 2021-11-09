@@ -62,24 +62,7 @@ const theme = extendTheme({
       },
     },
   },
-  components: {
-    Link: {
-      variants: {
-        // you can name it whatever you want
-        primary: ({ colorScheme = "secondary" }) => ({
-          color: `${colorScheme}.500`,
-          textDecoration: `underline`,
-          _hover: {
-            color: `${colorScheme}.400`,
-          },
-        }),
-      },
-      defaultProps: {
-        // you can name it whatever you want
-        variant: "primary",
-      },
-    },
-  },
+
 })
 
 

@@ -102,11 +102,12 @@ result.data.allWpPage.nodes.forEach(page => {
 // Create a paginated blog, e.g., /, /page/2, /page/3
 const blogPosts = result.data.allWpPost.nodes
 const blogTemplate = require.resolve(`./src/templates/blogTemplate.js`)
+// Set to fixed because of responsive layout fine-tuning
 const postsPerPage = result.data.wp?.allSettings.readingSettingsPostsPerPage
 paginate({
   createPage,
   items: blogPosts,
-  itemsPerPage: postsPerPage,
+  itemsPerPage: 6,
   path: `blog/`,
   pathPrefix: ({ pageNumber }) => (pageNumber === 0 ? `blog` : `blog`),
   component: blogTemplate,
@@ -122,7 +123,7 @@ result.data.allWpPost.categories.forEach(category => {
   paginate({
     createPage,
     items: category.edges,
-    itemsPerPage: postsPerPage,
+    itemsPerPage: 6,
     pathPrefix: ({ pageNumber }) => (pageNumber === 0 ? `category/${slug}` : `${slug}`),
     component: categoryTemplate,
     context: { slug: slug, category: category.fieldValue },
@@ -138,7 +139,7 @@ result.data.allWpPost.tags.forEach(tag => {
   paginate({
     createPage,
     items: tag.edges,
-    itemsPerPage: postsPerPage,
+    itemsPerPage: 6,
     pathPrefix: ({ pageNumber }) => (pageNumber === 0 ? `tag/${slug}` : `${slug}`),
     component: tagTemplate,
     context: { slug: slug, tag: tag.fieldValue },

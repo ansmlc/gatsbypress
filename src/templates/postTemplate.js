@@ -36,18 +36,21 @@ export default function BlogPost({ data }) {
     <Layout>
       <SEO title={post.title}/>
       <Crumb data={post}/>
+      <Box 
+        data-sal="slide-up"
+        data-sal-duration={800}>
       <Box> 
         <Text
           as="h1"
           fontWeight="bold"
-          fontSize="3xl"
-          marginTop="4"
+          fontSize="4xl"
+          marginTop="6"
           lineHeight="1.1"
         >
           {post.title}
         </Text>
       </Box>
-      <Stack my={4} direction={'row'} spacing={4} align={'center'}>
+      <Stack my={6} direction={'row'} spacing={4} align={'center'}>
         <Avatar
           src={author.node.avatar.url}
           alt={'Author'}
@@ -60,12 +63,13 @@ export default function BlogPost({ data }) {
           <Text color={'gray.500'}><time>{post.date}</time></Text>
         </Stack>
       </Stack>
+      </Box>
       <Box 
         as="article"
         bg={useColorModeValue('white', 'gray.700')}
         borderRadius="2xl"
         overflow="hidden"
-        boxShadow="2xl"
+        boxShadow="2xl" 
       >
         <AspectRatio maxW="1920px" ratio={16 / 9}>
           {image?

@@ -100,7 +100,7 @@ const BlogPage  = ({ pageContext, data }) => {
       <Box
             fontSize="0.9rem"
             textColor="gray.500"
-            marginY="1rem"
+            marginBottom="1rem"
       >
       <Breadcrumb>   
             <BreadcrumbItem>

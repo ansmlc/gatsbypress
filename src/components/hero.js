@@ -2,83 +2,88 @@ import React from 'react';
 import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import {
-  Stack,
+  Spacer,
   Flex,
   Box,
-  Heading,
   Text,
-  Button,
-  Image
+  Image,
+  useColorModeValue,
+  Badge,
+  Icon,
 } from '@chakra-ui/react';
 import PrimaryButton from "./primaryButton"
+import { HiStar } from "@react-icons/all-files/hi/HiStar"
+
 
 const Hero = ({ heroHeading, heroText, heroSlug, heroImage }) => {
     return (
-      <Stack
-        align={'center'}
-        spacing={{ base: 8, md: 10, lg: 12 }}
-        py={{ base: 20, md: 28 }}
-        direction={{ base: 'column', md: 'row' }}>
-        <Stack flex={1} spacing={{ base: 5, md: 6, lg: 8}}>
-          <Heading 
-            as="h2"
-            color={'gray.700'}
-            fontWeight={700}
-            lineHeight={1.3}
-            fontSize={{ base: '3xl', md: '3xl' }}
+      <Flex mt="4" alignSelf="center" flexDir="row" flexWrap={{base: "wrap", md: "nowrap"}}
+          overflow="hidden" boxShadow="2xl" maxW="full" rounded="2xl" bg={useColorModeValue('white', 'gray.700')}
+          data-sal="slide-up" data-sal-duration={600}> 
+        <Flex 
+        // order={{ base: 2, md: 1 }} 
+        flexDirection="column" p="8"  w={{base: '100%', lg: '35%' }}> 
+            <Badge
+              colorScheme="secondary"
+              maxWidth="52px"
+              verticalAlign="center"
+              marginBottom={{ base: 2, md: 6 }}
+            >
+              <Icon as={HiStar} mt="-2px"/> New
+            </Badge>
+          <Text 
+              as="h1" 
+              mt={{base: "1rem", lg: "0"}}
+              mb="6"
+              color={'gray.700'}
+              fontWeight={700}
+              lineHeight={1.1}
+              fontSize={'3xl'}
           >
               {heroHeading}
-          </Heading>
-          <Text color={'gray.500'} dangerouslySetInnerHTML={{ __html: heroText }}>
           </Text>
-          <Stack
-            spacing={{ base: 4, sm: 6 }}
-            direction={{ base: 'column', sm: 'row' }}>
-              <Link to={"../../post/" + heroSlug.replace(/\s+/g, "-").toLowerCase()}>
-                <PrimaryButton arrowRight>
-                  Read more
-                </PrimaryButton>
-              </Link>
-              <Link to={"https://github.com/ansmlc/websby"}>
-                <Button
-                  rounded={'full'}
-                  size={'lg'}
-                  fontWeight={'normal'}
-                  px={6}
-                  colorScheme={'gray'}
-                >
-                  GitHub
-                </Button>
-              </Link>
-          </Stack>
-        </Stack>
-        <Flex
-          flex={2}
-          justify={'center'}
-          align={'center'}
-          position={'relative'}
-          w={'full'}>
-          <Box
-            position={'relative'} 
-            width={{ base: '100%', lg: '90%' }}   
-            overflow={'hidden'}    
+          <Text as="p"
+              mb="1rem"
+              color={'gray.500'}
+              lineHeight="normal"
           >
-            {heroImage?.node?.localFile?.childImageSharp.gatsbyImageData?
-              <Image 
-                as={GatsbyImage}
-                image={heroImage?.node?.localFile?.childImageSharp.gatsbyImageData} 
-                alt={heroHeading}
-                rounded={'2xl'} 
-                maxW={{base: '100%'}}
-                loading="eager"
-                fadeIn={false}
-              />              
-              :
-              <img src="https://via.placeholder.com/1920x1080" alt={heroHeading || ""}/>
-            }     
-          </Box>
-        </Flex>
-      </Stack>
+                  <div dangerouslySetInnerHTML={{ __html: heroText }}/>
+          </Text>
+        <Spacer/>
+        <Link to={"../../post/" + heroSlug.replace(/\s+/g, "-").toLowerCase()}>
+          <PrimaryButton arrowRight>
+            Read more
+          </PrimaryButton>
+        </Link>
+      </Flex>
+      <Box 
+          // order={{ base: 1, md: 2 }} 
+          maxW={{base: '100%', lg: '65%' }}
+          maxHeight={{base: "auto", lg: "460px"}}
+      >
+          {heroImage?.node?.localFile?.childImageSharp.gatsbyImageData?
+          <Image 
+              loading="eager"
+              fadeIn={false}
+              as={GatsbyImage}
+              image={heroImage?.node?.localFile?.childImageSharp.gatsbyImageData} 
+              alt={heroHeading}
+              rounded={'2xl'} 
+              borderBottomLeftRadius="0"
+              borderTopLeftRadius="0"
+              borderBottomRightRadius="0"
+              borderTopRightRadius="0"
+          />
+          :
+          <Image
+              src="https://via.placeholder.com/400x400"
+              alt="placeholder image"
+              rounded={'2xl'} 
+          />
+          }     
+      </Box>
+  </Flex>
+
     )
 }
 

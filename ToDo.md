@@ -5,7 +5,8 @@
 - Breadcrumb category listing: skip showing 'Featured' cat
 ### Notes:
 - WordPress permalink settings set to 'Post Name'. Default category and tag base slugs. Main menu supports pages only. Posts and categories will not have proper URL structure. 
-- Author fields?
+- Author fields? "Publicly displayed name" is required
+- Post and page excerpts are required. Do not use "Read more".
 
 
 ### Personal 
@@ -32,8 +33,8 @@
 - [ x ] set all images to use blurred image placeholder while loading
 
 ### Frontpage
-- [   ] hero.js: Switch order of columns on mobile
-- [   ] hero.js: Refactor UI 
+- [ x ] hero.js: Switch order of columns on mobile
+- [ x ] hero.js: Refactor UI 
 - [   ] replace featured posts with featured pages based on page meta field
 
 ### Mobile
@@ -42,7 +43,7 @@
 
 ### Polishing
 - [   ] add transitions
-- [   ] add scroll-reveal 
+- [ x ] add scroll-reveal 
 
 ### Cleanup 
 - [   ] sort components in folders

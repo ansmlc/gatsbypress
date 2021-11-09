@@ -11,6 +11,7 @@ const Features = ({ featured }) => {
                     featuredImage={featuredPost.featuredImage?.node?.localFile?.childImageSharp.gatsbyImageData}
                     featuredTitle={featuredPost.title}
                     featuredSlug={featuredPost.slug}
+                    txtAlign="left"
                 />
             : 
                 <Feature 
@@ -22,6 +23,7 @@ const Features = ({ featured }) => {
                     orderLgTxt={1}
                     orderBaseImg={1}
                     orderLgImg={2}
+                    txtAlign="right"
                 />
         )
         return featuredPosts

@@ -1,12 +1,13 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Box, Button, Icon} from "@chakra-ui/react"
-import { BiFilter } from "@react-icons/all-files/bi/BiFilter";
+import { Box, Icon, IconButton} from "@chakra-ui/react"
+import { IoFilter } from "@react-icons/all-files/io5/IoFilter";
 import {
     Menu,
     MenuButton,
     MenuList,
     MenuItem,
+    Text
 } from "@chakra-ui/react"
 
 const BlogMenuItems = ({ items }) => {
@@ -30,15 +31,16 @@ const BlogMenuItems = ({ items }) => {
     return (
       <Box>
         <Menu>
-          <MenuButton           
-          as={Button}
-          backgroundColor="transparent" 
-          fontWeight="normal"
-          fontSize="sm"
-          color="gray.700"
-          >
-            Filter <Icon as={BiFilter} w="5" h="5" fontWeight="normal"/>
-          </MenuButton>
+          <Text display="inline" fontSize="sm" color="gray.600">
+          Filter:</Text>
+          <MenuButton 
+                as={IconButton}
+                bg="transparent"
+                isRound
+                color={"gray-700"}
+                aria-label="Category Filter Toggle"
+                fontSize="lg"
+                icon={<IoFilter />}/>
           <MenuList>
             {listAllCategories}
           </MenuList>
