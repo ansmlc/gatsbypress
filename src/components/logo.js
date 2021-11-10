@@ -14,7 +14,7 @@ const Logo = ({siteTitle, siteLogo}) => {
       <Image
         src={siteLogo?.publicURL}
         alt={siteTitle}
-        maxW={'150px'}
+        maxW={'160px'}
         height={'auto'}
       />    
     </Link>
@@ -24,7 +24,7 @@ const Logo = ({siteTitle, siteLogo}) => {
     <Link to="/" title={siteTitle}>
       <Image
         as={GatsbyImage}
-        maxWidth="150px"
+        maxWidth="160px"
         height="auto"
         image={siteLogo?.childImageSharp?.gatsbyImageData}
         alt={siteTitle}

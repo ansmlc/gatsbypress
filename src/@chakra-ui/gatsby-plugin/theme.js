@@ -49,6 +49,9 @@ const theme = extendTheme({
         backgroundColor: "gray.50"
       },
       ".wysiwyg": {
+        img: {
+          borderRadius: "2xl",
+        },
         a: {
           color: "secondary.500",
           textDecoration: "underline"

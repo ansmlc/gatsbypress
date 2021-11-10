@@ -12,25 +12,31 @@ import SectionHeading from '../components/sectionHeading'
 import Features from '../components/features'
 import Cta from "../components/cta"
 import PrimaryButton from "../components/primaryButton"
+import {
+  Alert,
+  AlertIcon,
+} from "@chakra-ui/react"
+import { func } from "prop-types"
+
 
 const HomePage = ({ data }) => {
-    const posts = data.post.edges  
+    const posts = data?.post?.edges  
     const featured = data?.featured?.nodes
     console.log(posts, 'posts index')
-    return (
+    const HomeContent = () => (
       <Layout>
         <Box alignItems="center">
           <Hero
-            heroHeading={posts[0].node.title}
-            heroText={posts[0].node.excerpt}
-            heroSlug={posts[0].node.slug}
-            heroImage={posts[0].node.featuredImage}
+            heroHeading={posts[0]?.node.title}
+            heroText={posts[0]?.node.excerpt}
+            heroSlug={posts[0]?.node.slug}
+            heroImage={posts[0]?.node.featuredImage}
           />
         </Box>
-          <SectionHeading
-            heading={'Featured'}
-            subheading={'The following are posts in "featured" category'}
-          />
+            <SectionHeading
+                heading={'Featured'}
+                subheading={'The following are posts in "featured" category'}
+            />
             <Features
               featured={featured}
             />
@@ -52,6 +58,23 @@ const HomePage = ({ data }) => {
           <Cta/>
       </Layout>
     )
+    if (posts) {
+      return (
+        <HomeContent/>
+        )
+    }
+    else {
+      return (
+      <Layout>
+        <Alert my="4" borderRadius="xl" boxShadow="xl" status="warning">
+          <AlertIcon />
+          Nothing found.<br/> 
+          Please add some posts to your WordPress site.
+        </Alert>
+      </Layout>
+      )
+    }
+
 }
 
 export const query = graphql`

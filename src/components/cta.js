@@ -13,7 +13,7 @@ export default function Cta() {
     <Flex
       data-sal="slide-up" data-sal-duration={600}
       bg={useColorModeValue("white", "gray.600")}
-      p={50}
+      p={{ base: 8, md: 20 }}
       w="full"
       alignItems="center"
       justifyContent="center"

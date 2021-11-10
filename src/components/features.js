@@ -1,6 +1,10 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import Feature from '../components/feature'
+import {
+    Alert,
+    AlertIcon,
+} from "@chakra-ui/react"
 
 const Features = ({ featured }) => {
     if (featured && featured.length) {
@@ -23,17 +27,17 @@ const Features = ({ featured }) => {
                     orderLgTxt={1}
                     orderBaseImg={1}
                     orderLgImg={2}
-                    txtAlign="right"
                 />
         )
         return featuredPosts
     }  
     else  {
-        return <Feature 
-            featuredDesc="Add a new post in 'featured' category with a title, excerpt and a featured image. See it magically show up here." 
-            featuredImage="https://via.placeholder.com/200x200" 
-            featuredTitle="This is an example excerpt from a featured post."
-        />
+        return (
+            <Alert borderRadius="xl" boxShadow="xl" status="warning">
+                <AlertIcon />
+                Nothing found. Add some posts to "Featured" category
+            </Alert>
+        )
     }
 }
 

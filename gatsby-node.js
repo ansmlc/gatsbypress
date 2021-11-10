@@ -8,7 +8,7 @@ const { paginate } = require("gatsby-awesome-pagination")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const result = await graphql(`
+  const queryResult = await graphql(`
   query {
     wp {
       allSettings {
@@ -50,13 +50,13 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 `)
 
-if (result.errors) {
-  result.errors.forEach(e => console.error(e.toString()))
-  return Promise.reject(result.errors)
+if (queryResult.errors) {
+  queryResult.errors.forEach(e => console.error(e.toString()))
+  return Promise.reject(queryResult.errors)
 }
 
 // Create Author pages
-result.data.allWpUser.nodes.forEach(user => {
+queryResult.data.allWpUser.nodes.forEach(user => {
   createPage({
     path: `author/${user.slug}`,
     component: require.resolve(`./src/templates/userTemplate.js`),
@@ -70,7 +70,7 @@ result.data.allWpUser.nodes.forEach(user => {
 
 // * POST 
 // Create a page view for each blog post
-result.data.allWpPost.nodes.forEach(node => {
+queryResult.data.allWpPost.nodes.forEach(node => {
   createPage({
     path: `post/${node.slug}`,
     component: require.resolve(`./src/templates/postTemplate.js`),
@@ -84,7 +84,7 @@ result.data.allWpPost.nodes.forEach(node => {
 
 // * PAGE 
 // Create a page view for each wordpres page
-result.data.allWpPage.nodes.forEach(page => {
+queryResult.data.allWpPage.nodes.forEach(page => {
   createPage({
     path: `page/${page.slug}`,
     component: require.resolve(`./src/templates/pageTemplate.js`),
@@ -100,10 +100,10 @@ result.data.allWpPage.nodes.forEach(page => {
 
 // * BLOG ARCHIVE PAGE 
 // Create a paginated blog, e.g., /, /page/2, /page/3
-const blogPosts = result.data.allWpPost.nodes
+const blogPosts = queryResult.data.allWpPost.nodes
 const blogTemplate = require.resolve(`./src/templates/blogTemplate.js`)
 // Set to fixed because of responsive layout fine-tuning
-const postsPerPage = result.data.wp?.allSettings.readingSettingsPostsPerPage
+const postsPerPage = queryResult.data.wp?.allSettings.readingSettingsPostsPerPage
 paginate({
   createPage,
   items: blogPosts,
@@ -117,7 +117,7 @@ paginate({
 // * CATEGORY
 // Create pages and list posts for each category
 const categoryTemplate = require.resolve(`./src/templates/categoryTemplate.js`)
-result.data.allWpPost.categories.forEach(category => {
+queryResult.data.allWpPost.categories.forEach(category => {
   const str = category.fieldValue
   const slug = str.replace(/\s+/g, "-").toLowerCase()
   paginate({
@@ -133,7 +133,7 @@ result.data.allWpPost.categories.forEach(category => {
 // * TAG 
 // Create pages and list posts for each tag
 const tagTemplate = require.resolve(`./src/templates/tagTemplate.js`)
-result.data.allWpPost.tags.forEach(tag => {
+queryResult.data.allWpPost.tags.forEach(tag => {
   const str = tag.fieldValue
   const slug = str.replace(/\s+/g, "-").toLowerCase()
   paginate({

@@ -1,5 +1,5 @@
 import * as React from "react"
-import PropTypes, { object } from "prop-types"
+import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { 
@@ -8,9 +8,8 @@ import {
   Spacer, 
   Image, 
   Badge, 
-  Flex,
   Avatar,
-  Stack
+  Flex
 } from "@chakra-ui/react"
 import { SimpleGrid } from "@chakra-ui/react"
 import { AspectRatio } from "@chakra-ui/react"
@@ -19,24 +18,30 @@ import { useColorModeValue } from "@chakra-ui/color-mode"
 // Create Post Card Component
 const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postTags, postAuthor, key, salAnimationDuration }) => {
   let postAuthorStack = ""
-  // Remove author if page is author page
   if (postAuthor) {
     postAuthorStack = 
-      <Stack mt={4} direction={'row'} spacing={4} align={'center'}>
+    <Flex>
+      <Box>
         <Avatar
           src={postAuthor.avatar.url}
           alt={'Author'}
           size={'sm'} 
+          alignSelf={'center'}
         />
-        <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-          <Text fontWeight={600}>
-            <Link to={"../../author/" + postAuthor.slug.replace(/\s+/g, "-").toLowerCase()}>
+      </Box>
+      <Box>
+        <Flex  marginLeft={'4'} direction={'column'}>
+          <Box>
+            <Link fontWeight={600} to={"../../author/" + postAuthor.slug.replace(/\s+/g, "-").toLowerCase()}>
               {postAuthor.name}
             </Link>
-          </Text>
-          <Text color={'gray.500'}><time>{postDate}</time></Text>
-        </Stack>
-      </Stack>
+          </Box>
+          <Box>
+            <Text as="time" fontSize="sm" color={'gray.600'}>{postDate}</Text>
+          </Box>
+        </Flex>
+      </Box>
+    </Flex>
   }
   return (
   <Box
@@ -50,35 +55,31 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
     overflow="hidden"
     boxShadow="2xl">
     {postImage ?
-      <Link to={"../../post/" + postSlug.replace(/\s+/g, "-").toLowerCase()}>
-        <AspectRatio ratio={16 / 9}>
-          <Image
-            as={GatsbyImage}
-            image={postImage}
-            alt={postTitle}
-            rounded={'2xl'} 
-            roundedBottomLeft={0}
-            roundedBottomRight={0} />
-        </AspectRatio>
-      </Link>
-      :
-      <Link to={"../../post/" + postSlug.replace(/\s+/g, "-").toLowerCase()}>
-        <AspectRatio ratio={16 / 9}>
-          <Image
-            src="https://via.placeholder.com/1920x1080"
-            alt={postTitle || ""}
-            rounded={'2xl'} 
-            roundedBottomLeft={0}
-            roundedBottomRight={0}/>
-        </AspectRatio>
-      </Link>}
+    <Link to={"../../post/" + postSlug.replace(/\s+/g, "-").toLowerCase()}>
+        <Image
+          as={GatsbyImage}
+          image={postImage}
+          alt={postTitle}
+          borderRadius={'2xl'}  />
+    </Link>
+    :
+    <Link to={"../../post/" + postSlug.replace(/\s+/g, "-").toLowerCase()}>
+      <AspectRatio ratio={4 / 3}>
+        <Image
+          src="https://via.placeholder.com/1920x1080"
+          alt={postTitle || ""}
+          rounded={'2xl'} 
+          roundedBottomLeft={0}
+          roundedBottomRight={0}/>
+      </AspectRatio>
+    </Link>}
     <Box p="6">
       <Box noOfLines={2}
         as="h2"
         mb="3"
         fontWeight="semibold"
         lineHeight="1.1"
-        fontSize="1.4rem"
+        fontSize="2xl"
         fontWeight="bold"
       >
         <Link
@@ -112,7 +113,6 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
         my="4"
         noOfLines={[3]}
         color="gray"
-        fontSize="sm"
       >
         <div dangerouslySetInnerHTML={{ __html: postExcerpt }} />
       </Text>
@@ -144,24 +144,23 @@ const  AllPosts = ({ posts, context }) => {
       )
   }
   else if (context == 'blog') {
-    console.log(allBlogPosts, 'allBlogPosts')
-      return (
-        <SimpleGrid minChildWidth="240px" spacing="30px">
-          {allBlogPosts.map((post, i) => (
-            <PostCard 
-              salAnimationDuration={i*100}
-              key={post.node.id}
-              postSlug={post.node.slug}
-              postTitle={post.node.title}
-              postDate={post.node.date}
-              postImage={post.node.featuredImage?.node?.localFile?.childImageSharp.gatsbyImageData}
-              postTags={post.node.tags.nodes.slice(0, 3)}
-              postExcerpt={post.node.excerpt}
-              postAuthor={post.node.author.node}
-            />
-          ))}
-        </SimpleGrid>
-      )
+    return (
+      <SimpleGrid minChildWidth="240px" spacing="30px">
+        {allBlogPosts.map((post, i) => (
+          <PostCard 
+            salAnimationDuration={i*90}
+            key={post.node.id}
+            postSlug={post.node.slug}
+            postTitle={post.node.title}
+            postDate={post.node.date}
+            postImage={post.node.featuredImage?.node?.localFile?.childImageSharp.gatsbyImageData}
+            postTags={post.node.tags.nodes.slice(0, 3)}
+            postExcerpt={post.node.excerpt}
+            postAuthor={post.node.author.node}
+          />
+        ))}
+      </SimpleGrid>
+    )
   }
   else {
     return "nothing to see here"

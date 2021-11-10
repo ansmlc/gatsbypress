@@ -31,6 +31,7 @@
 - [ x ] custom button component for primary and secondary buttons
 - [ x ] fix breadcrumb vertical alignment
 - [ x ] set all images to use blurred image placeholder while loading
+- [   ] refactor selectBlogCategory modal
 
 ### Frontpage
 - [ x ] hero.js: Switch order of columns on mobile
@@ -40,10 +41,20 @@
 ### Mobile
 - [ x ] fix hamburger menu icon
 - [ x ] improve mobile menu UI
+- [   ] fix post card author info not inline with image (Issues fixes itself after visting another page)
+- [   ] open issue on github
+- [   ] fix image border radius not working (on android working.. ?)
+- [   ] fix pager buttons clipping viewport
+- [   ] hamburger menu open/close animation
+
+### Images
+- [ x ] add border radius inside for images inside "wysiwyg" content
+- [   ] fix border radius issues in cards
+
 
 ### Polishing
-- [   ] add transitions
-- [ x ] add scroll-reveal 
+- [ x ] add scroll-reveal transitions
+- [   ] 
 
 ### Cleanup 
 - [   ] sort components in folders

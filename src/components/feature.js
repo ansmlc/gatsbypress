@@ -1,17 +1,24 @@
 import * as React from "react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import { Box, Text, Image, Flex, useColorModeValue} from "@chakra-ui/react"
+import { 
+    Box, 
+    Text, 
+    Image, 
+    Flex, 
+    useColorModeValue,
+    Spacer
+} from "@chakra-ui/react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import PrimaryButton from "./primaryButton"
 import { Badge, Icon } from "@chakra-ui/react"
 import { HiStar } from "@react-icons/all-files/hi/HiStar"
 
-const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, orderBaseTxt, orderLgTxt, orderBaseImg, orderLgImg, txtAlign }) => (  
-    <Flex my="16" textAlign={{ base: "left", md: txtAlign}} align={{base: "flex-start", lg: "center"}}  flexDir="row" flexWrap={{base: "wrap", lg: "nowrap"}}
+const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, orderBaseTxt, orderLgTxt, orderBaseImg, orderLgImg }) => (  
+    <Flex my="16" textAlign="left" align={{base: "flex-start", lg: "center"}}  flexDir="row" flexWrap={{base: "wrap", lg: "nowrap"}}
         overflow="hidden" boxShadow="2xl" maxW="full" rounded="2xl" bg={useColorModeValue('white', 'gray.700')}
             data-sal="slide-up" data-sal-duration={600}> 
-        <Box p="8" order={{ base: orderBaseTxt, lg: orderLgTxt }} w={{base: '100%', lg: '50%' }}> 
+        <Box p="8" order={{ base: orderBaseTxt, lg: orderLgTxt }} maxW={{base: '100%', lg: '50%' }}> 
             <Badge
               colorScheme="secondary"
               maxWidth="105px"
@@ -21,8 +28,8 @@ const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, ord
             </Badge>            
             <Text 
                 as="h1" 
-                mb="1rem"
-                mt={{base: "1rem", lg: "0"}}
+                mt="5"
+                mb="4"
                 color={'gray.700'}
                 fontWeight={700}
                 lineHeight={1.1}
@@ -32,13 +39,14 @@ const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, ord
             </Text>
             <Text as="p"
                 m="0 auto"
-                mb="1rem"
-                color={'gray'}
+                mb="7"
+                color={'gray.500'}
                 fontWeight={400}
                 lineHeight={1.3}
-                fontSize={'0.9rem'}>
+                >
                     <div dangerouslySetInnerHTML={{ __html: featuredDesc }}/>
             </Text>
+            <Spacer/>
             <Link to={"../../post/" + featuredSlug.replace(/\s+/g, "-").toLowerCase()}>
                 <PrimaryButton arrowRight>
                     Read more
@@ -51,6 +59,7 @@ const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, ord
         >
             {featuredImage?
             <Image 
+                height="100%"
                 as={GatsbyImage}
                 image={featuredImage}
                 alt={featuredTitle}
