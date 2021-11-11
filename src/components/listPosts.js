@@ -126,7 +126,7 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
 const  AllPosts = ({ posts, context }) => {
   const allBlogPosts = posts
   // Get data and return post cards
-  if (context == 'author') {
+  if (context === 'author') {
       return ( 
         <SimpleGrid minChildWidth="240px" spacing="20px">
           {allBlogPosts.map((post) => (
@@ -143,7 +143,7 @@ const  AllPosts = ({ posts, context }) => {
         </SimpleGrid>
       )
   }
-  else if (context == 'blog') {
+  else if (context === 'blog') {
     return (
       <SimpleGrid minChildWidth="240px" spacing="30px">
         {allBlogPosts.map((post, i) => (
