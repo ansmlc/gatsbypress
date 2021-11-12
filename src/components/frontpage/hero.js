@@ -12,7 +12,7 @@ import {
   Icon,
   AspectRatio
 } from '@chakra-ui/react';
-import PrimaryButton from "./primaryButton"
+import PrimaryButton from "../buttons/primaryButton"
 import { HiStar } from "@react-icons/all-files/hi/HiStar"
 import {
   Alert,

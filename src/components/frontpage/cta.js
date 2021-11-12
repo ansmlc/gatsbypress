@@ -3,10 +3,9 @@ import {
   Box,
   Flex,
   useColorModeValue,
-  Stack,
   Link,
 } from "@chakra-ui/react";
-import PrimaryButton from "./primaryButton";
+import PrimaryButton from "../buttons/primaryButton";
 
 export default function Cta() {
   return (
@@ -24,7 +23,7 @@ export default function Cta() {
         bg={useColorModeValue("white", "gray.800")}
         w="full"
         mx="auto"
-        py={{ base: 12, lg: 16 }}
+        py={{ base: 4, lg: 8 }}
         px={{ base: 4, lg: 8 }}
         display={{ lg: "flex" }}
         alignItems={{ lg: "center" }}
@@ -36,6 +35,7 @@ export default function Cta() {
           fontWeight="extrabold"
           lineHeight="shorter"
           color={useColorModeValue("gray.900", "gray.100")}
+          mb={{ base: 6, md: 0}}
         >
             Want to learn more?
           <Box as="span"

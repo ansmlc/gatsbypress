@@ -6,10 +6,10 @@ import {
   GatsbyImage, 
   getImage } from "gatsby-plugin-image"
 import { useColorModeValue } from "@chakra-ui/color-mode"
-import Layout from "../components/layout"
-import Crumb from "../components/breadcrumbs.js"
+import Layout from "../components/layout/layout"
+import Crumb from "../components/layout/breadcrumbs.js"
 import UserCard from "../components/user/userCard"
-import SEO from "../components/seo"
+import SEO from "../components/marketing/seo"
 import "@wordpress/block-library/build-style/style.css"
 import "../.././node_modules/wysiwyg.css/wysiwyg.css"
 

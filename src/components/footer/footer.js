@@ -13,8 +13,8 @@ import {
   Link
 } from "gatsby"
 
-import Logo from "./logo"
-import SocialIcons from "./socialIcons";
+import Logo from "../header/logo"
+import SocialIcons from "../marketing/socialIcons";
 
 const ListHeader = ({ children }) => {
   return (
@@ -104,7 +104,6 @@ const Footer = function ({ data }) {
       </Container>
       <Box
         as="footer"
-        bg="white"
         d="flex"
         left="0"
         right="0"
@@ -113,10 +112,11 @@ const Footer = function ({ data }) {
         boxShadow="xl"
         centerContent
       >
-        <Text mx="auto" my="1rem" align="center" fontSize="sm">
+        <Text mx="auto" my="1rem" align="center" fontSize="xs">
           {new Date().getFullYear()}, Created by <a href="https://github.com/ansmlc/">@ansmlc</a>. Built with
           {` `}
-          <a href="https://www.gatsbyjs.com">React, Gatsby</a> and <a href="https://chakra-ui.com">ChakraUI</a>
+          <a href="https://www.gatsbyjs.com">Gatsby</a>, <a href="https://chakra-ui.com">ChakraUI</a> 
+          <a href="https://www.wpgraphql.com/"> and decoupled WordPress with GraphQL API.</a> 
         </Text>
       </Box>
     </Box>

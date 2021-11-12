@@ -54,25 +54,26 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
     borderRadius="2xl"
     overflow="hidden"
     boxShadow="2xl">
+    <AspectRatio ratio={16/9}>
     {postImage ?
     <Link to={"../../post/" + postSlug.replace(/\s+/g, "-").toLowerCase()}>
         <Image
           as={GatsbyImage}
           image={postImage}
           alt={postTitle}
-          borderRadius={'2xl'}  />
+          borderRadius={'2xl'}
+          borderBottomRadius="0"  />
     </Link>
     :
     <Link to={"../../post/" + postSlug.replace(/\s+/g, "-").toLowerCase()}>
-      <AspectRatio ratio={4 / 3}>
         <Image
           src="https://via.placeholder.com/1920x1080"
           alt={postTitle || ""}
           rounded={'2xl'} 
           roundedBottomLeft={0}
           roundedBottomRight={0}/>
-      </AspectRatio>
     </Link>}
+    </AspectRatio>
     <Box p="6">
       <Box noOfLines={2}
         as="h2"
@@ -123,7 +124,7 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
   )
 }
 
-const  AllPosts = ({ posts, context }) => {
+const  ListPosts = ({ posts, context }) => {
   const allBlogPosts = posts
   // Get data and return post cards
   if (context === 'author') {
@@ -168,15 +169,15 @@ const  AllPosts = ({ posts, context }) => {
 }
 
 
-AllPosts.propTypes = {
+ListPosts.propTypes = {
   posts: PropTypes.array,
   context: PropTypes.string,
 }
 
-AllPosts.defaultProps = {
+ListPosts.defaultProps = {
   posts: ``,
   context: `default`,
 }
 
-export default AllPosts
+export default ListPosts
  

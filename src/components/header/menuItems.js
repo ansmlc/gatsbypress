@@ -7,7 +7,7 @@ import {
     Text,
     Stack
 } from "@chakra-ui/react"
-import SocialIcons from "./socialIcons"
+import SocialIcons from "../marketing/socialIcons"
 
 const MenuItems = ({ isOpen, items }) => {
 const prefixPage = '../../page'

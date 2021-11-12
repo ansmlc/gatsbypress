@@ -1,10 +1,10 @@
 import React from "react"
-import Layout from "../components/layout"
+import Layout from "../components/layout/layout"
 import { graphql } from "gatsby"
-import Pager from "../components/pager.js"
-import ListPosts from "../components/listPosts.js"
-import Crumb from "../components/breadcrumbs.js"
-import PageTitle from "../components/pageTitle.js"
+import Pager from "../components/blog/pager.js"
+import ListPosts from "../components/blog/listPosts.js"
+import Crumb from "../components/layout/breadcrumbs.js"
+import PageTitle from "../components/layout/pageTitle.js"
 import { Avatar, Stack, Text } from "@chakra-ui/react"
 
 export default function UserPage({ data, pageContext }) {

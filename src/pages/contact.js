@@ -14,10 +14,10 @@ import {
   } from '@chakra-ui/react';
   import { BiEnvelope } from "@react-icons/all-files/bi/BiEnvelope"
   import { BiUser } from '@react-icons/all-files/bi/BiUser';
-import Layout from "../components/layout";
-import SEO from "../components/seo"
-import Crumb from "../components/breadcrumbs.js"
-import PrimaryButton from "../components/primaryButton";
+import Layout from "../components/layout/layout";
+import SEO from "../components/marketing/seo"
+import Crumb from "../components/layout/breadcrumbs.js"
+import PrimaryButton from "../components/buttons/primaryButton";
 
   
 export default function Component ()  {

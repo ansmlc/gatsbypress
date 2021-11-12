@@ -4,8 +4,8 @@ import * as React from "react"
    Container 
  } from "@chakra-ui/react"
  import PropTypes from "prop-types"
- import Nav from "./nav"
- import Footer from "./footer"
+ import Nav from "../header/nav"
+ import Footer from "../footer/footer"
  import { useStaticQuery, graphql } from "gatsby"
  
   const Layout = ({ children }) => {

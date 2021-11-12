@@ -4,7 +4,6 @@ import {
   Text,
   Heading } 
 from "@chakra-ui/react"
-import PageTitle from "./pageTitle"
 
 
 const archiveTitle = ({ title, count}) => {

@@ -4,19 +4,17 @@ import {
   Link } from 'gatsby'
 import { Center } from "@chakra-ui/layout"
 import { Box } from "@chakra-ui/layout"
-import { useColorModeValue } from "@chakra-ui/color-mode"
-import Layout from '../components/layout'
-import ListPosts from "../components/listPosts.js"
-import Hero from '../components/hero'
-import SectionHeading from '../components/sectionHeading'
-import Features from '../components/features'
-import Cta from "../components/cta"
-import PrimaryButton from "../components/primaryButton"
+import Layout from "../components/layout/layout"
+import ListPosts from "../components/blog/listPosts.js"
+import Hero from '../components/frontpage/hero'
+import SectionHeading from "../components/layout/sectionHeading"
+import Features from '../components/frontpage/features'
+import Cta from "../components/frontpage/cta"
+import PrimaryButton from "../components/buttons/primaryButton"
 import {
   Alert,
   AlertIcon,
 } from "@chakra-ui/react"
-import { func } from "prop-types"
 
 
 const HomePage = ({ data }) => {

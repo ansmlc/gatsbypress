@@ -1,7 +1,7 @@
 import React from "react"
 import { Link  } from "gatsby"
 import { Stack } from "@chakra-ui/react"
-import PrimaryButton from "./primaryButton"
+import PrimaryButton from "../buttons/primaryButton"
 
 
 const Pager = ({ pageContext, pathPrefix }) => {

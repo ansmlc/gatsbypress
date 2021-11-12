@@ -1,6 +1,6 @@
 import * as React from "react"
 import PropTypes from "prop-types"
-import Feature from '../components/feature'
+import Feature from './feature'
 import {
     Alert,
     AlertIcon,

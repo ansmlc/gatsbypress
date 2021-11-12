@@ -10,7 +10,7 @@ import {
     Spacer
 } from "@chakra-ui/react"
 import { GatsbyImage } from "gatsby-plugin-image"
-import PrimaryButton from "./primaryButton"
+import PrimaryButton from "../buttons/primaryButton"
 import { Badge, Icon } from "@chakra-ui/react"
 import { HiStar } from "@react-icons/all-files/hi/HiStar"
 
@@ -22,7 +22,7 @@ const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, ord
             <Badge
               colorScheme="secondary"
               maxWidth="105px"
-              marginBottom="2"
+              marginBottom="0"
             >
               <Icon as={HiStar} mt="-2px"/> Featured
             </Badge>            
@@ -34,6 +34,7 @@ const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, ord
                 fontWeight={700}
                 lineHeight={1.1}
                 fontSize={'3xl'}
+                noOfLines={{ base: 2, md: 1}}
             >
                 {featuredTitle}
             </Text>
@@ -43,6 +44,7 @@ const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, ord
                 color={'gray.500'}
                 fontWeight={400}
                 lineHeight={1.3}
+                noOfLines={{base: 4, md: 2}}
                 >
                     <div dangerouslySetInnerHTML={{ __html: featuredDesc }}/>
             </Text>

@@ -2,7 +2,7 @@ import React from "react"
 import { Box, Text, Image } from "@chakra-ui/react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 
 const Logo = ({siteTitle, siteLogo}) => {
@@ -47,7 +47,6 @@ const Logo = ({siteTitle, siteLogo}) => {
       </Link>
    </Text> 
   }
-  console.log(siteLogo, 'siteLogo')
 
   return (
     <Box>

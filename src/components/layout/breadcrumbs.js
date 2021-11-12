@@ -24,6 +24,7 @@ const Crumb = ({ pageContext, data, otherContext }) => {
     const isPost = (postUri?.includes('Post')) ? true : false
     const isOther = (otherUri?.includes('contact')) ? true : false
     var theCrumb = ""
+    console.log(pageUri, 'pageUri')
     isCategory? 
         theCrumb = 
         <Breadcrumb>
@@ -115,7 +116,6 @@ const Crumb = ({ pageContext, data, otherContext }) => {
     )
 
 }
-
 Crumb.propTypes = {
   pageContext: PropTypes.object,
   data: PropTypes.object

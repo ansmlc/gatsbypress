@@ -1,13 +1,12 @@
 import * as React from "react"
-import MenuItems from "./menuItems";
-import MenuToggle from "./menuToggle";
 import { 
   Box,
   Flex,
   Container,
-  Image,
   useColorModeValue
 } from "@chakra-ui/react"
+import MenuItems from "./menuItems";
+import MenuToggle from "./menuToggle";
 import Logo from "./logo"
 
 

@@ -1,12 +1,12 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import PropTypes from 'prop-types'
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Pager from "../components/pager.js"
-import ListPosts from "../components/listPosts.js"
-import ArchiveTitle from "../components/archiveTitle"
-import SelectBlogCategory from "../components/selectBlogCategory.js"
+import Layout from "../components/layout/layout"
+import SEO from "../components/marketing/seo"
+import Pager from "../components/blog/pager.js"
+import ListPosts from "../components/blog/listPosts.js"
+import ArchiveTitle from "../components/blog/archiveTitle"
+import SelectBlogCategory from "../components/blog/selectBlogCategory.js"
 import { BiHomeAlt } from "@react-icons/all-files/bi/BiHomeAlt";
 import {
   Breadcrumb,

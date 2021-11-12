@@ -1,9 +1,9 @@
 import React from "react"
-import Layout from "../components/layout"
+import Layout from "../components/layout/layout"
 import { graphql } from "gatsby"
-import Crumb from "../components/breadcrumbs.js"
-import PageTitle from "../components/pageTitle"
-import SEO from "../components/seo"
+import Crumb from "../components/layout/breadcrumbs.js"
+import PageTitle from "../components/layout/pageTitle"
+import SEO from "../components/marketing/seo"
 import "@wordpress/block-library/build-style/style.css"
 import { 
   GatsbyImage, 

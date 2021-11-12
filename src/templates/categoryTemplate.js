@@ -1,12 +1,12 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Pager from "../components/pager.js"
-import ListPosts from "../components/listPosts.js"
-import ArchiveTitle from "../components/archiveTitle"
-import SelectBlogCategory from "../components/selectBlogCategory.js"
-import Crumb from "../components/breadcrumbs.js"
+import Layout from "../components/layout/layout"
+import SEO from "../components/marketing/seo"
+import Pager from "../components/blog/pager.js"
+import ListPosts from "../components/blog/listPosts.js"
+import ArchiveTitle from "../components/blog/archiveTitle"
+import SelectBlogCategory from "../components/blog/selectBlogCategory.js"
+import Crumb from "../components/layout/breadcrumbs.js"
 import { 
   Flex,  
   Spacer, 

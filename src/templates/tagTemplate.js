@@ -1,12 +1,12 @@
 import React from "react"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from "../components/layout/layout"
+import SEO from "../components/marketing/seo"
 import { graphql } from "gatsby"
-import Pager from "../components/pager.js"
-import ListPosts from "../components/listPosts.js"
-import ArchiveTitle from "../components/archiveTitle"
+import Pager from "../components/blog/pager.js"
+import ListPosts from "../components/blog/listPosts.js"
+import ArchiveTitle from "../components/blog/archiveTitle"
 import { Box } from "@chakra-ui/react"
-import Crumb from "../components/breadcrumbs"
+import Crumb from "../components/layout/breadcrumbs"
 
 export const query = graphql`
   query($slug: String!, $skip: Int!, $limit: Int!) {
