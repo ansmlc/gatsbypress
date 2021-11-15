@@ -10,7 +10,7 @@ const PrimaryButton = ({ children, arrowLeft, arrowRight }) => {
     let theButton = ""
     arrowRight?
     theButton = 
-            <Button 
+        <Button 
             minW="200px"
             rounded={'full'}
             shadow="md"

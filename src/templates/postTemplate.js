@@ -21,9 +21,7 @@ import {
   Image,
   AspectRatio,
   Stack,
-  Flex } from "@chakra-ui/react"
-import { BiUser } from "@react-icons/all-files/bi/BiUser"
-import { BiCalendarAlt } from "@react-icons/all-files/bi/BiCalendarAlt"
+ } from "@chakra-ui/react"
 
 export default function BlogPost({ data }) {
   const post = data.allWpPost.nodes[0]
@@ -31,7 +29,6 @@ export default function BlogPost({ data }) {
   const tags = data.allWpPost.edges[0].node.tags
   const author = data.allWpPost.edges[0].node.author
   const image = post?.featuredImage?.node?.localFile
-  console.log(author, 'author')
   return (
     <Layout>
       <SEO title={post.title}/>
@@ -39,30 +36,31 @@ export default function BlogPost({ data }) {
       <Box 
         data-sal="slide-up"
         data-sal-duration={800}>
-      <Box> 
-        <Text
-          as="h1"
-          fontWeight="bold"
-          fontSize="4xl"
-          marginTop="6"
-          lineHeight="1.1"
-        >
-          {post.title}
-        </Text>
-      </Box>
-      <Stack my={6} direction={'row'} spacing={4} align={'center'}>
-        <Avatar
-          src={author.node.avatar.url}
-          alt={'Author'}
-          size={'sm'} 
-        />
-        <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-          <Text fontWeight={600}>
-              {author.node.name}
+        <Box> 
+          <Text
+            as="h1"
+            fontWeight="bold"
+            fontSize="4xl"
+            marginTop="6"
+            lineHeight="1.1"
+            color={useColorModeValue('gray.800', 'gray.50')}
+          >
+            {post.title}
           </Text>
-          <Text color={'gray.500'}><time>{post.date}</time></Text>
+        </Box>
+        <Stack my={6} direction={'row'} spacing={4} align={'center'}>
+          <Avatar
+            src={author.node.avatar.url}
+            alt={'Author'}
+            size={'sm'} 
+          />
+          <Stack direction={'column'} spacing={0} fontSize={'sm'}>
+            <Text fontWeight={600} color={useColorModeValue('gray.800', 'gray.100')}>
+                {author.node.name}
+            </Text>
+            <Text color={'gray.500'}><time>{post.date}</time></Text>
+          </Stack>
         </Stack>
-      </Stack>
       </Box>
       <Box 
         as="article"

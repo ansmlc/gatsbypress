@@ -3,7 +3,9 @@ import {
   Box,
   Flex,
   Container,
-  useColorModeValue
+  useColorModeValue,
+  useColorMode,
+  Button
 } from "@chakra-ui/react"
 import MenuItems from "./menuItems";
 import MenuToggle from "./menuToggle";
@@ -16,9 +18,12 @@ const Nav = function ({ data })  {
   const logoMediaItem = data?.allFile?.edges[0]?.node
   const [isOpen, setIsOpen] = React.useState(false)
   const toggle = () => setIsOpen(!isOpen)
+  const { colorMode, toggleColorMode } = useColorMode()
+  const isOpenColorMode = useColorModeValue('white', 'gray.700')
+  const isClosedColorMode = useColorModeValue('gray.50', 'gray.800')
     return (
       <Box 
-        bg={{base: isOpen? "white" : "gray.50", md: "gray.50"}}
+        bg={{base: isOpen? isOpenColorMode : isClosedColorMode, md: isClosedColorMode}}
         borderBottomLeftRadius={{ base: '2xl', md: '0'}}
         borderBottomRightRadius={{ base: '2xl', md: '0'}}
         // bg={useColorModeValue('gray.50', 'gray.700')}
@@ -44,7 +49,10 @@ const Nav = function ({ data })  {
               siteTitle={title}
               siteLogo={logoMediaItem}
             />            
-            <MenuToggle toggle={toggle} isOpen={isOpen} />
+            <MenuToggle toggle={toggle} isOpen={isOpen} />  
+            <Button onClick={toggleColorMode}>
+              Toggle {colorMode === "light" ? "Dark" : "Light"}
+            </Button>
             <MenuItems items={items} isOpen={isOpen}></MenuItems>
           </Flex>
         </Container>
