@@ -79,11 +79,9 @@ query($slug: String!, $skip: Int!, $limit: Int!) {
 } 
 `
 const CategoryTemplate = ({ data, pageContext }) => {
-  console.log(data.countpost.nodes.length, 'cat post count')
-  const posts = data.allWpPost.edges
-  console.log(pageContext, 'pageContext')
-  const postCount = data.countpost.nodes.length
-  const menuItems = data.allWpCategory.nodes
+  const posts = data?.allWpPost?.edges
+  const postCount = data?.countpost?.nodes?.length
+  const menuItems = data?.allWpCategory?.nodes
   return (
     <Layout>
       <SEO title={pageContext.category}/>

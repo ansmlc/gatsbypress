@@ -18,12 +18,15 @@ import {
   Alert,
   AlertIcon,
 } from "@chakra-ui/react"
+import { useInView } from "react-intersection-observer"
 
 const Hero = ({ heroHeading, heroText, heroSlug, heroImage }) => {
+  const [inView] = useInView()
   const HeroCard = () => (
     <Flex mt="4" flexDir="row" flexWrap={{base: "wrap", md: "nowrap"}}
       overflow="hidden" boxShadow="2xl" maxW="full" rounded="2xl" bg={useColorModeValue('white', 'gray.700')}
-      data-sal="slide-up" data-sal-duration={600}> 
+      opacity={inView? 1 : 0}
+      transition="opacity 700ms"> 
       <Flex 
         // order={{ base: 2, md: 1 }} 
         flexDirection="column" 
@@ -41,7 +44,7 @@ const Hero = ({ heroHeading, heroText, heroSlug, heroImage }) => {
           as="h1" 
           mt={{base: "1rem", lg: "0"}}
           mb="6"
-          color={'gray.700'}
+          color={useColorModeValue('gray.800', 'gray.50')}
           fontWeight={700}
           lineHeight={1.1}
           fontSize={'3xl'}
@@ -103,7 +106,7 @@ const Hero = ({ heroHeading, heroText, heroSlug, heroImage }) => {
       <Alert borderRadius="xl" boxShadow="xl" status="warning">
         <AlertIcon />
         Nothing found. Add some posts. 
-    </Alert>
+      </Alert>
     )
   }
 }

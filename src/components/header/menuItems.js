@@ -24,13 +24,11 @@ let pageMenuItems = []
 ))}
 return (
 <Box
-    transition={'all .7s ease'}
     display={{ base: isOpen ? "block" : "none", md: "block" }}
     h={{ base: isOpen ? "100%" : "0", md: "100%" }}
    //  flexBasis={{ base: "100%", md: "auto" }}
 >
     <Stack
-        transition={'all .7s ease'}
         fontSize={{ base: "normal", md: "sm"}}
         spacing={{ base: 6, md: 8}}
         textAlign={'left'}

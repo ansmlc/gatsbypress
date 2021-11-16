@@ -11,7 +11,7 @@ export default function Cta() {
   return (
     <Flex
       data-sal="slide-up" data-sal-duration={600}
-      bg={useColorModeValue("white", "gray.600")}
+      bg={useColorModeValue("white", "gray.700")}
       p={{ base: 8, md: 20 }}
       w="full"
       alignItems="center"
@@ -20,7 +20,6 @@ export default function Cta() {
       shadow="lg"
     >
       <Box
-        bg={useColorModeValue("white", "gray.800")}
         w="full"
         mx="auto"
         py={{ base: 4, lg: 8 }}

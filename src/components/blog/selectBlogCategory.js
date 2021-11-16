@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Box, Icon, IconButton} from "@chakra-ui/react"
+import { Box, IconButton} from "@chakra-ui/react"
 import { IoFilter } from "@react-icons/all-files/io5/IoFilter";
 import {
     Menu,
@@ -16,7 +16,7 @@ const BlogMenuItems = ({ items }) => {
     const menuItems = items
     let catMenuItems = []
     menuItems.map(item => (
-      item.uri.includes('featured')?
+      item.uri.includes('featured') || item.count === null ?
       false : catMenuItems.push(item)
     ))
     const listAllCategories = catMenuItems.map(catMenuItem => (

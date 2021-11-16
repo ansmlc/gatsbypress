@@ -15,9 +15,13 @@ import {
   Alert,
   AlertIcon,
 } from "@chakra-ui/react"
-
+import sal from '../../node_modules/sal.js';
+import { useEffect } from "react"
 
 const HomePage = ({ data }) => {
+    useEffect(() => {
+      sal();
+    }, []);
     const posts = data?.post?.edges  
     const featured = data?.featured?.nodes
     console.log(posts, 'posts index')

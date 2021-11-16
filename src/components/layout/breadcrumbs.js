@@ -2,6 +2,8 @@ import * as React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import { BiHomeAlt } from "@react-icons/all-files/bi/BiHomeAlt";
+import { HiChevronRight } from "@react-icons/all-files/hi/HiChevronRight"
+
 import {
     Text,
     Box,
@@ -27,14 +29,14 @@ const Crumb = ({ pageContext, data, otherContext }) => {
     console.log(pageUri, 'pageUri')
     isCategory? 
         theCrumb = 
-        <Breadcrumb>
-            <BreadcrumbItem verticalAlign="bottom">
+        <Breadcrumb separator={<HiChevronRight color="gray.200"/>}>
+            <BreadcrumbItem minHeight="21.05px" verticalAlign="top">
                 <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
             </BreadcrumbItem>     
-            <BreadcrumbItem verticalAlign="bottom">
+            <BreadcrumbItem verticalAlign="top">
                 <BreadcrumbLink as={Link} key="blog" to="../../blog">Blog</BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbItem isCurrentPage>
+            <BreadcrumbItem verticalAlign="top" isCurrentPage>
                 <BreadcrumbLink as={'p'} fontStyle="italic" key="category">{pageContext.category}</BreadcrumbLink>
             </BreadcrumbItem>
         </Breadcrumb>
@@ -42,7 +44,7 @@ const Crumb = ({ pageContext, data, otherContext }) => {
     isPage? 
         theCrumb = 
         <Breadcrumb>
-            <BreadcrumbItem verticalAlign="bottom">
+            <BreadcrumbItem verticalAlign="center">
                 <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem isCurrentPage>
@@ -53,7 +55,7 @@ const Crumb = ({ pageContext, data, otherContext }) => {
     isTag? 
         theCrumb = 
         <Breadcrumb>
-            <BreadcrumbItem verticalAlign="bottom">
+            <BreadcrumbItem verticalAlign="center">
                 <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem>
@@ -66,7 +68,7 @@ const Crumb = ({ pageContext, data, otherContext }) => {
     :isAuthor?
         theCrumb = 
         <Breadcrumb>
-            <BreadcrumbItem verticalAlign="bottom">
+            <BreadcrumbItem verticalAlign="center">
                 <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem isCurrentPage>
@@ -76,7 +78,7 @@ const Crumb = ({ pageContext, data, otherContext }) => {
     :isPost? 
         theCrumb = 
         <Breadcrumb>   
-            <BreadcrumbItem verticalAlign="bottom">
+            <BreadcrumbItem verticalAlign="center">
                 <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem>
@@ -96,7 +98,7 @@ const Crumb = ({ pageContext, data, otherContext }) => {
     :isOther?
         theCrumb =
         <Breadcrumb>
-            <BreadcrumbItem verticalAlign="bottom">
+            <BreadcrumbItem verticalAlign="center">
                 <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem isCurrentPage>

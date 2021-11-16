@@ -15,8 +15,10 @@ import { SimpleGrid } from "@chakra-ui/react"
 import { AspectRatio } from "@chakra-ui/react"
 import { useColorModeValue } from "@chakra-ui/color-mode"
 
+
 // Create Post Card Component
 const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postTags, postAuthor, key, salAnimationDuration }) => {
+  // Show author info in the card only if not in user profile page
   let postAuthorStack = ""
   if (postAuthor) {
     postAuthorStack = 
@@ -113,7 +115,7 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
       <Text
         my="4"
         noOfLines={[3]}
-        color="gray"
+        color="brand.500"
       >
         <div dangerouslySetInnerHTML={{ __html: postExcerpt }} />
       </Text>
@@ -149,7 +151,7 @@ const  ListPosts = ({ posts, context }) => {
       <SimpleGrid minChildWidth="240px" spacing="30px">
         {allBlogPosts.map((post, i) => (
           <PostCard 
-            salAnimationDuration={i*90}
+            // salAnimationDuration={i*90}
             key={post.node.id}
             postSlug={post.node.slug}
             postTitle={post.node.title}

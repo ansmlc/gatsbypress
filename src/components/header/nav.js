@@ -10,6 +10,7 @@ import {
 import MenuItems from "./menuItems";
 import MenuToggle from "./menuToggle";
 import Logo from "./logo"
+import ColorModeSwitcher from "./colorModeSwitcher";
 
 
 const Nav = function ({ data })  {
@@ -50,10 +51,8 @@ const Nav = function ({ data })  {
               siteLogo={logoMediaItem}
             />            
             <MenuToggle toggle={toggle} isOpen={isOpen} />  
-            <Button onClick={toggleColorMode}>
-              Toggle {colorMode === "light" ? "Dark" : "Light"}
-            </Button>
             <MenuItems items={items} isOpen={isOpen}></MenuItems>
+            <ColorModeSwitcher/>
           </Flex>
         </Container>
       </Box>
