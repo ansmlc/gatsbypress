@@ -31,15 +31,13 @@ const BlogMenuItems = ({ items }) => {
     return (
       <Box>
         <Menu>
-          <Text display="inline" fontSize="sm" color="gray.600">
-          Filter:</Text>
           <MenuButton 
                 as={IconButton}
-                bg="transparent"
                 isRound
-                color={"gray-700"}
-                aria-label="Category Filter Toggle"
+                colorScheme={'gray'}
                 fontSize="lg"
+                transform="scaleX(-1)"
+                aria-label="Category Filter Toggle"
                 icon={<IoFilter />}/>
           <MenuList>
             {listAllCategories}

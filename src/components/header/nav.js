@@ -2,6 +2,7 @@ import * as React from "react"
 import { 
   Box,
   Flex,
+  Spacer,
   Container,
   useColorModeValue,
   useColorMode,
@@ -10,7 +11,7 @@ import {
 import MenuItems from "./menuItems";
 import MenuToggle from "./menuToggle";
 import Logo from "./logo"
-import ColorModeSwitcher from "./colorModeSwitcher";
+import ColorModeToggle from "./colorModeToggle";
 
 
 const Nav = function ({ data })  {
@@ -40,19 +41,31 @@ const Nav = function ({ data })  {
           <Flex
             as="nav"
             align="center"
-            justify="space-between"
             wrap="wrap"
             h="100%"
             w="100%"
             py={4}
           >
-            <Logo
-              siteTitle={title}
-              siteLogo={logoMediaItem}
-            />            
-            <MenuToggle toggle={toggle} isOpen={isOpen} />  
-            <MenuItems items={items} isOpen={isOpen}></MenuItems>
-            <ColorModeSwitcher/>
+            <Box>
+              <Logo
+                siteTitle={title}
+                siteLogo={logoMediaItem}
+              />   
+            </Box>
+              <Spacer/>
+            <Box>
+              <Box mr="4" display={{ base: 'inline-block', md: 'none'}}>
+                <ColorModeToggle />   
+              </Box>  
+              <Box display={{ base: 'inline-block', md: 'initial'}}>    
+                <MenuToggle toggle={toggle} isOpen={isOpen} /> 
+              </Box> 
+            </Box>
+              <MenuItems items={items} isOpen={isOpen}></MenuItems>
+              <Box ml="6" display={{ base: 'none', md: 'initial'}}>
+                <ColorModeToggle/>
+              </Box>
+            
           </Flex>
         </Container>
       </Box>

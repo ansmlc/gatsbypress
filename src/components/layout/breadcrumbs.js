@@ -19,14 +19,28 @@ const Crumb = ({ pageContext, data, otherContext }) => {
     const authorUri = data?.nodeType
     const postUri = data?.nodeType
     const otherUri = otherContext
+    const blogArchiveUri = pageContext?.type
     const isCategory = (catUri?.includes('category')) ? true : false
     const isPage = (pageUri?.includes('Page')) ? true : false
     const isTag = (tagUri?.includes('tag')) ? true : false
     const isAuthor = (authorUri?.includes('User')) ? true : false
     const isPost = (postUri?.includes('Post')) ? true : false
     const isOther = (otherUri?.includes('contact')) ? true : false
+    const isBlogArchive = (blogArchiveUri?.includes('blog')) ? true : false
     var theCrumb = ""
     console.log(pageUri, 'pageUri')
+    console.log(pageContext?.type, 'context : type')
+    isBlogArchive?
+        theCrumb = 
+        <Breadcrumb separator={<HiChevronRight color="gray.200"/>}>
+            <BreadcrumbItem minHeight="21.05px" verticalAlign="top">
+                <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
+            </BreadcrumbItem>     
+            <BreadcrumbItem verticalAlign="top" isCurrentPage>
+                <BreadcrumbLink as={Link} key="blog" to="../../blog">Blog</BreadcrumbLink>
+            </BreadcrumbItem>
+        </Breadcrumb>
+    :
     isCategory? 
         theCrumb = 
         <Breadcrumb separator={<HiChevronRight color="gray.200"/>}>
@@ -43,8 +57,8 @@ const Crumb = ({ pageContext, data, otherContext }) => {
     :
     isPage? 
         theCrumb = 
-        <Breadcrumb>
-            <BreadcrumbItem verticalAlign="center">
+        <Breadcrumb separator={<HiChevronRight color="gray.200"/>}>
+            <BreadcrumbItem minHeight="21.05px" verticalAlign="top">
                 <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem isCurrentPage>
@@ -54,54 +68,54 @@ const Crumb = ({ pageContext, data, otherContext }) => {
     :
     isTag? 
         theCrumb = 
-        <Breadcrumb>
-            <BreadcrumbItem verticalAlign="center">
+        <Breadcrumb separator={<HiChevronRight color="gray.200"/>}>
+            <BreadcrumbItem minHeight="21.05px" verticalAlign="top">
                 <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbItem>
+            <BreadcrumbItem verticalAlign="top">
                 <BreadcrumbLink as={Link} key="blog" to="../../blog">Blog</BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbItem isCurrentPage>
+            <BreadcrumbItem verticalAlign="top" isCurrentPage>
                 <BreadcrumbLink as={'span'} fontStyle="italic" key="tag">{"#" + pageContext.tag}</BreadcrumbLink>
             </BreadcrumbItem>  
         </Breadcrumb>  
     :isAuthor?
         theCrumb = 
-        <Breadcrumb>
-            <BreadcrumbItem verticalAlign="center">
+        <Breadcrumb separator={<HiChevronRight color="gray.200"/>}>
+            <BreadcrumbItem minHeight="21.05px" verticalAlign="top">
                 <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbItem isCurrentPage>
+            <BreadcrumbItem verticalAlign="top" isCurrentPage>
                 <BreadcrumbLink as={'p'} key="author">{data?.name}</BreadcrumbLink>
             </BreadcrumbItem>
         </Breadcrumb>  
     :isPost? 
         theCrumb = 
-        <Breadcrumb>   
-            <BreadcrumbItem verticalAlign="center">
+        <Breadcrumb separator={<HiChevronRight color="gray.200"/>}>   
+            <BreadcrumbItem minHeight="21.05px" verticalAlign="top">
                 <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbItem>
+            <BreadcrumbItem verticalAlign="top">
                 <BreadcrumbLink as={Link} key="blog" to="../../blog">Blog</BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbItem>    
+            <BreadcrumbItem verticalAlign="top">    
                 <BreadcrumbLink 
                     as={Link} 
                     key="pagecategory" 
                     to={"../../category/" + data.categories?.nodes[0]?.slug}>{data.categories?.nodes[0]?.name}
                 </BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbItem>
+            <BreadcrumbItem verticalAlign="top" isCurrentPage>
                 <BreadcrumbLink key="post"><Text maxW="150px" fontStyle="italic" textColor="gray.400" isTruncated>{data?.title}</Text></BreadcrumbLink>
             </BreadcrumbItem>       
         </Breadcrumb>
     :isOther?
         theCrumb =
-        <Breadcrumb>
-            <BreadcrumbItem verticalAlign="center">
+        <Breadcrumb separator={<HiChevronRight color="gray.200"/>}>
+            <BreadcrumbItem minHeight="21.05px" verticalAlign="top">
                 <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbItem isCurrentPage>
+            <BreadcrumbItem verticalAlign="top" isCurrentPage>
                 <BreadcrumbLink as={Link} key="contact" to="#">Contact</BreadcrumbLink>
             </BreadcrumbItem>
         </Breadcrumb>  
@@ -111,7 +125,8 @@ const Crumb = ({ pageContext, data, otherContext }) => {
         <Box
             fontSize="0.9rem"
             textColor="gray.500"
-            marginY="1rem"
+            marginTop="1"
+            marginBottom="5"
         >
           {theCrumb}
         </Box>

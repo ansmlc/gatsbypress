@@ -5,11 +5,10 @@ import { FaSun } from "@react-icons/all-files/fa/FaSun"
 import { useColorMode } from "@chakra-ui/color-mode"
 import { useColorModeValue } from "@chakra-ui/color-mode"
 
-const ColorModeSwitcher = () => {
+const ColorModeToggle = () => {
     const { colorMode, toggleColorMode } = useColorMode()
     const SwitchIcon = useColorModeValue(FaMoon, FaSun)
     return (
-    <Flex justify="flex-end">
         <IconButton
             isRound
             colorScheme={'gray'}
@@ -19,7 +18,6 @@ const ColorModeSwitcher = () => {
             onClick={toggleColorMode}
             icon={<SwitchIcon/>}
         />
-    </Flex>
     )
 }
-export default ColorModeSwitcher
+export default ColorModeToggle

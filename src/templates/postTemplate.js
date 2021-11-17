@@ -41,7 +41,6 @@ export default function BlogPost({ data }) {
             as="h1"
             fontWeight="bold"
             fontSize="4xl"
-            marginTop="6"
             lineHeight="1.1"
             color={useColorModeValue('gray.800', 'gray.50')}
           >

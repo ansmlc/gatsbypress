@@ -9,13 +9,11 @@ import ArchiveTitle from "../components/blog/archiveTitle"
 import SelectBlogCategory from "../components/blog/selectBlogCategory.js"
 import { BiHomeAlt } from "@react-icons/all-files/bi/BiHomeAlt";
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink, 
   Flex, 
   Box, 
   Spacer
 } from "@chakra-ui/react"
+import Crumb from "../components/layout/breadcrumbs"
 
 export const query = graphql`
 query( $limit: Int!, $skip: Int!) {
@@ -93,24 +91,12 @@ const BlogPage  = ({ pageContext, data }) => {
     console.log(data.countpost.nodes.length, 'total post count')
     console.log(pageContext.nextPagePath, 'PAGE CONTEXT')
     console.log(menuItems, 'data.wpCategory')
+    console.log(pageContext.type, 'context : type')
 
     return (
     <Layout>
-      <SEO title="Blog" />
-      <Box
-            fontSize="0.9rem"
-            textColor="gray.500"
-            marginBottom="1rem"
-      >
-      <Breadcrumb>   
-            <BreadcrumbItem>
-                <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem>
-                <BreadcrumbLink as={Link} key="blog" to="../../blog">Blog</BreadcrumbLink>
-            </BreadcrumbItem>
-      </Breadcrumb>
-      </Box>
+      <SEO title="Blog" /> 
+      <Crumb pageContext={pageContext}/>
       <Flex>
         <Box>
           <ArchiveTitle data={posts} count={postsCount} title="Blog"></ArchiveTitle>

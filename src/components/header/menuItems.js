@@ -24,8 +24,9 @@ let pageMenuItems = []
 ))}
 return (
 <Box
-    display={{ base: isOpen ? "block" : "none", md: "block" }}
+    display={{ base: isOpen ? "inline-flex" : "none", md: "inline-flex" }}
     h={{ base: isOpen ? "100%" : "0", md: "100%" }}
+    alignItems="center"
    //  flexBasis={{ base: "100%", md: "auto" }}
 >
     <Stack
@@ -36,7 +37,7 @@ return (
         justify={["center", "center", "flex-end", "flex-end"]}
         direction={["column", "column", "row", "row"]}
         p={[8, 8, 0, 0]}
-        marginTop={{ base: "5", lg: "0"}}
+        marginTop={{ base: "2", md: "0"}}
     >
         <Box min-width="150px">
             <Link

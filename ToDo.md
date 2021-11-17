@@ -63,6 +63,10 @@
 
 ### 10:19h
 
-- finish breadcrumbs seperator and alignment
+- [ x ] finish breadcrumbs seperator and alignment
 - fix menu and color mode icons alignment on mobile
-- adjust icon for blog category filter
+- [ x ] adjust icon for blog category filter
+
+
+- pokazati dark theme
+- pokazati PWA
