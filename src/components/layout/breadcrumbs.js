@@ -62,7 +62,7 @@ const Crumb = ({ pageContext, data, otherContext }) => {
                 <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem isCurrentPage>
-                <BreadcrumbLink as={Link} key="page" to="/">{data.title}</BreadcrumbLink>
+                <BreadcrumbLink key="singlepage">{data.title}</BreadcrumbLink>
             </BreadcrumbItem>  
         </Breadcrumb> 
     :

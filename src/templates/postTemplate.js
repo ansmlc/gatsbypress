@@ -25,7 +25,6 @@ import {
 
 export default function BlogPost({ data }) {
   const post = data.allWpPost.nodes[0]
-  const categories = data.allWpPost.edges[0].node.categories
   const tags = data.allWpPost.edges[0].node.tags
   const author = data.allWpPost.edges[0].node.author
   const image = post?.featuredImage?.node?.localFile
@@ -99,7 +98,7 @@ export default function BlogPost({ data }) {
           <Box mt="6">
             {tags?.nodes.map( tag => (
             <Box display="inline" marginRight="3">
-                  <Link to={"../../tag/" + tag.name.replace(/\s+/g, "-").toLowerCase()}>
+                  <Link to={"../../tag/" + tag.slug.replace(/\s+/g, "-").toLowerCase()}>
                     <Badge colorScheme="cyan">{"# " + tag.name}</Badge>
                   </Link>
             </Box>
@@ -117,16 +116,10 @@ export const query = graphql`
     allWpPost(filter: { slug: { eq: $slug } }) {
       edges {
         node {
-          categories {
-            nodes {
-              name
-              uri
-            }
-          }
           tags {
             nodes {
               name 
-              uri
+              slug
             }
           }
           author {
@@ -140,25 +133,10 @@ export const query = graphql`
             }
           }
         }
-      }
+      } 
       nodes {
-        title
-        content
+        ...singlePostFields
         date(formatString: "MMMM DD, YYYY")
-        uri
-        nodeType
-        featuredImage {
-          node {
-            localFile {
-              childImageSharp {
-                gatsbyImageData(
-                  placeholder: DOMINANT_COLOR
-                  formats: [WEBP, JPG]
-                )
-              }
-            }
-          }
-        }
         categories {
           nodes {
             name

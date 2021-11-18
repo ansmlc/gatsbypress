@@ -32,24 +32,7 @@ query( $limit: Int!, $skip: Int!) {
   {
     edges {
       node {
-        id
-        title
-        slug
-        date(formatString: "MMMM DD, YYYY")
-        excerpt
-        featuredImage {
-          node {
-            localFile {
-              childImageSharp {
-                gatsbyImageData(
-                  placeholder: DOMINANT_COLOR
-                  formats: [WEBP, JPG]
-                  quality: 82
-                )
-              }
-            }
-          }
-        } 
+        ...postFields
         categories {
           nodes {
             uri
@@ -87,12 +70,6 @@ const BlogPage  = ({ pageContext, data }) => {
     const allposts = data.countpost
     const postsCount = allposts.nodes.length
     const menuItems = data.allWpCategory.nodes
-    console.log(data.allWpPost.edges, 'post edges')
-    console.log(data.countpost.nodes.length, 'total post count')
-    console.log(pageContext.nextPagePath, 'PAGE CONTEXT')
-    console.log(menuItems, 'data.wpCategory')
-    console.log(pageContext.type, 'context : type')
-
     return (
     <Layout>
       <SEO title="Blog" /> 

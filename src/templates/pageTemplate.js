@@ -75,25 +75,11 @@ export default function PagePost({ data }) {
     </Layout>
   )
 }
-export const query = graphql`
+export const query = graphql` 
   query($slug: String!) {
     allWpPage(filter: { slug: { eq: $slug } }) {
       nodes {
-        title
-        content
-        nodeType
-        featuredImage {
-          node {
-            localFile {
-              childImageSharp {
-                gatsbyImageData(
-                  placeholder: DOMINANT_COLOR
-                  formats: [WEBP, JPG]
-                )
-              }
-            }
-          }
-        }
+      ...singlePageFields
       }
     }
   }

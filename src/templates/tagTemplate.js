@@ -25,24 +25,7 @@ export const query = graphql`
     ) {
       edges {
         node {
-          title
-          slug
-          date(formatString: "DD . MM . YYYY")
-          content
-          excerpt
-          featuredImage {
-            node {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(
-                    placeholder: DOMINANT_COLOR
-                    formats: [WEBP, JPG]
-                    quality: 90
-                  )
-                }
-              }
-            }
-          }
+          ...postFields
           tags {
             nodes {
               uri

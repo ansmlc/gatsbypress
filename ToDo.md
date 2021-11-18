@@ -64,9 +64,34 @@
 ### 10:19h
 
 - [ x ] finish breadcrumbs seperator and alignment
-- fix menu and color mode icons alignment on mobile
+- [ x ] fix menu and color mode icons alignment on mobile
 - [ x ] adjust icon for blog category filter
 
 
+- 2. poglavlje dodati opis koncepata/paradigmi/
+
+### Next night 10:38pm (17. Nov '21)
+- 
+
+### Meeting notes
 - pokazati dark theme
 - pokazati PWA
+- pokazati kod builda oznake SSG SSR DSG
+
+
+
+
+
+
+
+
+
+*me, working*
+
+"Okay let's add the colorMode toggle component here, and assign it a colorScheme value based my shadowed theme..."
+
+*random thought appears*
+
+*me, half a minute later, googling:*
+
+"Is God's wrath an anthropomorphism?"
