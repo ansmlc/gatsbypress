@@ -136,13 +136,6 @@ export const query = graphql`
       } 
       nodes {
         ...singlePostFields
-        date(formatString: "MMMM DD, YYYY")
-        categories {
-          nodes {
-            name
-            slug
-          }
-        }
       }
     }
   }

@@ -132,7 +132,7 @@ const  ListPosts = ({ posts, context }) => {
   // Get data and return post cards
   if (context === 'author') {
       return ( 
-        <SimpleGrid minChildWidth="160px" spacing="20px">
+        <SimpleGrid minChildWidth="236px" spacing="20px">
           {allBlogPosts.map((post) => (
             <PostCard 
               key={post.id}

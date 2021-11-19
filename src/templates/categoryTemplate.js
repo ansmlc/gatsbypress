@@ -53,11 +53,14 @@ query($slug: String!, $skip: Int!, $limit: Int!) {
       }
     }
   }
-  allWpCategory {
+  tags: allWpTag(limit: 6) {
     nodes {
-      name
-      count
-      uri
+      ...tagGroupFields
+    }
+  }
+  categories: allWpCategory(limit: 6) {
+    nodes {
+      ...categoryGroupFields
     }
   }
 } 
@@ -65,22 +68,32 @@ query($slug: String!, $skip: Int!, $limit: Int!) {
 const CategoryTemplate = ({ data, pageContext }) => {
   const posts = data?.allWpPost?.edges
   const postCount = data?.countpost?.nodes?.length
-  const menuItems = data?.allWpCategory?.nodes
+  const categoryItems = data?.categories?.nodes
+  const tagItems = data?.tags?.nodes
   return (
     <Layout>
       <SEO title={pageContext.category}/>
       <Crumb pageContext={pageContext} data={data}/>
       <Flex>
         <Box>
-          <ArchiveTitle title={pageContext.category} count={postCount}></ArchiveTitle>
+          <ArchiveTitle 
+            title={pageContext.category} 
+            count={postCount}>
+          </ArchiveTitle>
         </Box>
         <Spacer />
         <Box>
-          <SelectBlogCategory items={menuItems}></SelectBlogCategory>
+          <SelectBlogCategory 
+            tags={tagItems} 
+            categories={categoryItems}>
+          </SelectBlogCategory>
         </Box>
       </Flex>
       <SEO title="Category" />
-      <ListPosts context={`blog`} posts={posts}/>
+      <ListPosts 
+        context={`blog`} 
+        posts={posts}
+      />
       <Box mt="4">
         <Pager pageContext={pageContext} />
       </Box>

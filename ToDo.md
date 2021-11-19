@@ -43,7 +43,7 @@
 - [ x ] improve mobile menu UI
 - [   ] fix post card author info not inline with image (Issues fixes itself after visting another page)
 - [   ] open issue on github
-- [   ] fix image border radius not working (on android working.. ?)
+- [   ] fix image border radius not working on safari (on android working.. ?)
 - [   ] fix pager buttons clipping viewport
 - [   ] hamburger menu open/close animation
 
@@ -52,9 +52,10 @@
 - [   ] fix border radius issues in cards
 
 
-### Polishing
-- [ x ] add scroll-reveal transitions
-- [   ] 
+
+### UI Refactoring and Polishing
+- add on scroll animations to cards
+- refactor category and tag filter dropdown
 
 ### Cleanup 
 - [   ] sort components in folders
@@ -73,10 +74,22 @@
 ### Next night 10:38pm (17. Nov '21)
 - 
 
+
+### 18. Nov
+
+- 
+
+
 ### Meeting notes
 - pokazati dark theme
 - pokazati PWA
 - pokazati kod builda oznake SSG SSR DSG
+- objasniti dizajn i kako je moglo biti drugacije napravljeno kao app
+
+- imati u chrome incognito modu 2 taba sa i bez pwa 
+- imati jos jedan chrome window gdje je mobile view
+
+- ocistiti laptop
 
 
 

@@ -7,7 +7,6 @@ import Pager from "../components/blog/pager.js"
 import ListPosts from "../components/blog/listPosts.js"
 import ArchiveTitle from "../components/blog/archiveTitle"
 import SelectBlogCategory from "../components/blog/selectBlogCategory.js"
-import { BiHomeAlt } from "@react-icons/all-files/bi/BiHomeAlt";
 import {
   Flex, 
   Box, 
@@ -23,6 +22,7 @@ query( $limit: Int!, $skip: Int!) {
       __typename
     }
   }
+
   allWpPost(
     limit: $limit
     skip: $skip
@@ -56,20 +56,24 @@ query( $limit: Int!, $skip: Int!) {
       }
     }
   }
-  allWpCategory {
+  tags: allWpTag(limit: 6) {
     nodes {
-      name
-      count
-      uri
+      ...tagGroupFields
+    }
+  }
+  categories: allWpCategory(limit: 6) {
+    nodes {
+      ...categoryGroupFields
     }
   }
 }
 `
 const BlogPage  = ({ pageContext, data }) => {
-    const posts = data.allWpPost.edges
-    const allposts = data.countpost
-    const postsCount = allposts.nodes.length
-    const menuItems = data.allWpCategory.nodes
+    const posts = data?.allWpPost?.edges
+    const allposts = data?.countpost
+    const postsCount = allposts?.nodes?.length
+    const categoryItems = data?.categories?.nodes
+    const tagItems = data?.tags?.nodes
     return (
     <Layout>
       <SEO title="Blog" /> 
@@ -80,7 +84,7 @@ const BlogPage  = ({ pageContext, data }) => {
         </Box>
         <Spacer />
         <Box>
-          <SelectBlogCategory items={menuItems}></SelectBlogCategory>
+          <SelectBlogCategory tags={tagItems} categories={categoryItems}></SelectBlogCategory>
         </Box>
       </Flex>
       <ListPosts context={`blog`} posts={posts}/>

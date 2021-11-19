@@ -26,6 +26,7 @@ fragment singlePostFields on WpPost {
   title
   content
   nodeType
+  date(formatString: "MMMM DD, YYYY")
   featuredImage {
     node {
       localFile {
@@ -37,6 +38,12 @@ fragment singlePostFields on WpPost {
           )
         }
       }
+    }
+  }
+  categories {
+    nodes {
+      name
+      slug
     }
   }
 }`
@@ -59,4 +66,20 @@ fragment singlePageFields on WpPage {
       }
     }
   }
+}`
+
+export const tagGroupFields = graphql`
+fragment tagGroupFields on WpTag {
+    slug
+    name
+    uri
+    count
+}`
+
+export const categoryGroupFields = graphql`
+fragment categoryGroupFields on WpCategory {
+    slug
+    name
+    uri
+    count
 }`
