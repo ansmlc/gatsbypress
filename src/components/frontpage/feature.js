@@ -30,7 +30,6 @@ const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, ord
                 as="h1" 
                 mt="5"
                 mb="4"
-                color={'gray.700'}
                 fontWeight={700}
                 lineHeight={1.1}
                 fontSize={'3xl'}

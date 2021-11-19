@@ -1,5 +1,6 @@
 import * as React from "react"
-import { 
+import {
+  useStaticQuery,
   graphql,
   Link } from 'gatsby'
 import { Center } from "@chakra-ui/layout"
@@ -16,11 +17,60 @@ import {
   AlertIcon,
 } from "@chakra-ui/react"
 
-
-const HomePage = ({ data }) => {
+const HomePage = () => {
+  const data = useStaticQuery(graphql`
+  query HomePageQuery {
+    post: allWpPost(
+        sort: { fields: [date], order: ASC }
+        limit: 6
+        filter: { categories: { nodes: { elemMatch: { slug: { ne: "featured" } } } } }
+    ) 
+    {
+      edges {
+        node {
+          ...postFields
+          categories {
+            nodes {
+              uri
+            }
+          }
+          tags {
+            nodes {
+              name
+              uri
+            }
+          }
+          author {
+            node {
+              name
+              slug
+              avatar {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+    featured: allWpPost(
+      sort: { fields: [date], order: DESC }
+      limit: 6
+      filter: { categories: { nodes: { elemMatch: { slug: { eq: "featured" } } } } }
+      ) 
+    {
+    nodes {
+      ...postFields
+      categories {
+        nodes {
+          slug
+        }
+      }
+    }
+  }
+}
+`)
     const posts = data?.post?.edges  
     const featured = data?.featured?.nodes
-    console.log(posts, 'posts index')
     const HomeContent = () => (
       <Layout>
         <Box alignItems="center">
@@ -66,7 +116,7 @@ const HomePage = ({ data }) => {
       <Layout>
         <Alert my="4" borderRadius="xl" boxShadow="xl" status="warning">
           <AlertIcon />
-          Nothing found.<br/> 
+          Nothing found.
           Please add some posts to your WordPress site.
         </Alert>
       </Layout>
@@ -74,87 +124,5 @@ const HomePage = ({ data }) => {
     }
 
 }
-
-export const query = graphql`
-  query HomePageQuery {
-    post: allWpPost(
-        sort: { fields: [date], order: ASC }
-        limit: 6
-        filter: { categories: { nodes: { elemMatch: { slug: { ne: "featured" } } } } }
-    ) 
-    {
-      edges {
-        node {
-          title
-          slug
-          date(formatString: "MMMM DD, YYYY")          
-          excerpt
-          featuredImage {
-            node {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(
-                    placeholder: BLURRED
-                    formats: [WEBP, JPG]
-                    quality: 82
-                  )
-                }
-              }
-            }
-          } 
-          categories {
-            nodes {
-              uri
-            }
-          }
-          tags {
-            nodes {
-              name
-              uri
-            }
-          }
-          author {
-            node {
-              name
-              slug
-              avatar {
-                url
-              }
-            }
-          }
-        }
-      }
-    }
-    featured: allWpPost(
-      sort: { fields: [date], order: DESC }
-      limit: 6
-      filter: { categories: { nodes: { elemMatch: { slug: { eq: "featured" } } } } }
-      ) 
-    {
-    nodes {
-      title
-      excerpt
-      slug
-      featuredImage {
-        node {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(
-                placeholder: DOMINANT_COLOR
-                formats: [AUTO, WEBP]
-                quality: 82
-              )
-            }
-          }
-        }
-      }
-      categories {
-        nodes {
-          slug
-        }
-      }
-    }
-  }
-}
-`
+ 
 export default HomePage

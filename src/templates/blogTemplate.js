@@ -7,15 +7,12 @@ import Pager from "../components/blog/pager.js"
 import ListPosts from "../components/blog/listPosts.js"
 import ArchiveTitle from "../components/blog/archiveTitle"
 import SelectBlogCategory from "../components/blog/selectBlogCategory.js"
-import { BiHomeAlt } from "@react-icons/all-files/bi/BiHomeAlt";
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink, 
   Flex, 
   Box, 
   Spacer
 } from "@chakra-ui/react"
+import Crumb from "../components/layout/breadcrumbs"
 
 export const query = graphql`
 query( $limit: Int!, $skip: Int!) {
@@ -25,6 +22,7 @@ query( $limit: Int!, $skip: Int!) {
       __typename
     }
   }
+
   allWpPost(
     limit: $limit
     skip: $skip
@@ -34,24 +32,7 @@ query( $limit: Int!, $skip: Int!) {
   {
     edges {
       node {
-        id
-        title
-        slug
-        date(formatString: "MMMM DD, YYYY")
-        excerpt
-        featuredImage {
-          node {
-            localFile {
-              childImageSharp {
-                gatsbyImageData(
-                  placeholder: DOMINANT_COLOR
-                  formats: [WEBP, JPG]
-                  quality: 82
-                )
-              }
-            }
-          }
-        } 
+        ...postFields
         categories {
           nodes {
             uri
@@ -75,49 +56,35 @@ query( $limit: Int!, $skip: Int!) {
       }
     }
   }
-  allWpCategory {
+  tags: allWpTag(limit: 6) {
     nodes {
-      name
-      count
-      uri
+      ...tagGroupFields
+    }
+  }
+  categories: allWpCategory(limit: 6) {
+    nodes {
+      ...categoryGroupFields
     }
   }
 }
 `
 const BlogPage  = ({ pageContext, data }) => {
-    const posts = data.allWpPost.edges
-    const allposts = data.countpost
-    const postsCount = allposts.nodes.length
-    const menuItems = data.allWpCategory.nodes
-    console.log(data.allWpPost.edges, 'post edges')
-    console.log(data.countpost.nodes.length, 'total post count')
-    console.log(pageContext.nextPagePath, 'PAGE CONTEXT')
-    console.log(menuItems, 'data.wpCategory')
-
+    const posts = data?.allWpPost?.edges
+    const allposts = data?.countpost
+    const postsCount = allposts?.nodes?.length
+    const categoryItems = data?.categories?.nodes
+    const tagItems = data?.tags?.nodes
     return (
     <Layout>
-      <SEO title="Blog" />
-      <Box
-            fontSize="0.9rem"
-            textColor="gray.500"
-            marginBottom="1rem"
-      >
-      <Breadcrumb>   
-            <BreadcrumbItem>
-                <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem>
-                <BreadcrumbLink as={Link} key="blog" to="../../blog">Blog</BreadcrumbLink>
-            </BreadcrumbItem>
-      </Breadcrumb>
-      </Box>
+      <SEO title="Blog" /> 
+      <Crumb pageContext={pageContext}/>
       <Flex>
         <Box>
           <ArchiveTitle data={posts} count={postsCount} title="Blog"></ArchiveTitle>
         </Box>
         <Spacer />
         <Box>
-          <SelectBlogCategory items={menuItems}></SelectBlogCategory>
+          <SelectBlogCategory tags={tagItems} categories={categoryItems}></SelectBlogCategory>
         </Box>
       </Flex>
       <ListPosts context={`blog`} posts={posts}/>

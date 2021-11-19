@@ -29,23 +29,7 @@ query($slug: String!, $skip: Int!, $limit: Int!) {
   ) {
     edges {
       node {
-        title
-        slug
-        date(formatString: "MMMM DD, YYYY")
-        excerpt
-        featuredImage {
-          node {
-            localFile {
-              childImageSharp {
-                gatsbyImageData(
-                  placeholder: DOMINANT_COLOR
-                  formats: [WEBP, JPG]
-                  quality: 82
-                )
-              }
-            }
-          }
-        } 
+        ...postFields
         categories {
           nodes {
             uri
@@ -69,36 +53,47 @@ query($slug: String!, $skip: Int!, $limit: Int!) {
       }
     }
   }
-  allWpCategory {
+  tags: allWpTag(limit: 6) {
     nodes {
-      name
-      count
-      uri
+      ...tagGroupFields
+    }
+  }
+  categories: allWpCategory(limit: 6) {
+    nodes {
+      ...categoryGroupFields
     }
   }
 } 
 `
 const CategoryTemplate = ({ data, pageContext }) => {
-  console.log(data.countpost.nodes.length, 'cat post count')
-  const posts = data.allWpPost.edges
-  console.log(pageContext, 'pageContext')
-  const postCount = data.countpost.nodes.length
-  const menuItems = data.allWpCategory.nodes
+  const posts = data?.allWpPost?.edges
+  const postCount = data?.countpost?.nodes?.length
+  const categoryItems = data?.categories?.nodes
+  const tagItems = data?.tags?.nodes
   return (
     <Layout>
       <SEO title={pageContext.category}/>
       <Crumb pageContext={pageContext} data={data}/>
       <Flex>
         <Box>
-          <ArchiveTitle title={pageContext.category} count={postCount}></ArchiveTitle>
+          <ArchiveTitle 
+            title={pageContext.category} 
+            count={postCount}>
+          </ArchiveTitle>
         </Box>
         <Spacer />
         <Box>
-          <SelectBlogCategory items={menuItems}></SelectBlogCategory>
+          <SelectBlogCategory 
+            tags={tagItems} 
+            categories={categoryItems}>
+          </SelectBlogCategory>
         </Box>
       </Flex>
       <SEO title="Category" />
-      <ListPosts context={`blog`} posts={posts}/>
+      <ListPosts 
+        context={`blog`} 
+        posts={posts}
+      />
       <Box mt="4">
         <Pager pageContext={pageContext} />
       </Box>

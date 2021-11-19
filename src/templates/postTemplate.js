@@ -21,17 +21,13 @@ import {
   Image,
   AspectRatio,
   Stack,
-  Flex } from "@chakra-ui/react"
-import { BiUser } from "@react-icons/all-files/bi/BiUser"
-import { BiCalendarAlt } from "@react-icons/all-files/bi/BiCalendarAlt"
+ } from "@chakra-ui/react"
 
 export default function BlogPost({ data }) {
   const post = data.allWpPost.nodes[0]
-  const categories = data.allWpPost.edges[0].node.categories
   const tags = data.allWpPost.edges[0].node.tags
   const author = data.allWpPost.edges[0].node.author
   const image = post?.featuredImage?.node?.localFile
-  console.log(author, 'author')
   return (
     <Layout>
       <SEO title={post.title}/>
@@ -39,30 +35,30 @@ export default function BlogPost({ data }) {
       <Box 
         data-sal="slide-up"
         data-sal-duration={800}>
-      <Box> 
-        <Text
-          as="h1"
-          fontWeight="bold"
-          fontSize="4xl"
-          marginTop="6"
-          lineHeight="1.1"
-        >
-          {post.title}
-        </Text>
-      </Box>
-      <Stack my={6} direction={'row'} spacing={4} align={'center'}>
-        <Avatar
-          src={author.node.avatar.url}
-          alt={'Author'}
-          size={'sm'} 
-        />
-        <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-          <Text fontWeight={600}>
-              {author.node.name}
+        <Box> 
+          <Text
+            as="h1"
+            fontWeight="bold"
+            fontSize="4xl"
+            lineHeight="1.1"
+            color={useColorModeValue('gray.800', 'gray.50')}
+          >
+            {post.title}
           </Text>
-          <Text color={'gray.500'}><time>{post.date}</time></Text>
+        </Box>
+        <Stack my={6} direction={'row'} spacing={4} align={'center'}>
+          <Avatar
+            src={author.node.avatar.url}
+            alt={'Author'}
+            size={'sm'} 
+          />
+          <Stack direction={'column'} spacing={0} fontSize={'sm'}>
+            <Text fontWeight={600} color={useColorModeValue('gray.800', 'gray.100')}>
+                {author.node.name}
+            </Text>
+            <Text color={'gray.500'}><time>{post.date}</time></Text>
+          </Stack>
         </Stack>
-      </Stack>
       </Box>
       <Box 
         as="article"
@@ -102,7 +98,7 @@ export default function BlogPost({ data }) {
           <Box mt="6">
             {tags?.nodes.map( tag => (
             <Box display="inline" marginRight="3">
-                  <Link to={"../../tag/" + tag.name.replace(/\s+/g, "-").toLowerCase()}>
+                  <Link to={"../../tag/" + tag.slug.replace(/\s+/g, "-").toLowerCase()}>
                     <Badge colorScheme="cyan">{"# " + tag.name}</Badge>
                   </Link>
             </Box>
@@ -120,16 +116,10 @@ export const query = graphql`
     allWpPost(filter: { slug: { eq: $slug } }) {
       edges {
         node {
-          categories {
-            nodes {
-              name
-              uri
-            }
-          }
           tags {
             nodes {
               name 
-              uri
+              slug
             }
           }
           author {
@@ -143,31 +133,9 @@ export const query = graphql`
             }
           }
         }
-      }
+      } 
       nodes {
-        title
-        content
-        date(formatString: "MMMM DD, YYYY")
-        uri
-        nodeType
-        featuredImage {
-          node {
-            localFile {
-              childImageSharp {
-                gatsbyImageData(
-                  placeholder: DOMINANT_COLOR
-                  formats: [WEBP, JPG]
-                )
-              }
-            }
-          }
-        }
-        categories {
-          nodes {
-            name
-            slug
-          }
-        }
+        ...singlePostFields
       }
     }
   }

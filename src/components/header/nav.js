@@ -2,12 +2,16 @@ import * as React from "react"
 import { 
   Box,
   Flex,
+  Spacer,
   Container,
-  useColorModeValue
+  useColorModeValue,
+  useColorMode,
+  Button
 } from "@chakra-ui/react"
 import MenuItems from "./menuItems";
 import MenuToggle from "./menuToggle";
 import Logo from "./logo"
+import ColorModeToggle from "./colorModeToggle";
 
 
 const Nav = function ({ data })  {
@@ -16,9 +20,12 @@ const Nav = function ({ data })  {
   const logoMediaItem = data?.allFile?.edges[0]?.node
   const [isOpen, setIsOpen] = React.useState(false)
   const toggle = () => setIsOpen(!isOpen)
+  const { colorMode, toggleColorMode } = useColorMode()
+  const isOpenColorMode = useColorModeValue('white', 'gray.700')
+  const isClosedColorMode = useColorModeValue('gray.50', 'gray.800')
     return (
       <Box 
-        bg={{base: isOpen? "white" : "gray.50", md: "gray.50"}}
+        bg={{base: isOpen? isOpenColorMode : isClosedColorMode, md: isClosedColorMode}}
         borderBottomLeftRadius={{ base: '2xl', md: '0'}}
         borderBottomRightRadius={{ base: '2xl', md: '0'}}
         // bg={useColorModeValue('gray.50', 'gray.700')}
@@ -34,18 +41,31 @@ const Nav = function ({ data })  {
           <Flex
             as="nav"
             align="center"
-            justify="space-between"
             wrap="wrap"
             h="100%"
             w="100%"
             py={4}
           >
-            <Logo
-              siteTitle={title}
-              siteLogo={logoMediaItem}
-            />            
-            <MenuToggle toggle={toggle} isOpen={isOpen} />
-            <MenuItems items={items} isOpen={isOpen}></MenuItems>
+            <Box>
+              <Logo
+                siteTitle={title}
+                siteLogo={logoMediaItem}
+              />   
+            </Box>
+              <Spacer/>
+            <Box>
+              <Box mr="4" display={{ base: 'inline-block', md: 'none'}}>
+                <ColorModeToggle />   
+              </Box>  
+              <Box display={{ base: 'inline-block', md: 'initial'}}>    
+                <MenuToggle toggle={toggle} isOpen={isOpen} /> 
+              </Box> 
+            </Box>
+              <MenuItems items={items} isOpen={isOpen}></MenuItems>
+              <Box ml="6" display={{ base: 'none', md: 'initial'}}>
+                <ColorModeToggle/>
+              </Box>
+            
           </Flex>
         </Container>
       </Box>

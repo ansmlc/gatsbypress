@@ -1,5 +1,6 @@
 // 1. Import `extendTheme`
 import { extendTheme } from "@chakra-ui/react"
+import { useColorModeValue } from "@chakra-ui/color-mode"
 
 // 2. Call `extendTheme` and pass your custom values
 const theme = extendTheme({
@@ -44,9 +45,38 @@ const theme = extendTheme({
     },
   },
   styles: {
-    global: {
+    global: (props) => ({
       body: {
-        backgroundColor: "gray.50"
+        backgroundColor: props.colorMode === "dark" ? "gray.800" : "gray.50",
+      },
+      p: {
+        color: props.colorMode === "dark" ? "gray.50" : "gray.700",
+      },
+      ol: {
+        color: props.colorMode === "dark" ? "gray.50" : "gray.700",
+      },
+      ul: {
+        color: props.colorMode === "dark" ? "gray.50" : "gray.700", 
+      },
+      h1: {
+        color: props.colorMode === "dark" ? "gray.50" : "gray.700",
+      },
+      h2: {
+        color: props.colorMode === "dark" ? "gray.50" : "gray.700",
+      },
+      h3: {
+        color: props.colorMode === "dark" ? "gray.50" : "gray.700",
+      },
+      h4: {
+        color: props.colorMode === "dark" ? "gray.50" : "gray.700",
+      },
+      h5: {
+        color: props.colorMode === "dark" ? "gray.50" : "gray.700",
+      },
+      blockquote: {
+        p: {       
+          color: props.colorMode === "dark" ? "gray.50" : "gray.700",
+        }
       },
       ".wysiwyg": {
         img: {
@@ -57,13 +87,7 @@ const theme = extendTheme({
           textDecoration: "underline"
         },
       },
-      a: {
-        color: "gray.700"
-      },
-      p: {
-        color: "gray.700"
-      },
-    },
+    }),
   },
 
 })

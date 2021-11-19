@@ -47,6 +47,7 @@ export const query = graphql`
       ) {
       edges {
         node {
+          ...postFields
           author {
             node {
               nodeType
@@ -56,23 +57,6 @@ export const query = graphql`
               avatar {
                 url
               }
-            }
-          }
-          title
-          slug
-          date(formatString: "MMMM DD, YYYY")
-          excerpt
-          featuredImage {
-            node {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(
-                    placeholder: DOMINANT_COLOR
-                    formats: [WEBP, JPG]
-                    quality: 90
-                  )
-                }
-              }   
             }
           }
           tags {

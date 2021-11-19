@@ -96,8 +96,6 @@ queryResult.data.allWpPage.nodes.forEach(page => {
   })
 })
 
-
-
 // * BLOG ARCHIVE PAGE 
 // Create a paginated blog, e.g., /, /page/2, /page/3
 const blogPosts = queryResult.data.allWpPost.nodes

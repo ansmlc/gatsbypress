@@ -1,12 +1,16 @@
 import React from "react"
+import { graphql } from "gatsby"
+import { 
+  Box, 
+  Flex,
+  Spacer } from "@chakra-ui/react"
 import Layout from "../components/layout/layout"
 import SEO from "../components/marketing/seo"
-import { graphql } from "gatsby"
 import Pager from "../components/blog/pager.js"
 import ListPosts from "../components/blog/listPosts.js"
 import ArchiveTitle from "../components/blog/archiveTitle"
-import { Box } from "@chakra-ui/react"
 import Crumb from "../components/layout/breadcrumbs"
+import SelectBlogCategory from "../components/blog/selectBlogCategory.js"
 
 export const query = graphql`
   query($slug: String!, $skip: Int!, $limit: Int!) {
@@ -25,24 +29,7 @@ export const query = graphql`
     ) {
       edges {
         node {
-          title
-          slug
-          date(formatString: "DD . MM . YYYY")
-          content
-          excerpt
-          featuredImage {
-            node {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(
-                    placeholder: DOMINANT_COLOR
-                    formats: [WEBP, JPG]
-                    quality: 90
-                  )
-                }
-              }
-            }
-          }
+          ...postFields
           tags {
             nodes {
               uri
@@ -61,20 +48,44 @@ export const query = graphql`
         }
       }
     }
+    tags: allWpTag(limit: 6) {
+      nodes {
+        ...tagGroupFields
+      }
+    }
+    categories: allWpCategory(limit: 6) {
+      nodes {
+        ...categoryGroupFields
+      }
+    }  
   }
 `
  
 const TagTemplate = ({ data, pageContext }) => {
-  //console.log(data)
-  //console.log(pageContext)
   const posts = data.allWpPost.edges
   const postCount = data.countpost.nodes.length
   const hashTag = "#" + pageContext.tag 
+  const categoryItems = data?.categories?.nodes
+  const tagItems = data?.tags?.nodes
   return (
     <Layout>
       <SEO title={pageContext.tag}/>
       <Crumb pageContext={pageContext} data={data}/>
-      <ArchiveTitle title={hashTag} count={postCount}></ArchiveTitle>
+      <Flex>
+        <Box>
+          <ArchiveTitle 
+            title={hashTag} 
+            count={postCount}>
+          </ArchiveTitle>
+        </Box>
+        <Spacer />
+        <Box>
+          <SelectBlogCategory 
+            tags={tagItems} 
+            categories={categoryItems}>
+          </SelectBlogCategory>
+        </Box>
+      </Flex>
       <ListPosts context={`blog`} posts={posts}/>
       <Box mt="4">
         <Pager pageContext={pageContext} />

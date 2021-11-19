@@ -3,20 +3,30 @@ import { Box, Text, Image } from "@chakra-ui/react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import { GatsbyImage } from "gatsby-plugin-image"
-
+import GatsbypressLogo from "../svgs/gatsbypressLogo"
+import { useColorMode } from "@chakra-ui/color-mode"
 
 const Logo = ({siteTitle, siteLogo}) => {
+  const { colorMode } = useColorMode();
   let theLogo = ""
 
-  if (!siteLogo?.childImageSharp && siteLogo?.extension === 'svg') {
+  if ( GatsbypressLogo ) {
     theLogo = 
     <Link to="/" title={siteTitle}>
+      <GatsbypressLogo colorMode={colorMode} w={'160px'} h={'auto'}y/>
+    </Link>
+  } 
+  else if (!siteLogo?.childImageSharp && siteLogo?.extension === 'svg') {
+    theLogo = 
+    <Link to="/" title={siteTitle}>
+      <GatsbypressLogo colorMode={colorMode} w={'160px'} h={'auto'}y/>
       <Image
+        as={GatsbyImage}
         src={siteLogo?.publicURL}
         alt={siteTitle}
         maxW={'160px'}
         height={'auto'}
-      />    
+      />  
     </Link>
   } 
   else if (siteLogo?.childImageSharp && siteLogo?.extension === 'png' || siteLogo?.extension === 'jpg') {

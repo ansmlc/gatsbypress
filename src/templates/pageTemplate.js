@@ -2,7 +2,6 @@ import React from "react"
 import Layout from "../components/layout/layout"
 import { graphql } from "gatsby"
 import Crumb from "../components/layout/breadcrumbs.js"
-import PageTitle from "../components/layout/pageTitle"
 import SEO from "../components/marketing/seo"
 import "@wordpress/block-library/build-style/style.css"
 import { 
@@ -26,8 +25,6 @@ export default function PagePost({ data }) {
       <SEO title={page.title}/>
       <Crumb data={page}/>
       <Text
-          data-sal="slide-up"
-          data-sal-duration={800}
           as="h1"
           fontWeight="bold"
           fontSize="3xl"
@@ -75,25 +72,11 @@ export default function PagePost({ data }) {
     </Layout>
   )
 }
-export const query = graphql`
+export const query = graphql` 
   query($slug: String!) {
     allWpPage(filter: { slug: { eq: $slug } }) {
       nodes {
-        title
-        content
-        nodeType
-        featuredImage {
-          node {
-            localFile {
-              childImageSharp {
-                gatsbyImageData(
-                  placeholder: DOMINANT_COLOR
-                  formats: [WEBP, JPG]
-                )
-              }
-            }
-          }
-        }
+      ...singlePageFields
       }
     }
   }

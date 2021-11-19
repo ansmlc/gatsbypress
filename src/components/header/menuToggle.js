@@ -9,7 +9,7 @@ const MenuToggle = ({ toggle, isOpen }) => {
   <Box display={{ base: "block", md: "none" }}>
     <IconButton
       isRound
-      bg={isOpen? "white" : "gray.100"}
+      colorScheme={'gray'}
       aria-label="Navigation Toggle"
       onClick={toggle}
       boxShadow={isOpen? "md" : "sm"}

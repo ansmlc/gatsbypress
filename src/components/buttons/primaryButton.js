@@ -5,12 +5,14 @@ import PropTypes from "prop-types"
 import {
   Button,
 } from '@chakra-ui/react';
+import { LightMode } from '@chakra-ui/color-mode';
 
 const PrimaryButton = ({ children, arrowLeft, arrowRight }) => {
     let theButton = ""
     arrowRight?
     theButton = 
-            <Button 
+    <LightMode>
+        <Button 
             minW="200px"
             rounded={'full'}
             shadow="md"
@@ -22,9 +24,11 @@ const PrimaryButton = ({ children, arrowLeft, arrowRight }) => {
         >
             {children}
         </Button>
+    </LightMode>
     :
     arrowLeft?
     theButton =
+    <LightMode>
         <Button 
             rounded={'full'}
             shadow="md"
@@ -36,8 +40,10 @@ const PrimaryButton = ({ children, arrowLeft, arrowRight }) => {
         >
             {children}
         </Button>
+    </LightMode>
     :
     theButton =
+    <LightMode>
         <Button 
             rounded={'full'}
             shadow="md"
@@ -47,7 +53,8 @@ const PrimaryButton = ({ children, arrowLeft, arrowRight }) => {
             colorScheme={'brand'}
         >
            {children}
-        </Button>    
+        </Button>   
+    </LightMode> 
 return (
         theButton
 )

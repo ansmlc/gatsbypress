@@ -1,56 +1,120 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Box, Icon, IconButton} from "@chakra-ui/react"
+import { Box, IconButton} from "@chakra-ui/react"
 import { IoFilter } from "@react-icons/all-files/io5/IoFilter";
+import { HiX } from "@react-icons/all-files/hi/HiX"
 import {
     Menu,
     MenuButton,
     MenuList,
     MenuItem,
+    MenuGroup,
     Text
 } from "@chakra-ui/react"
 
-const BlogMenuItems = ({ items }) => {
-  if (items && items.length) {
-    const prefixCat = '../..'
-    const menuItems = items
-    let catMenuItems = []
-    menuItems.map(item => (
-      item.uri.includes('featured')?
+const BlogMenuItems = ({ tags, categories }) => {
+  const prefix = '../..'
+  let catMenuItems = []
+  let tagMenuItems = []
+  var listAllCategories = ''
+  var listAllTags = ''
+  if (categories && categories.length) {
+    categories.map(item => (
+      item.uri.includes('featured') || item.count === null ?
       false : catMenuItems.push(item)
     ))
-    const listAllCategories = catMenuItems.map(catMenuItem => (
-      <MenuItem>
-        <Link 
-          activeStyle={{ color: "red" }} 
+      listAllCategories = catMenuItems.map(catItem => (
+      <MenuItem
+        borderRadius={'2xl'}
+      >
+        <Link  
+          activeStyle={{ fontWeight: "semibold" }} 
           partiallyActive={true} 
-          to={prefixCat + catMenuItem.uri.replace(/\s+/g, "-").toLowerCase()}>{catMenuItem.name + "(" + catMenuItem.count + ")"}
+          to={prefix + catItem.uri.replace(/\s+/g, "-").toLowerCase()}>
+            {catItem.name} <Box as="span" fontSize="sm">( {catItem.count} )</Box>
         </Link>
       </MenuItem>
     ))
+  }
+  if (tags && tags.length) {
+    const prefix = '../..'
+    tags.map(item => (
+      item.count === null ?
+      false : tagMenuItems.push(item)
+    ))
+    listAllTags = tagMenuItems.map(tagItem => (
+      <MenuItem
+        borderRadius={'2xl'}
+      >
+        <Link  
+          activeStyle={{ fontWeight: "semibold" }} 
+          partiallyActive={true} 
+          to={prefix + tagItem.uri.replace(/\s+/g, "-").toLowerCase()}>
+            {"# " + tagItem.name} <Box as="span" fontSize="sm">( {tagItem.count} )</Box>
+        </Link>
+      </MenuItem>
+    ))
+  }
     return (
       <Box>
-        <Menu>
-          <Text display="inline" fontSize="sm" color="gray.600">
-          Filter:</Text>
-          <MenuButton 
+        <Menu boundary="HTMLElement" isLazy>
+          {({ isOpen }) => (
+            <>
+              <MenuButton 
                 as={IconButton}
-                bg="transparent"
                 isRound
-                color={"gray-700"}
-                aria-label="Category Filter Toggle"
+                colorScheme={'gray'}
                 fontSize="lg"
-                icon={<IoFilter />}/>
-          <MenuList>
-            {listAllCategories}
-          </MenuList>
+                transform="scaleX(-1)"
+                aria-label="Category Filter Toggle"
+                icon={isOpen ? <HiX/> : <IoFilter /> }
+              />
+              <MenuList
+                borderRadius={'2xl'}
+                padding={'4'}
+                minW={"xs"}
+                display="flex"
+                flexDirection="row"
+              >
+                <MenuGroup 
+                  display="inline-flex" 
+                  paddingRight={'4'}
+                  width="100%"
+                >
+                  <Box 
+                    textTransform={'uppercase'} 
+                    letterSpacing={'wider'}
+                    fontSize={'sm'} 
+                    px={'4'}
+                    my={'4'}
+                    textAlign={'center'}
+                  >
+                    Categories:
+                  </Box>
+                    {listAllCategories}
+                </MenuGroup>
+                <MenuGroup 
+                  display="inline-flex" 
+                  width="100%"
+                >
+                  <Box 
+                    textTransform={'uppercase'} 
+                    letterSpacing={'wider'}
+                    fontSize={'sm'} 
+                    px={'4'}
+                    my={'4'}
+                    textAlign={'center'}
+                  >
+                    Tags:
+                  </Box>
+                  {listAllTags}
+                </MenuGroup>
+              </MenuList>
+            </>
+          )}
         </Menu>
       </Box>
     )
-  }
-  else {
-    return "No blog categories"
-  }
 }
 
 export default BlogMenuItems

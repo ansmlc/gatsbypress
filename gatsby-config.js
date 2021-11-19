@@ -12,11 +12,12 @@ module.exports = {
     twitterUrl: `https://twitter.com`,
   },
   plugins: [
-    `gatsby-plugin-scroll-reveal`,
+    // `gatsby-plugin-scroll-reveal`,
     {
     resolve: "@chakra-ui/gatsby-plugin",
       options: {
         resetCSS: true,
+        isUsingColorMode: true,
       },
     },
     {

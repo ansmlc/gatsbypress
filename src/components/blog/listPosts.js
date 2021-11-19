@@ -15,8 +15,10 @@ import { SimpleGrid } from "@chakra-ui/react"
 import { AspectRatio } from "@chakra-ui/react"
 import { useColorModeValue } from "@chakra-ui/color-mode"
 
+
 // Create Post Card Component
 const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postTags, postAuthor, key, salAnimationDuration }) => {
+  // Show author info in the card only if not in user profile page
   let postAuthorStack = ""
   if (postAuthor) {
     postAuthorStack = 
@@ -79,8 +81,8 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
         as="h2"
         mb="3"
         fontWeight="semibold"
-        lineHeight="1.1"
-        fontSize="2xl"
+        lineHeight="1.2"
+        fontSize="xl"
         fontWeight="bold"
       >
         <Link
@@ -113,7 +115,8 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
       <Text
         my="4"
         noOfLines={[3]}
-        color="gray"
+        color="brand.500"
+        fontSize="normal"
       >
         <div dangerouslySetInnerHTML={{ __html: postExcerpt }} />
       </Text>
@@ -129,7 +132,7 @@ const  ListPosts = ({ posts, context }) => {
   // Get data and return post cards
   if (context === 'author') {
       return ( 
-        <SimpleGrid minChildWidth="240px" spacing="20px">
+        <SimpleGrid minChildWidth="236px" spacing="20px">
           {allBlogPosts.map((post) => (
             <PostCard 
               key={post.id}
@@ -146,10 +149,10 @@ const  ListPosts = ({ posts, context }) => {
   }
   else if (context === 'blog') {
     return (
-      <SimpleGrid minChildWidth="240px" spacing="30px">
+      <SimpleGrid minChildWidth="236px" spacing="20px">
         {allBlogPosts.map((post, i) => (
           <PostCard 
-            salAnimationDuration={i*90}
+            // salAnimationDuration={i*90}
             key={post.node.id}
             postSlug={post.node.slug}
             postTitle={post.node.title}

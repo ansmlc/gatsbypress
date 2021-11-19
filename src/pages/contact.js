@@ -37,42 +37,42 @@ export default function Component ()  {
     </Text>
     <Box 
         bg={useColorModeValue('white', 'gray.700')}
+        color={useColorModeValue('gray.800', 'gray.50')}
         borderRadius="2xl" 
         maxW={{base: '100%', md: '50%'}}
         p={{base: "6", md: "8"}}
         boxShadow="2xl"
-        data-sal="slide-up" data-sal-duration={600}
+        // data-sal="slide-up" data-sal-duration={600}
     >
-        <Box color="#0B0E3F">
             <VStack spacing={5}>
             <FormControl id="name">
                 <FormLabel>Your Name</FormLabel>
-                <InputGroup borderColor="#E0E1E7">
+                <InputGroup borderColor={useColorModeValue('gray.200', 'gray.500')}>
                 <InputLeftElement
                     pointerEvents="none"
-                    children={<BiUser color="gray.800" />}
+                    children={<BiUser color="gray.600" />}
                 />
-                <Input type="text" size="md" />
+                <Input placeholder="Your name" type="text" size="md" />
                 </InputGroup>
             </FormControl>
             <FormControl id="name">
                 <FormLabel>Mail</FormLabel>
-                <InputGroup borderColor="#E0E1E7">
+                <InputGroup borderColor={useColorModeValue('gray.200', 'gray.500')}>
                 <InputLeftElement
                     pointerEvents="none"
-                    children={<BiEnvelope color="gray.800" />}
+                    children={<BiEnvelope color="gray.600" />}
                 />
-                <Input type="text" size="md" />
+                <Input placeholder="Your email" type="text" size="md" />
                 </InputGroup>
             </FormControl>
             <FormControl id="name">
                 <FormLabel>Message</FormLabel>
                 <Textarea
-                borderColor="gray.300"
+                borderColor={useColorModeValue('gray.200', 'gray.500')}
                 _hover={{
-                    borderRadius: 'gray.300',
+                    borderColor: useColorModeValue('gray.300', 'gray.400')
                 }}
-                placeholder="message"
+                placeholder="Your message"
                 />
             </FormControl>
             <FormControl id="name" float="right">
@@ -80,7 +80,6 @@ export default function Component ()  {
             </FormControl>
             </VStack>
         </Box>
-    </Box>
     </Layout>
     );
   }
