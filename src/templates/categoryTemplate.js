@@ -85,8 +85,9 @@ const CategoryTemplate = ({ data, pageContext }) => {
         <Box>
           <SelectBlogCategory 
             tags={tagItems} 
-            categories={categoryItems}>
-          </SelectBlogCategory>
+            categories={categoryItems}
+            context={'category'}
+          />
         </Box>
       </Flex>
       <SEO title="Category" />

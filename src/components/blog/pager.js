@@ -7,10 +7,10 @@ import PrimaryButton from "../buttons/primaryButton"
 const Pager = ({ pageContext, pathPrefix }) => {
 const { previousPagePath, nextPagePath } = pageContext
   return (
-    <Stack marginY="8" direction="row" spacing={4}>
+    <Stack marginY="8" direction={{ base: "column", md: "row"}} spacing={4}>
       {previousPagePath && (
         <Link to={`/${previousPagePath}`}>
-          <PrimaryButton arrowLeft>Previous page</PrimaryButton>
+          <PrimaryButton width="100%" d="block" arrowLeft>Previous page</PrimaryButton>
         </Link>
       )}
       {nextPagePath && (

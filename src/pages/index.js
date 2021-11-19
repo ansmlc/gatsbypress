@@ -96,11 +96,11 @@ const HomePage = () => {
             context={`blog`} 
             posts={posts}     
           />
-          <Center marginY="16" w="100%">
+          <Center marginY="16">
             <Link to="/blog">
-            <PrimaryButton arrowRight>
-              Read our Blog
-            </PrimaryButton>
+              <PrimaryButton arrowRight>
+                Read our Blog
+              </PrimaryButton>
             </Link>
           </Center>
           <Cta/>

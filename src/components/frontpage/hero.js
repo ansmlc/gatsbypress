@@ -23,7 +23,7 @@ import { useInView } from "react-intersection-observer"
 const Hero = ({ heroHeading, heroText, heroSlug, heroImage }) => {
   const [inView] = useInView()
   const HeroCard = () => (
-    <Flex mt="4" flexDir="row" flexWrap={{base: "wrap", md: "nowrap"}}
+    <Flex flexDir="row" flexWrap={{base: "wrap", md: "nowrap"}}
       overflow="hidden" boxShadow="2xl" maxW="full" rounded="2xl" bg={useColorModeValue('white', 'gray.700')}
       opacity={inView? 1 : 0}
       transition="opacity 700ms"> 
@@ -36,14 +36,13 @@ const Hero = ({ heroHeading, heroText, heroSlug, heroImage }) => {
           colorScheme="secondary"
           maxWidth="52px"
           verticalAlign="center"
-          marginBottom={{ base: 2, md: 6 }}
         >
           <Icon as={HiStar} mt="-2px"/> New
         </Badge>
         <Text 
           as="h1" 
-          mt={{base: "1rem", lg: "0"}}
-          mb="6"
+          mt="6"
+          mb="5"
           color={useColorModeValue('gray.800', 'gray.50')}
           fontWeight={700}
           lineHeight={1.1}
@@ -53,7 +52,7 @@ const Hero = ({ heroHeading, heroText, heroSlug, heroImage }) => {
           {heroHeading}
         </Text>
         <Text as="p"
-          mb="6"
+          mb="7" 
           color={'gray.600'}
           lineHeight="normal"
           noOfLines={4}         

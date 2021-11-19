@@ -12,12 +12,27 @@ import {
     Text
 } from "@chakra-ui/react"
 
-const BlogMenuItems = ({ tags, categories }) => {
-  const prefix = '../..'
+const BlogMenuItems = ({ tags, categories, context }) => {
+  let prefix = ''
+  let catPrefix = ''
+  let tagPrefix = ''
+  if (context === 'blog') {
+    catPrefix = './../category/'
+    tagPrefix = './../tag/'
+  } 
+  else if (context === 'category') {
+    catPrefix = './../'
+    tagPrefix = '../../tag/'
+  }
+  else if (context === 'tag') {
+    catPrefix = '../../category/'
+    tagPrefix = './../'
+  }
   let catMenuItems = []
   let tagMenuItems = []
   var listAllCategories = ''
   var listAllTags = ''
+
   if (categories && categories.length) {
     categories.map(item => (
       item.uri.includes('featured') || item.count === null ?
@@ -28,16 +43,15 @@ const BlogMenuItems = ({ tags, categories }) => {
         borderRadius={'2xl'}
       >
         <Link  
-          activeStyle={{ fontWeight: "semibold" }} 
+          activeStyle={{ fontWeight: "bold" }} 
           partiallyActive={true} 
-          to={prefix + catItem.uri.replace(/\s+/g, "-").toLowerCase()}>
-            {catItem.name} <Box as="span" fontSize="sm">( {catItem.count} )</Box>
+          to={catPrefix + catItem.slug.replace(/\s+/g, "-").toLowerCase()}>
+            <Text maxW="130px" isTruncated>{catItem.name}</Text>
         </Link>
       </MenuItem>
     ))
   }
   if (tags && tags.length) {
-    const prefix = '../..'
     tags.map(item => (
       item.count === null ?
       false : tagMenuItems.push(item)
@@ -49,8 +63,8 @@ const BlogMenuItems = ({ tags, categories }) => {
         <Link  
           activeStyle={{ fontWeight: "semibold" }} 
           partiallyActive={true} 
-          to={prefix + tagItem.uri.replace(/\s+/g, "-").toLowerCase()}>
-            {"# " + tagItem.name} <Box as="span" fontSize="sm">( {tagItem.count} )</Box>
+          to={tagPrefix + tagItem.slug.replace(/\s+/g, "-").toLowerCase()}>
+            <Text maxW="130px" isTruncated>{"# " + tagItem.name}</Text>
         </Link>
       </MenuItem>
     ))
@@ -71,10 +85,9 @@ const BlogMenuItems = ({ tags, categories }) => {
               />
               <MenuList
                 borderRadius={'2xl'}
-                padding={'4'}
-                minW={"xs"}
                 display="flex"
                 flexDirection="row"
+                px="2"
               >
                 <MenuGroup 
                   display="inline-flex" 
@@ -87,7 +100,6 @@ const BlogMenuItems = ({ tags, categories }) => {
                     fontSize={'sm'} 
                     px={'4'}
                     my={'4'}
-                    textAlign={'center'}
                   >
                     Categories:
                   </Box>
@@ -103,7 +115,6 @@ const BlogMenuItems = ({ tags, categories }) => {
                     fontSize={'sm'} 
                     px={'4'}
                     my={'4'}
-                    textAlign={'center'}
                   >
                     Tags:
                   </Box>

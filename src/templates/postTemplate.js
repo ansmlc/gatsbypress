@@ -53,9 +53,11 @@ export default function BlogPost({ data }) {
             size={'sm'} 
           />
           <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-            <Text fontWeight={600} color={useColorModeValue('gray.800', 'gray.100')}>
-                {author.node.name}
-            </Text>
+            <Link to={"../../author/" + author.node.slug.replace(/\s+/g, "-").toLowerCase()}>
+              <Text fontWeight={600} color={useColorModeValue('gray.800', 'gray.100')}>
+                  {author.node.name}
+              </Text>
+            </Link>
             <Text color={'gray.500'}><time>{post.date}</time></Text>
           </Stack>
         </Stack>
@@ -91,7 +93,7 @@ export default function BlogPost({ data }) {
           className="wysiwyg"
           color="gray.800"
           fontSize="normal"
-          padding={{ base: 4, md: 12 }}
+          padding={{ base: 6, md: 12 }}
           paddingY={{ base: 6 }}
         >
           <div dangerouslySetInnerHTML={{ __html: post.content }} />
@@ -107,7 +109,7 @@ export default function BlogPost({ data }) {
         </Box>
 
         </Box>
-      <UserCard user={author}/>
+      <UserCard avatarSize={'lg'} user={author}/>
     </Layout>
   )
 }
@@ -125,7 +127,7 @@ export const query = graphql`
           author {
 						node {
               name
-              uri
+              slug
               description
               avatar {
 								url

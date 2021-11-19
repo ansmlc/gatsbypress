@@ -106,7 +106,7 @@ const Crumb = ({ pageContext, data, otherContext }) => {
                 </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem verticalAlign="top" isCurrentPage>
-                <BreadcrumbLink key="post"><Text maxW="150px" fontStyle="italic" textColor="gray.400" isTruncated>{data?.title}</Text></BreadcrumbLink>
+                <BreadcrumbLink key="post"><Text maxW={{base: "100px", md: "200px"}} fontStyle="italic" textColor="gray.400" isTruncated>{data?.title}</Text></BreadcrumbLink>
             </BreadcrumbItem>       
         </Breadcrumb>
     :isOther?
