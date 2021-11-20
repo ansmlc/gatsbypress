@@ -17,7 +17,7 @@
 ### Footer
 - [ x ] Set dynamic description
 - [ x ] Set dynamic menu items in footers
-- [ x ] Add social buttons component in footer
+- [ x ] Add social buttons component in footer s
 
 ### Author page
 - [ x ] Fix number of posts / "undefined"
