@@ -41,10 +41,10 @@
 ### Mobile
 - [ x ] fix hamburger menu icon
 - [ x ] improve mobile menu UI
-- [   ] fix post card author info not inline with image (Issues fixes itself after visting another page)
+- [ x ] fix post card author info not inline with image (Issues fixes itself after visting another page)
 - [   ] fix image border radius not working on safari (on android working.. ?)
-- [   ] fix pager buttons clipping viewport
-- [   ] refactor hamburger/mobile nav
+- [ x ] fix pager buttons clipping viewport
+- [ x ] refactor hamburger/mobile nav
 
 ### Images
 - [ x ] add border radius inside for images inside "wysiwyg" content

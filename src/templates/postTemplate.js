@@ -50,7 +50,7 @@ export default function BlogPost({ data }) {
           <Avatar
             src={author.node.avatar.url}
             alt={'Author'}
-            size={'sm'} 
+            size={'sm'}  
           />
           <Stack direction={'column'} spacing={0} fontSize={'sm'}>
             <Link to={"../../author/" + author.node.slug.replace(/\s+/g, "-").toLowerCase()}>

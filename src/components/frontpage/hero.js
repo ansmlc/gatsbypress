@@ -31,8 +31,9 @@ const Hero = ({ heroHeading, heroText, heroSlug, heroImage }) => {
         // order={{ base: 2, md: 1 }} 
         flexDirection="column" 
         p="8"  
-        maxW={{base: '100%', lg: '30%' }}> 
+        maxW={{base: '100%', md: '30%' }}> 
         <Badge
+          rounded="md"
           colorScheme="secondary"
           maxWidth="52px"
           verticalAlign="center"

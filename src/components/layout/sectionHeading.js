@@ -3,8 +3,8 @@ import PropTypes from "prop-types"
 import { Box, Text } from "@chakra-ui/react"
 import { useColorModeValue } from "@chakra-ui/color-mode"
 
-const SectionHeading = ({ heading, subheading }) => (
-  <Box marginY={14} textAlign="center">
+const SectionHeading = ({ heading, subheading, mt, mb }) => (
+  <Box mt={mt} mb={mb} textAlign="center">
     <Text as="h3"
       fontWeight={700}
       lineHeight={1.3}

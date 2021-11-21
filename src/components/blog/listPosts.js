@@ -7,47 +7,31 @@ import { Alert, AlertIcon } from "@chakra-ui/alert"
 import { 
   Box, 
   Text, 
-  Spacer, 
   Image, 
   Badge, 
   Avatar,
-  Flex,
   SimpleGrid,
-  AspectRatio
+  AspectRatio,
+  Stack
 } from "@chakra-ui/react"
 
   // Show author info in the card only if not in user profile page
   const PostAuthorInfo = ({ postAuthor, postDate }) => (
-    <Flex alignItems="center">
-      <Box>
-        <Avatar
-          src={postAuthor.avatar.url}
-          alt={'Author'}
-          size={'sm'}
-          alignSelf={'bottom'} />
-      </Box>
-      <Box fontSize="sm">
-        <Flex marginLeft={'2'} direction={'column'}>
-          <Box mb="-0.5">
-            <Link 
-              to={"../../author/" + postAuthor.slug.replace(/\s+/g, "-").toLowerCase()}
-            >
-              <Text fontWeight={600} color={useColorModeValue('gray.800', 'gray.100')}>
-                {postAuthor.name}
-              </Text>
-            </Link>
-          </Box>
-          <Box>
-            <Text
-              as="time"
-              color={useColorModeValue('gray.600', 'gray.300')}
-            >
-              {postDate}
-            </Text>
-          </Box>
-        </Flex>
-      </Box>
-    </Flex>
+    <Stack  direction={'row'} spacing={4} align={'center'}>
+    <Avatar
+      src={postAuthor.avatar.url}
+      alt={'Author'}
+      size={'sm'}  
+    />
+    <Stack direction={'column'} spacing={0} fontSize={'sm'}>
+      <Link to={"../../author/" + postAuthor.slug.replace(/\s+/g, "-").toLowerCase()}>
+        <Text fontWeight={600} color={useColorModeValue('gray.800', 'gray.100')}>
+            {postAuthor.name}
+        </Text>
+      </Link>
+      <Text color={'gray.500'}><time>{postDate}</time></Text>
+    </Stack>
+  </Stack>
   )
 
 
@@ -104,7 +88,7 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
           >
             <Badge
               colorScheme="secondary"
-              rounded="full"
+              rounded="md"
               py="1"
               px="2"
             >
@@ -128,18 +112,21 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
           {postTitle}
         </Link>
       </Box>
-      <Text
+      <Box
+        as="p"
         mb="5"
         noOfLines={[3]}
         color="brand.500"
         fontSize="normal"
       >
         <div dangerouslySetInnerHTML={{ __html: postExcerpt }} />
-      </Text>
+      </Box>
+      <Box>
       <PostAuthorInfo 
         postAuthor={postAuthor} 
         postDate={postDate} 
       />
+      </Box>
     </Box>
   </Box>
   )

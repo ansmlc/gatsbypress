@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react"
 import SocialIcons from "../marketing/socialIcons"
 
+
 const MenuItems = ({ isOpen, items }) => {
 const prefixPage = '../../page'
 // Removed category links from now altogether. Return?
@@ -23,9 +24,10 @@ let pageMenuItems = []
     pageMenuItems.push(item)
 ))}
 return (
+
 <Box
-    display={{ base: isOpen ? "inline-flex" : "none", md: "inline-flex" }}
-    h={{ base: isOpen ? "100%" : "0", md: "100%" }}
+    display={{ base: isOpen ? "flex" : "none", md: "flex" }}
+    opacity={{ base: isOpen ? '100' : '0', md: '100' }}
     alignItems="center"
    //  flexBasis={{ base: "100%", md: "auto" }}
 >
@@ -38,6 +40,7 @@ return (
         direction={["column", "column", "row", "row"]}
         p={[8, 8, 0, 0]}
         marginTop={{ base: "2", md: "0"}}
+        textTransform="uppercase"
     >
         <Box min-width="150px">
             <Link
@@ -79,7 +82,7 @@ return (
                 Contact
             </Link>
         </Box>
-        <Box paddingTop="10" display={{ base: "flex", md: "none" }}>
+        <Box paddingTop="6" display={{ base: "flex", md: "none" }}>
             <SocialIcons />
         </Box>
     </Stack>

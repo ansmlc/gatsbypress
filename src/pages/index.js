@@ -83,14 +83,18 @@ const HomePage = () => {
         </Box>
             <SectionHeading
                 heading={'Featured'}
-                subheading={'The following are posts in "featured" category'}
+                subheading={'Latest featured posts'}
+                mb={'6'}
+                mt={'12'}
             />
             <Features
               featured={featured}
             />
           <SectionHeading
             heading={'Latest posts'}
-            subheading={'The following are latest blog posts'}
+            subheading={'Latest posts from our blog'}
+            mb={'6'}
+            mt={'2'}
           />
           <ListPosts 
             context={`blog`} 
