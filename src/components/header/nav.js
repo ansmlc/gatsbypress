@@ -12,7 +12,7 @@ import MenuItems from "./menuItems";
 import NavbarToggle from "./navbarToggle";
 import Logo from "./logo"
 import ColorModeToggle from "./colorModeToggle";
-import { Fade, ScaleFade, Slide, SlideFade, Collapse } from "@chakra-ui/react"
+import { Collapse } from "@chakra-ui/react"
 import { useDisclosure } from "@chakra-ui/react"
 
 
@@ -75,7 +75,7 @@ const Nav = function ({ data })  {
                 </Box>
                 <Box ml="6" display={{ base: 'none', md: 'initial'}}>
                 <ColorModeToggle/>
-              </Box>           
+              </Box>  
           </Flex>
         </Container>
       </Box>

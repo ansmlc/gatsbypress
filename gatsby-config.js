@@ -28,7 +28,7 @@ module.exports = {
          // https://limomet.a2hosted.com/websby/graphql
          // http://127.0.0.1/wpgatsby/graphql
 
-         url: `https://lifeofawinner.com/graphql`,
+         url: `http://127.0.0.1/wpgatsby/graphql`,
       },
    },
     `gatsby-plugin-react-helmet`,

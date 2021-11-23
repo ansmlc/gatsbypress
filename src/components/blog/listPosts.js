@@ -14,8 +14,7 @@ import {
   AspectRatio,
   Stack
 } from "@chakra-ui/react"
-
-
+import { Fade } from "react-awesome-reveal"
   // Show author info in the card only if not in user profile page
   const PostAuthorInfo = ({ postAuthor, postDate }) => (
     <Stack  direction={'row'} spacing={4} align={'center'}>
@@ -151,6 +150,7 @@ const  ListPosts = ({ posts, context }) => {
   else if (context === 'blog') {
     return (
       <SimpleGrid minChildWidth="236px" spacing="6">
+        <Fade damping={0.3} duration={500} cascade triggerOnce>
         {allBlogPosts.map((post, i) => (
           <PostCard 
             // salAnimationDuration={i*90}
@@ -164,6 +164,7 @@ const  ListPosts = ({ posts, context }) => {
             postAuthor={post.node.author.node}
           />
         ))}
+        </Fade>
       </SimpleGrid>
     )
   }

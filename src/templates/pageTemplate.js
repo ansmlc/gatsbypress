@@ -34,41 +34,41 @@ export default function PagePost({ data }) {
         >
           {page.title}
       </Text>
-      <Box 
-        as="article"
-        bg={useColorModeValue('white', 'gray.700')}
-        borderRadius="2xl"
-        overflow="hidden"
-        boxShadow="2xl"
-      >
-        <AspectRatio maxW="1920px" ratio={16 / 9}>
-          {image?
-            <Image 
-              as={GatsbyImage} 
-              image={getImage(image)} 
-              alt={page.title}
-              rounded={'2xl'} 
-              roundedBottomLeft={0}
-              roundedBottomRight={0}
-            /> 
-            :
-            <Image
-              src="https://via.placeholder.com/1920x1080" 
-              alt={page.title || ""}
-              rounded={'2xl'} 
-              roundedBottomLeft={0}
-              roundedBottomRight={0}            />         
-          }
-        </AspectRatio>
         <Box 
-          className="wysiwyg"
-          color="gray.800"
-          padding={{ base: 4, md: 12 }}
-          paddingY={{ base: 6 }}
+          as="article"
+          bg={useColorModeValue('white', 'gray.700')}
+          borderRadius="2xl"
+          overflow="hidden"
+          boxShadow="2xl"
         >
-          <div dangerouslySetInnerHTML={{ __html: page.content }} />
+          <AspectRatio maxW="1920px" ratio={16 / 9}>
+            {image?
+              <Image 
+                as={GatsbyImage} 
+                image={getImage(image)} 
+                alt={page.title}
+                rounded={'2xl'} 
+                roundedBottomLeft={0}
+                roundedBottomRight={0}
+              /> 
+              :
+              <Image
+                src="https://via.placeholder.com/1920x1080" 
+                alt={page.title || ""}
+                rounded={'2xl'} 
+                roundedBottomLeft={0}
+                roundedBottomRight={0}            />         
+            }
+          </AspectRatio>
+          <Box 
+            className="wysiwyg"
+            color="gray.800"
+            padding={{ base: 4, md: 12 }}
+            paddingY={{ base: 6 }}
+          >
+            <div dangerouslySetInnerHTML={{ __html: page.content }} />
+          </Box>
         </Box>
-      </Box>
     </Layout>
   )
 }

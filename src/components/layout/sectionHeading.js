@@ -4,7 +4,6 @@ import { Box, Text } from "@chakra-ui/react"
 import { useColorModeValue } from "@chakra-ui/color-mode"
 import { Heading } from "@chakra-ui/layout"
 
-
 const SectionHeading = ({ heading, subheading, mt, mb }) => (
   <Box mt={mt} mb={mb} textAlign="center">
     <Heading as="h3"

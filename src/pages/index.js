@@ -113,7 +113,7 @@ const HomePage = () => {
     )
     if (posts) {
       return (
-        <HomeContent/>
+          <HomeContent/>
         )
     }
     else {
