@@ -2,7 +2,8 @@ import * as React from "react"
 import {
   useStaticQuery,
   graphql,
-  Link } from 'gatsby'
+  Link 
+} from 'gatsby'
 import { Center } from "@chakra-ui/layout"
 import { Box } from "@chakra-ui/layout"
 import Layout from "../components/layout/layout"
@@ -90,12 +91,12 @@ const HomePage = () => {
             <Features
               featured={featured}
             />
-          <SectionHeading
-            heading={'Latest posts'}
-            subheading={'Latest posts from our blog'}
-            mb={'6'}
-            mt={'2'}
-          />
+            <SectionHeading
+              heading={'Latest posts'}
+              subheading={'Latest posts from our blog'}
+              mb={'6'}
+              mt={'2'}
+            />
           <ListPosts 
             context={`blog`} 
             posts={posts}     

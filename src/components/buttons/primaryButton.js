@@ -11,7 +11,7 @@ const PrimaryButton = ({ children, arrowLeft, arrowRight }) => {
 return (
     <LightMode>
         <Button 
-            width="100%"
+            minW={{ base: "100%", md: "200px"}}
             rounded={'full'}
             shadow="md"
             size={'lg'}

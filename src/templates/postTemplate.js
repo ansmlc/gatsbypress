@@ -22,12 +22,68 @@ import {
   AspectRatio,
   Stack,
  } from "@chakra-ui/react"
+import PrimaryButton from "../components/buttons/primaryButton"
 
-export default function BlogPost({ data }) {
+ export const query = graphql`
+ query($slug: String!) {
+   allWpPost(filter: { slug: { eq: $slug } }) {
+     edges {
+       next {
+         slug
+       }
+       previous {
+         slug
+       }
+       node {
+         tags {
+           nodes {
+             name 
+             slug
+           }
+         }
+         author {
+           node {
+             name
+             slug
+             description
+             avatar {
+               url
+             }
+           }
+         }
+       }
+     } 
+     nodes {
+       ...singlePostFields
+     }
+   }
+ }
+`
+export default function BlogPost({ data, pageContext, context}) {
   const post = data.allWpPost.nodes[0]
   const tags = data.allWpPost.edges[0].node.tags
   const author = data.allWpPost.edges[0].node.author
   const image = post?.featuredImage?.node?.localFile
+  const nextPostSlug = pageContext?.nextPostSlug
+  const previousPostSlug = pageContext.previousPostSlug
+  var PreviousPostLink = ''
+  var NextPostLink = ''
+  previousPostSlug?
+  PreviousPostLink = 
+    <Link to={"../../post/" + previousPostSlug}>
+      <PrimaryButton arrowLeft>
+        Previous post
+      </PrimaryButton>
+    </Link>  
+  : PreviousPostLink = ''
+  nextPostSlug? 
+  NextPostLink =
+    <Link to={"../../post/" + nextPostSlug}>
+      <PrimaryButton arrowRight>
+        Next post
+      </PrimaryButton>
+    </Link>
+  : NextPostLink = ''
   return (
     <Layout>
       <SEO title={post.title}/>
@@ -107,38 +163,17 @@ export default function BlogPost({ data }) {
             ))}
           </Box>
         </Box>
-
-        </Box>
+      </Box>
       <UserCard avatarSize={'lg'} user={author}/>
+        <Stack 
+          justify={{ base: "start", md: "center"}} 
+          marginY="8" 
+          direction={{ base: "column", md: "row" }} 
+          spacing={4}
+        >
+          {PreviousPostLink}
+          {NextPostLink}
+        </Stack>    
     </Layout>
   )
 }
-export const query = graphql`
-  query($slug: String!) {
-    allWpPost(filter: { slug: { eq: $slug } }) {
-      edges {
-        node {
-          tags {
-            nodes {
-              name 
-              slug
-            }
-          }
-          author {
-						node {
-              name
-              slug
-              description
-              avatar {
-								url
-              }
-            }
-          }
-        }
-      } 
-      nodes {
-        ...singlePostFields
-      }
-    }
-  }
-`

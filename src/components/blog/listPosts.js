@@ -15,6 +15,7 @@ import {
   Stack
 } from "@chakra-ui/react"
 
+
   // Show author info in the card only if not in user profile page
   const PostAuthorInfo = ({ postAuthor, postDate }) => (
     <Stack  direction={'row'} spacing={4} align={'center'}>
@@ -34,14 +35,10 @@ import {
   </Stack>
   )
 
-
 // Create Post Card Component
 const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postTags, postAuthor, key, salAnimationDuration }) => {
   return (
   <Box
-    data-sal="slide-up"
-    data-sal-delay={salAnimationDuration}
-    data-sal-duration={600}
     key={key} 
     maxW="md"
     bg={useColorModeValue('white', 'gray.700')}
