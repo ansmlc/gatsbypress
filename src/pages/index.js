@@ -77,14 +77,12 @@ const HomePage = () => {
     const HomeContent = () => (
       <Layout>
         <Box alignItems="center">
-        <Fade duration={500} triggerOnce>
           <Hero
             heroHeading={posts[0]?.node.title}
             heroText={posts[0]?.node.excerpt}
             heroSlug={posts[0]?.node.slug}
             heroImage={posts[0]?.node.featuredImage}
           />
-        </Fade>
         </Box>
         <SectionHeading
             heading={'Featured'}
