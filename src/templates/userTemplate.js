@@ -8,13 +8,21 @@ import PageTitle from "../components/layout/pageTitle.js"
 import { Avatar, Stack, Text } from "@chakra-ui/react"
 
 export default function UserPage({ data, pageContext }) {
-  const user = data?.allWpPost?.edges[0]?.node.author.node
+  const user = data?.allWpPost?.edges[0]?.node?.author?.node
   const posts = data?.allWpPost?.edges
   const avatar = user?.avatar?.url
+  var theName = ''
+  user?.name? 
+  theName = user?.name 
+  :
+  user?.lastName && user?.firstName?
+  theName = user?.firstName + " " + user?.lastName
+  :
+  theName = 'No username.'
   return (
     <Layout>
       <Crumb data={user}/>
-      <PageTitle  title={user.name}></PageTitle>
+      <PageTitle  title={theName}></PageTitle>
       <Stack marginY="6" direction={'row'} spacing={4} align={'start'}>
         <Avatar 
           size="xl"
@@ -22,7 +30,7 @@ export default function UserPage({ data, pageContext }) {
           alt={'Author'}
         />
         <Stack maxW={{ base: "full", md: "50%"}} direction={'column'} spacing={0} fontSize={'normal'}>
-          <Text color={'gray.700'}>{user.description} </Text>
+          <Text color={'gray.700'}>{user?.description} </Text>
         </Stack>
       </Stack>
       <Text 
@@ -32,7 +40,7 @@ export default function UserPage({ data, pageContext }) {
         marginTop="6"
         marginBottom="4"
       >
-        {"Latest posts by " + user.name + ":"}
+        {"Latest posts by " + theName + ":"}
       </Text>
       <ListPosts context={`blog`} posts={posts}/>
       <Pager pageContext={pageContext} />
@@ -50,6 +58,8 @@ export const query = graphql`
           ...postFields
           author {
             node {
+              firstName
+              lastName
               nodeType
               name
               slug
