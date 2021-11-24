@@ -80,10 +80,11 @@ const TagTemplate = ({ data, pageContext }) => {
         </Box>
         <Spacer />
         <Box>
-          <SelectBlogCategory 
+        <SelectBlogCategory 
             tags={tagItems} 
-            categories={categoryItems}>
-          </SelectBlogCategory>
+            categories={categoryItems}
+            context={'tag'}
+          />
         </Box>
       </Flex>
       <ListPosts context={`blog`} posts={posts}/>

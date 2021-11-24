@@ -4,14 +4,14 @@ import { HiMenuAlt1 } from "@react-icons/all-files/hi/HiMenuAlt1"
 import { HiX } from "@react-icons/all-files/hi/HiX"
 
 
-const MenuToggle = ({ toggle, isOpen }) => {
+const NavbarToggle = ({ onToggle, isOpen }) => {
   return (
   <Box display={{ base: "block", md: "none" }}>
     <IconButton
       isRound
       colorScheme={'gray'}
       aria-label="Navigation Toggle"
-      onClick={toggle}
+      onClick={onToggle}
       boxShadow={isOpen? "md" : "sm"}
       fontSize="xl"
       transform="scaleX(-1)"
@@ -20,4 +20,4 @@ const MenuToggle = ({ toggle, isOpen }) => {
   </Box>
   )
 }
-export default MenuToggle
+export default NavbarToggle

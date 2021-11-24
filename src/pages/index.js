@@ -2,7 +2,8 @@ import * as React from "react"
 import {
   useStaticQuery,
   graphql,
-  Link } from 'gatsby'
+  Link 
+} from 'gatsby'
 import { Center } from "@chakra-ui/layout"
 import { Box } from "@chakra-ui/layout"
 import Layout from "../components/layout/layout"
@@ -16,6 +17,8 @@ import {
   Alert,
   AlertIcon,
 } from "@chakra-ui/react"
+import { Fade } from 'react-awesome-reveal'
+
 
 const HomePage = () => {
   const data = useStaticQuery(graphql`
@@ -81,34 +84,40 @@ const HomePage = () => {
             heroImage={posts[0]?.node.featuredImage}
           />
         </Box>
-            <SectionHeading
-                heading={'Featured'}
-                subheading={'The following are posts in "featured" category'}
-            />
-            <Features
-              featured={featured}
-            />
-          <SectionHeading
-            heading={'Latest posts'}
-            subheading={'The following are latest blog posts'}
-          />
-          <ListPosts 
-            context={`blog`} 
-            posts={posts}     
-          />
-          <Center marginY="16" w="100%">
-            <Link to="/blog">
+        <SectionHeading
+            heading={'Featured'}
+            subheading={'Latest featured posts'}
+            mb={'6'}
+            mt={'12'}
+        />
+        <Features
+          featured={featured}
+        />
+        <SectionHeading
+          heading={'Latest posts'}
+          subheading={'Latest posts from our blog'}
+          mb={'6'}
+          mt={'2'}
+        />
+        <ListPosts 
+          context={`blog`} 
+          posts={posts}     
+        />
+        <Center marginY="16">
+          <Link to="/blog">
             <PrimaryButton arrowRight>
               Read our Blog
             </PrimaryButton>
-            </Link>
-          </Center>
+          </Link>
+        </Center>
+        <Fade delay={200} duration={500} triggerOnce>
           <Cta/>
+        </Fade>
       </Layout>
     )
     if (posts) {
       return (
-        <HomeContent/>
+          <HomeContent/>
         )
     }
     else {

@@ -84,7 +84,11 @@ const BlogPage  = ({ pageContext, data }) => {
         </Box>
         <Spacer />
         <Box>
-          <SelectBlogCategory tags={tagItems} categories={categoryItems}></SelectBlogCategory>
+          <SelectBlogCategory
+            tags={tagItems} 
+            categories={categoryItems}
+            context={'blog'}
+          />
         </Box>
       </Flex>
       <ListPosts context={`blog`} posts={posts}/>

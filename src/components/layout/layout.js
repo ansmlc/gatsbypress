@@ -1,13 +1,13 @@
 import * as React from "react"
- import {
-   Box, 
-   Container 
- } from "@chakra-ui/react"
- import PropTypes from "prop-types"
- import Nav from "../header/nav"
- import Footer from "../footer/footer"
- import { useStaticQuery, graphql } from "gatsby"
- 
+import {
+  Box, 
+  Container 
+} from "@chakra-ui/react"
+import PropTypes from "prop-types"
+import Nav from "../header/nav"
+import Footer from "../footer/footer"
+import { useStaticQuery, graphql } from "gatsby"
+
   const Layout = ({ children }) => {
    const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -64,12 +64,18 @@ import * as React from "react"
  `)
    return (
      <>
-     <Nav data={data} />
-       <Container maxW="container.lg">
-         <Box as="main">{children}</Box>
-       </Container>
-     <Footer data={data}/>
-     </>
+    {
+    //<Nav data={data} />
+    //  <AnimatedMenu/>
+    }
+      <Nav data={data}/>
+      <Container maxW="container.lg">
+          <Box as="main">
+              {children}
+          </Box>
+      </Container>
+      <Footer data={data}/>
+    </>
    )
  }
  

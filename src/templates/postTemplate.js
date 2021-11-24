@@ -12,6 +12,7 @@ import UserCard from "../components/user/userCard"
 import SEO from "../components/marketing/seo"
 import "@wordpress/block-library/build-style/style.css"
 import "../.././node_modules/wysiwyg.css/wysiwyg.css"
+import { Fade } from "react-awesome-reveal"
 
 import {
   Avatar,
@@ -22,12 +23,68 @@ import {
   AspectRatio,
   Stack,
  } from "@chakra-ui/react"
+import PrimaryButton from "../components/buttons/primaryButton"
 
-export default function BlogPost({ data }) {
+ export const query = graphql`
+ query($slug: String!) {
+   allWpPost(filter: { slug: { eq: $slug } }) {
+     edges {
+       next {
+         slug
+       }
+       previous {
+         slug
+       }
+       node {
+         tags {
+           nodes {
+             name 
+             slug
+           }
+         }
+         author {
+           node {
+             name
+             slug
+             description
+             avatar {
+               url
+             }
+           }
+         }
+       }
+     } 
+     nodes {
+       ...singlePostFields
+     }
+   }
+ }
+`
+export default function BlogPost({ data, pageContext, context}) {
   const post = data.allWpPost.nodes[0]
   const tags = data.allWpPost.edges[0].node.tags
   const author = data.allWpPost.edges[0].node.author
   const image = post?.featuredImage?.node?.localFile
+  const nextPostSlug = pageContext?.nextPostSlug
+  const previousPostSlug = pageContext.previousPostSlug
+  var PreviousPostLink = ''
+  var NextPostLink = ''
+  previousPostSlug?
+  PreviousPostLink = 
+    <Link to={"../../post/" + previousPostSlug}>
+      <PrimaryButton arrowLeft>
+        Previous post
+      </PrimaryButton>
+    </Link>  
+  : PreviousPostLink = ''
+  nextPostSlug? 
+  NextPostLink =
+    <Link to={"../../post/" + nextPostSlug}>
+      <PrimaryButton arrowRight>
+        Next post
+      </PrimaryButton>
+    </Link>
+  : NextPostLink = ''
   return (
     <Layout>
       <SEO title={post.title}/>
@@ -50,12 +107,14 @@ export default function BlogPost({ data }) {
           <Avatar
             src={author.node.avatar.url}
             alt={'Author'}
-            size={'sm'} 
+            size={'sm'}  
           />
           <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-            <Text fontWeight={600} color={useColorModeValue('gray.800', 'gray.100')}>
-                {author.node.name}
-            </Text>
+            <Link to={"../../author/" + author.node.slug.replace(/\s+/g, "-").toLowerCase()}>
+              <Text fontWeight={600} color={useColorModeValue('gray.800', 'gray.100')}>
+                  {author.node.name}
+              </Text>
+            </Link>
             <Text color={'gray.500'}><time>{post.date}</time></Text>
           </Stack>
         </Stack>
@@ -91,7 +150,7 @@ export default function BlogPost({ data }) {
           className="wysiwyg"
           color="gray.800"
           fontSize="normal"
-          padding={{ base: 4, md: 12 }}
+          padding={{ base: 6, md: 12 }}
           paddingY={{ base: 6 }}
         >
           <div dangerouslySetInnerHTML={{ __html: post.content }} />
@@ -105,38 +164,17 @@ export default function BlogPost({ data }) {
             ))}
           </Box>
         </Box>
-
-        </Box>
-      <UserCard user={author}/>
+      </Box>
+      <UserCard avatarSize={'lg'} user={author}/>
+        <Stack 
+          justify={{ base: "start", md: "center"}} 
+          marginY="8" 
+          direction={{ base: "column", md: "row" }} 
+          spacing={4}
+        >
+          {PreviousPostLink}
+          {NextPostLink}
+        </Stack>    
     </Layout>
   )
 }
-export const query = graphql`
-  query($slug: String!) {
-    allWpPost(filter: { slug: { eq: $slug } }) {
-      edges {
-        node {
-          tags {
-            nodes {
-              name 
-              slug
-            }
-          }
-          author {
-						node {
-              name
-              uri
-              description
-              avatar {
-								url
-              }
-            }
-          }
-        }
-      } 
-      nodes {
-        ...singlePostFields
-      }
-    }
-  }
-`

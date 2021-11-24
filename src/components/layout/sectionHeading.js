@@ -2,16 +2,17 @@ import * as React from "react"
 import PropTypes from "prop-types"
 import { Box, Text } from "@chakra-ui/react"
 import { useColorModeValue } from "@chakra-ui/color-mode"
+import { Heading } from "@chakra-ui/layout"
 
-const SectionHeading = ({ heading, subheading }) => (
-  <Box marginY={14} textAlign="center">
-    <Text as="h3"
+const SectionHeading = ({ heading, subheading, mt, mb }) => (
+  <Box mt={mt} mb={mb} textAlign="center">
+    <Heading as="h3"
       fontWeight={700}
       lineHeight={1.3}
       fontSize={{ base: '1.4rem', md: '1.4rem' }}
       >
         {heading}
-    </Text>
+    </Heading>
     <Text as="p"
       textAlign="center"
       color={useColorModeValue('gray.600', 'gray.300')}

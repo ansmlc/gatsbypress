@@ -6,31 +6,35 @@ import {
   Container,
   useColorModeValue,
   useColorMode,
-  Button
+  Button,
 } from "@chakra-ui/react"
 import MenuItems from "./menuItems";
-import MenuToggle from "./menuToggle";
+import NavbarToggle from "./navbarToggle";
 import Logo from "./logo"
 import ColorModeToggle from "./colorModeToggle";
+import { Collapse } from "@chakra-ui/react"
+import { useDisclosure } from "@chakra-ui/react"
 
 
 const Nav = function ({ data })  {
   const items = data?.allWpMenu?.nodes[0]?.menuItems?.nodes
   const title = data?.wp?.allSettings?.generalSettingsTitle
   const logoMediaItem = data?.allFile?.edges[0]?.node
-  const [isOpen, setIsOpen] = React.useState(false)
-  const toggle = () => setIsOpen(!isOpen)
+  const [ifIsOpen, setIsOpen] = React.useState(false)
+  const toggle = () => setIsOpen(!ifIsOpen)
   const { colorMode, toggleColorMode } = useColorMode()
   const isOpenColorMode = useColorModeValue('white', 'gray.700')
   const isClosedColorMode = useColorModeValue('gray.50', 'gray.800')
+  const { isOpen, onToggle } = useDisclosure()
+
     return (
       <Box 
-        bg={{base: isOpen? isOpenColorMode : isClosedColorMode, md: isClosedColorMode}}
+        bg={{base: ifIsOpen? isOpenColorMode : isClosedColorMode, md: isClosedColorMode}}
         borderBottomLeftRadius={{ base: '2xl', md: '0'}}
         borderBottomRightRadius={{ base: '2xl', md: '0'}}
         // bg={useColorModeValue('gray.50', 'gray.700')}
         color={useColorModeValue('gray.700', 'gray.200')}
-        boxShadow={{base: isOpen? "lg" : "none", md: "none"}}
+        boxShadow={{base: ifIsOpen? "lg" : "none", md: "none"}}
         as="header" 
         d="flex" 
         left="0" 
@@ -57,15 +61,21 @@ const Nav = function ({ data })  {
               <Box mr="4" display={{ base: 'inline-block', md: 'none'}}>
                 <ColorModeToggle />   
               </Box>  
-              <Box display={{ base: 'inline-block', md: 'initial'}}>    
-                <MenuToggle toggle={toggle} isOpen={isOpen} /> 
+              <Box display={{ base: 'inline-block', md: 'initial'}}>
+                <NavbarToggle onToggle={onToggle} isOpen={isOpen}/>   
+                { // <MenuToggle toggle={toggle} isOpen={isOpen} /> 
+                }
               </Box> 
             </Box>
-              <MenuItems items={items} isOpen={isOpen}></MenuItems>
-              <Box ml="6" display={{ base: 'none', md: 'initial'}}>
+                <Collapse in={isOpen} animateOpacity unmountOnExit>
+                  <MenuItems items={items} isOpen={isOpen}></MenuItems>
+                </Collapse>
+                <Box display={{ base: 'none', md: 'initial'}}>
+                  <MenuItems items={items} isOpen={isOpen}></MenuItems>
+                </Box>
+                <Box ml="6" display={{ base: 'none', md: 'initial'}}>
                 <ColorModeToggle/>
-              </Box>
-            
+              </Box>  
           </Flex>
         </Container>
       </Box>

@@ -8,55 +8,22 @@ import {
 import { LightMode } from '@chakra-ui/color-mode';
 
 const PrimaryButton = ({ children, arrowLeft, arrowRight }) => {
-    let theButton = ""
-    arrowRight?
-    theButton = 
-    <LightMode>
-        <Button 
-            minW="200px"
-            rounded={'full'}
-            shadow="md"
-            size={'lg'}
-            fontWeight={'bold'}
-            px={6}
-            colorScheme={'brand'}
-            rightIcon={<BiRightArrowAlt />}
-        >
-            {children}
-        </Button>
-    </LightMode>
-    :
-    arrowLeft?
-    theButton =
-    <LightMode>
-        <Button 
-            rounded={'full'}
-            shadow="md"
-            size={'lg'}
-            fontWeight={'bold'}
-            px={6}
-            colorScheme={'brand'}
-            leftIcon={<BiLeftArrowAlt />}
-        >
-            {children}
-        </Button>
-    </LightMode>
-    :
-    theButton =
-    <LightMode>
-        <Button 
-            rounded={'full'}
-            shadow="md"
-            size={'lg'}
-            fontWeight={'bold'}
-            px={6}
-            colorScheme={'brand'}
-        >
-           {children}
-        </Button>   
-    </LightMode> 
 return (
-        theButton
+    <LightMode>
+        <Button 
+            minW={{ base: "100%", md: "200px"}}
+            rounded={'full'}
+            shadow="md"
+            size={'lg'}
+            fontWeight={'bold'}
+            px={6}
+            colorScheme={'brand'}
+            rightIcon={arrowRight ? <BiRightArrowAlt /> : ''}
+            leftIcon={arrowLeft ? <BiLeftArrowAlt /> : ''}
+        >
+            {children}
+        </Button>
+    </LightMode>
 )
 }
 

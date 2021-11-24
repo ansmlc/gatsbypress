@@ -28,7 +28,7 @@ module.exports = {
          // https://limomet.a2hosted.com/websby/graphql
          // http://127.0.0.1/wpgatsby/graphql
 
-         url: `https://limomet.a2hosted.com/websby/graphql`,
+         url: `https://lifeofawinner.com/graphql`,
       },
    },
     `gatsby-plugin-react-helmet`,
@@ -47,7 +47,7 @@ module.exports = {
         defaults: {
           formats: [`auto`, `webp`],
           placeholder: `dominantColor`,
-          quality: 65,
+          quality: 82,
           breakpoints: [750, 1080, 1366, 1920],
           backgroundColor: `transparent`,
           tracedSVGOptions: {},

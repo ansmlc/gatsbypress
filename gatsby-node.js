@@ -36,6 +36,18 @@ exports.createPages = async ({ graphql, actions }) => {
         slug
         id
       }
+      edges {
+        node {
+          slug
+          id
+        }
+        next {
+          slug
+        }
+        previous {
+          slug
+        }
+      }
     }
     allWpPage {
       nodes {
@@ -70,14 +82,16 @@ queryResult.data.allWpUser.nodes.forEach(user => {
 
 // * POST 
 // Create a page view for each blog post
-queryResult.data.allWpPost.nodes.forEach(node => {
+queryResult.data.allWpPost.edges.forEach(edge => {
   createPage({
-    path: `post/${node.slug}`,
+    path: `post/${edge.node.slug}`,
     component: require.resolve(`./src/templates/postTemplate.js`),
     context: {
       // This is the $slug variable
       // passed to blog-post.js
-      slug: node.slug,
+      slug: edge.node.slug,
+      nextPostSlug: edge?.next?.slug,
+      previousPostSlug: edge?.previous?.slug
     },
   })
 })

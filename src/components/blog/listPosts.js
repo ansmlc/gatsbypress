@@ -2,54 +2,42 @@ import * as React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
+import { useColorModeValue } from "@chakra-ui/color-mode"
+import { Alert, AlertIcon } from "@chakra-ui/alert"
 import { 
   Box, 
   Text, 
-  Spacer, 
   Image, 
   Badge, 
   Avatar,
-  Flex
+  SimpleGrid,
+  AspectRatio,
+  Stack
 } from "@chakra-ui/react"
-import { SimpleGrid } from "@chakra-ui/react"
-import { AspectRatio } from "@chakra-ui/react"
-import { useColorModeValue } from "@chakra-ui/color-mode"
-
+import { Fade } from "react-awesome-reveal"
+  // Show author info in the card only if not in user profile page
+  const PostAuthorInfo = ({ postAuthor, postDate }) => (
+    <Stack  direction={'row'} spacing={4} align={'center'}>
+    <Avatar
+      src={postAuthor.avatar.url}
+      alt={'Author'}
+      size={'sm'}  
+    />
+    <Stack direction={'column'} spacing={0} fontSize={'sm'}>
+      <Link to={"../../author/" + postAuthor.slug.replace(/\s+/g, "-").toLowerCase()}>
+        <Text fontWeight={600} color={useColorModeValue('gray.800', 'gray.100')}>
+            {postAuthor.name}
+        </Text>
+      </Link>
+      <Text color={'gray.500'}><time>{postDate}</time></Text>
+    </Stack>
+  </Stack>
+  )
 
 // Create Post Card Component
 const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postTags, postAuthor, key, salAnimationDuration }) => {
-  // Show author info in the card only if not in user profile page
-  let postAuthorStack = ""
-  if (postAuthor) {
-    postAuthorStack = 
-    <Flex>
-      <Box>
-        <Avatar
-          src={postAuthor.avatar.url}
-          alt={'Author'}
-          size={'sm'} 
-          alignSelf={'center'}
-        />
-      </Box>
-      <Box>
-        <Flex  marginLeft={'4'} direction={'column'}>
-          <Box>
-            <Link fontWeight={600} to={"../../author/" + postAuthor.slug.replace(/\s+/g, "-").toLowerCase()}>
-              {postAuthor.name}
-            </Link>
-          </Box>
-          <Box>
-            <Text as="time" fontSize="sm" color={'gray.600'}>{postDate}</Text>
-          </Box>
-        </Flex>
-      </Box>
-    </Flex>
-  }
   return (
   <Box
-    data-sal="slide-up"
-    data-sal-delay={salAnimationDuration}
-    data-sal-duration={600}
     key={key} 
     maxW="md"
     bg={useColorModeValue('white', 'gray.700')}
@@ -77,56 +65,68 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
     </Link>}
     </AspectRatio>
     <Box p="6">
-      <Box noOfLines={2}
-        as="h2"
-        mb="3"
-        fontWeight="semibold"
-        lineHeight="1.2"
-        fontSize="xl"
-        fontWeight="bold"
-      >
-        <Link
-          to={"../../post/" + postSlug.replace(/\s+/g, "-").toLowerCase()}>
-
-          {postTitle}
-        </Link>
-      </Box>
-      {
-        // List TAGS
+    {
         // Limit number of tags and lines
         // Truncate text in case of large tags
       }
-      <Text noOfLines={1} isTruncated>
+      <Text             
+        marginBottom="4"
+        noOfLines={1} 
+        isTruncated
+      >
         {postTags?.slice(0, 3).map(tag => (
           <Text
             as={Link}
+            lineHeight="1"
             display="inline"
-            marginRight="0.5rem"
+            marginRight="2"
             to={"../../tag/" + tag.name.replace(/\s+/g, "-").toLowerCase()}
           >
             <Badge
               colorScheme="secondary"
+              rounded="md"
+              py="1"
+              px="2"
             >
               {"# " + tag.name}
             </Badge>
           </Text>
         ))}
-      </Text>
-      <Text
-        my="4"
+      </Text> 
+      <Box noOfLines={2}
+        as="h2"
+        mt="5"
+        mb="4"
+        fontWeight="semibold"
+        lineHeight="1.2"
+        fontSize="2xl"
+        fontWeight="bold"
+      >              
+      <Link
+          to={"../../post/" + postSlug.replace(/\s+/g, "-").toLowerCase()}>
+
+          {postTitle}
+        </Link>
+      </Box>
+      <Box
+        as="p"
+        mb="5"
         noOfLines={[3]}
         color="brand.500"
         fontSize="normal"
       >
         <div dangerouslySetInnerHTML={{ __html: postExcerpt }} />
-      </Text>
-      {postAuthorStack}
-      <Spacer />
+      </Box>
+      <Box>
+      <PostAuthorInfo 
+        postAuthor={postAuthor} 
+        postDate={postDate} 
+      />
+      </Box>
     </Box>
   </Box>
   )
 }
-
 const  ListPosts = ({ posts, context }) => {
   const allBlogPosts = posts
   // Get data and return post cards
@@ -149,7 +149,8 @@ const  ListPosts = ({ posts, context }) => {
   }
   else if (context === 'blog') {
     return (
-      <SimpleGrid minChildWidth="236px" spacing="20px">
+      <SimpleGrid minChildWidth="236px" spacing="6">
+        <Fade damping={0.3} duration={500} cascade triggerOnce>
         {allBlogPosts.map((post, i) => (
           <PostCard 
             // salAnimationDuration={i*90}
@@ -163,14 +164,19 @@ const  ListPosts = ({ posts, context }) => {
             postAuthor={post.node.author.node}
           />
         ))}
+        </Fade>
       </SimpleGrid>
     )
   }
   else {
-    return "nothing to see here"
+    return (
+        <Alert my="4" borderRadius="xl" boxShadow="xl" status="warning">
+          <AlertIcon />
+          Nothing found. Please add some posts to your WordPress site.
+        </Alert>
+      )
   }
 }
-
 
 ListPosts.propTypes = {
   posts: PropTypes.array,
