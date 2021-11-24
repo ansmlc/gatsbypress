@@ -7,7 +7,6 @@ import PropTypes from "prop-types"
 import Nav from "../header/nav"
 import Footer from "../footer/footer"
 import { useStaticQuery, graphql } from "gatsby"
-import { Fade } from "react-awesome-reveal"
 
   const Layout = ({ children }) => {
    const data = useStaticQuery(graphql`
@@ -72,9 +71,7 @@ import { Fade } from "react-awesome-reveal"
       <Nav data={data}/>
       <Container maxW="container.lg">
           <Box as="main">
-            <Fade duration={200} triggerOnce>
               {children}
-            </Fade>
           </Box>
       </Container>
       <Footer data={data}/>
