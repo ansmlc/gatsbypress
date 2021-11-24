@@ -12,6 +12,7 @@ import UserCard from "../components/user/userCard"
 import SEO from "../components/marketing/seo"
 import "@wordpress/block-library/build-style/style.css"
 import "../.././node_modules/wysiwyg.css/wysiwyg.css"
+import { Fade } from "react-awesome-reveal"
 
 import {
   Avatar,

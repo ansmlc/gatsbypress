@@ -17,6 +17,8 @@ import {
   Alert,
   AlertIcon,
 } from "@chakra-ui/react"
+import { Fade } from 'react-awesome-reveal'
+
 
 const HomePage = () => {
   const data = useStaticQuery(graphql`
@@ -75,40 +77,44 @@ const HomePage = () => {
     const HomeContent = () => (
       <Layout>
         <Box alignItems="center">
+        <Fade duration={500} triggerOnce>
           <Hero
             heroHeading={posts[0]?.node.title}
             heroText={posts[0]?.node.excerpt}
             heroSlug={posts[0]?.node.slug}
             heroImage={posts[0]?.node.featuredImage}
           />
+        </Fade>
         </Box>
-            <SectionHeading
-                heading={'Featured'}
-                subheading={'Latest featured posts'}
-                mb={'6'}
-                mt={'12'}
-            />
-            <Features
-              featured={featured}
-            />
-            <SectionHeading
-              heading={'Latest posts'}
-              subheading={'Latest posts from our blog'}
-              mb={'6'}
-              mt={'2'}
-            />
-          <ListPosts 
-            context={`blog`} 
-            posts={posts}     
-          />
-          <Center marginY="16">
-            <Link to="/blog">
-              <PrimaryButton arrowRight>
-                Read our Blog
-              </PrimaryButton>
-            </Link>
-          </Center>
+        <SectionHeading
+            heading={'Featured'}
+            subheading={'Latest featured posts'}
+            mb={'6'}
+            mt={'12'}
+        />
+        <Features
+          featured={featured}
+        />
+        <SectionHeading
+          heading={'Latest posts'}
+          subheading={'Latest posts from our blog'}
+          mb={'6'}
+          mt={'2'}
+        />
+        <ListPosts 
+          context={`blog`} 
+          posts={posts}     
+        />
+        <Center marginY="16">
+          <Link to="/blog">
+            <PrimaryButton arrowRight>
+              Read our Blog
+            </PrimaryButton>
+          </Link>
+        </Center>
+        <Fade delay={200} duration={500} triggerOnce>
           <Cta/>
+        </Fade>
       </Layout>
     )
     if (posts) {
