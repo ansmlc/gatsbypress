@@ -68,7 +68,7 @@ module.exports = {
           background_color: `#f7f0eb`,
           // This will impact how browsers show your PWA/website
           // https://css-tricks.com/meta-theme-color-and-trickery/
-          // theme_color: `#f56565`,
+          theme_color: `#f56565`,
           display: `standalone`,
           icon: `src/images/gatsbypress-icon.png`
         },
