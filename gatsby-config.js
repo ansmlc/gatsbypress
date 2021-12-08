@@ -28,7 +28,7 @@ module.exports = {
          // https://limomet.a2hosted.com/websby/graphql
          // http://127.0.0.1/wpgatsby/graphql
 
-         url: `https://lifeofawinner.com/graphql`,
+         url: `https://limomet.a2hosted.com/websby/graphql`,
       },
    },
     `gatsby-plugin-react-helmet`,
@@ -68,7 +68,7 @@ module.exports = {
           background_color: `#f7f0eb`,
           // This will impact how browsers show your PWA/website
           // https://css-tricks.com/meta-theme-color-and-trickery/
-          // theme_color: `#663399`,
+          // theme_color: `#f56565`,
           display: `standalone`,
           icon: `src/images/gatsbypress-icon.png`
         },
