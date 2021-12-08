@@ -89,36 +89,39 @@ export default function BlogPost({ data, pageContext, context}) {
     <Layout>
       <SEO title={post.title}/>
       <Crumb data={post}/>
-      <Box 
-        data-sal="slide-up"
-        data-sal-duration={800}>
-        <Box> 
-          <Text
-            as="h1"
-            fontWeight="bold"
-            fontSize="4xl"
-            lineHeight="1.1"
-            color={useColorModeValue('gray.800', 'gray.50')}
-          >
-            {post.title}
-          </Text>
+        <Box 
+          data-sal="slide-up"
+          data-sal-duration={800}
+        >
+          <Fade damping={0.5} duration={500} cascade triggerOnce>
+            <Box> 
+                <Text
+                  as="h1"
+                  fontWeight="bold"
+                  fontSize="4xl"
+                  lineHeight="1.1"
+                  color={useColorModeValue('gray.800', 'gray.50')}
+                >
+                  {post.title}
+                </Text>
+            </Box>
+            <Stack my={6} direction={'row'} spacing={4} align={'center'}>
+              <Avatar
+                src={author.node.avatar.url}
+                alt={'Author'}
+                size={'sm'}  
+              />
+              <Stack direction={'column'} spacing={0} fontSize={'sm'}>
+                <Link to={"../../author/" + author.node.slug.replace(/\s+/g, "-").toLowerCase()}>
+                  <Text fontWeight={600} color={useColorModeValue('gray.800', 'gray.100')}>
+                      {author.node.name}
+                  </Text>
+                </Link>
+                <Text color={'gray.500'}><time>{post.date}</time></Text>
+              </Stack>
+            </Stack>
+          </Fade>
         </Box>
-        <Stack my={6} direction={'row'} spacing={4} align={'center'}>
-          <Avatar
-            src={author.node.avatar.url}
-            alt={'Author'}
-            size={'sm'}  
-          />
-          <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-            <Link to={"../../author/" + author.node.slug.replace(/\s+/g, "-").toLowerCase()}>
-              <Text fontWeight={600} color={useColorModeValue('gray.800', 'gray.100')}>
-                  {author.node.name}
-              </Text>
-            </Link>
-            <Text color={'gray.500'}><time>{post.date}</time></Text>
-          </Stack>
-        </Stack>
-      </Box>
       <Box 
         as="article"
         bg={useColorModeValue('white', 'gray.700')}

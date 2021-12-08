@@ -15,6 +15,7 @@ import {
   Text,
   useColorModeValue
 } from "@chakra-ui/react"
+import { Fade } from "react-awesome-reveal"
 
 export default function PagePost({ data }) {
   const page = data.allWpPage.nodes[0]
@@ -24,16 +25,18 @@ export default function PagePost({ data }) {
     <Layout>
       <SEO title={page.title}/>
       <Crumb data={page}/>
-      <Text
-          as="h1"
-          fontWeight="bold"
-          fontSize="3xl"
-          marginTop="4"
-          marginBottom="6"
-          lineHeight="1.1"
-        >
-          {page.title}
-      </Text>
+      <Fade duration={500} triggerOnce>
+        <Text
+            as="h1"
+            fontWeight="bold"
+            fontSize="3xl"
+            marginTop="4"
+            marginBottom="6"
+            lineHeight="1.1"
+          >
+            {page.title}
+        </Text>
+      </Fade>
         <Box 
           as="article"
           bg={useColorModeValue('white', 'gray.700')}
