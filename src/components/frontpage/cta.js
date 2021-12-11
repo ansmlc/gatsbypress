@@ -47,7 +47,7 @@ export default function Cta() {
         <Box>
         <Link    
           alt="contact"         
-          to={"./contact"} 
+          to={"/contact"} 
           key="contact"
         >
           <PrimaryButton arrowRight>
