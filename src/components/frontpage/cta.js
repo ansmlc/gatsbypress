@@ -3,8 +3,8 @@ import {
   Box,
   Flex,
   useColorModeValue,
-  Link,
 } from "@chakra-ui/react";
+import { Link } from "gatsby"
 import PrimaryButton from "../buttons/primaryButton";
 
 export default function Cta() {
@@ -45,9 +45,11 @@ export default function Cta() {
           </Box>
         </Box>
         <Box>
-        <Link             
-          to="/contact" 
-          key="contact">
+        <Link    
+          alt="contact"         
+          to={"./contact"} 
+          key="contact"
+        >
           <PrimaryButton arrowRight>
               Contact us
           </PrimaryButton>

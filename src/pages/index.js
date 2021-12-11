@@ -13,16 +13,21 @@ import SectionHeading from "../components/layout/sectionHeading"
 import Features from '../components/frontpage/features'
 import Cta from "../components/frontpage/cta"
 import PrimaryButton from "../components/buttons/primaryButton"
+import SEO from "../components/marketing/seo"
 import {
   Alert,
   AlertIcon,
 } from "@chakra-ui/react"
 import { Fade } from 'react-awesome-reveal'
-
-
+ 
 const HomePage = () => {
   const data = useStaticQuery(graphql`
   query HomePageQuery {
+    wp {
+      allSettings {
+        generalSettingsTitle
+      }
+    }
     post: allWpPost(
         sort: { fields: [date], order: ASC }
         limit: 6
@@ -72,66 +77,67 @@ const HomePage = () => {
   }
 }
 `)
-    const posts = data?.post?.edges  
-    const featured = data?.featured?.nodes
-    const HomeContent = () => (
-      <Layout>
-        <Box alignItems="center">
-          <Hero
-            heroHeading={posts[0]?.node.title}
-            heroText={posts[0]?.node.excerpt}
-            heroSlug={posts[0]?.node.slug}
-            heroImage={posts[0]?.node.featuredImage}
-          />
-        </Box>
-        <SectionHeading
-            heading={'Featured'}
-            subheading={'Latest featured posts'}
-            mb={'6'}
-            mt={'12'}
-        />
-        <Features
-          featured={featured}
-        />
-        <SectionHeading
-          heading={'Latest posts'}
-          subheading={'Latest posts from our blog'}
-          mb={'6'}
-          mt={'2'}
-        />
-        <ListPosts 
-          context={`blog`} 
-          posts={posts}     
-        />
-        <Center marginY="16">
-          <Link to="/blog">
-            <PrimaryButton arrowRight>
-              Read our Blog
-            </PrimaryButton>
-          </Link>
-        </Center>
-        <Fade delay={200} duration={500} triggerOnce>
-          <Cta/>
-        </Fade>
-      </Layout>
-    )
-    if (posts) {
-      return (
-          <HomeContent/>
-        )
-    }
-    else {
-      return (
-      <Layout>
-        <Alert my="4" borderRadius="xl" boxShadow="xl" status="warning">
-          <AlertIcon />
+  const posts = data?.post?.edges  
+  const featured = data?.featured?.nodes
+  const siteTitle = data?.wp?.allSettings?.generalSettingsTitle
+  const HomeContent = () => (
+  <Layout>
+  <SEO title={siteTitle}/>
+    <Box alignItems="center">
+      <Hero
+        heroHeading={posts[0]?.node.title}
+        heroText={posts[0]?.node.excerpt}
+        heroSlug={posts[0]?.node.slug}
+        heroImage={posts[0]?.node.featuredImage}
+      />
+    </Box>
+    <SectionHeading
+        heading={'Featured'}
+        subheading={'Latest featured posts'}
+        mb={'6'}
+        mt={'12'}
+    />
+    <Features
+      featured={featured}
+    />
+    <SectionHeading
+      heading={'Latest posts'}
+      subheading={'Latest posts from our blog'}
+      mb={'6'}
+      mt={'2'}
+    />
+    <ListPosts 
+      context={`blog`} 
+      posts={posts}     
+    />
+    <Center marginY="16">
+      <Link to="/blog">
+        <PrimaryButton arrowRight>
+          Read our Blog
+        </PrimaryButton>
+      </Link>
+    </Center>
+    <Fade delay={200} duration={500} triggerOnce>
+      <Cta/>
+    </Fade>
+  </Layout>
+  )
+  if (posts) {
+    return (
+        <HomeContent/>
+      )
+  }
+  else {
+    return (
+    <Layout>
+      <Alert my="4" borderRadius="xl" boxShadow="xl" status="warning">
+        <AlertIcon />
           Nothing found.
           Please add some posts to your WordPress site.
-        </Alert>
-      </Layout>
-      )
-    }
-
+      </Alert>
+    </Layout>
+    )
+  }
 }
  
 export default HomePage

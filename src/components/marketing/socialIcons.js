@@ -42,7 +42,7 @@ const SocialIcons = ({ }) => {
   const twitter = data?.allSite?.nodes[0]?.siteMetadata?.twitterUrl
 
   facebook ? facebookIcon = 
-    <a href={facebook} target="_blank" rel="noopener noreferrer">
+    <a href={facebook} aria-label="Facebook" target="_blank" rel="noopener noreferrer">
       <Circle 
         size="34px" 
         bg="gray.100" 
@@ -54,7 +54,7 @@ const SocialIcons = ({ }) => {
     </a>
   : facebookIcon = null
   instagram ? instagramIcon =
-    <a href={instagram} target="_blank" rel="noopener noreferrer">
+    <a href={instagram} aria-label="Instagram" target="_blank" rel="noopener noreferrer">
       <Circle 
         size="34px" 
         bg="gray.100" 
@@ -66,7 +66,7 @@ const SocialIcons = ({ }) => {
     </a>
   : instagramIcon = null
   linkedin ? linkedinIcon =
-    <a href={linkedin} target="_blank" rel="noopener noreferrer">
+    <a href={linkedin} aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
       <Circle 
         size="34px" 
         bg="gray.100" 
@@ -78,7 +78,7 @@ const SocialIcons = ({ }) => {
     </a>
   : linkedinIcon = null
   youtube ? youtubeIcon =
-    <a href={youtube} target="_blank" rel="noopener noreferrer">
+    <a href={youtube} aria-label="Youtube" target="_blank" rel="noopener noreferrer">
       <Circle 
         size="34px" 
         bg="gray.100" 
@@ -90,7 +90,7 @@ const SocialIcons = ({ }) => {
     </a>
   : youtubeIcon = null
   twitter ? twitterIcon =
-    <a href={twitter} target="_blank" rel="noopener noreferrer">
+    <a href={twitter} aria-label="Twitter" target="_blank" rel="noopener noreferrer">
       <Circle 
         size="34px" 
         bg="gray.100" 

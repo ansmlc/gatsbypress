@@ -6,7 +6,7 @@ import { Heading } from "@chakra-ui/layout"
 
 const SectionHeading = ({ heading, subheading, mt, mb }) => (
   <Box mt={mt} mb={mb} textAlign="center">
-    <Heading as="h3"
+    <Heading as="span"
       fontWeight={700}
       lineHeight={1.3}
       fontSize={{ base: '1.4rem', md: '1.4rem' }}
@@ -15,7 +15,7 @@ const SectionHeading = ({ heading, subheading, mt, mb }) => (
     </Heading>
     <Text as="p"
       textAlign="center"
-      color={useColorModeValue('gray.600', 'gray.300')}
+      color={useColorModeValue('gray.700', 'gray.200')}
       fontWeight={400}
       lineHeight={1.3}
       mt="0.3rem"

@@ -9,17 +9,18 @@ import { useColorMode } from "@chakra-ui/color-mode"
 const Logo = ({siteTitle, siteLogo}) => {
   const { colorMode } = useColorMode();
   let theLogo = ""
-
+  // Local SVG logo
   if ( GatsbypressLogo ) {
     theLogo = 
     <Link to="/" title={siteTitle}>
-      <GatsbypressLogo colorMode={colorMode} w={'160px'} h={'auto'}y/>
+      <GatsbypressLogo colorMode={colorMode} w={'160px'} h={'100%'}y/>
     </Link>
   } 
+  // SVG from WP
   else if (!siteLogo?.childImageSharp && siteLogo?.extension === 'svg') {
     theLogo = 
     <Link to="/" title={siteTitle}>
-      <GatsbypressLogo colorMode={colorMode} w={'160px'} h={'auto'}y/>
+      <GatsbypressLogo colorMode={colorMode} w={'160px'} h={'100%'}y/>
       <Image
         as={GatsbyImage}
         src={siteLogo?.publicURL}
@@ -29,6 +30,7 @@ const Logo = ({siteTitle, siteLogo}) => {
       />  
     </Link>
   } 
+  // PNG or JPG logo from WP
   else if (siteLogo?.childImageSharp && siteLogo?.extension === 'png' || siteLogo?.extension === 'jpg') {
     theLogo = 
     <Link to="/" title={siteTitle}>
@@ -42,6 +44,7 @@ const Logo = ({siteTitle, siteLogo}) => {
       />
     </Link>
   }
+  // Site Title Text
   else if (siteTitle) {
     theLogo =
     <Text fontSize="md" fontWeight="bold" color="gray.700">
@@ -49,7 +52,9 @@ const Logo = ({siteTitle, siteLogo}) => {
           {"Hellooo" + siteTitle}
       </Link>
     </Text>
-  } else {
+  } 
+  // Fallback
+  else {
     theLogo =
     <Text fontSize="md" fontWeight="bold" color="gray.700">
       <Link to={"/"}>
@@ -57,7 +62,6 @@ const Logo = ({siteTitle, siteLogo}) => {
       </Link>
    </Text> 
   }
-
   return (
     <Box>
       {theLogo}

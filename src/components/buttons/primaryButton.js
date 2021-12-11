@@ -18,6 +18,7 @@ return (
             fontWeight={'bold'}
             px={6}
             colorScheme={'brand'}
+            backgroundColor={'#D93C3C'}
             rightIcon={arrowRight ? <BiRightArrowAlt /> : ''}
             leftIcon={arrowLeft ? <BiLeftArrowAlt /> : ''}
         >

@@ -32,7 +32,7 @@ import { Fade } from "react-awesome-reveal"
             {postAuthor.name}
         </Text>
       </Link>
-      <Text color={'gray.500'}><time>{postDate}</time></Text>
+      <Text color={'gray.700'}><time>{postDate}</time></Text>
     </Stack>
   </Stack>
   )

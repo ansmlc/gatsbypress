@@ -58,7 +58,7 @@ const Hero = ({ heroHeading, heroText, heroSlug, heroImage }) => {
         <Spacer/>
           <Link to={"../../post/" + heroSlug?.replace(/\s+/g, "-").toLowerCase()}>
             <PrimaryButton arrowRight>
-              Read more
+              Read Post
             </PrimaryButton>
           </Link>
       </Flex>

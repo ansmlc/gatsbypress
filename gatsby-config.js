@@ -70,7 +70,12 @@ module.exports = {
           // https://css-tricks.com/meta-theme-color-and-trickery/
           theme_color: `#f56565`,
           display: `standalone`,
-          icon: `src/images/gatsbypress-icon.png`
+          icon: `src/images/gatsbypress-icon.png`,
+          icon_options: {
+            // For all the options available,
+            // please see the section "Additional Resources" below.
+            purpose: `any maskable`,
+          },
         },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
