@@ -9,8 +9,7 @@ import {
   Image,
   useColorModeValue,
   Badge,
-  Icon,
-  AspectRatio
+  Icon
 } from '@chakra-ui/react';
 import PrimaryButton from "../buttons/primaryButton"
 import { HiStar } from "@react-icons/all-files/hi/HiStar"
@@ -18,15 +17,13 @@ import {
   Alert,
   AlertIcon,
 } from "@chakra-ui/react"
-import { useInView } from "react-intersection-observer"
 
 const Hero = ({ heroHeading, heroText, heroSlug, heroImage }) => {
-  const [inView] = useInView()
+  const heroTextShort = heroText.substring(0, 200)
   const HeroCard = () => (
     <Flex flexDir="row" flexWrap={{base: "wrap", md: "nowrap"}}
       overflow="hidden" boxShadow="2xl" maxW="full" rounded="2xl" bg={useColorModeValue('white', 'gray.700')}
-      opacity={inView? 1 : 0}
-      transition="opacity 700ms"> 
+    > 
       <Flex 
         // order={{ base: 2, md: 1 }} 
         flexDirection="column" 
@@ -55,8 +52,6 @@ const Hero = ({ heroHeading, heroText, heroSlug, heroImage }) => {
         <Text as="p"
           mb="7" 
           color={'gray.600'}
-          lineHeight="normal"
-          noOfLines={4}         
         >
           <div dangerouslySetInnerHTML={{ __html: heroText }}/>
         </Text>

@@ -7,7 +7,7 @@ from "@chakra-ui/react"
 import { useColorModeValue } from "@chakra-ui/color-mode"
 
 
-const ArchiveTitle = ({ title, count}) => {
+const ArchiveTitle = ({ title, count }) => {
     return (
         <Box 
           w="100%" 

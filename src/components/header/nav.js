@@ -6,7 +6,6 @@ import {
   Container,
   useColorModeValue,
   useColorMode,
-  Button,
 } from "@chakra-ui/react"
 import MenuItems from "./menuItems";
 import NavbarToggle from "./navbarToggle";
@@ -21,8 +20,6 @@ const Nav = function ({ data })  {
   const title = data?.wp?.allSettings?.generalSettingsTitle
   const logoMediaItem = data?.allFile?.edges[0]?.node
   const [ifIsOpen, setIsOpen] = React.useState(false)
-  const toggle = () => setIsOpen(!ifIsOpen)
-  const { colorMode, toggleColorMode } = useColorMode()
   const isOpenColorMode = useColorModeValue('white', 'gray.700')
   const isClosedColorMode = useColorModeValue('gray.50', 'gray.800')
   const { isOpen, onToggle } = useDisclosure()

@@ -1,4 +1,4 @@
-import React from "react"
+import * as React from "react"
 import { 
   Link, 
   graphql } from "gatsby"
@@ -10,6 +10,7 @@ import Layout from "../components/layout/layout"
 import Crumb from "../components/layout/breadcrumbs.js"
 import UserCard from "../components/user/userCard"
 import SEO from "../components/marketing/seo"
+import NextAndPreviousPost from "../components/blog/nextAndPreviousPost"
 import "@wordpress/block-library/build-style/style.css"
 import "../.././node_modules/wysiwyg.css/wysiwyg.css"
 import { Fade } from "react-awesome-reveal"
@@ -23,7 +24,6 @@ import {
   AspectRatio,
   Stack,
  } from "@chakra-ui/react"
-import PrimaryButton from "../components/buttons/primaryButton"
 
  export const query = graphql`
  query($slug: String!) {
@@ -60,31 +60,13 @@ import PrimaryButton from "../components/buttons/primaryButton"
    }
  }
 `
-export default function BlogPost({ data, pageContext, context}) {
+export default function BlogPost({ data, pageContext }) {
   const post = data.allWpPost.nodes[0]
   const tags = data.allWpPost.edges[0].node.tags
   const author = data.allWpPost.edges[0].node.author
   const image = post?.featuredImage?.node?.localFile
+  const previousPostSlug = pageContext?.previousPostSlug
   const nextPostSlug = pageContext?.nextPostSlug
-  const previousPostSlug = pageContext.previousPostSlug
-  var PreviousPostLink = ''
-  var NextPostLink = ''
-  previousPostSlug?
-  PreviousPostLink = 
-    <Link to={"../../post/" + previousPostSlug}>
-      <PrimaryButton arrowLeft>
-        Previous post
-      </PrimaryButton>
-    </Link>  
-  : PreviousPostLink = ''
-  nextPostSlug? 
-  NextPostLink =
-    <Link to={"../../post/" + nextPostSlug}>
-      <PrimaryButton arrowRight>
-        Next post
-      </PrimaryButton>
-    </Link>
-  : NextPostLink = ''
   return (
     <Layout>
       <SEO title={post.title}/>
@@ -110,6 +92,8 @@ export default function BlogPost({ data, pageContext, context}) {
                 src={author.node.avatar.url}
                 alt={'Author'}
                 size={'sm'}  
+                width={'6'}
+                height={'6'}
               />
               <Stack direction={'column'} spacing={0} fontSize={'sm'}>
                 <Link to={"../../author/" + author.node.slug.replace(/\s+/g, "-").toLowerCase()}>
@@ -169,15 +153,10 @@ export default function BlogPost({ data, pageContext, context}) {
         </Box>
       </Box>
       <UserCard avatarSize={'lg'} user={author}/>
-        <Stack 
-          justify={{ base: "start", md: "center"}} 
-          marginY="8" 
-          direction={{ base: "column", md: "row" }} 
-          spacing={4}
-        >
-          {PreviousPostLink}
-          {NextPostLink}
-        </Stack>    
+      <NextAndPreviousPost
+        previousPostSlug={previousPostSlug}
+        nextPostSlug={nextPostSlug}
+      />
     </Layout>
   )
 }

@@ -65,7 +65,7 @@ module.exports = {
           name: `gatsbypress`,
           short_name: `gatsbypress`,
           start_url: `/`,
-          background_color: `#f7f0eb`,
+          background_color: `#F4F5F6`,
           // This will impact how browsers show your PWA/website
           // https://css-tricks.com/meta-theme-color-and-trickery/
           theme_color: `#f56565`,

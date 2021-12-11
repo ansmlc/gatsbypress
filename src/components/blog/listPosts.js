@@ -18,10 +18,13 @@ import { Fade } from "react-awesome-reveal"
   // Show author info in the card only if not in user profile page
   const PostAuthorInfo = ({ postAuthor, postDate }) => (
     <Stack  direction={'row'} spacing={4} align={'center'}>
-    <Avatar
+    <Image
+      borderRadius='full'
+      boxSize='30px'
+      htmlHeight='30px'
+      htmlWidth='30px'
       src={postAuthor.avatar.url}
       alt={'Author'}
-      size={'sm'}  
     />
     <Stack direction={'column'} spacing={0} fontSize={'sm'}>
       <Link to={"../../author/" + postAuthor.slug.replace(/\s+/g, "-").toLowerCase()}>
