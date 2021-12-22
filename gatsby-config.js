@@ -1,3 +1,7 @@
+const { NODE_ENV } = process.env
+require("dotenv").config({
+  path: `.env.${NODE_ENV}`,
+})
 module.exports = {
   siteMetadata: {
     title: `gatsbypress`, 
@@ -12,6 +16,13 @@ module.exports = {
     twitterUrl: `https://twitter.com`,
   },
   plugins: [
+    {
+      resolve: "gatsby-plugin-mailchimp",
+      options: {
+        endpoint: 'https://racunarstvo.us20.list-manage.com/subscribe/post?u=4754c309a8f1f5ec52db9ea43&amp;id=adbb10ee9a',
+        timeout: 3500,
+      },
+    },
     // `gatsby-plugin-scroll-reveal`,
     {
     resolve: "@chakra-ui/gatsby-plugin",

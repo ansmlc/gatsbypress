@@ -86,6 +86,12 @@ const theme = extendTheme({
           textDecoration: "underline"
         },
       },
+      ".mailchimpMessage": {
+        a: {
+          textDecoration: "underline",
+          color: "secondary.600"
+        }
+      }
     }),
   },
 

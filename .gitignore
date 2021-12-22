@@ -68,3 +68,4 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 src/components/hero2.js
+src/components/marketing/newsletter.js

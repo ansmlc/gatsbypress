@@ -11,9 +11,9 @@ import ListPosts from "../components/blog/listPosts.js"
 import Hero from '../components/frontpage/hero'
 import SectionHeading from "../components/layout/sectionHeading"
 import Features from '../components/frontpage/features'
-import Cta from "../components/frontpage/cta"
 import PrimaryButton from "../components/buttons/primaryButton"
 import SEO from "../components/marketing/seo"
+import MailChimpForm from "../components/marketing/newsletter"
 import {
   Alert,
   AlertIcon,
@@ -118,7 +118,7 @@ const HomePage = () => {
       </Link>
     </Center>
     <Fade delay={200} duration={500} triggerOnce>
-      <Cta/>
+      <MailChimpForm/>
     </Fade>
   </Layout>
   )
