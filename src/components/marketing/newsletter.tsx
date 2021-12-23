@@ -20,15 +20,34 @@ export default function MailChimpForm() {
   const [state, setState] = useState<'initial' | 'submitting' | 'success'>('initial');
   const [error, setError] = useState(false);
   const [message, setMessage] = useState('')
+
+  const _handleSubmit = (e:FormEvent) => {
+    e.preventDefault();
+    setError(false);
+    setState('submitting');
+    addToMailchimp(email).then((data) => {
+      setTimeout(() => {
+        if (data.result == "error")  {
+          setError(true);
+          setState('initial');
+          setMessage(data.msg)
+          return;
+        }
+        setState(data.result);
+        setMessage(data.msg)
+      }, 1000);
+    })
+  }
+
   return (
     <Flex
       align={'center'}
       justify={'center'}
-      bg={useColorModeValue('gray.50', 'gray.800')}>
+    >
       <Container
         maxW={'lg'}
-        bg={useColorModeValue('white', 'whiteAlpha.100')}
-        boxShadow={'xl'}
+        bg={useColorModeValue('white', 'gray.700')}
+        boxShadow={'2xl'}
         rounded={'2xl'}
         p={8}
         direction={'column'}>
@@ -43,23 +62,7 @@ export default function MailChimpForm() {
           direction={{ base: 'column', md: 'row' }}
           as={'form'}
           spacing={'12px'}
-          onSubmit={ (e: FormEvent) => {
-            e.preventDefault();
-            setError(false);
-            setState('submitting');
-            addToMailchimp(email).then((data) => {
-              setTimeout(() => {
-                if (data.result == "error")  {
-                  setError(true);
-                  setState('initial');
-                  setMessage(data.msg)
-                  return;
-                }
-                setState(data.result);
-                setMessage(data.msg)
-              }, 1000);
-            })
-          }}>
+          onSubmit={_handleSubmit}>
           <FormControl>
             <Input
               size={'lg'}
@@ -70,7 +73,7 @@ export default function MailChimpForm() {
                 color: 'gray.400',
               }}
               borderColor={useColorModeValue('gray.300', 'gray.700')}
-              backgroundColor={useColorModeValue('gray.100', 'gray.800')}
+              backgroundColor={useColorModeValue('gray.50', 'gray.800')}
               color={useColorModeValue('gray.800', 'white')}
               id={'email'}
               type={'email'}
