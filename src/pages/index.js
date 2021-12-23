@@ -8,7 +8,7 @@ import { Center } from "@chakra-ui/layout"
 import { Box } from "@chakra-ui/layout"
 import Layout from "../components/layout/layout"
 import ListPosts from "../components/blog/listPosts.js"
-import Hero from '../components/frontpage/hero'
+import GatsbyPressIntro from "../components/frontpage/intro"
 import SectionHeading from "../components/layout/sectionHeading"
 import Features from '../components/frontpage/features'
 import PrimaryButton from "../components/buttons/primaryButton"
@@ -83,14 +83,7 @@ const HomePage = () => {
   const HomeContent = () => (
   <Layout>
   <SEO title={siteTitle}/>
-    <Box alignItems="center">
-      <Hero
-        heroHeading={posts[0]?.node.title}
-        heroText={posts[0]?.node.excerpt}
-        heroSlug={posts[0]?.node.slug}
-        heroImage={posts[0]?.node.featuredImage}
-      />
-    </Box>
+  <GatsbyPressIntro/>
     <SectionHeading
         heading={'Featured'}
         subheading={'Latest featured posts'}

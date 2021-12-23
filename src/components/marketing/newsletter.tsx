@@ -45,7 +45,7 @@ export default function MailChimpForm() {
       justify={'center'}
     >
       <Container
-        maxW={'lg'}
+        minWidth={{ base: '100%', md: '80%' }}
         bg={useColorModeValue('white', 'gray.700')}
         boxShadow={'2xl'}
         rounded={'2xl'}
@@ -61,7 +61,7 @@ export default function MailChimpForm() {
         <Stack
           direction={{ base: 'column', md: 'row' }}
           as={'form'}
-          spacing={'12px'}
+          spacing={{ base: '6', md: '10' }}
           onSubmit={_handleSubmit}>
           <FormControl>
             <Input

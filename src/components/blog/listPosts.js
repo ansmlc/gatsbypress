@@ -27,11 +27,9 @@ import { Fade } from "react-awesome-reveal"
       alt={'Author'}
     />
     <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-      <Link to={"../../author/" + postAuthor.slug.replace(/\s+/g, "-").toLowerCase()}>
         <Text fontWeight={600} color={useColorModeValue('gray.800', 'gray.100')}>
             {postAuthor.name}
         </Text>
-      </Link>
       <Text color={'gray.700'}><time>{postDate}</time></Text>
     </Stack>
   </Stack>
@@ -116,7 +114,7 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
         mb="5"
         noOfLines={[3]}
         color="brand.500"
-        fontSize="normal"
+        fontSize="small"
       >
         <div dangerouslySetInnerHTML={{ __html: postExcerpt }} />
       </Box>
