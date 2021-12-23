@@ -5,7 +5,6 @@ import {
   Link 
 } from 'gatsby'
 import { Center } from "@chakra-ui/layout"
-import { Box } from "@chakra-ui/layout"
 import Layout from "../components/layout/layout"
 import ListPosts from "../components/blog/listPosts.js"
 import GatsbyPressIntro from "../components/frontpage/intro"
@@ -90,6 +89,7 @@ const HomePage = () => {
         mb={'6'}
         mt={'12'}
     />
+    <span id="features"/>
     <Features
       featured={featured}
     />

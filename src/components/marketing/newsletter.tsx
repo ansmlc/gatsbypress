@@ -43,9 +43,10 @@ export default function MailChimpForm() {
     <Flex
       align={'center'}
       justify={'center'}
+      id="newsletter"
     >
       <Container
-        minWidth={{ base: '100%', md: '80%' }}
+        minWidth={{ base: '100%', md: '70%' }}
         bg={useColorModeValue('white', 'gray.700')}
         boxShadow={'2xl'}
         rounded={'2xl'}
@@ -55,7 +56,7 @@ export default function MailChimpForm() {
           as={'h2'}
           fontSize={{ base: 'xl', sm: '2xl' }}
           textAlign={'center'}
-          mb={5}>
+          mb={6}>
           Subscribe to our Newsletter
         </Heading>
         <Stack
@@ -87,7 +88,7 @@ export default function MailChimpForm() {
               }
             />
           </FormControl>
-          <FormControl w={{ base: '100%', md: '40%' }}>
+          <FormControl w={{ base: '100%', md: '50%' }}>
             <LightMode>
             <Button
               rounded={'full'}

@@ -23,7 +23,12 @@ module.exports = {
         timeout: 3500,
       },
     },
-    // `gatsby-plugin-scroll-reveal`,
+    {
+      resolve: "gatsby-plugin-anchor-links",
+      options: {
+        offset: -100
+      }
+    },
     {
     resolve: "@chakra-ui/gatsby-plugin",
       options: {

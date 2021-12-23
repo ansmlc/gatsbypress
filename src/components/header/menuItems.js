@@ -4,9 +4,12 @@ import {
 } from "gatsby"
 import { 
     Box,
-    Stack
+    Stack,
+    Button,
+    LightMode,
 } from "@chakra-ui/react"
 import SocialIcons from "../marketing/socialIcons"
+import { AnchorLink } from "gatsby-plugin-anchor-links"
 
 
 const MenuItems = ({ isOpen, items }) => {
@@ -40,6 +43,7 @@ return (
         p={[8, 8, 0, 0]}
         marginTop={{ base: "2", md: "0"}}
         textTransform="uppercase"
+        alignItems={{ base: 'start', md: 'center'}}
     >
         <Box min-width="150px">
             <Link
@@ -72,14 +76,23 @@ return (
             </Box>
         ))}
         <Box min-width="200px">
-            <Link 
-                activeStyle={{ fontWeight: "bold" }}    
-                partiallyActive={true} 
-                to="/contact" 
-                key="contactpage"
+            <AnchorLink 
+                to="/#newsletter" 
+                key="newsletter"
             >
-                Contact
-            </Link>
+                
+                <LightMode>
+                    <Button
+                        colorScheme={'brand'}
+                        variant={'outline'}
+                        rounded={'full'}
+                        borderWidth={'2px'}
+                        _hover={{ bg: "red.600", color: "white" }}
+                    >
+                        Subscribe
+                    </Button>
+                </LightMode>
+            </AnchorLink>
         </Box>
         <Box paddingTop="6" display={{ base: "flex", md: "none" }}>
             <SocialIcons />
