@@ -15,8 +15,6 @@ import { BiMouse } from "@react-icons/all-files/bi/BiMouse"
 import { BiChevronDown } from "@react-icons/all-files/bi/BiChevronDown"
 import { AnchorLink } from "gatsby-plugin-anchor-links"
 
-
-
 export default function GatsbyPressIntro() {
   return (
       <Container maxW={'3xl'}>
@@ -28,7 +26,7 @@ export default function GatsbyPressIntro() {
         <Fade duration={200} triggerOnce>
           <Heading
             fontWeight={'bold'}
-            fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
+            fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
             lineHeight={'1'}
             >
             Your favourite CMS <br />
