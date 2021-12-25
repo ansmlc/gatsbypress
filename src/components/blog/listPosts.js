@@ -17,7 +17,7 @@ import {
 import { Fade } from "react-awesome-reveal"
   // Show author info in the card only if not in user profile page
   const PostAuthorInfo = ({ postAuthor, postDate }) => (
-    <Stack  direction={'row'} spacing={4} align={'center'}>
+    <Stack  direction={'row'} spacing={2} align={'center'}>
     <Image
       borderRadius='full'
       boxSize='30px'
@@ -26,11 +26,11 @@ import { Fade } from "react-awesome-reveal"
       src={postAuthor.avatar.url}
       alt={'Author'}
     />
-    <Stack direction={'column'} spacing={0} fontSize={'sm'}>
+    <Stack direction={'column'} spacing={-1} fontSize={'sm'}>
         <Text fontWeight={600} color={useColorModeValue('gray.800', 'gray.100')}>
             {postAuthor.name}
         </Text>
-      <Text color={'gray.700'}><time>{postDate}</time></Text>
+      <Text color={useColorModeValue('gray.700', 'gray.300')}><time>{postDate}</time></Text>
     </Stack>
   </Stack>
   )
@@ -113,7 +113,7 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
         as="p"
         mb="5"
         noOfLines={[3]}
-        color="brand.500"
+        color={useColorModeValue('gray.700', 'gray.300')}
         fontSize="small"
       >
         <div dangerouslySetInnerHTML={{ __html: postExcerpt }} />

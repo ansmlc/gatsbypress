@@ -22,25 +22,26 @@ export default function GatsbyPressIntro() {
           as={Box}
           textAlign={'center'}
           spacing={{ base: 8, md: 10 }}
-          py={{ base: 20, md: 24 }}>
-        <Fade duration={200} triggerOnce>
-          <Heading
-            fontWeight={'bold'}
-            fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
-            lineHeight={'1'}
-            >
-            Your favourite CMS <br />
-            <Fade delay={200} triggerOnce>
-                <Text as={'span'} color={'brand.600'}>
-                meets JAMStack
-                </Text>
-            </Fade>
-          </Heading>
-        </Fade>
-        <Text color={useColorModeValue('gray.700', 'gray.300')}>
-            Use WordPress along with Gatsby, to manage your content via world's
-            post popular CMS, and deploy it on a blazing fast front-end.
-        </Text>
+          py={{ base: 20, md: 24 }}
+        >
+          <Fade duration={200} triggerOnce>
+            <Heading
+              fontWeight={'bold'}
+              fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
+              lineHeight={'1'}
+              >
+              Your favourite CMS <br />
+              <Fade delay={200} triggerOnce>
+                  <Text as={'span'} color={'brand.600'}>
+                  meets JAMStack
+                  </Text>
+              </Fade>
+            </Heading>
+          </Fade>
+          <Text color={useColorModeValue('gray.700', 'gray.300')}>
+              Use WordPress along with Gatsby, to manage your content via world's
+              post popular CMS, and deploy it on a blazing fast front-end.
+          </Text>
           <Stack
             direction={'column'}
             spacing={3}

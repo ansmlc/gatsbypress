@@ -12,8 +12,8 @@ import {
   Flex,
   LightMode,
 } from '@chakra-ui/react';
-import { BiCheck } from "@react-icons/all-files/bi/BiCheck"
 import addToMailchimp from "gatsby-plugin-mailchimp"
+import { BiCheck } from "@react-icons/all-files/bi/BiCheck"
 
 export default function MailChimpForm() {
   const [email, setEmail] = useState('');
@@ -50,7 +50,7 @@ export default function MailChimpForm() {
         bg={useColorModeValue('white', 'gray.700')}
         boxShadow={'2xl'}
         rounded={'2xl'}
-        p={8}
+        p={{ base: 4, sm: 8, md: 8}}
         direction={'column'}>
         <Heading
           as={'h2'}
@@ -62,7 +62,7 @@ export default function MailChimpForm() {
         <Stack
           direction={{ base: 'column', md: 'row' }}
           as={'form'}
-          spacing={{ base: '6', md: '10' }}
+          spacing={{ base: '4', md: '10' }}
           onSubmit={_handleSubmit}>
           <FormControl>
             <Input
