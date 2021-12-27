@@ -1,5 +1,4 @@
 import * as React from "react"
-
 import {
   Box,
   Container,
@@ -8,15 +7,11 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
-
-import { 
-  Link
-} from "gatsby"
-
+import { Link } from "gatsby"
 import Logo from "../header/logo"
 import SocialIcons from "../marketing/socialIcons";
 
-const ListHeader = ({ children }) => {
+const Heading = ({ children }) => {
   return (
     <Text color={useColorModeValue('gray.700', 'gray.100')} fontWeight={'500'} fontSize={'lg'} mb={2}>
       {children}
@@ -28,25 +23,19 @@ const Footer = function ({ data }) {
   const title = data?.wp?.allSettings?.generalSettingsTitle;
   const description = data?.wp?.allSettings?.generalSettingsDescription;
   const logoMediaItem = data?.allFile?.edges[0]?.node
-
-
   const prefixPage = '../../page';
   const prefixCat = '../..';
   const allMenuItems = data?.footer?.nodes[0];
-  console.log(allMenuItems, 'footer menu');
   let catMenuItems = [];
   let pageMenuItems = [];
-  {allMenuItems?.menuItems?.nodes?.map(item => (
-    item.url.includes('category')?
+  allMenuItems?.menuItems?.nodes?.map(item => (
+    item.url?.includes('category') || item.url?.includes('tag') ?
     false : pageMenuItems.push(item)
-  ))}
-  {data?.allWpCategory?.nodes?.map(item => (
-    item.uri.includes('featured')?
+  ))
+  data?.allWpCategory?.nodes?.map(item => (
+    item.uri?.includes('featured') || item.uri?.includes('uncategorized') ?
     false : catMenuItems.push(item)
-  ))}
-  console.log(pageMenuItems, 'page items')
-  console.log(catMenuItems, 'cat items')
-
+  ))
   return (
     <Box
       mt={10}
@@ -69,35 +58,33 @@ const Footer = function ({ data }) {
             </Text>
           </Stack>
           <Stack align={'flex-start'}>
-            <ListHeader>Menu</ListHeader>
+            <Heading>Menu</Heading>
             {pageMenuItems.map(pageItem => (
                 <Link 
                     activeStyle={{ fontWeight: "bold" }} 
                     partiallyActive={true}  
-                    to={prefixPage + pageItem.url.replace(/\s+/g, "-").toLowerCase()} 
+                    to={prefixPage + pageItem.url} 
                     key={pageItem.id}
-                    href={'#'}
                 >
                     {pageItem.label}
                 </Link>   
             ))}
           </Stack>
           <Stack align={'flex-start'}>
-            <ListHeader>Blog</ListHeader>
+            <Heading>Blog</Heading>
             {catMenuItems.map(catItem => (
                 <Link 
                     activeStyle={{ fontWeight: "bold" }} 
                     partiallyActive={true}  
-                    to={prefixCat + catItem.uri.replace(/\s+/g, "-").toLowerCase()} 
+                    to={prefixCat + catItem.uri} 
                     key={catItem.id}
-                    href={'#'}
                 >
-                    {catItem.name + "(" + catItem.count + ")"}
+                    {catItem.name}
                 </Link>   
             ))}
           </Stack>
           <Stack align={'flex-start'}>
-            <ListHeader>Social</ListHeader>
+            <Heading>Social</Heading>
             <SocialIcons/>
           </Stack>
         </SimpleGrid>
@@ -110,17 +97,13 @@ const Footer = function ({ data }) {
         zIndex="2"
         marginTop="2rem"
         boxShadow="xl"
-        centerContent
       >
         <Text mx="auto" my="1rem" align="center" fontSize="xs">
-          {new Date().getFullYear()}, Created by <a href="https://github.com/ansmlc/">@ansmlc</a>. Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>, <a href="https://chakra-ui.com">ChakraUI</a> 
-          <a href="https://www.wpgraphql.com/"> and decoupled WordPress with GraphQL API.</a> 
+          © {new Date().getFullYear()}. Built with {` `}
+          <a href="https://www.gatsbyjs.com">Gatsby</a> and <a href="https://www.wpgraphql.com/">WordPress.</a> 
         </Text>
       </Box>
     </Box>
-
   );
 }
 

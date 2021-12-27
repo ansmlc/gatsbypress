@@ -31,7 +31,7 @@
 - [ x ] custom button component for primary and secondary buttons
 - [ x ] fix breadcrumb vertical alignment
 - [ x ] set all images to use blurred image placeholder while loading
-- [   ] refactor selectBlogCategory modal
+- [   ] refactor blogMenuItems modal
 
 ### Frontpage
 - [ x ] hero.js: Switch order of columns on mobile

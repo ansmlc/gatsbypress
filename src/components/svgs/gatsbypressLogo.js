@@ -8,9 +8,9 @@ function GatsbypressLogo ({ colorMode, w, h }) {
                 <text 
                     transform="translate(34 19)" 
                     fill={colorMode === "light" ? "#55616D" : "#F4F5F6"}
-                    font-size="18" 
-                    font-family="SegoeUI-Bold, Segoe UI, sans-serif" 
-                    font-weight="700">
+                    fontSize="18" 
+                    fontFamily="SegoeUI-Bold, Segoe UI, sans-serif" 
+                    fontWeight="700">
                         <tspan x="0" y="0">gatsbypress</tspan>
                 </text>
                 <path 

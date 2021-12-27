@@ -16,6 +16,7 @@ import { useStaticQuery, graphql } from "gatsby"
           name
           count
           uri
+          id
         }
       }
       allFile(filter: {name: {eq: "gp-custom-logo"}}) {

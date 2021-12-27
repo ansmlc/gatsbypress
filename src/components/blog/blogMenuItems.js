@@ -13,7 +13,6 @@ import {
 } from "@chakra-ui/react"
 
 const BlogMenuItems = ({ tags, categories, context }) => {
-  let prefix = ''
   let catPrefix = ''
   let tagPrefix = ''
   if (context === 'blog') {
@@ -41,6 +40,7 @@ const BlogMenuItems = ({ tags, categories, context }) => {
       listAllCategories = catMenuItems.map(catItem => (
       <MenuItem
         borderRadius={'2xl'}
+        key={catItem.slug}
       >
         <Link  
           activeStyle={{ fontWeight: "bold" }} 
@@ -59,6 +59,7 @@ const BlogMenuItems = ({ tags, categories, context }) => {
     listAllTags = tagMenuItems.map(tagItem => (
       <MenuItem
         borderRadius={'2xl'}
+        key={tagItem.slug}
       >
         <Link  
           activeStyle={{ fontWeight: "semibold" }} 

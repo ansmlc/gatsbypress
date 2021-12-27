@@ -137,9 +137,5 @@ Crumb.propTypes = {
   pageContext: PropTypes.object,
   data: PropTypes.object
 }
-Crumb.defaultProps = {
-  pageContext:``,
-  data: ``,
-}
 
 export default Crumb

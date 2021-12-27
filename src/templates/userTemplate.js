@@ -72,7 +72,7 @@ export const query = graphql`
           tags {
             nodes {
               name
-              uri
+              slug
             }
           }
         }

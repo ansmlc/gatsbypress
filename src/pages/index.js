@@ -11,7 +11,7 @@ import GatsbyPressIntro from "../components/frontpage/intro"
 import SectionHeading from "../components/layout/sectionHeading"
 import Features from '../components/frontpage/features'
 import PrimaryButton from "../components/buttons/primaryButton"
-import SEO from "../components/marketing/seo"
+import Seo from "../components/marketing/seo"
 import MailChimpForm from "../components/marketing/newsletter"
 import {
   Alert,
@@ -45,6 +45,7 @@ const HomePage = () => {
             nodes {
               name
               uri
+              slug
             }
           }
           author {
@@ -81,7 +82,7 @@ const HomePage = () => {
   const siteTitle = data?.wp?.allSettings?.generalSettingsTitle
   const HomeContent = () => (
   <Layout>
-  <SEO title={siteTitle}/>
+  <Seo title={siteTitle}/>
   <GatsbyPressIntro/>
     <SectionHeading
         heading={'Featured'}

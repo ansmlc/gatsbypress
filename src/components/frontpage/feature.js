@@ -42,16 +42,16 @@ const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, ord
                     >
                         {featuredTitle}
                     </Text>
-                    <Text as="p"
+                    <Box
                         m="0 auto"
                         mb="7"
                         color={'gray.500'}
                         fontWeight={400}
                         lineHeight={1.3}
                         noOfLines={{base: 4, md: 2}}
-                        >
+                    >
                             <div dangerouslySetInnerHTML={{ __html: featuredDesc }}/>
-                    </Text>
+                    </Box>
                     <Spacer/>
                     <Link alt={featuredTitle} to={"../../post/" + featuredSlug.replace(/\s+/g, "-").toLowerCase()}>
                         <PrimaryButton arrowRight>
@@ -93,7 +93,7 @@ Feature.propTypes = {
     feaeturedSlug: PropTypes.string,
     featuredTitle: PropTypes.string,
     featuredDesc: PropTypes.string,
-    featuredImage: PropTypes.string,
+    featuredImage: PropTypes.object,
     orderBaseTxt: PropTypes.number,
     orderLgTxt: PropTypes.number,
     orderBaseImg: PropTypes.number,

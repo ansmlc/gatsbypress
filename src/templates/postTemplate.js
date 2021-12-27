@@ -9,7 +9,7 @@ import { useColorModeValue } from "@chakra-ui/color-mode"
 import Layout from "../components/layout/layout"
 import Crumb from "../components/layout/breadcrumbs.js"
 import UserCard from "../components/user/userCard"
-import SEO from "../components/marketing/seo"
+import Seo from "../components/marketing/seo"
 import NextAndPreviousPost from "../components/blog/nextAndPreviousPost"
 import "@wordpress/block-library/build-style/style.css"
 import "../.././node_modules/wysiwyg.css/wysiwyg.css"
@@ -69,7 +69,7 @@ export default function BlogPost({ data, pageContext }) {
   const nextPostSlug = pageContext?.nextPostSlug
   return (
     <Layout>
-      <SEO title={post.title}/>
+      <Seo title={post.title}/>
       <Crumb data={post}/>
         <Box 
           data-sal="slide-up"
@@ -139,14 +139,17 @@ export default function BlogPost({ data, pageContext }) {
           fontSize="normal"
           padding={{ base: 6, md: 12 }}
           paddingY={{ base: 6 }}
-        >
-          <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        ><div dangerouslySetInnerHTML={{ __html: post.content }}/>
           <Box mt="6">
             {tags?.nodes.map( tag => (
-            <Box display="inline" marginRight="3">
-                  <Link to={"../../tag/" + tag.slug.replace(/\s+/g, "-").toLowerCase()}>
-                    <Badge colorScheme="cyan">{"# " + tag.name}</Badge>
-                  </Link>
+            <Box 
+              display="inline" 
+              marginRight="3"
+              key={tag.slug}
+            >
+              <Link to={"../../tag/" + tag.slug.replace(/\s+/g, "-").toLowerCase()}>
+                <Badge colorScheme="cyan">{"# " + tag.name}</Badge>
+              </Link>
             </Box>
             ))}
           </Box>

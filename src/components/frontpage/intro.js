@@ -1,11 +1,9 @@
 import * as React from "react"
-import { Link } from "gatsby";
 import {
   Box,
   Heading,
   Container,
   Text,
-  Button,
   Stack,
   useColorModeValue,
   Icon

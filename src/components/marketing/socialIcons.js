@@ -12,8 +12,7 @@ import {
     Icon
 } from "@chakra-ui/react"
 
-
-const SocialIcons = ({ }) => {
+const SocialIcons = () => {
   const data = useStaticQuery(graphql`
     query SocialLinksQuery {
       allSite {
@@ -42,7 +41,7 @@ const SocialIcons = ({ }) => {
   const twitter = data?.allSite?.nodes[0]?.siteMetadata?.twitterUrl
 
   facebook ? facebookIcon = 
-    <a href={facebook} aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+    <a key="fb" href={facebook} aria-label="Facebook" target="_blank" rel="noopener noreferrer">
       <Circle 
         size="34px" 
         bg="gray.100" 
@@ -54,7 +53,7 @@ const SocialIcons = ({ }) => {
     </a>
   : facebookIcon = null
   instagram ? instagramIcon =
-    <a href={instagram} aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+    <a key="ig" href={instagram} aria-label="Instagram" target="_blank" rel="noopener noreferrer">
       <Circle 
         size="34px" 
         bg="gray.100" 
@@ -66,7 +65,7 @@ const SocialIcons = ({ }) => {
     </a>
   : instagramIcon = null
   linkedin ? linkedinIcon =
-    <a href={linkedin} aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+    <a key="li" href={linkedin} aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
       <Circle 
         size="34px" 
         bg="gray.100" 
@@ -78,7 +77,7 @@ const SocialIcons = ({ }) => {
     </a>
   : linkedinIcon = null
   youtube ? youtubeIcon =
-    <a href={youtube} aria-label="Youtube" target="_blank" rel="noopener noreferrer">
+    <a key="yt" href={youtube} aria-label="Youtube" target="_blank" rel="noopener noreferrer">
       <Circle 
         size="34px" 
         bg="gray.100" 
@@ -90,7 +89,7 @@ const SocialIcons = ({ }) => {
     </a>
   : youtubeIcon = null
   twitter ? twitterIcon =
-    <a href={twitter} aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+    <a key="tw" href={twitter} aria-label="Twitter" target="_blank" rel="noopener noreferrer">
       <Circle 
         size="34px" 
         bg="gray.100" 

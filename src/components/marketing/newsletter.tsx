@@ -7,7 +7,7 @@ import {
   Button,
   useColorModeValue,
   Heading,
-  Text,
+  Box,
   Container,
   Flex,
   LightMode,
@@ -57,7 +57,7 @@ export default function MailChimpForm() {
           fontSize={{ base: 'xl', sm: '2xl' }}
           textAlign={'center'}
           mb={6}>
-          Subscribe to our Newsletter
+          Prijavi se na naš bilten
         </Heading>
         <Stack
           direction={{ base: 'column', md: 'row' }}
@@ -74,7 +74,7 @@ export default function MailChimpForm() {
                 color: 'gray.400',
               }}
               borderColor={useColorModeValue('gray.300', 'gray.700')}
-              backgroundColor={useColorModeValue('gray.50', 'gray.800')}
+              backgroundColor={state == 'success' ? 'gray.50' : useColorModeValue('white', 'gray.800')}
               color={useColorModeValue('gray.800', 'white')}
               id={'email'}
               type={'email'}
@@ -99,24 +99,24 @@ export default function MailChimpForm() {
               size={'lg'}
               fontWeight={'bold'}
               type={state === 'success' ? 'button' : 'submit'}>
-              {state === 'success' ? <BiCheck /> : 'Subscribe'}
+              {state === 'success' ? <BiCheck /> : 'Prijava'}
             </Button>
             </LightMode>
           </FormControl>
         </Stack>
-        <Text
+        <Box
           mt={2}
           textAlign={'center'}
-          color={error && !message.includes("already") ? 'red.500' : useColorModeValue('gray.600', 'gray.400')}>
+          color={error && !message.includes("already") ? 'red.500' : useColorModeValue('gray.700', 'gray.400')}>
           {error
             ? <div className="mailchimpMessage" dangerouslySetInnerHTML={{__html: message}} />
             : state == 'success' && message.includes("confirm") 
-              ? "Almost finished... Please click the link in the email we just sent you."
+              ? "Molimo provjerite e-mail za potvrdu."
             : state == 'success' 
-              ? "All done! Thank you for subscribing."
-            : "You won't receive any spam! ✌️"
+              ? "Uspješno! Hvala vam za prijavu."
+            : "Nećete primati neželjenu poštu✌️"
           }
-        </Text>
+        </Box>
       </Container>
     </Flex>
   );

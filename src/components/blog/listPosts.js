@@ -9,7 +9,6 @@ import {
   Text, 
   Image, 
   Badge, 
-  Avatar,
   SimpleGrid,
   AspectRatio,
   Stack
@@ -18,25 +17,25 @@ import { Fade } from "react-awesome-reveal"
   // Show author info in the card only if not in user profile page
   const PostAuthorInfo = ({ postAuthor, postDate }) => (
     <Stack  direction={'row'} spacing={2} align={'center'}>
-    <Image
-      borderRadius='full'
-      boxSize='30px'
-      htmlHeight='30px'
-      htmlWidth='30px'
-      src={postAuthor.avatar.url}
-      alt={'Author'}
-    />
-    <Stack direction={'column'} spacing={-1} fontSize={'sm'}>
-        <Text fontWeight={600} color={useColorModeValue('gray.800', 'gray.100')}>
-            {postAuthor.name}
-        </Text>
-      <Text color={useColorModeValue('gray.700', 'gray.300')}><time>{postDate}</time></Text>
+      <Image
+        borderRadius='full'
+        boxSize='30px'
+        htmlHeight='30px'
+        htmlWidth='30px'
+        src={postAuthor.avatar.url}
+        alt={'Author'}
+      />
+      <Stack direction={'column'} spacing={0} fontSize={'small'}>
+          <Text fontWeight={600} color={useColorModeValue('gray.800', 'gray.100')}>
+              {postAuthor.name}
+          </Text>
+        <Text color={useColorModeValue('gray.700', 'gray.300')}><time>{postDate}</time></Text>
+      </Stack>
     </Stack>
-  </Stack>
   )
 
 // Create Post Card Component
-const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postTags, postAuthor, key, salAnimationDuration }) => {
+const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postTags, postAuthor, key }) => {
   return (
   <Box
     key={key} 
@@ -71,23 +70,25 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
         // Truncate text in case of large tags
       }
       <Text             
-        marginBottom="4"
         noOfLines={1} 
         isTruncated
       >
         {postTags?.slice(0, 3).map(tag => (
           <Text
+            key={tag.slug}
             as={Link}
-            lineHeight="1"
+            lineHeight="0.9"
             display="inline"
             marginRight="2"
             to={"../../tag/" + tag.name.replace(/\s+/g, "-").toLowerCase()}
           >
             <Badge
               colorScheme="secondary"
-              rounded="md"
+              rounded="full"
+              mt="0"
               py="1"
               px="2"
+              fontSize="0.75em"
             >
               {"# " + tag.name}
             </Badge>
@@ -96,27 +97,23 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
       </Text> 
       <Box noOfLines={2}
         as="h2"
-        mt="5"
-        mb="4"
-        fontWeight="semibold"
+        my="4"
         lineHeight="1.2"
-        fontSize="2xl"
+        fontSize="xl"
         fontWeight="bold"
       >              
       <Link
           to={"../../post/" + postSlug.replace(/\s+/g, "-").toLowerCase()}>
-
           {postTitle}
         </Link>
       </Box>
       <Box
-        as="p"
-        mb="5"
+        mb="4"
         noOfLines={[3]}
         color={useColorModeValue('gray.700', 'gray.300')}
         fontSize="small"
       >
-        <div dangerouslySetInnerHTML={{ __html: postExcerpt }} />
+        <p dangerouslySetInnerHTML={{ __html: postExcerpt }} />
       </Box>
       <Box>
       <PostAuthorInfo 
@@ -129,12 +126,11 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
   )
 }
 const  ListPosts = ({ posts, context }) => {
-  const allBlogPosts = posts
   // Get data and return post cards
   if (context === 'author') {
       return ( 
         <SimpleGrid minChildWidth="236px" spacing="20px">
-          {allBlogPosts.map((post) => (
+          {posts?.map((post) => (
             <PostCard 
               key={post.id}
               postSlug={post.slug}
@@ -152,7 +148,7 @@ const  ListPosts = ({ posts, context }) => {
     return (
       <SimpleGrid minChildWidth="236px" spacing="6">
         <Fade damping={0.3} duration={500} cascade triggerOnce>
-        {allBlogPosts.map((post, i) => (
+        {posts?.map((post, i) => (
           <PostCard 
             // salAnimationDuration={i*90}
             key={post.node.id}

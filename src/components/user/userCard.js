@@ -27,7 +27,7 @@ const UserCard = ({ user, avatarSize }) => {
 }
 
 UserCard.propTypes = {
-    user: PropTypes.array,
+    user: PropTypes.object,
   }
   
 UserCard.defaultProps = {

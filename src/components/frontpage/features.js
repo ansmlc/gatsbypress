@@ -11,6 +11,7 @@ const Features = ({ featured }) => {
         const featuredPosts = featured.map((featuredPost, index) =>
             index % 2 ?
                 <Feature 
+                    key={featuredPost.id}
                     featuredDesc={featuredPost.excerpt}
                     featuredImage={featuredPost.featuredImage?.node?.localFile?.childImageSharp.gatsbyImageData}
                     featuredTitle={featuredPost.title}
@@ -19,6 +20,7 @@ const Features = ({ featured }) => {
                 />
             : 
                 <Feature 
+                    key={featuredPost.id}
                     featuredDesc={featuredPost.excerpt}
                     featuredImage={featuredPost.featuredImage?.node?.localFile?.childImageSharp.gatsbyImageData}
                     featuredTitle={featuredPost.title}

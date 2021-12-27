@@ -1,11 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout/layout"
-import SEO from "../components/marketing/seo"
+import Seo from "../components/marketing/seo"
 import Pager from "../components/blog/pager.js"
 import ListPosts from "../components/blog/listPosts.js"
 import ArchiveTitle from "../components/blog/archiveTitle"
-import SelectBlogCategory from "../components/blog/selectBlogCategory.js"
+import BlogMenuItems from "../components/blog/blogMenuItems.js"
 import Crumb from "../components/layout/breadcrumbs.js"
 import { 
   Flex,  
@@ -38,7 +38,7 @@ query($slug: String!, $skip: Int!, $limit: Int!) {
         tags {
           nodes {
             name
-            uri
+            slug
           }
         }
         author {
@@ -72,7 +72,7 @@ const CategoryTemplate = ({ data, pageContext }) => {
   const tagItems = data?.tags?.nodes
   return (
     <Layout>
-      <SEO title={pageContext.category}/>
+      <Seo title={pageContext.category}/>
       <Crumb pageContext={pageContext} data={data}/>
       <Flex>
         <Box>
@@ -83,14 +83,14 @@ const CategoryTemplate = ({ data, pageContext }) => {
         </Box>
         <Spacer />
         <Box>
-          <SelectBlogCategory 
+          <BlogMenuItems 
             tags={tagItems} 
             categories={categoryItems}
             context={'category'}
           />
         </Box>
       </Flex>
-      <SEO title="Category" />
+      <Seo title="Category" />
       <ListPosts 
         context={`blog`} 
         posts={posts}

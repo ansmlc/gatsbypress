@@ -6,7 +6,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import GatsbypressLogo from "../svgs/gatsbypressLogo"
 import { useColorMode } from "@chakra-ui/color-mode"
 
-const Logo = ({siteTitle, siteLogo}) => {
+const Logo = ({ siteTitle, siteLogo }) => {
   const { colorMode } = useColorMode();
   let theLogo = ""
   // Local SVG logo
@@ -31,7 +31,7 @@ const Logo = ({siteTitle, siteLogo}) => {
     </Link>
   } 
   // PNG or JPG logo from WP
-  else if (siteLogo?.childImageSharp && siteLogo?.extension === 'png' || siteLogo?.extension === 'jpg') {
+  else if ((siteLogo?.childImageSharp && siteLogo?.extension === 'png') || siteLogo?.extension === 'jpg') {
     theLogo = 
     <Link to="/" title={siteTitle}>
       <Image

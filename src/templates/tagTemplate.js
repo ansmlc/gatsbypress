@@ -5,12 +5,12 @@ import {
   Flex,
   Spacer } from "@chakra-ui/react"
 import Layout from "../components/layout/layout"
-import SEO from "../components/marketing/seo"
+import Seo from "../components/marketing/seo"
 import Pager from "../components/blog/pager.js"
 import ListPosts from "../components/blog/listPosts.js"
 import ArchiveTitle from "../components/blog/archiveTitle"
 import Crumb from "../components/layout/breadcrumbs"
-import SelectBlogCategory from "../components/blog/selectBlogCategory.js"
+import BlogMenuItems from "../components/blog/blogMenuItems.js"
 
 export const query = graphql`
   query($slug: String!, $skip: Int!, $limit: Int!) {
@@ -32,7 +32,7 @@ export const query = graphql`
           ...postFields
           tags {
             nodes {
-              uri
+              slug
               name
             }
           }
@@ -69,7 +69,7 @@ const TagTemplate = ({ data, pageContext }) => {
   const tagItems = data?.tags?.nodes
   return (
     <Layout>
-      <SEO title={pageContext.tag}/>
+      <Seo title={pageContext.tag}/>
       <Crumb pageContext={pageContext} data={data}/>
       <Flex>
         <Box>
@@ -80,7 +80,7 @@ const TagTemplate = ({ data, pageContext }) => {
         </Box>
         <Spacer />
         <Box>
-        <SelectBlogCategory 
+        <BlogMenuItems 
             tags={tagItems} 
             categories={categoryItems}
             context={'tag'}

@@ -1,12 +1,12 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import PropTypes from 'prop-types'
 import Layout from "../components/layout/layout"
-import SEO from "../components/marketing/seo"
+import Seo from "../components/marketing/seo"
 import Pager from "../components/blog/pager.js"
 import ListPosts from "../components/blog/listPosts.js"
 import ArchiveTitle from "../components/blog/archiveTitle"
-import SelectBlogCategory from "../components/blog/selectBlogCategory.js"
+import BlogMenuItems from "../components/blog/blogMenuItems.js"
 import {
   Flex, 
   Box, 
@@ -41,7 +41,7 @@ query( $limit: Int!, $skip: Int!) {
         tags {
           nodes {
             name
-            uri
+            slug
           }
         }
         author {
@@ -76,7 +76,7 @@ const BlogPage  = ({ pageContext, data }) => {
     const tagItems = data?.tags?.nodes
     return (
     <Layout>
-      <SEO title="Blog" /> 
+      <Seo title="Blog" /> 
       <Crumb pageContext={pageContext}/>
       <Flex>
         <Box>
@@ -84,7 +84,7 @@ const BlogPage  = ({ pageContext, data }) => {
         </Box>
         <Spacer />
         <Box>
-          <SelectBlogCategory
+          <BlogMenuItems
             tags={tagItems} 
             categories={categoryItems}
             context={'blog'}

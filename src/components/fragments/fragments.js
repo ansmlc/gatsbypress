@@ -2,6 +2,7 @@ import { graphql } from 'gatsby'
 
 export const postFields = graphql`
 fragment postFields on WpPost {
+      id
       title
       slug
       date(formatString: "MMMM DD, YYYY")          

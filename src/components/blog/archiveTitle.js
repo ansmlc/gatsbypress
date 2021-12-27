@@ -18,7 +18,6 @@ const ArchiveTitle = ({ title, count }) => {
           title={title} 
           fontSize="2xl"
           fontWeight="bold"
-          color="gray.700"
           display="inline"
           color={useColorModeValue('gray.800', 'gray.50')}
         >

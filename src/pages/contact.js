@@ -1,7 +1,6 @@
 import * as React from "react"
 import {
     Box,
-    Button,
     VStack,
     FormControl,
     FormLabel,
@@ -15,7 +14,7 @@ import {
   import { BiEnvelope } from "@react-icons/all-files/bi/BiEnvelope"
   import { BiUser } from '@react-icons/all-files/bi/BiUser';
 import Layout from "../components/layout/layout";
-import SEO from "../components/marketing/seo"
+import Seo from "../components/marketing/seo"
 import Crumb from "../components/layout/breadcrumbs.js"
 import PrimaryButton from "../components/buttons/primaryButton";
 
@@ -23,7 +22,7 @@ import PrimaryButton from "../components/buttons/primaryButton";
 export default function Component ()  {
     return (
 <Layout>
-    <SEO title="Contact"/>
+    <Seo title="Contact"/>
     <Crumb otherContext="contact"/>
     <Text
         as="h1"

@@ -2,7 +2,7 @@ import React from "react"
 import Layout from "../components/layout/layout"
 import { graphql } from "gatsby"
 import Crumb from "../components/layout/breadcrumbs.js"
-import SEO from "../components/marketing/seo"
+import Seo from "../components/marketing/seo"
 import "@wordpress/block-library/build-style/style.css"
 import { 
   GatsbyImage, 
@@ -23,7 +23,7 @@ export default function PagePost({ data }) {
   console.log(page)
   return (
     <Layout>
-      <SEO title={page.title}/>
+      <Seo title={page.title}/>
       <Crumb data={page}/>
       <Fade duration={500} triggerOnce>
         <Text
