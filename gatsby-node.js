@@ -52,6 +52,7 @@ exports.createPages = async ({ graphql, actions }) => {
     allWpPage {
       nodes {
         slug
+        id
       }
     }
     allWpUser {
@@ -89,6 +90,7 @@ queryResult.data.allWpPost.edges.forEach(edge => {
     context: {
       // This is the $slug variable
       // passed to blog-post.js
+      id: edge.node.id,
       slug: edge.node.slug,
       nextPostSlug: edge?.next?.slug,
       previousPostSlug: edge?.previous?.slug
@@ -106,6 +108,7 @@ queryResult.data.allWpPage.nodes.forEach(page => {
       // This is the $slug variable
       // passed to blog-post.js
       slug: page.slug,
+      id: page.id
     },
   })
 })

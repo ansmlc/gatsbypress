@@ -12,7 +12,6 @@ const NavbarToggle = ({ onToggle, isOpen }) => {
       colorScheme={'gray'}
       aria-label="Navigation Toggle"
       onClick={onToggle}
-      boxShadow={isOpen? "md" : "sm"}
       fontSize="xl"
       transform="scaleX(-1)"
       icon={isOpen ? <HiX /> : <HiMenuAlt1 />}

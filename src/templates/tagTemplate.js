@@ -6,11 +6,11 @@ import {
   Spacer } from "@chakra-ui/react"
 import Layout from "../components/layout/layout"
 import Seo from "../components/marketing/seo"
-import Pager from "../components/blog/pager.js"
-import ListPosts from "../components/blog/listPosts.js"
-import ArchiveTitle from "../components/blog/archiveTitle"
+import Pager from "../components/posts/pager.js"
+import ListPosts from "../components/posts/listPosts.js"
+import ArchiveTitle from "../components/posts/archiveTitle"
 import Crumb from "../components/layout/breadcrumbs"
-import BlogMenuItems from "../components/blog/blogMenuItems.js"
+import BlogMenuItems from "../components/posts/blogMenuItems.js"
 
 export const query = graphql`
   query($slug: String!, $skip: Int!, $limit: Int!) {

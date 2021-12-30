@@ -6,7 +6,7 @@ import {
 } from 'gatsby'
 import { Center } from "@chakra-ui/layout"
 import Layout from "../components/layout/layout"
-import ListPosts from "../components/blog/listPosts.js"
+import ListPosts from "../components/posts/listPosts.js"
 import GatsbyPressIntro from "../components/frontpage/intro"
 import SectionHeading from "../components/layout/sectionHeading"
 import Features from '../components/frontpage/features'

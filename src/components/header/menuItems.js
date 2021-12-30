@@ -12,16 +12,20 @@ import SocialIcons from "../marketing/socialIcons"
 import { AnchorLink } from "gatsby-plugin-anchor-links"
 
 const MenuItems = ({ isOpen, items }) => {
+
 const prefixPage = '../../page'
 const menuItems = items
+
 let catMenuItems = []
 let pageMenuItems = []
+
 menuItems?.map(item => (
     item.url.includes('category')?
     catMenuItems.push(item)
     :
     pageMenuItems.push(item)
 ))
+
 return (
 <Box
     display={{ base: isOpen ? "flex" : "none", md: "flex" }}
@@ -51,8 +55,7 @@ return (
                 activeStyle={{ fontWeight: "bold" }}    
                 partiallyActive={true}             
                 to="/blog" 
-                key="blogpage"
-            >Blog</Link>
+                key="blogpage">Blog</Link>
         </Box>
         {pageMenuItems.map(pageItem => (
             <Box 
@@ -62,8 +65,7 @@ return (
                 <Link 
                     activeStyle={{ fontWeight: "bold" }}    
                     partiallyActive={true}  
-                    to={prefixPage + pageItem.url.replace(/\s+/g, "-").toLowerCase()} 
-                    
+                    to={prefixPage + pageItem.url.replace(/\s+/g, "-").toLowerCase()}                   
                 >
                     {pageItem.label}
                 </Link>   
