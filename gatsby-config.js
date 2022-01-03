@@ -80,7 +80,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
         options: {
-          name: `gatsbypress`,
+          name: `GatsbyPress`,
           short_name: `gatsbypress`,
           start_url: `/`,
           background_color: `#F4F5F6`,
