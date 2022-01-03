@@ -90,10 +90,11 @@ queryResult.data.allWpPost.edges.forEach(edge => {
     context: {
       // This is the $slug variable
       // passed to blog-post.js
-      id: edge.node.id,
       slug: edge.node.slug,
       nextPostSlug: edge?.next?.slug,
-      previousPostSlug: edge?.previous?.slug
+      previousPostSlug: edge?.previous?.slug,
+      // added for testing post previews with wp gatsby (doesn't work)
+      id: edge.node.id,
     },
   })
 })
@@ -108,6 +109,7 @@ queryResult.data.allWpPage.nodes.forEach(page => {
       // This is the $slug variable
       // passed to blog-post.js
       slug: page.slug,
+      // added for testing post previews with wp gatsby (doesn't work)
       id: page.id
     },
   })

@@ -2,7 +2,7 @@ import React from "react"
 import Layout from "../components/layout/layout"
 import { graphql } from "gatsby"
 import Crumb from "../components/layout/breadcrumbs.js"
-import Seo from "../components/marketing/seo"
+import Seo from "../components/cta/seo"
 import "@wordpress/block-library/build-style/style.css"
 import { 
   GatsbyImage, 

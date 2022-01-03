@@ -28,8 +28,6 @@ const Crumb = ({ pageContext, data, otherContext }) => {
     const isOther = (otherUri?.includes('contact')) ? true : false
     const isBlogArchive = (blogArchiveUri?.includes('blog')) ? true : false
     var theCrumb = ""
-    console.log(pageUri, 'pageUri')
-    console.log(pageContext?.type, 'context : type')
     isBlogArchive?
         theCrumb = 
         <Breadcrumb separator={<HiChevronRight color="gray.200"/>}>

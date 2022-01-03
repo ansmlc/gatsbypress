@@ -8,7 +8,7 @@ import {
     Button,
     LightMode,
 } from "@chakra-ui/react"
-import SocialIcons from "../marketing/socialIcons"
+import SocialLinks from "../cta/socialLinks"
 import { AnchorLink } from "gatsby-plugin-anchor-links"
 
 const MenuItems = ({ isOpen, items }) => {
@@ -16,14 +16,13 @@ const MenuItems = ({ isOpen, items }) => {
 const prefixPage = '../../page'
 const menuItems = items
 
-let catMenuItems = []
 let pageMenuItems = []
 
 menuItems?.map(item => (
-    item.url.includes('category')?
-    catMenuItems.push(item)
-    :
+    !item.url.includes('category')?
     pageMenuItems.push(item)
+    :
+    null
 ))
 
 return (
@@ -50,7 +49,7 @@ return (
                 to="/" 
                 key="frontpage">Home</Link>
         </Box>
-        <Box min-width="200px">
+        <Box min-width="150px">
             <Link 
                 activeStyle={{ fontWeight: "bold" }}    
                 partiallyActive={true}             
@@ -91,7 +90,7 @@ return (
             </AnchorLink>
         </Box>
         <Box paddingTop="6" display={{ base: "flex", md: "none" }}>
-            <SocialIcons />
+            <SocialLinks />
         </Box>
     </Stack>
 </Box>

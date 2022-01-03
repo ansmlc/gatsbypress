@@ -11,8 +11,8 @@ import GatsbyPressIntro from "../components/frontpage/intro"
 import SectionHeading from "../components/layout/sectionHeading"
 import Features from '../components/frontpage/features'
 import PrimaryButton from "../components/buttons/primaryButton"
-import Seo from "../components/marketing/seo"
-import MailChimpForm from "../components/marketing/newsletter"
+import Seo from "../components/cta/seo"
+import MailChimpForm from "../components/cta/newsletter"
 import {
   Alert,
   AlertIcon,

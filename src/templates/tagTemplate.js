@@ -5,7 +5,7 @@ import {
   Flex,
   Spacer } from "@chakra-ui/react"
 import Layout from "../components/layout/layout"
-import Seo from "../components/marketing/seo"
+import Seo from "../components/cta/seo"
 import Pager from "../components/posts/pager.js"
 import ListPosts from "../components/posts/listPosts.js"
 import ArchiveTitle from "../components/posts/archiveTitle"

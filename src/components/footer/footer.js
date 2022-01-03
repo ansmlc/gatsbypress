@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import { Link } from "gatsby"
 import Logo from "../header/logo"
-import SocialIcons from "../marketing/socialIcons";
+import SocialLinks from "../cta/socialLinks";
 
 const Heading = ({ children }) => {
   return (
@@ -85,7 +85,7 @@ const Footer = function ({ data }) {
           </Stack>
           <Stack align={'flex-start'}>
             <Heading>Social</Heading>
-            <SocialIcons/>
+            <SocialLinks/>
           </Stack>
         </SimpleGrid>
       </Container>

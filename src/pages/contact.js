@@ -14,7 +14,7 @@ import {
   import { BiEnvelope } from "@react-icons/all-files/bi/BiEnvelope"
   import { BiUser } from '@react-icons/all-files/bi/BiUser';
 import Layout from "../components/layout/layout";
-import Seo from "../components/marketing/seo"
+import Seo from "../components/cta/seo"
 import Crumb from "../components/layout/breadcrumbs.js"
 import PrimaryButton from "../components/buttons/primaryButton";
 
