@@ -34,6 +34,7 @@ export const query = graphql`
             nodes {
               slug
               name
+              uri
             }
           }
           author {

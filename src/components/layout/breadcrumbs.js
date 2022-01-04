@@ -10,115 +10,150 @@ import {
     Breadcrumb,
     BreadcrumbItem,
     BreadcrumbLink,
-  } from "@chakra-ui/react"
+} from "@chakra-ui/react"
 
-const Crumb = ({ pageContext, data, otherContext }) => {
-    const catUri = data?.allWpPost?.edges[0]?.node?.categories?.nodes[0]?.uri
-    const pageUri = data?.nodeType
-    const tagUri = data?.allWpPost?.edges[0]?.node?.tags?.nodes[0]?.uri
-    const authorUri = data?.nodeType
-    const postUri = data?.nodeType
-    const otherUri = otherContext
-    const blogArchiveUri = pageContext?.type
-    const isCategory = (catUri?.includes('category')) ? true : false
-    const isPage = (pageUri?.includes('Page')) ? true : false
-    const isTag = (tagUri?.includes('tag')) ? true : false
-    const isAuthor = (authorUri?.includes('User')) ? true : false
-    const isPost = (postUri?.includes('Post')) ? true : false
-    const isOther = (otherUri?.includes('contact')) ? true : false
-    const isBlogArchive = (blogArchiveUri?.includes('blog')) ? true : false
-    var theCrumb = ""
-    isBlogArchive?
-        theCrumb = 
-        <Breadcrumb separator={<HiChevronRight color="gray.200"/>}>
-            <BreadcrumbItem minHeight="21.05px" verticalAlign="top">
-                <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
-            </BreadcrumbItem>     
-            <BreadcrumbItem verticalAlign="top" isCurrentPage>
-                <BreadcrumbLink as={Link} key="blog" to="../../blog">Blog</BreadcrumbLink>
-            </BreadcrumbItem>
-        </Breadcrumb>
-    :
-    isCategory? 
-        theCrumb = 
-        <Breadcrumb separator={<HiChevronRight color="gray.200"/>}>
-            <BreadcrumbItem minHeight="21.05px" verticalAlign="top">
-                <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
-            </BreadcrumbItem>     
-            <BreadcrumbItem verticalAlign="top">
-                <BreadcrumbLink as={Link} key="blog" to="../../blog">Blog</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem verticalAlign="top" isCurrentPage>
-                <BreadcrumbLink as={'p'} fontStyle="italic" key="category">{pageContext.category}</BreadcrumbLink>
-            </BreadcrumbItem>
-        </Breadcrumb>
-    :
-    isPage? 
-        theCrumb = 
-        <Breadcrumb separator={<HiChevronRight color="gray.200"/>}>
-            <BreadcrumbItem minHeight="21.05px" verticalAlign="top">
-                <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem isCurrentPage>
-                <BreadcrumbLink key="singlepage">{data.title}</BreadcrumbLink>
-            </BreadcrumbItem>  
-        </Breadcrumb> 
-    :
-    isTag? 
-        theCrumb = 
-        <Breadcrumb separator={<HiChevronRight color="gray.200"/>}>
-            <BreadcrumbItem minHeight="21.05px" verticalAlign="top">
-                <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem verticalAlign="top">
-                <BreadcrumbLink as={Link} key="blog" to="../../blog">Blog</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem verticalAlign="top" isCurrentPage>
-                <BreadcrumbLink as={'span'} fontStyle="italic" key="tag">{"#" + pageContext.tag}</BreadcrumbLink>
-            </BreadcrumbItem>  
-        </Breadcrumb>  
-    :isAuthor?
-        theCrumb = 
-        <Breadcrumb separator={<HiChevronRight color="gray.200"/>}>
-            <BreadcrumbItem minHeight="21.05px" verticalAlign="top">
-                <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem verticalAlign="top" isCurrentPage>
-                <BreadcrumbLink as={'p'} key="author">{data?.name}</BreadcrumbLink>
-            </BreadcrumbItem>
-        </Breadcrumb>  
-    :isPost? 
-        theCrumb = 
-        <Breadcrumb separator={<HiChevronRight color="gray.200"/>}>   
-            <BreadcrumbItem minHeight="21.05px" verticalAlign="top">
-                <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem verticalAlign="top">
-                <BreadcrumbLink as={Link} key="blog" to="../../blog">Blog</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem verticalAlign="top">    
-                <BreadcrumbLink 
-                    as={Link} 
-                    key="pagecategory" 
-                    to={"../../category/" + data.categories?.nodes[0]?.slug}>{data.categories?.nodes[0]?.name}
+const Crumb = ({ pageContext, data }) => {
+    function BreadLink(props) {
+        return (
+            <BreadcrumbItem
+                verticalAlign="top"
+                minHeight={'21.05px'}
+                {...props}
+            >
+                <BreadcrumbLink
+                    as={Link}
+                    to={props.path}
+                    key={props.key}
+                    aria-current={ props.active ? 'page' : 'false'}
+                >
+                    {
+                        props.active ? 
+                        <Text 
+                            color={'inherit'}
+                            maxW={{base: "100px", md: "200px"}} 
+                            fontStyle={'italic'}
+                            isTruncated
+                        >
+                            {props.title}
+                        </Text>
+                        :
+                        props.title
+                    }
                 </BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbItem verticalAlign="top" isCurrentPage>
-                <BreadcrumbLink key="post"><Text maxW={{base: "100px", md: "200px"}} fontStyle="italic" textColor="gray.400" isTruncated>{data?.title}</Text></BreadcrumbLink>
-            </BreadcrumbItem>       
-        </Breadcrumb>
-    :isOther?
-        theCrumb =
-        <Breadcrumb separator={<HiChevronRight color="gray.200"/>}>
-            <BreadcrumbItem minHeight="21.05px" verticalAlign="top">
-                <BreadcrumbLink as={Link} key="frontpage" to="/"><BiHomeAlt/></BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem verticalAlign="top" isCurrentPage>
-                <BreadcrumbLink as={Link} key="contact" to="#">Contact</BreadcrumbLink>
-            </BreadcrumbItem>
-        </Breadcrumb>  
-    :
-    theCrumb = "No breadcrumbs to display."
+        );
+    }
+    function ListCrumbs() {
+        return (
+            <Breadcrumb separator={<HiChevronRight color="gray.200"/>}>
+                <BreadLink 
+                    key="page-front" 
+                    path={"/"}
+                    title={<BiHomeAlt/>}
+                />
+                {crumbData.map((item) =>
+                    item.isCurrent ?
+                        item.crumbs.map((crumb) =>
+                            <BreadLink
+                                key={crumb.key}
+                                path={crumb.path}
+                                title={crumb.title}
+                                active={crumb.active}
+                            />
+                        )
+                    :null
+                )}
+            </Breadcrumb>
+        )
+    }
+    const crumbData = [
+        { 
+            isCurrent: data?.nodeType?.includes('Page') ? true : false,
+            crumbs: [
+                {
+                    key: "page-single", 
+                    path: "#",
+                    title: data?.title,
+                    active: true
+                }
+            ]
+        },
+        { 
+            isCurrent: data?.nodeType?.includes('Post') ? true : false,
+            crumbs: [
+                {
+                    key: "page-blog",
+                    path: "../../blog",
+                    title: "Blog",
+                },
+                {
+                    key: "page-category",
+                    path: "../../category/" + data?.categories?.nodes[0]?.slug,
+                    title: data?.categories?.nodes[0]?.name
+                },
+                {
+                    key: "single-post",
+                    path: "#",
+                    title: data?.title,
+                    active: true
+                },
+            ]
+        },
+        { 
+            isCurrent: pageContext?.type === 'blog' ? true : false,
+            crumbs: [
+                {
+                    key: "page-blog",
+                    path: "#",
+                    title: "Blog",
+                    active: true
+                }
+            ]
+        },
+        { 
+            isCurrent: pageContext?.category ? true : false,
+            crumbs: [
+                {
+                    key: "page-blog",
+                    path: "../../blog",
+                    title: "Blog",
+                },
+                {
+                    key: "page-category",
+                    path: "#",
+                    title: pageContext?.category,
+                    active: true
+                }
+            ]
+        },
+        { 
+            isCurrent: pageContext?.tag ? true : false,
+            crumbs: [
+                {
+                    key: "page-blog",
+                    path: "../../blog",
+                    title: "Blog",
+                },
+                {
+                    key: "page-tag",
+                    path: "#",
+                    title: pageContext?.tag,
+                    active: true
+                }
+            ]
+        },
+        { 
+            isCurrent: data?.nodeType?.includes('User') ? true : false,
+            crumbs: [
+                {                    
+                    key: "page-author",
+                    path: "#",
+                    title: data?.name,
+                    active: true
+                }
+            ]
+        }
+    ]
     return (
         <Box
             fontSize="0.9rem"
@@ -126,11 +161,11 @@ const Crumb = ({ pageContext, data, otherContext }) => {
             marginTop="1"
             marginBottom="5"
         >
-          {theCrumb}
+          <ListCrumbs/>
         </Box>
     )
-
 }
+
 Crumb.propTypes = {
   pageContext: PropTypes.object,
   data: PropTypes.object

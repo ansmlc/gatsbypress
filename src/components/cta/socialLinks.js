@@ -43,19 +43,19 @@ const SocialLinks = () => {
 
   function RenderIcon(props) {
     const name = props?.name
-    if (name == 'facebook') {
+    if (name === 'facebook') {
       return <Icon as={FaFacebookF} w="16px" h="16px" />
     } 
-    else if (name == 'instagram') {
+    else if (name === 'instagram') {
       return <Icon as={AiFillInstagram} w="16px" h="16px" />
     }
-    else if (name == 'linkedin') {
+    else if (name === 'linkedin') {
       return <Icon as={FaLinkedinIn} w="16px" h="16px" />
     }
-    else if (name == 'youtube') {
+    else if (name === 'youtube') {
       return <Icon as={FaYoutube} w="16px" h="16px" />
     }
-    else if (name == 'twitter') {
+    else if (name === 'twitter') {
       return <Icon as={FaTwitter} w="16px" h="16px" />
     }
   }

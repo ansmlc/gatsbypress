@@ -4,7 +4,7 @@ import {
   Container 
 } from "@chakra-ui/react"
 import PropTypes from "prop-types"
-import Nav from "../header/nav"
+import Header from "../header/header"
 import Footer from "../footer/footer"
 import { useStaticQuery, graphql } from "gatsby"
 
@@ -61,15 +61,11 @@ import { useStaticQuery, graphql } from "gatsby"
           }
         }
       }
-   }
+    }
  `)
    return (
      <>
-    {
-    //<Nav data={data} />
-    //  <AnimatedMenu/>
-    }
-      <Nav data={data}/>
+      <Header data={data}/>
       <Container maxW="container.lg">
           <Box as="main">
               {children}

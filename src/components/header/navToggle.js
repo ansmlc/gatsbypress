@@ -4,7 +4,7 @@ import { HiMenuAlt1 } from "@react-icons/all-files/hi/HiMenuAlt1"
 import { HiX } from "@react-icons/all-files/hi/HiX"
 
 
-const NavbarToggle = ({ onToggle, isOpen }) => {
+const NavToggle = ({ onToggle, isOpen }) => {
   return (
   <Box display={{ base: "block", md: "none" }}>
     <IconButton
@@ -19,4 +19,4 @@ const NavbarToggle = ({ onToggle, isOpen }) => {
   </Box>
   )
 }
-export default NavbarToggle
+export default NavToggle

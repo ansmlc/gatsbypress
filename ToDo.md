@@ -76,7 +76,14 @@
 
 ### 18. Nov
 
+- Literatura
+
+- GatsbyStarter
+
+ https://www.gatsbyjs.com/docs/creating-a-starter/#basic-requirements
+- todo: env and config
 - 
+
 
 
 ### Meeting notes
