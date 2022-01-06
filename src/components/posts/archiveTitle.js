@@ -6,7 +6,6 @@ import {
 from "@chakra-ui/react"
 import { useColorModeValue } from "@chakra-ui/color-mode"
 
-
 const ArchiveTitle = ({ title, count }) => {
     return (
         <Box 
@@ -17,7 +16,6 @@ const ArchiveTitle = ({ title, count }) => {
           as="h3"
           title={title} 
           fontSize="2xl"
-          fontWeight="bold"
           display="inline"
           color={useColorModeValue('gray.800', 'gray.50')}
         >

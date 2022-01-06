@@ -4,8 +4,7 @@ import { graphql } from "gatsby"
 import Pager from "../components/posts/pager.js"
 import ListPosts from "../components/posts/listPosts.js"
 import Crumb from "../components/layout/breadcrumbs.js"
-import PageTitle from "../components/layout/pageTitle.js"
-import { Avatar, Stack, Text } from "@chakra-ui/react"
+import { Avatar, Heading, Stack, Text } from "@chakra-ui/react"
 
 export default function UserPage({ data, pageContext }) {
   const user = data?.allWpPost?.edges[0]?.node?.author?.node
@@ -22,7 +21,13 @@ export default function UserPage({ data, pageContext }) {
   return (
     <Layout>
       <Crumb data={user}/>
-      <PageTitle  title={theName}></PageTitle>
+      <Heading
+        as="h1"
+        fontSize={'3xl'}
+        mb={2}
+      >
+        {theName}
+      </Heading>
       <Stack marginY="6" direction={'row'} spacing={4} align={'start'}>
         <Avatar 
           size="xl"
@@ -33,15 +38,14 @@ export default function UserPage({ data, pageContext }) {
           <Text color={'gray.700'}>{user?.description} </Text>
         </Stack>
       </Stack>
-      <Text 
+      <Heading 
         as="h2"
         fontSize="xl"
-        fontWeight="bold"
         marginTop="6"
         marginBottom="4"
       >
         {"Latest posts by " + theName + ":"}
-      </Text>
+      </Heading>
       <ListPosts context={`blog`} posts={posts}/>
       <Pager pageContext={pageContext} />
     </Layout>

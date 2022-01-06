@@ -1,49 +1,95 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
+
 <p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
+    <img style="margin-right: 6px" alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="40" />
+    <img style="margin-right: 6px" alt="WordPress" src="https://upload.wikimedia.org/wikipedia/commons/9/98/WordPress_blue_logo.svg" width="40" />
+    <img style="margin-right: 6px" alt="Chakra-UI" src="https://i.ibb.co/wQRvTPb/chakra-monogram.png" width="40" />
 </p>
-<h1 align="center">
-  Gatsby PWA Starter with WordPress and Chakra-UI integration
-</h1>
+
+
+<div align="center" style="margin-bottom: 20px">
+
+# **GatsbyPress**
+### Gatsby Starter with WordPress, Chakra-UI and PWA integration
+
+<img  alt="GatsbyPress" src="https://github.com/ansmlc/gatsbypress/blob/master/src/static/images/GatsbyPress.png" width="100%" height="auto" />
+</div>
 
 ## 🚀 Quick start
 
-1.  **Create a Gatsby site.**
 
-    Use the Gatsby CLI ([install instructions](https://www.gatsbyjs.com/docs/tutorial/part-0/#gatsby-cli)) to create a new site, specifying the default starter.
+1.  **Install.**
+
+    Use the Gatsby CLI ([install instructions](https://www.gatsbyjs.com/docs/tutorial/part-0/#gatsby-cli)) to create a new site, specifying the gatsbypress starter.
 
     ```shell
-    # create a new Gatsby site using the default starter
+    # create a new Gatsby site using the gatsbypress starter
     gatsby new my-app https://github.com/ansmlc/gatsbypress
     ```
 
-1.  **Start developing.**
+
+2.  **Configure WordPress.**
+    
+  * Install and activate these plugins 
+    in a live WordPress instance:
+
+      - [WPGraphQL](https://wordpress.org/plugins/wp-graphql/)
+      - [WPGatsby](https://wordpress.org/plugins/wp-gatsby/)
+
+  * Configure following WordPress options:
+
+      - Set permalinks to "Post name".
+      - Add menus titled "gp-menu-header" and "gp-menu-footer"
+
+  * Add some content to your WordPress site:
+
+      - Add posts with featured images
+      - Add tags and categories
+      - Add some pages to menus
+
+3.  **Configure GraphQL.**
+
+    In the `gatsby-config.js` of the starter you just set up, update the plugin options for `gatsby-source-wordpress`. Change the `url` option so that it points to your WordPress instance GraphQL url. This should be the full url of your GraphQL endpoint. Eg `https://yoursite.com/graphql`
+
+
+4.  **Start developing.**
 
     Navigate into your new site’s directory and start it up.
 
     ```shell
-    cd gatsbypress/
+    cd my-app/
     gatsby develop
     ```
 
-1.  **Open the source code and start editing!**
+    Your site is now running in development mode at `http://localhost:8000`!
 
-    Your site is now running at `http://localhost:8000`!
+    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. 
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby Tutorial](https://www.gatsbyjs.com/docs/tutorial/part-4/#use-graphiql-to-explore-the-data-layer-and-write-graphql-queries)._
+5. **Customize**
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+    Edit the `theme.js` file to customize variables like
+    colors and fonts and edit global styles of existing components
 
+    ```shell 
+    src/@chakra-ui/theme.js
+    ```
+
+## 🧐 Known limitations
+
+...
 
 ## 🧐 What's inside?
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+A quick look at important files and directories you'll see in this Gatsby project.
 
     .
     ├── node_modules
     ├── src
+        ├── @chakra-ui
+        ├── components
+        ├── pages
+        ├── templates
+        ├── static
     ├── .gitignore
     ├── .prettierrc
     ├── gatsby-browser.js

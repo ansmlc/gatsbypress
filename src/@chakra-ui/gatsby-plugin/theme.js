@@ -1,10 +1,20 @@
-// 1. Import `extendTheme`
 import { extendTheme } from "@chakra-ui/react"
 
-// 2. Call `extendTheme` and pass your custom values
+const Heading = {
+  // The styles all button have in common
+  baseStyle: {
+    fontWeight: 'bold',
+  },
+}
+
 const theme = extendTheme({
+  components: {
+    Heading,
+  },
+  // Default color mode
   initialColorMode: "light",
   useSystemColorMode: false,
+  // Colors used in the site
   colors: {
     brand: {
       50: '#fff7f7', 
@@ -49,37 +59,39 @@ const theme = extendTheme({
         backgroundColor: props.colorMode === "dark" ? "gray.800" : "gray.50",
       },
       p: {
-        color: props.colorMode === "dark" ? "gray.50" : "gray.700",
+        color: props.colorMode === "dark" ? "gray.50" : "gray.800",
       },
       ol: {
-        color: props.colorMode === "dark" ? "gray.50" : "gray.700",
+        color: props.colorMode === "dark" ? "gray.50" : "gray.800",
       },
       ul: {
-        color: props.colorMode === "dark" ? "gray.50" : "gray.700", 
+        color: props.colorMode === "dark" ? "gray.50" : "gray.800", 
       },
       h1: {
-        color: props.colorMode === "dark" ? "gray.50" : "gray.700",
+        color: props.colorMode === "dark" ? "gray.50" : "gray.800",
       },
       h2: {
-        color: props.colorMode === "dark" ? "gray.50" : "gray.700",
+        color: props.colorMode === "dark" ? "gray.50" : "gray.800",
       },
       h3: {
-        color: props.colorMode === "dark" ? "gray.50" : "gray.700",
+        color: props.colorMode === "dark" ? "gray.50" : "gray.800",
       },
       h4: {
-        color: props.colorMode === "dark" ? "gray.50" : "gray.700",
+        color: props.colorMode === "dark" ? "gray.50" : "gray.800",
       },
       h5: {
-        color: props.colorMode === "dark" ? "gray.50" : "gray.700",
+        color: props.colorMode === "dark" ? "gray.50" : "gray.800",
       },
       blockquote: {
         p: {       
-          color: props.colorMode === "dark" ? "gray.50" : "gray.700",
+          color: props.colorMode === "dark" ? "gray.50" : "gray.800",
         }
       },
+      // Style content field in postTemplate.js & pageTemplate.js
       ".wysiwyg": {
+        
         img: {
-          borderRadius: "2xl",
+          borderRadius: "xl",
         },
         a: {
           color: "secondary.500",
@@ -94,7 +106,6 @@ const theme = extendTheme({
       }
     }),
   },
-
 })
 
 

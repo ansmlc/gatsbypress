@@ -55,7 +55,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/src/static/images`,
       },
     },
     `gatsby-transformer-sharp`,
@@ -88,7 +88,7 @@ module.exports = {
           // https://css-tricks.com/meta-theme-color-and-trickery/
           theme_color: `#f56565`,
           display: `standalone`,
-          icon: `src/images/gatsbypress-icon.png`,
+          icon: `src/static/images/gatsbypress-icon.png`,
           icon_options: {
             // For all the options available,
             // please see the section "Additional Resources" below.

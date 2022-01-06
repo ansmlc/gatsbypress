@@ -80,7 +80,11 @@ const BlogPage  = ({ pageContext, data }) => {
       <Crumb pageContext={pageContext}/>
       <Flex>
         <Box>
-          <ArchiveTitle data={posts} count={postsCount} title="Blog"></ArchiveTitle>
+          <ArchiveTitle 
+            data={posts} 
+            count={postsCount} 
+            title="Blog"
+          />
         </Box>
         <Spacer />
         <Box>

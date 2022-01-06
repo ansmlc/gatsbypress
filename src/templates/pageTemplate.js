@@ -13,9 +13,12 @@ import {
   AspectRatio, 
   Image,
   Text,
-  useColorModeValue
+  useColorModeValue,
+  Heading
 } from "@chakra-ui/react"
+import Card from "../components/layout/card"
 import { Fade } from "react-awesome-reveal"
+
 
 export default function PagePost({ data }) {
   const page = data.allWpPage.nodes[0]
@@ -26,52 +29,47 @@ export default function PagePost({ data }) {
       <Seo title={page.title}/>
       <Crumb data={page}/>
       <Fade duration={500} triggerOnce>
-        <Text
-            as="h1"
-            fontWeight="bold"
-            fontSize="3xl"
-            marginTop="4"
-            marginBottom="6"
-            lineHeight="1.1"
-          >
-            {page.title}
-        </Text>
-      </Fade>
-        <Box 
-          as="article"
-          bg={useColorModeValue('white', 'gray.700')}
-          borderRadius="2xl"
-          overflow="hidden"
-          boxShadow="2xl"
+        <Heading
+          as="h1"
+          fontSize={'4xl'}
+          lineHeight="1.1"
+          marginTop="4"
+          marginBottom="6"
         >
-          <AspectRatio maxW="1920px" ratio={16 / 9}>
-            {image?
-              <Image 
-                as={GatsbyImage} 
-                image={getImage(image)} 
-                alt={page.title}
-                rounded={'2xl'} 
-                roundedBottomLeft={0}
-                roundedBottomRight={0}
-              /> 
-              :
-              <Image
-                src="https://via.placeholder.com/1920x1080" 
-                alt={page.title || ""}
-                rounded={'2xl'} 
-                roundedBottomLeft={0}
-                roundedBottomRight={0}            />         
-            }
-          </AspectRatio>
-          <Box 
-            className="wysiwyg"
-            color="gray.800"
-            padding={{ base: 4, md: 12 }}
-            paddingY={{ base: 6 }}
-          >
-            <div dangerouslySetInnerHTML={{ __html: page.content }} />
-          </Box>
+            {page.title}
+        </Heading>
+      </Fade>
+      <Card 
+        as="article"
+      >
+        <AspectRatio maxW="1920px" ratio={16 / 9}>
+          {image?
+            <Image 
+              as={GatsbyImage} 
+              image={getImage(image)} 
+              alt={page.title}
+              rounded={'2xl'} 
+              roundedBottomLeft={0}
+              roundedBottomRight={0}
+            /> 
+            :
+            <Image
+              src="https://via.placeholder.com/1920x1080" 
+              alt={page.title || ""}
+              rounded={'2xl'} 
+              roundedBottomLeft={0}
+              roundedBottomRight={0}            />         
+          }
+        </AspectRatio>
+        <Box 
+          className="wysiwyg"
+          color="gray.800"
+          padding={{ base: 4, md: 12 }}
+          paddingY={{ base: 6 }}
+        >
+          <div dangerouslySetInnerHTML={{ __html: page.content }} />
         </Box>
+      </Card>
     </Layout>
   )
 }

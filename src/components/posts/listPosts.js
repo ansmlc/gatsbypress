@@ -11,9 +11,12 @@ import {
   Badge, 
   SimpleGrid,
   AspectRatio,
-  Stack
+  Stack,
+  Heading
 } from "@chakra-ui/react"
 import { Fade } from "react-awesome-reveal"
+import Card from "../layout/card"
+
   // Show author info in the card only if not in user profile page
   const PostAuthorInfo = ({ postAuthor, postDate }) => (
     <Stack  direction={'row'} spacing={2} align={'center'}>
@@ -37,13 +40,10 @@ import { Fade } from "react-awesome-reveal"
 // Create Post Card Component
 const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postTags, postAuthor, key }) => {
   return (
-  <Box
-    key={key} 
+  <Card
+    key={key}
     maxW="md"
-    bg={useColorModeValue('white', 'gray.700')}
-    borderRadius="2xl"
-    overflow="hidden"
-    boxShadow="2xl">
+  >
     <AspectRatio ratio={16/9}>
     {postImage ?
     <Link to={"../../post/" + postSlug.replace(/\s+/g, "-").toLowerCase()}>
@@ -95,18 +95,17 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
           </Text>
         ))}
       </Text> 
-      <Box noOfLines={2}
-        as="h2"
+      <Heading
+        noOfLines={2} 
         my="4"
         lineHeight="1.2"
-        fontSize="xl"
-        fontWeight="bold"
-      >              
-      <Link
-          to={"../../post/" + postSlug.replace(/\s+/g, "-").toLowerCase()}>
-          {postTitle}
+        fontSize={'xl'}
+      >
+        <Link
+            to={"../../post/" + postSlug}>
+            {postTitle}
         </Link>
-      </Box>
+      </Heading>
       <Box
         mb="4"
         noOfLines={[3]}
@@ -122,7 +121,7 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
       />
       </Box>
     </Box>
-  </Box>
+  </Card>
   )
 }
 const  ListPosts = ({ posts, context }) => {

@@ -5,7 +5,6 @@ import {
 import { 
   GatsbyImage, 
   getImage } from "gatsby-plugin-image"
-import { useColorModeValue } from "@chakra-ui/color-mode"
 import Layout from "../components/layout/layout"
 import Crumb from "../components/layout/breadcrumbs.js"
 import UserCard from "../components/user/userCard"
@@ -14,6 +13,7 @@ import NextAndPreviousPost from "../components/posts/nextAndPreviousPost"
 import "@wordpress/block-library/build-style/style.css"
 import "../.././node_modules/wysiwyg.css/wysiwyg.css"
 import { Fade } from "react-awesome-reveal"
+import Card from "../components/layout/card"
 
 import {
   Avatar,
@@ -23,6 +23,7 @@ import {
   Image,
   AspectRatio,
   Stack,
+  Heading
  } from "@chakra-ui/react"
 
  export const query = graphql`
@@ -71,23 +72,22 @@ export default function BlogPost({ data, pageContext }) {
     <Layout>
       <Seo title={post.title}/>
       <Crumb data={post}/>
-        <Box 
-          data-sal="slide-up"
-          data-sal-duration={800}
-        >
           <Fade damping={0.5} duration={500} cascade triggerOnce>
             <Box> 
-                <Text
+                <Heading
                   as="h1"
-                  fontWeight="bold"
-                  fontSize="4xl"
+                  fontSize={'4xl'}
                   lineHeight="1.1"
-                  color={useColorModeValue('gray.800', 'gray.50')}
                 >
                   {post.title}
-                </Text>
+                </Heading>
             </Box>
-            <Stack my={6} direction={'row'} spacing={4} align={'center'}>
+            <Stack 
+              my={6} 
+              direction={'row'} 
+              spacing={4} 
+              align={'center'}
+            >
               <Avatar
                 src={author.node.avatar.url}
                 alt={'Author'}
@@ -95,9 +95,13 @@ export default function BlogPost({ data, pageContext }) {
                 width={'6'}
                 height={'6'}
               />
-              <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-                <Link to={"../../author/" + author.node.slug.replace(/\s+/g, "-").toLowerCase()}>
-                  <Text fontWeight={600} color={useColorModeValue('gray.800', 'gray.100')}>
+              <Stack 
+                direction={'column'} 
+                spacing={0} 
+                fontSize={'sm'}
+              >
+                <Link to={"../../author/" + author.node.slug}>
+                  <Text fontWeight={600}>
                       {author.node.name}
                   </Text>
                 </Link>
@@ -105,13 +109,8 @@ export default function BlogPost({ data, pageContext }) {
               </Stack>
             </Stack>
           </Fade>
-        </Box>
-      <Box 
+      <Card 
         as="article"
-        bg={useColorModeValue('white', 'gray.700')}
-        borderRadius="2xl"
-        overflow="hidden"
-        boxShadow="2xl" 
       >
         <AspectRatio maxW="1920px" ratio={16 / 9}>
           {image?
@@ -135,8 +134,6 @@ export default function BlogPost({ data, pageContext }) {
         </AspectRatio>
         <Box 
           className="wysiwyg"
-          color="gray.800"
-          fontSize="normal"
           padding={{ base: 6, md: 12 }}
           paddingY={{ base: 6 }}
         ><div dangerouslySetInnerHTML={{ __html: post.content }}/>
@@ -147,14 +144,14 @@ export default function BlogPost({ data, pageContext }) {
               marginRight="3"
               key={tag.slug}
             >
-              <Link to={"../../tag/" + tag.slug.replace(/\s+/g, "-").toLowerCase()}>
+              <Link to={"../../tag/" + tag.slug}>
                 <Badge colorScheme="cyan">{"# " + tag.name}</Badge>
               </Link>
             </Box>
             ))}
           </Box>
         </Box>
-      </Box>
+      </Card>
       <UserCard avatarSize={'lg'} user={author}/>
       <NextAndPreviousPost
         previousPostSlug={previousPostSlug}
