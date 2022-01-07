@@ -11,7 +11,7 @@ const SecondaryButton = ({ children, arrowLeft, arrowRight }) => {
     arrowRight?
     theButton = 
         <Button 
-            rounded={'full'}
+            rounded={'brandRadius.button'}
             shadow="md"
             size={'lg'}
             fontWeight={'bold'}
@@ -26,7 +26,7 @@ const SecondaryButton = ({ children, arrowLeft, arrowRight }) => {
     arrowLeft?
     theButton =
         <Button 
-            rounded={'full'}
+            rounded={'brandRadius.button'}
             shadow="md"
             size={'lg'}
             fontWeight={'bold'}
@@ -39,7 +39,7 @@ const SecondaryButton = ({ children, arrowLeft, arrowRight }) => {
     :
     theButton =
         <Button 
-            rounded={'full'}
+            rounded={'brandRadius.button'}
             shadow="md"
             size={'lg'}
             fontWeight={'bold'}

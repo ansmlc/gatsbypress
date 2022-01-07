@@ -14,7 +14,22 @@ const theme = extendTheme({
   // Default color mode
   initialColorMode: "light",
   useSystemColorMode: false,
-  // Colors used in the site
+  // Customize border radius
+  radii: {
+    brandRadius: {
+      card: '1rem',
+      image: '1rem',
+      button: '9999px',
+      avatar: '9999px',
+      badge: '0.375rem',
+    }
+  },
+  // Customize default fonts
+  fonts: {
+    body: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+    heading: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+  },
+  // Customize brand colors
   colors: {
     brand: {
       50: '#fff7f7', 

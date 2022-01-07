@@ -12,7 +12,7 @@ return (
     <LightMode>
         <Button 
             minW={{ base: "100%", md: "200px"}}
-            rounded={'full'}
+            rounded={'brandRadius.button'}
             shadow="md"
             size={'lg'}
             fontWeight={'bold'}

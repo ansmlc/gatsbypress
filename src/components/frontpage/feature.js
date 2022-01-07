@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import { 
     Box, 
-    Text, 
+    Heading, 
     Image, 
     Flex, 
     useColorModeValue,
@@ -24,24 +24,22 @@ const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, ord
             > 
                 <Box p="8" order={{ base: orderBaseTxt, md: orderLgTxt }} maxW={{base: '100%', md: '50%' }}> 
                     <Badge
-                    rounded="md"
+                    rounded="brandRadius.badge"
                     colorScheme="secondary"
                     maxWidth="105px"
                     marginBottom="0"
                     >
                     <Icon as={HiStar} mt="-2px"/> Featured
                     </Badge>            
-                    <Text 
-                        as="h1" 
+                    <Heading 
                         mt="5"
                         mb="4"
-                        fontWeight={700}
                         lineHeight={1.1}
                         fontSize={'3xl'}
                         noOfLines={{ base: 2, md: 1}}
                     >
                         {featuredTitle}
-                    </Text>
+                    </Heading>
                     <Box
                         m="0 auto"
                         mb="7"
@@ -69,7 +67,7 @@ const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, ord
                         as={GatsbyImage}
                         image={featuredImage}
                         alt={featuredTitle}
-                        rounded={'2xl'} 
+                        rounded={'brandRadius.image'} 
                         borderBottomLeftRadius="0"
                         borderTopLeftRadius="0"
                         borderBottomRightRadius="0"
@@ -80,7 +78,7 @@ const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, ord
                     <Image
                         src="https://via.placeholder.com/400x400"
                         alt="placeholder image"
-                        rounded={'2xl'} 
+                        rounded={'brandRadius.image'} 
                     />
                     }     
                 </Box>

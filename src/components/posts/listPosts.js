@@ -21,7 +21,7 @@ import Card from "../layout/card"
   const PostAuthorInfo = ({ postAuthor, postDate }) => (
     <Stack  direction={'row'} spacing={2} align={'center'}>
       <Image
-        borderRadius='full'
+        borderRadius='brandRadius.avatar'
         boxSize='30px'
         htmlHeight='30px'
         htmlWidth='30px'
@@ -51,7 +51,7 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
           as={GatsbyImage}
           image={postImage}
           alt={postTitle}
-          borderRadius={'2xl'}
+          borderRadius={'brandRadius.image'}
           borderBottomRadius="0"  />
     </Link>
     :
@@ -59,7 +59,7 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
         <Image
           src="https://via.placeholder.com/1920x1080"
           alt={postTitle || ""}
-          rounded={'2xl'} 
+          rounded={'brandRadius.image'} 
           roundedBottomLeft={0}
           roundedBottomRight={0}/>
     </Link>}
@@ -84,7 +84,7 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
           >
             <Badge
               colorScheme="secondary"
-              rounded="full"
+              rounded="brandRadius.badge"
               mt="0"
               py="1"
               px="2"

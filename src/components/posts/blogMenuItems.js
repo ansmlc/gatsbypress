@@ -39,7 +39,7 @@ const BlogMenuItems = ({ tags, categories, context }) => {
     ))
       listAllCategories = catMenuItems.map(catItem => (
       <MenuItem
-        borderRadius={'2xl'}
+        borderRadius={'brandRadius.card'}
         key={catItem.slug}
       >
         <Link  
@@ -58,7 +58,7 @@ const BlogMenuItems = ({ tags, categories, context }) => {
     ))
     listAllTags = tagMenuItems.map(tagItem => (
       <MenuItem
-        borderRadius={'2xl'}
+        borderRadius={'brandRadius.card'}
         key={tagItem.slug}
       >
         <Link  
@@ -85,7 +85,7 @@ const BlogMenuItems = ({ tags, categories, context }) => {
                 icon={isOpen ? <HiX/> : <IoFilter /> }
               />
               <MenuList
-                borderRadius={'2xl'}
+                borderRadius={'brandRadius.card'}
                 display="flex"
                 flexDirection="row"
                 px="2"

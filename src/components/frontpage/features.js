@@ -35,7 +35,7 @@ const Features = ({ featured }) => {
     }  
     else  {
         return (
-            <Alert borderRadius="xl" boxShadow="xl" status="warning">
+            <Alert borderRadius="brandRadius.card" boxShadow="xl" status="warning">
                 <AlertIcon />
                 Nothing found. Add some posts to "Featured" category
             </Alert>

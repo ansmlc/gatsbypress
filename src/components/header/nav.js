@@ -80,7 +80,7 @@ return (
                     <Button
                         colorScheme={'brand'}
                         variant={'outline'}
-                        rounded={'full'}
+                        rounded={'brandRadius.button'}
                         borderWidth={'2px'}
                         _hover={{ bg: "red.600", color: "white" }}
                     >

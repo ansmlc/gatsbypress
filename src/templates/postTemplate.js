@@ -118,7 +118,7 @@ export default function BlogPost({ data, pageContext }) {
               as={GatsbyImage} 
               image={getImage(image)} 
               alt={post.title}
-              rounded={'2xl'} 
+              rounded={'brandRadius.image'} 
               roundedBottomLeft={0}
               roundedBottomRight={0}
             /> 
@@ -126,7 +126,7 @@ export default function BlogPost({ data, pageContext }) {
             <Image
               src="https://via.placeholder.com/1920x1080" 
               alt={post.title || ""}
-              rounded={'2xl'} 
+              rounded={'brandRadius.image'} 
               roundedBottomLeft={0}
               roundedBottomRight={0}
             />         
@@ -145,7 +145,10 @@ export default function BlogPost({ data, pageContext }) {
               key={tag.slug}
             >
               <Link to={"../../tag/" + tag.slug}>
-                <Badge colorScheme="cyan">{"# " + tag.name}</Badge>
+                <Badge 
+                  rounded={'brandRadius.badge'}
+                  colorScheme="cyan">{"# " + tag.name}
+                </Badge>
               </Link>
             </Box>
             ))}

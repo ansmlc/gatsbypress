@@ -124,7 +124,7 @@ const HomePage = () => {
   else {
     return (
     <Layout>
-      <Alert my="4" borderRadius="xl" boxShadow="xl" status="warning">
+      <Alert my="4" borderRadius="brandRadius.card" boxShadow="xl" status="warning">
         <AlertIcon />
           Nothing found.
           Please add some posts to your WordPress site.

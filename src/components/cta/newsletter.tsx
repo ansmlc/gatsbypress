@@ -49,7 +49,7 @@ export default function MailChimpForm() {
         minWidth={{ base: '100%', md: '70%' }}
         bg={useColorModeValue('white', 'gray.700')}
         boxShadow={'2xl'}
-        rounded={'2xl'}
+        rounded={'brandRadius.card'}
         p={{ base: 4, sm: 8, md: 8}}
         direction={'column'}>
         <Heading
@@ -67,7 +67,7 @@ export default function MailChimpForm() {
           <FormControl>
             <Input
               size={'lg'}
-              rounded={'full'}
+              rounded={'brandRadius.button'}
               variant={'solid'}
               borderWidth={1}
               _placeholder={{
@@ -91,7 +91,7 @@ export default function MailChimpForm() {
           <FormControl w={{ base: '100%', md: '50%' }}>
             <LightMode>
             <Button
-              rounded={'full'}
+              rounded={'brandRadius.button'}
               colorScheme={state === 'success' ? 'green' : 'brand'}
               backgroundColor={state === 'success' ? 'green' : '#D93C3C'}
               isLoading={state === 'submitting'}

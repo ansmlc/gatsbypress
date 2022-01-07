@@ -12,8 +12,6 @@ import {
   Box, 
   AspectRatio, 
   Image,
-  Text,
-  useColorModeValue,
   Heading
 } from "@chakra-ui/react"
 import Card from "../components/layout/card"
@@ -48,7 +46,7 @@ export default function PagePost({ data }) {
               as={GatsbyImage} 
               image={getImage(image)} 
               alt={page.title}
-              rounded={'2xl'} 
+              rounded={'brandRadius.image'} 
               roundedBottomLeft={0}
               roundedBottomRight={0}
             /> 
@@ -56,7 +54,7 @@ export default function PagePost({ data }) {
             <Image
               src="https://via.placeholder.com/1920x1080" 
               alt={page.title || ""}
-              rounded={'2xl'} 
+              rounded={'brandRadius.image'} 
               roundedBottomLeft={0}
               roundedBottomRight={0}            />         
           }
