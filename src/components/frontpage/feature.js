@@ -51,7 +51,7 @@ const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, ord
                             <div dangerouslySetInnerHTML={{ __html: featuredDesc }}/>
                     </Box>
                     <Spacer/>
-                    <Link alt={featuredTitle} to={"../../post/" + featuredSlug.replace(/\s+/g, "-").toLowerCase()}>
+                    <Link alt={featuredTitle} to={"../../post/" + featuredSlug}>
                         <PrimaryButton arrowRight>
                             Read Post
                         </PrimaryButton>

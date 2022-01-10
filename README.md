@@ -43,9 +43,16 @@
 
   * Add some content to your WordPress site:
 
-      - Add posts with featured images
+      - Add posts (with featured images)
       - Add tags and categories
+      - Add some posts to "featured" category
       - Add some pages to menus
+
+  * Configure MailChimp newsletter
+    
+      - Get the URL of POST method in MailChimp:
+        Audience –> Signup Forms –> Embedded Form
+      - Paste URL in gatsby-config.js
 
 3.  **Configure GraphQL.**
 

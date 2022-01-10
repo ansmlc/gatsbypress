@@ -82,8 +82,12 @@ const HomePage = () => {
   const siteTitle = data?.wp?.allSettings?.generalSettingsTitle
   const HomeContent = () => (
   <Layout>
-  <Seo title={siteTitle}/>
-  <GatsbyPressIntro/>
+    <Seo title={siteTitle}/>
+    <GatsbyPressIntro 
+      titleOne={'Your favourite CMS'} 
+      titleTwo={'meets JAMStack'} 
+      description={'Use WordPress along with Gatsby, to manage your content via worlds post popular CMS, and deploy it on a blazing fast front-end.'}
+    />
     <SectionHeading
         heading={'Featured'}
         subheading={'Latest featured posts'}

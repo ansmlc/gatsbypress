@@ -13,7 +13,7 @@ import { BiMouse } from "@react-icons/all-files/bi/BiMouse"
 import { BiChevronDown } from "@react-icons/all-files/bi/BiChevronDown"
 import { AnchorLink } from "gatsby-plugin-anchor-links"
 
-export default function GatsbyPressIntro() {
+export default function GatsbyPressIntro({ titleOne, titleTwo, description}) {
   return (
       <Container maxW={'3xl'}>
         <Stack
@@ -24,21 +24,19 @@ export default function GatsbyPressIntro() {
         >
           <Fade duration={200} triggerOnce>
             <Heading
-              fontWeight={'bold'}
               fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
               lineHeight={'1'}
               >
-              Your favourite CMS <br />
+              {titleOne} <br />
               <Fade delay={200} triggerOnce>
                   <Text as={'span'} color={'brand.600'}>
-                  meets JAMStack
+                    {titleTwo}
                   </Text>
               </Fade>
             </Heading>
           </Fade>
           <Text color={useColorModeValue('gray.700', 'gray.300')}>
-              Use WordPress along with Gatsby, to manage your content via world's
-              post popular CMS, and deploy it on a blazing fast front-end.
+            {description}          
           </Text>
           <Stack
             direction={'column'}
