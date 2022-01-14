@@ -20,9 +20,11 @@ const Heading = ({ children }) => {
 };
 
 const Footer = function ({ data }) {
-  const title = data?.wp?.allSettings?.generalSettingsTitle;
   const description = data?.wp?.allSettings?.generalSettingsDescription;
-  const logoMediaItem = data?.allFile?.edges[0]?.node
+  const wpTitle = data?.wp?.allSettings?.generalSettingsTitle
+  const staticLogo = data?.allFile?.edges[0]?.node
+  const wpLogo = data?.allWpMediaItem?.nodes[0]
+  const customLogoComponent = data.allSite.nodes[0].siteMetadata.customLogoComponent
   const prefixPage = '../../page';
   const prefixCat = '../..';
   const allMenuItems = data?.footer?.nodes[0];
@@ -49,9 +51,10 @@ const Footer = function ({ data }) {
           spacing={8}>
           <Stack spacing={6}>
             <Logo
-              siteTitle={title}
-              siteLogo={logoMediaItem}
-              color={useColorModeValue('gray.700', 'white')} 
+              siteWpTitle={wpTitle}
+              staticLogo={staticLogo}
+              wpLogo={wpLogo}
+              customLogoComponent={customLogoComponent}
             />
             <Text fontSize={'normal'}>
               {description}

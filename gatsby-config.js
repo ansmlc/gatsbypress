@@ -6,8 +6,10 @@ module.exports = {
   siteMetadata: {
     title: `gatsbypress`, 
     description: `Gatsby WordPress Starter`,
-    author: `@gatsbyjs`,
+    author: `gatsbypress`,
     siteUrl: `localhost:8000`,
+    // Use custom SVG logo component from src/components/svgs
+    customLogoComponent: true,
     // Social icons URLs / If not using leave it empty ( `` ) / Do not delete field
     socialLinks: {
       facebook:  `https://facebook.com`,
@@ -46,7 +48,7 @@ module.exports = {
          // https://limomet.a2hosted.com/websby/graphql
          // http://127.0.0.1/wpgatsby/graphql
 
-         url: `https://limomet.a2hosted.com/websby/graphql`,
+         url: `http://www.amulali.mojweb.com.hr/graphql`,
       },
    },
     `gatsby-plugin-react-helmet`,

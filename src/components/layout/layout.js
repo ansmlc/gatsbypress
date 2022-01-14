@@ -10,7 +10,19 @@ import { useStaticQuery, graphql } from "gatsby"
 
   const Layout = ({ children }) => {
    const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
+    query MainQuery {
+      allSite {
+        nodes {
+          siteMetadata {
+            customLogoComponent
+          }
+        }
+      }
+      wp {
+        allSettings {
+          generalSettingsTitle
+        }
+      }
       allWpCategory {
         nodes {
           name
@@ -19,7 +31,17 @@ import { useStaticQuery, graphql } from "gatsby"
           id
         }
       }
-      allFile(filter: {name: {eq: "gp-custom-logo"}}) {
+      allWpMediaItem(filter: {altText: {eq: "logo"}}) {
+        nodes {
+          altText
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
+      }
+      allFile(filter: {name: {eq: "gp-logo"}}) {
         edges {
           node {
             publicURL
@@ -29,12 +51,6 @@ import { useStaticQuery, graphql } from "gatsby"
               gatsbyImageData
             }
           }
-        }
-      }
-      wp {
-        allSettings {
-          generalSettingsDescription
-          generalSettingsTitle
         }
       }
       allWpMenu(filter: {name: {eq: "gp-menu-header"}}) {
@@ -75,7 +91,6 @@ import { useStaticQuery, graphql } from "gatsby"
     </>
    )
  }
- 
  
  Layout.propTypes = {
    children: PropTypes.node.isRequired,

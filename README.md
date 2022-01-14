@@ -15,7 +15,7 @@
 <img  alt="GatsbyPress" src="https://github.com/ansmlc/gatsbypress/blob/master/src/static/images/GatsbyPress.png" width="100%" height="auto" />
 </div>
 
-## 🚀 Quick start
+# 🚀 Quick start
 
 
 1.  **Install.**
@@ -36,27 +36,13 @@
       - [WPGraphQL](https://wordpress.org/plugins/wp-graphql/)
       - [WPGatsby](https://wordpress.org/plugins/wp-gatsby/)
 
-  * Configure following WordPress options:
-
-      - Set permalinks to "Post name".
-      - Add menus titled "gp-menu-header" and "gp-menu-footer"
-
-  * Add some content to your WordPress site:
-
-      - Add posts (with featured images)
-      - Add tags and categories
-      - Add some posts to "featured" category
-      - Add some pages to menus
-
-  * Configure MailChimp newsletter
-    
-      - Get the URL of POST method in MailChimp:
-        Audience –> Signup Forms –> Embedded Form
-      - Paste URL in gatsby-config.js
+    [ℹ️ How-to: Setup Data, Content & Styles](#🚀-Setup-Data-and-Content)
 
 3.  **Configure GraphQL.**
 
     In the `gatsby-config.js` of the starter you just set up, update the plugin options for `gatsby-source-wordpress`. Change the `url` option so that it points to your WordPress instance GraphQL url. This should be the full url of your GraphQL endpoint. Eg `https://yoursite.com/graphql`
+
+
 
 
 4.  **Start developing.**
@@ -72,17 +58,11 @@
 
     _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. 
 
-5. **Customize**
-
-    Edit the `theme.js` file to customize variables like
-    colors and fonts and edit global styles of existing components
-
-    ```shell 
-    src/@chakra-ui/theme.js
-    ```
 
 ## 🧐 Known limitations
 
+...
+To do
 ...
 
 ## 🧐 What's inside?
@@ -108,31 +88,110 @@ A quick look at important files and directories you'll see in this Gatsby projec
     ├── package.json
     └── README.md
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
-
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
-
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
-
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
-
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
-
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/) for more detail).
-
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
-
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-ssr/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
-
-9.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
-
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
-
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
-
-12. **`README.md`**: A text file containing useful reference information about your project.
-
 ## 💫 Deploy
 
+...
+To do
+...
+
+# 🚀 Setup Data and Content
+Detailed instructions on how to setup WordPress and other data to work with GatsbyPress.
+
+##  ↘️ **Header & Footer Menu**
+
+    - Add menus titled "GP-HEADER" and "GP-FOOTER"
+    - Add some pages to menus
+
+##  ↘️ **Posts & pages**
+
+    - Set permalink settings to "Post name".
+    - Add posts with featured images
+    - Add tags and categories
+    - Add some posts to "featured" category (to show on homepage)
+
+##  ↘️ **Logo & Branding**
+
+### 🟠 **Logo**
+
+Logo can be set in several ways:
+
+1.  **SVG from React component** (default)
+
+    - Put your SVG in `customSvgLogo.js` in `src/components/svgs` 
+    - Edit `gatsby-config.js` with the following option:
+
+    ```shell 
+    module.exports = {
+        siteMetadata: {
+            customLogoComponent: true,
+        }
+    }
+    ```
+    ⚠️ Set this option to `false` if you wish to use any of the bellow options
+
+2.  **From WP Media Library (JPEG or PNG)**
+    - Upload and set image title to `"gp-logo"`.
+
+3.  **From Gatsby's static directory (JPEG, PNG or SVG)**
+    - Add logo named `"gp-logo"` to `src/static/images` directory.
+
+
+4. If no image is found logo will be generated based on WordPress site name.
+
+### 🖌️ **Colors, fonts and styles**
+
+Edit the `theme.js` file to customize variables like
+colors, fonts, border-radius and edit global styles of existing components
+
+```shell 
+src/@chakra-ui/theme.js
+```
+
+
+##  ↘️ **MailChimp Newsletter**
+    
+1. **Get the MailChimp endpoint**
+
+    - Go to MailChimp dashboard: `Audience –> Signup Forms –> Embedded Form`
+    
+    - Generate a form and copy the first URL you see (from the `POST` method)
+
+    - Paste the endpoint URL into gatsby-config.js:
+
+```shell 
+    plugins: [
+        {
+        resolve: "gatsby-plugin-mailchimp",
+        options: {
+            # example URL
+            endpoint: 'https://name.list-manage.com/subscribe/post?u=4754c309a8',
+            timeout: 3500,
+        },
+        },
+    ]
+```
+
+
+2. **Paste URL in gatsby-config.js**
+
+
+## ↘️ **Social Network Icons**
+
+Edit `gatsby-config.js` and add URLs to your social networks:
+
+ ```shell
+module.exports = {
+  siteMetadata: {
+    # Social icons URLs / 
+    # If not using leave it empty ( `` ) / Do not delete field
+    socialLinks: {
+      facebook:  `https://facebook.com`,
+      instagram:  `https://instagram.com`,
+      linkedin: `https://linkedin.com`,
+      youtube: `https://youtube.com`,
+      twitter: ``,
+    },
+  },
+```
 
 <!-- AUTO-GENERATED-CONTENT:END -->

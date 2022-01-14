@@ -3,64 +3,72 @@ import { Box, Text, Image } from "@chakra-ui/react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import { GatsbyImage } from "gatsby-plugin-image"
-import GatsbypressLogo from "../svgs/gatsbypressLogo"
+import CustomSvgLogo from "../svgs/customSvgLogo"
 import { useColorMode } from "@chakra-ui/color-mode"
 
-const Logo = ({ siteTitle, siteLogo }) => {
+const Logo = ({ siteWpTitle, staticLogo, wpLogo, customLogoComponent }) => {
   const { colorMode } = useColorMode();
   let theLogo = ""
-  // Local SVG logo
-  if ( GatsbypressLogo ) {
-    theLogo = 
-    <Link to="/" title={siteTitle}>
-      <GatsbypressLogo colorMode={colorMode} w={'160px'} h={'100%'}y/>
-    </Link>
-  } 
-  // SVG from WP
-  else if (!siteLogo?.childImageSharp && siteLogo?.extension === 'svg') {
-    theLogo = 
-    <Link to="/" title={siteTitle}>
-      <GatsbypressLogo colorMode={colorMode} w={'160px'} h={'100%'}y/>
+  // Logo from WP media library (needs to have "gp-logo" as title)
+  if (wpLogo) {
+    console.log(wpLogo.altText, 'wpLogo-alt')
+    theLogo =
+    <Link to="/" title={siteWpTitle}>
       <Image
         as={GatsbyImage}
-        src={siteLogo?.publicURL}
-        alt={siteTitle}
+        maxWidth="160px"
+        height="auto"
+        image={wpLogo?.localFile?.childImageSharp?.gatsbyImageData}
+        alt={wpLogo?.altText}
+        title={siteWpTitle}
+      />
+    </Link>
+  }
+  // Local SVG logo from src/static
+  else if (!staticLogo?.childImageSharp && staticLogo?.extension === 'svg') {
+    console.log('static svg')
+    theLogo = 
+    <Link to="/" title={siteWpTitle}>
+      <Image
+        src={staticLogo?.publicURL}
+        alt={siteWpTitle}
         maxW={'160px'}
         height={'auto'}
       />  
     </Link>
   } 
-  // PNG or JPG logo from WP
-  else if ((siteLogo?.childImageSharp && siteLogo?.extension === 'png') || siteLogo?.extension === 'jpg') {
+  // Local JPG/PNG logo from src/static
+  else if (staticLogo?.childImageSharp && (staticLogo?.extension === 'png' || staticLogo?.extension === 'jpg')) {
+    console.log('static jpg/png')   
     theLogo = 
-    <Link to="/" title={siteTitle}>
+    <Link to="/" title={siteWpTitle}>
       <Image
         as={GatsbyImage}
         maxWidth="160px"
         height="auto"
-        image={siteLogo?.childImageSharp?.gatsbyImageData}
-        alt={siteTitle}
-        title={siteTitle}
+        image={staticLogo?.childImageSharp?.gatsbyImageData}
+        alt={siteWpTitle}
+        title={siteWpTitle}
       />
     </Link>
   }
-  // Site Title Text
-  else if (siteTitle) {
-    theLogo =
-    <Text fontSize="md" fontWeight="bold" color="gray.700">
-      <Link to={"/"} title={siteTitle}>
-          {"Hellooo" + siteTitle}
-      </Link>
-    </Text>
-  } 
-  // Fallback
+  // Custom SVG component
+  else if (!staticLogo && customLogoComponent && CustomSvgLogo ) {
+    console.log('custom logo component')
+    theLogo = 
+    <Link to="/" title={siteWpTitle}>
+      <CustomSvgLogo colorMode={colorMode} w={'160px'} h={'100%'}y/>
+    </Link>
+  }
   else {
-    theLogo =
-    <Text fontSize="md" fontWeight="bold" color="gray.700">
-      <Link to={"/"}>
-          GatsbyPress
-      </Link>
-   </Text> 
+    console.log('site wp title')
+    console.log(siteWpTitle, 'siteWpTitle')
+    theLogo = 
+    <Link to={"/"}>
+      <Text fontSize="lg" fontWeight="bold" color={colorMode === "light" ? "gray.800" : "gray.50"}>
+          {siteWpTitle}
+      </Text> 
+    </Link>
   }
   return (
     <Box>
@@ -70,12 +78,17 @@ const Logo = ({ siteTitle, siteLogo }) => {
 }
 
 Logo.propTypes = {
-    siteTitle: PropTypes.string
+    siteWpTitle: PropTypes.string,
+    wpLogo: PropTypes.object,
+    staticLogo: PropTypes.object,
+    wpTitleLogo: PropTypes.bool
   }
   
 Logo.defaultProps = {
-    siteTitle: `Site Title Placeholder`,
-    siteLogo: ``,
+    siteWpTitle: `GatsbyPress`,
+    staticLogo: null,
+    wpLogo: null,
+    customLogoComponent: true
   }
 
 export default Logo

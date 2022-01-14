@@ -15,8 +15,11 @@ import Logo from "./logo"
 
 const Header = function ({ data })  {
   const items = data?.allWpMenu?.nodes[0]?.menuItems?.nodes
-  const title = data?.wp?.allSettings?.generalSettingsTitle
-  const logoMediaItem = data?.allFile?.edges[0]?.node
+  const wpTitle = data?.wp?.allSettings?.generalSettingsTitle
+  const staticLogo = data?.allFile?.edges[0]?.node
+  const wpLogo = data?.allWpMediaItem?.nodes[0]
+  console.log(wpLogo, 'wpLogo')
+  const customLogoComponent = data.allSite.nodes[0].siteMetadata.customLogoComponent
   const { isOpen, onToggle } = useDisclosure()
 
   return (
@@ -39,9 +42,11 @@ const Header = function ({ data })  {
         >
           <Box>
             <Logo
-              siteTitle={title}
-              siteLogo={logoMediaItem}
-            />   
+              siteWpTitle={wpTitle}
+              staticLogo={staticLogo}
+              wpLogo={wpLogo}
+              customLogoComponent={customLogoComponent}
+            />
           </Box>
 
           <Spacer/>

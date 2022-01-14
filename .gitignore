@@ -1,6 +1,12 @@
 # md files
 ToDo.md
 
+#svg
+liquid.svg
+
+#directories
+dev-notes
+
 # Logs
 logs
 *.log

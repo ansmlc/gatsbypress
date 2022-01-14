@@ -1,5 +1,5 @@
 import React from "react"
-function GatsbypressLogo ({ colorMode, w, h }) {
+function CustomSvgLogo ({ colorMode, w, h }) {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" 
             width={w} 
@@ -20,4 +20,4 @@ function GatsbypressLogo ({ colorMode, w, h }) {
         </svg>
     )
 }
-export default GatsbypressLogo
+export default CustomSvgLogo
