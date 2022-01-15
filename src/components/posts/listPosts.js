@@ -17,25 +17,24 @@ import {
 import { Fade } from "react-awesome-reveal"
 import Card from "../layout/card"
 
-  // Show author info in the card only if not in user profile page
-  const PostAuthorInfo = ({ postAuthor, postDate }) => (
-    <Stack  direction={'row'} spacing={2} align={'center'}>
-      <Image
-        borderRadius='brandRadius.avatar'
-        boxSize='30px'
-        htmlHeight='30px'
-        htmlWidth='30px'
-        src={postAuthor.avatar.url}
-        alt={'Author'}
-      />
-      <Stack direction={'column'} spacing={0} fontSize={'small'}>
-          <Text fontWeight={600} color={useColorModeValue('gray.800', 'gray.100')}>
-              {postAuthor.name}
-          </Text>
-        <Text color={useColorModeValue('gray.700', 'gray.300')}><time>{postDate}</time></Text>
-      </Stack>
+const PostAuthor = ({ postAuthor, postDate }) => (
+  <Stack  direction={'row'} spacing={2} align={'center'}>
+    <Image
+      borderRadius='brandRadius.avatar'
+      boxSize='30px'
+      htmlHeight='30px'
+      htmlWidth='30px'
+      src={postAuthor.avatar.url}
+      alt={'Author'}
+    />
+    <Stack direction={'column'} spacing={0} fontSize={'small'}>
+        <Text fontWeight={600} color={useColorModeValue('gray.800', 'gray.100')}>
+            {postAuthor.name}
+        </Text>
+      <Text color={useColorModeValue('gray.700', 'gray.300')}><time>{postDate}</time></Text>
     </Stack>
-  )
+  </Stack>
+)
 
 // Create Post Card Component
 const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postTags, postAuthor, key }) => {
@@ -115,7 +114,7 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
         <p dangerouslySetInnerHTML={{ __html: postExcerpt }} />
       </Box>
       <Box>
-      <PostAuthorInfo 
+      <PostAuthor 
         postAuthor={postAuthor} 
         postDate={postDate} 
       />
@@ -124,9 +123,14 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
   </Card>
   )
 }
+
+
+
 const  ListPosts = ({ posts, context }) => {
   // Get data and return post cards
-  if (context === 'author') {
+  if (posts && !posts.length === 0) {
+    console.log(posts, 'posts is true')
+    if (context === 'author') {
       return ( 
         <SimpleGrid minChildWidth="236px" spacing="20px">
           {posts?.map((post) => (
@@ -142,35 +146,43 @@ const  ListPosts = ({ posts, context }) => {
           ))}
         </SimpleGrid>
       )
-  }
-  else if (context === 'blog') {
-    return (
-      <SimpleGrid minChildWidth="236px" spacing="6">
-        <Fade damping={0.3} duration={500} cascade triggerOnce>
-        {posts?.map((post, i) => (
-          <PostCard 
-            // salAnimationDuration={i*90}
-            key={post.node.id}
-            postSlug={post.node.slug}
-            postTitle={post.node.title}
-            postDate={post.node.date}
-            postImage={post.node.featuredImage?.node?.localFile?.childImageSharp.gatsbyImageData}
-            postTags={post.node.tags.nodes.slice(0, 3)}
-            postExcerpt={post.node.excerpt}
-            postAuthor={post.node.author.node}
-          />
-        ))}
-        </Fade>
-      </SimpleGrid>
-    )
-  }
-  else {
-    return (
-        <Alert my="4" borderRadius="xl" boxShadow="xl" status="warning">
-          <AlertIcon />
-          Nothing found. Please add some posts to your WordPress site.
-        </Alert>
+    }
+    else if (context === 'blog') {
+      return (
+        <SimpleGrid minChildWidth="236px" spacing="6">
+          <Fade damping={0.3} duration={500} cascade triggerOnce>
+          {posts?.map((post, i) => (
+            <PostCard 
+              // salAnimationDuration={i*90}
+              key={post.node.id}
+              postSlug={post.node.slug}
+              postTitle={post.node.title}
+              postDate={post.node.date}
+              postImage={post.node.featuredImage?.node?.localFile?.childImageSharp.gatsbyImageData}
+              postTags={post.node.tags.nodes.slice(0, 3)}
+              postExcerpt={post.node.excerpt}
+              postAuthor={post.node.author.node}
+            />
+          ))}
+          </Fade>
+        </SimpleGrid>
       )
+    }
+  } else 
+  {
+    return (
+      <Alert 
+        margin={'0 auto'}
+        justifyContent={'center'} 
+        borderRadius="brandRadius.card" 
+        boxShadow="xl" 
+        status="warning"
+        maxW={'lg'}
+        >
+        <AlertIcon />
+        Nothing found. Add some posts to your WordPress site.
+      </Alert>
+    )
   }
 }
 

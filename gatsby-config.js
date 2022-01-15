@@ -18,6 +18,11 @@ module.exports = {
       youtube: `https://youtube.com`,
       twitter: ``,
     },
+    frontpageIntro: {
+      firstTagline: 'Your favourite CMS',
+      secondTagline: 'meets JAMStack',
+      description: 'Use WordPress along with Gatsby, to manage your content via worlds post popular CMS, and deploy it on a blazing fast front-end'
+    },
   },
   plugins: [
     {

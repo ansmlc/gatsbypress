@@ -13,15 +13,22 @@ import Features from '../components/frontpage/features'
 import PrimaryButton from "../components/buttons/primaryButton"
 import Seo from "../components/cta/seo"
 import MailChimpForm from "../components/cta/newsletter"
-import {
-  Alert,
-  AlertIcon,
-} from "@chakra-ui/react"
 import { Fade } from 'react-awesome-reveal'
  
 const HomePage = () => {
   const data = useStaticQuery(graphql`
   query HomePageQuery {
+    allSite {
+      nodes {
+        siteMetadata {
+          frontpageIntro {
+            description
+            firstTagline
+            secondTagline
+          }
+        }
+      }
+    }
     wp {
       allSettings {
         generalSettingsTitle
@@ -66,76 +73,59 @@ const HomePage = () => {
       filter: { categories: { nodes: { elemMatch: { slug: { eq: "featured" } } } } }
       ) 
     {
-    nodes {
-      ...postFields
-      categories {
-        nodes {
-          slug
+      nodes {
+        ...postFields
+        categories {
+          nodes {
+            slug
+          }
         }
       }
     }
   }
-}
 `)
   const posts = data?.post?.edges  
   const featured = data?.featured?.nodes
   const siteTitle = data?.wp?.allSettings?.generalSettingsTitle
-  const HomeContent = () => (
-  <Layout>
-    <Seo title={siteTitle}/>
-    <GatsbyPressIntro 
-      titleOne={'Your favourite CMS'} 
-      titleTwo={'meets JAMStack'} 
-      description={'Use WordPress along with Gatsby, to manage your content via worlds post popular CMS, and deploy it on a blazing fast front-end.'}
-    />
-    <SectionHeading
-        heading={'Featured'}
-        subheading={'Latest featured posts'}
-        mb={'6'}
-        mt={'12'}
-    />
-    <span id="features"/>
-    <Features
-      featured={featured}
-    />
-    <SectionHeading
-      heading={'Latest posts'}
-      subheading={'Latest posts from our blog'}
-      mb={'6'}
-      mt={'2'}
-    />
-    <ListPosts 
-      context={`blog`} 
-      posts={posts}     
-    />
-    <Center marginY="16">
-      <Link to="/blog">
-        <PrimaryButton arrowRight>
-          Read our Blog
-        </PrimaryButton>
-      </Link>
-    </Center>
-    <Fade delay={200} duration={500} triggerOnce>
-      <MailChimpForm/>
-    </Fade>
-  </Layout>
-  )
-  if (posts) {
-    return (
-        <HomeContent/>
-      )
-  }
-  else {
-    return (
+  const introData = data?.allSite?.nodes[0]?.siteMetadata?.frontpageIntro
+  return (
     <Layout>
-      <Alert my="4" borderRadius="brandRadius.card" boxShadow="xl" status="warning">
-        <AlertIcon />
-          Nothing found.
-          Please add some posts to your WordPress site.
-      </Alert>
+      <Seo title={siteTitle}/>
+      <GatsbyPressIntro 
+        introData={introData}
+      />
+      <SectionHeading
+          heading={'Featured'}
+          subheading={'Latest featured posts'}
+          mb={'6'}
+          mt={'12'}
+      />
+      <span id="features"/>
+      <Features
+        featured={featured}
+      />
+      <SectionHeading
+        heading={'Latest posts'}
+        subheading={'Latest posts from our blog'}
+        mb={'6'}
+        mt={'2'}
+      />
+      <ListPosts 
+        context={`blog`} 
+        posts={posts}     
+      />
+      <Center marginY="16">
+        <Link to="/blog">
+          <PrimaryButton arrowRight>
+            Read our Blog
+          </PrimaryButton>
+        </Link>
+      </Center>
+      <Fade delay={200} duration={500} triggerOnce>
+        <MailChimpForm/>
+      </Fade>
     </Layout>
-    )
-  }
+  )
 }
  
 export default HomePage
