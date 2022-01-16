@@ -104,7 +104,13 @@ const theme = extendTheme({
       },
       // Style content field in postTemplate.js & pageTemplate.js
       ".wysiwyg": {
-        
+        ".blocks-gallery-item__caption": {
+          borderRadius: "xl",
+        },
+        ".blocks-gallery-grid": {
+          ml: '0',
+          my: '2'
+        },
         img: {
           borderRadius: "xl",
         },

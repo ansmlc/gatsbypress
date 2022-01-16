@@ -27,7 +27,7 @@ const PostAuthor = ({ postAuthor, postDate }) => (
       src={postAuthor.avatar.url}
       alt={'Author'}
     />
-    <Stack direction={'column'} spacing={0} fontSize={'small'}>
+    <Stack direction={'column'} spacing={-1} fontSize={'small'}>
         <Text fontWeight={600} color={useColorModeValue('gray.800', 'gray.100')}>
             {postAuthor.name}
         </Text>
@@ -42,6 +42,7 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
   <Card
     key={key}
     maxW="md"
+    maxH="max-content"
   >
     <AspectRatio ratio={16/9}>
     {postImage ?
@@ -95,10 +96,14 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
         ))}
       </Text> 
       <Heading
-        noOfLines={2} 
         my="4"
         lineHeight="1.2"
-        fontSize={'xl'}
+        fontSize={'2xl'}
+        noOfLines={'2'}
+        textDecoration={'underline'}
+        textDecorationThickness={'4px'}
+        textDecorationColor={useColorModeValue('brand.400', 'brand.500')}
+        textUnderlineOffset={'-2px'}
       >
         <Link
             to={"../../post/" + postSlug}>
@@ -128,8 +133,7 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
 
 const  ListPosts = ({ posts, context }) => {
   // Get data and return post cards
-  if (posts && !posts.length === 0) {
-    console.log(posts, 'posts is true')
+  if (posts && posts.length > 0) {
     if (context === 'author') {
       return ( 
         <SimpleGrid minChildWidth="236px" spacing="20px">
@@ -149,7 +153,7 @@ const  ListPosts = ({ posts, context }) => {
     }
     else if (context === 'blog') {
       return (
-        <SimpleGrid minChildWidth="236px" spacing="6">
+        <SimpleGrid minChildWidth="236px" spacing="8">
           <Fade damping={0.3} duration={500} cascade triggerOnce>
           {posts?.map((post, i) => (
             <PostCard 

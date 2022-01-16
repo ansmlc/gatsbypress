@@ -10,33 +10,24 @@ import {
     Spacer
 } from "@chakra-ui/react"
 import { GatsbyImage } from "gatsby-plugin-image"
-import PrimaryButton from "../buttons/primaryButton"
-import { Badge, Icon } from "@chakra-ui/react"
-import { HiStar } from "@react-icons/all-files/hi/HiStar"
 import { Fade } from "react-awesome-reveal"
+import SecondaryButton from "../buttons/secondaryButton"
 
 const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, orderBaseTxt, orderLgTxt, orderBaseImg, orderLgImg }) => ( 
     <Fade delay={200} duration={500} triggerOnce>
         <Flex width="100%" justify={"center"}>
             <Flex 
-                mb="12" textAlign="left" align={{base: "flex-start", md: "center"}} flexDir="row" flexWrap={{base: "wrap", md: "nowrap"}}
-                overflow="hidden" boxShadow="2xl" maxW={'100%'} rounded="2xl" bg={useColorModeValue('white', 'gray.700')}
+                mb="20" textAlign="left" align={{base: "flex-start", md: "center"}} flexDir="row" flexWrap={{base: "wrap", md: "nowrap"}}
+                maxW={'100%'}
             > 
                 <Box p="8" order={{ base: orderBaseTxt, md: orderLgTxt }} maxW={{base: '100%', md: '50%' }}> 
-                    <Badge
-                    rounded="brandRadius.badge"
-                    colorScheme="secondary"
-                    maxWidth="105px"
-                    marginBottom="0"
-                    >
-                    <Icon as={HiStar} mt="-2px"/> Featured
-                    </Badge>            
+        
                     <Heading 
                         mt="5"
                         mb="4"
                         lineHeight={1.1}
-                        fontSize={'3xl'}
-                        noOfLines={{ base: 2, md: 1}}
+                        fontSize={'4xl'}
+                        color={useColorModeValue('brand.600', 'brand.500')}
                     >
                         {featuredTitle}
                     </Heading>
@@ -46,15 +37,15 @@ const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, ord
                         color={'gray.500'}
                         fontWeight={400}
                         lineHeight={1.3}
-                        noOfLines={{base: 4, md: 2}}
+                        noOfLines={{base: 4, md: 4}}
                     >
                             <div dangerouslySetInnerHTML={{ __html: featuredDesc }}/>
                     </Box>
                     <Spacer/>
                     <Link alt={featuredTitle} to={"../../post/" + featuredSlug}>
-                        <PrimaryButton arrowRight>
+                        <SecondaryButton arrowRight>
                             Read Post
-                        </PrimaryButton>
+                        </SecondaryButton>
                     </Link>
                 </Box>
                 <Box 

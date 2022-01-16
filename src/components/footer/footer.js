@@ -62,6 +62,19 @@ const Footer = function ({ data }) {
           </Stack>
           <Stack align={'flex-start'}>
             <Heading>Menu</Heading>
+            <Link
+              activeStyle={{ fontWeight: "bold" }}    
+              to="/" 
+              key="frontpage">
+              Home
+            </Link>
+            <Link 
+              activeStyle={{ fontWeight: "bold" }}    
+              partiallyActive={true}             
+              to="/blog" 
+              key="blogpage">
+              Blog
+            </Link>
             {pageMenuItems.map(pageItem => (
                 <Link 
                     activeStyle={{ fontWeight: "bold" }} 

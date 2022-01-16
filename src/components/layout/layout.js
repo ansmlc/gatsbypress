@@ -21,6 +21,7 @@ import { useStaticQuery, graphql } from "gatsby"
       wp {
         allSettings {
           generalSettingsTitle
+          generalSettingsDescription
         }
       }
       allWpCategory {
@@ -53,7 +54,7 @@ import { useStaticQuery, graphql } from "gatsby"
           }
         }
       }
-      allWpMenu(filter: {name: {eq: "gp-menu-header"}}) {
+      allWpMenu(filter: {name: {eq: "GP-HEADER"}}) {
         nodes {
           id
           menuItems {
@@ -65,7 +66,7 @@ import { useStaticQuery, graphql } from "gatsby"
           }
         }
       } 
-      footer: allWpMenu(filter: {name: {eq: "gp-menu-footer"}}) {
+      footer: allWpMenu(filter: {name: {eq: "GP-FOOTER"}}) {
         nodes {
           id
           menuItems {

@@ -16,7 +16,7 @@ module.exports = {
       instagram:  `https://instagram.com`,
       linkedin: `https://linkedin.com`,
       youtube: `https://youtube.com`,
-      twitter: ``,
+      twitter: `https://twitter.com`,
     },
     frontpageIntro: {
       firstTagline: 'Your favourite CMS',

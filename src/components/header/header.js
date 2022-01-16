@@ -18,7 +18,6 @@ const Header = function ({ data })  {
   const wpTitle = data?.wp?.allSettings?.generalSettingsTitle
   const staticLogo = data?.allFile?.edges[0]?.node
   const wpLogo = data?.allWpMediaItem?.nodes[0]
-  console.log(wpLogo, 'wpLogo')
   const customLogoComponent = data.allSite.nodes[0].siteMetadata.customLogoComponent
   const { isOpen, onToggle } = useDisclosure()
 

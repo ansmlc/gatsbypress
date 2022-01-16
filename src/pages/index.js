@@ -10,10 +10,10 @@ import ListPosts from "../components/posts/listPosts.js"
 import GatsbyPressIntro from "../components/frontpage/intro"
 import SectionHeading from "../components/layout/sectionHeading"
 import Features from '../components/frontpage/features'
-import PrimaryButton from "../components/buttons/primaryButton"
 import Seo from "../components/cta/seo"
 import MailChimpForm from "../components/cta/newsletter"
 import { Fade } from 'react-awesome-reveal'
+import SecondaryButton from "../components/buttons/secondaryButton"
  
 const HomePage = () => {
   const data = useStaticQuery(graphql`
@@ -116,9 +116,9 @@ const HomePage = () => {
       />
       <Center marginY="16">
         <Link to="/blog">
-          <PrimaryButton arrowRight>
+          <SecondaryButton arrowRight>
             Read our Blog
-          </PrimaryButton>
+          </SecondaryButton>
         </Link>
       </Center>
       <Fade delay={200} duration={500} triggerOnce>

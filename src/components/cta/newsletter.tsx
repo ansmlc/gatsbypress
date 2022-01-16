@@ -57,7 +57,7 @@ export default function MailChimpForm() {
           fontSize={{ base: 'xl', sm: '2xl' }}
           textAlign={'center'}
           mb={6}>
-          Prijavi se na naš bilten
+            Sign up to our newsletter
         </Heading>
         <Stack
           direction={{ base: 'column', md: 'row' }}
@@ -111,10 +111,10 @@ export default function MailChimpForm() {
           {error
             ? <div className="mailchimpMessage" dangerouslySetInnerHTML={{__html: message}} />
             : state == 'success' && message.includes("confirm") 
-              ? "Molimo provjerite e-mail za potvrdu."
+              ? "Please check your email to confirm."
             : state == 'success' 
-              ? "Uspješno! Hvala vam za prijavu."
-            : "Nećete primati neželjenu poštu✌️"
+              ? "Success! Thanks for subscribing."
+            : "You won't recieve any spam✌️"
           }
         </Box>
       </Container>

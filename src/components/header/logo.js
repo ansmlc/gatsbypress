@@ -11,7 +11,6 @@ const Logo = ({ siteWpTitle, staticLogo, wpLogo, customLogoComponent }) => {
   let theLogo = ""
   // Logo from WP media library (needs to have "gp-logo" as title)
   if (wpLogo) {
-    console.log(wpLogo.altText, 'wpLogo-alt')
     theLogo =
     <Link to="/" title={siteWpTitle}>
       <Image
@@ -26,7 +25,6 @@ const Logo = ({ siteWpTitle, staticLogo, wpLogo, customLogoComponent }) => {
   }
   // Local SVG logo from src/static
   else if (!staticLogo?.childImageSharp && staticLogo?.extension === 'svg') {
-    console.log('static svg')
     theLogo = 
     <Link to="/" title={siteWpTitle}>
       <Image
@@ -39,7 +37,6 @@ const Logo = ({ siteWpTitle, staticLogo, wpLogo, customLogoComponent }) => {
   } 
   // Local JPG/PNG logo from src/static
   else if (staticLogo?.childImageSharp && (staticLogo?.extension === 'png' || staticLogo?.extension === 'jpg')) {
-    console.log('static jpg/png')   
     theLogo = 
     <Link to="/" title={siteWpTitle}>
       <Image
@@ -54,15 +51,12 @@ const Logo = ({ siteWpTitle, staticLogo, wpLogo, customLogoComponent }) => {
   }
   // Custom SVG component
   else if (!staticLogo && customLogoComponent && CustomSvgLogo ) {
-    console.log('custom logo component')
     theLogo = 
     <Link to="/" title={siteWpTitle}>
       <CustomSvgLogo colorMode={colorMode} w={'160px'} h={'100%'}y/>
     </Link>
   }
   else {
-    console.log('site wp title')
-    console.log(siteWpTitle, 'siteWpTitle')
     theLogo = 
     <Link to={"/"}>
       <Text fontSize="lg" fontWeight="bold" color={colorMode === "light" ? "gray.800" : "gray.50"}>

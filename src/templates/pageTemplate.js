@@ -21,7 +21,6 @@ import { Fade } from "react-awesome-reveal"
 export default function PagePost({ data }) {
   const page = data.allWpPage.nodes[0]
   const image = page?.featuredImage?.node?.localFile
-  console.log(page)
   return (
     <Layout>
       <Seo title={page.title}/>
@@ -40,8 +39,8 @@ export default function PagePost({ data }) {
       <Card 
         as="article"
       >
-        <AspectRatio maxW="1920px" ratio={16 / 9}>
-          {image?
+        {image?
+          <AspectRatio maxW="1920px" ratio={16 / 9}>
             <Image 
               as={GatsbyImage} 
               image={getImage(image)} 
@@ -50,15 +49,8 @@ export default function PagePost({ data }) {
               roundedBottomLeft={0}
               roundedBottomRight={0}
             /> 
-            :
-            <Image
-              src="https://via.placeholder.com/1920x1080" 
-              alt={page.title || ""}
-              rounded={'brandRadius.image'} 
-              roundedBottomLeft={0}
-              roundedBottomRight={0}            />         
-          }
-        </AspectRatio>
+          </AspectRatio>
+        : null }
         <Box 
           className="wysiwyg"
           color="gray.800"
