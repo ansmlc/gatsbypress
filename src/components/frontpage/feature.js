@@ -20,8 +20,7 @@ const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, ord
                 mb="20" textAlign="left" align={{base: "flex-start", md: "center"}} flexDir="row" flexWrap={{base: "wrap", md: "nowrap"}}
                 maxW={'100%'}
             > 
-                <Box p="8" order={{ base: orderBaseTxt, md: orderLgTxt }} maxW={{base: '100%', md: '50%' }}> 
-        
+                <Box p={{ base: 6, md: 8}} order={{ base: orderBaseTxt, md: orderLgTxt }} maxW={{base: '100%', md: '50%' }}> 
                     <Heading 
                         mt="5"
                         mb="4"

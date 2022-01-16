@@ -12,6 +12,8 @@
 # **GatsbyPress**
 ### Gatsby Starter with WordPress, Chakra-UI and PWA integration
 
+Demo: https://gpstarter.netlify.app/
+
 <img  alt="GatsbyPress" src="https://github.com/ansmlc/gatsbypress/blob/master/src/static/images/GatsbyPress.png" width="100%" height="auto" />
 </div>
 
