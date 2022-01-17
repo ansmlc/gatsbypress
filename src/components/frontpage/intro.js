@@ -2,7 +2,6 @@ import * as React from "react"
 import {
   Box,
   Heading,
-  Container,
   Text,
   Stack,
   useColorModeValue,
@@ -16,7 +15,6 @@ import PrimaryButton from "../buttons/primaryButton";
 
 export default function GatsbyPressIntro({ introData }) {
   return (
-      <Container maxW={'3xl'}>
         <Stack
           as={Box}
           textAlign={'center'}
@@ -25,7 +23,7 @@ export default function GatsbyPressIntro({ introData }) {
         >
           <Fade duration={200} triggerOnce>
             <Heading
-              fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
+              fontSize={{ base: '4xl', sm: '5xl', md: '6xl' }}
               lineHeight={'1'}
               >
               {introData?.firstTagline} <br />
@@ -36,24 +34,23 @@ export default function GatsbyPressIntro({ introData }) {
               </Fade>
             </Heading>
           </Fade>
-          <Text color={useColorModeValue('gray.700', 'gray.300')}>
+          <Text color={useColorModeValue('gray.800', 'gray.300')}>
             {introData?.description}          
           </Text>
+          <AnchorLink to="/#newsletter">
+              <PrimaryButton>Subscribe</PrimaryButton>
+            </AnchorLink>
           <Stack
             direction={'column'}
             spacing={6}
             align={'center'}
             alignSelf={'center'}
             position={'relative'}>
-            <AnchorLink to="/#newsletter">
-              <PrimaryButton>Subscribe</PrimaryButton>
-            </AnchorLink>
             <AnchorLink to="/#features">
                 <Icon as={BiMouse} display={'block'} boxSize={5}/>
                 <Icon mt={-3} as={BiChevronDown} boxSize={5}/>
             </AnchorLink>
           </Stack>
         </Stack>
-      </Container>
   );
 }

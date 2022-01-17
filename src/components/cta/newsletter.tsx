@@ -11,6 +11,7 @@ import {
   Container,
   Flex,
   LightMode,
+  Text
 } from '@chakra-ui/react';
 import addToMailchimp from "gatsby-plugin-mailchimp"
 import { BiCheck } from "@react-icons/all-files/bi/BiCheck"
@@ -54,15 +55,18 @@ export default function MailChimpForm() {
         direction={'column'}>
         <Heading
           as={'h2'}
-          fontSize={{ base: 'xl', sm: '2xl' }}
+          fontSize={{ base: '2xl', sm: '3xl' }}
           textAlign={'center'}
-          mb={6}>
-            Sign up to our newsletter
+          mb={1}>
+            Join our newsletter
         </Heading>
+        <Text fontSize={'sm'} textAlign={'center'} mb={6}>
+          At vero eos et accusamus et iusto odio dignissimos ducimus 
+        </Text>        
         <Stack
           direction={{ base: 'column', md: 'row' }}
           as={'form'}
-          spacing={{ base: '4', md: '10' }}
+          spacing={{ base: '4', md: '6' }}
           onSubmit={_handleSubmit}>
           <FormControl>
             <Input
@@ -71,7 +75,7 @@ export default function MailChimpForm() {
               variant={'solid'}
               borderWidth={1}
               _placeholder={{
-                color: 'gray.400',
+                color: 'gray.500',
               }}
               borderColor={useColorModeValue('gray.300', 'gray.700')}
               backgroundColor={state == 'success' ? 'gray.50' : useColorModeValue('white', 'gray.800')}
@@ -99,7 +103,7 @@ export default function MailChimpForm() {
               size={'lg'}
               fontWeight={'bold'}
               type={state === 'success' ? 'button' : 'submit'}>
-              {state === 'success' ? <BiCheck /> : 'Prijava'}
+              {state === 'success' ? <BiCheck /> : 'Subscribe'}
             </Button>
             </LightMode>
           </FormControl>

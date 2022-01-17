@@ -50,7 +50,6 @@ module.exports = {
       options: {
        
          // replace this url with the url of your wordpress install
-         // https://limomet.a2hosted.com/websby/graphql
          // http://127.0.0.1/wpgatsby/graphql
 
          url: `http://www.amulali.mojweb.com.hr/graphql`,

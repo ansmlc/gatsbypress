@@ -114,7 +114,7 @@ const HomePage = () => {
         context={`blog`} 
         posts={posts}     
       />
-      <Center marginY="16">
+      <Center minW={'100%'} marginY="16">
         <Link to="/blog">
           <SecondaryButton arrowRight>
             Read our Blog

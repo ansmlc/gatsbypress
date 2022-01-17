@@ -7,9 +7,9 @@ import { Stack } from "@chakra-ui/react"
 const NextAndPreviousPost = ({ previousPostSlug, nextPostSlug }) => {
     return (
         <Stack 
-            justify={{ base: "start", md: "center"}} 
+            justify={{ base: "start", sm: "center"}} 
             marginY="8" 
-            direction={{ base: "column", md: "row" }} 
+            direction={{ base: "column", sm: "row" }} 
             spacing={4}
         >
             <Link to={"../../post/" + previousPostSlug}>

@@ -12,7 +12,7 @@ const SecondaryButton = ({ children, arrowLeft, arrowRight }) => {
 return (
     <LightMode>
         <Button 
-            minW={{ base: "100%", md: "200px"}}
+            minW={{ base: "100%", sm: "200px"}}
             rounded={'brandRadius.button'}
             shadow="md"
             size={'lg'}
