@@ -46,7 +46,7 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
   >
     <AspectRatio ratio={16/9}>
     {postImage ?
-    <Link to={"../../post/" + postSlug.replace(/\s+/g, "-").toLowerCase()}>
+    <Link to={"../../post/" + postSlug}>
         <Image
           as={GatsbyImage}
           image={postImage}
@@ -55,13 +55,14 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
           borderBottomRadius="0"  />
     </Link>
     :
-    <Link to={"../../post/" + postSlug.replace(/\s+/g, "-").toLowerCase()}>
+    <Link to={"../../post/" + postSlug}>
         <Image
           src="https://via.placeholder.com/1920x1080"
           alt={postTitle || ""}
-          rounded={'brandRadius.image'} 
-          roundedBottomLeft={0}
-          roundedBottomRight={0}/>
+          borderRadius={'brandRadius.image'} 
+          borderBottomLeftRadius={0}
+          borderBottomRightRadius={0}
+          />
     </Link>}
     </AspectRatio>
     <Box p="6">
@@ -98,7 +99,7 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
         noOfLines={'2'}
         textDecoration={'underline'}
         textDecorationThickness={'4px'}
-        textDecorationColor={useColorModeValue('brand.400', 'brand.500')}
+        textDecorationColor={useColorModeValue('brand.300', 'brand.400')}
         paddingBottom={'2px'}
       >
         <Link

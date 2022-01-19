@@ -7,19 +7,19 @@ const UserCard = ({ user, avatarSize }) => {
     const userData = user
     if ( userData ) {
         return (
-            <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
+            <Stack maxW={'md'} mt={6} direction={'row'} spacing={4} align={'start'}>
               <Avatar
                 src={userData.node.avatar.url}
                 alt={'Author'}
                 size={avatarSize}
               />
-              <Stack direction={'column'} spacing={0} fontSize={'sm'}>
+              <Stack direction={'column'} spacing={0}>
                 <Text fontWeight={600}>                        
-                <Link to={"../../author/" + userData.node.slug.replace(/\s+/g, "-").toLowerCase()}>
+                <Link to={"../../author/" + userData.node.slug}>
                       {userData.node.name}
                   </Link>
                   </Text>
-                <Text color={'gray.500'}>{userData.node.description} </Text>
+                <Text fontSize={'sm'}>{userData.node.description} </Text>
               </Stack>
             </Stack>
         )

@@ -31,7 +31,7 @@ const Logo = ({ siteWpTitle, staticLogo, wpLogo, customLogoComponent }) => {
         src={staticLogo?.publicURL}
         alt={siteWpTitle}
         maxW={'160px'}
-        height={'auto'}
+        height={'27.121px'}
       />  
     </Link>
   } 
@@ -53,7 +53,7 @@ const Logo = ({ siteWpTitle, staticLogo, wpLogo, customLogoComponent }) => {
   else if (!staticLogo && customLogoComponent && CustomSvgLogo ) {
     theLogo = 
     <Link to="/" title={siteWpTitle}>
-      <CustomSvgLogo colorMode={colorMode} w={'160px'} h={'100%'}y/>
+      <CustomSvgLogo colorMode={colorMode} w={'190px'} h={'32.21px'}y/>
     </Link>
   }
   else {

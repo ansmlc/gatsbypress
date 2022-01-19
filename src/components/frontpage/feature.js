@@ -6,7 +6,6 @@ import {
     Heading, 
     Image, 
     Flex, 
-    useColorModeValue,
     Spacer
 } from "@chakra-ui/react"
 import { GatsbyImage } from "gatsby-plugin-image"
@@ -17,7 +16,7 @@ const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, ord
     <Fade delay={200} duration={500} triggerOnce>
         <Flex width="100%" justify={"center"}>
             <Flex 
-                mb="20" textAlign="left" align={{base: "flex-start", md: "center"}} flexDir="row" flexWrap={{base: "wrap", md: "nowrap"}}
+                mb="28" textAlign="left" align={{base: "flex-start", md: "center"}} flexDir="row" flexWrap={{base: "wrap", md: "nowrap"}}
                 maxW={'100%'}
             > 
                 <Box p={{ base: 6, md: 8}} order={{ base: orderBaseTxt, md: orderLgTxt }} maxW={{base: '100%', md: '50%' }}> 
@@ -26,7 +25,7 @@ const Feature = ({ featuredTitle, featuredDesc, featuredImage, featuredSlug, ord
                         mb="4"
                         lineHeight={1.1}
                         fontSize={'4xl'}
-                        color={useColorModeValue('brand.600', 'brand.500')}
+                        color={'brand.400'}
                     >
                         {featuredTitle}
                     </Heading>

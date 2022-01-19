@@ -97,8 +97,6 @@ const HomePage = () => {
       <SectionHeading
           heading={'Featured'}
           subheading={'Latest featured posts'}
-          mb={'6'}
-          mt={'12'}
       />
       <span id="features"/>
       <Features
@@ -107,8 +105,6 @@ const HomePage = () => {
       <SectionHeading
         heading={'Latest posts'}
         subheading={'Latest posts from our blog'}
-        mb={'6'}
-        mt={'2'}
       />
       <ListPosts 
         context={`blog`} 

@@ -14,16 +14,15 @@ import "@wordpress/block-library/build-style/style.css"
 import "../.././node_modules/wysiwyg.css/wysiwyg.css"
 import { Fade } from "react-awesome-reveal"
 import Card from "../components/layout/card"
-
 import {
-  Avatar,
   Badge, 
   Box, 
   Text, 
   Image,
   AspectRatio,
   Stack,
-  Heading
+  Heading,
+  useColorModeValue
  } from "@chakra-ui/react"
 
  export const query = graphql`
@@ -82,30 +81,22 @@ export default function BlogPost({ data, pageContext }) {
                   {post.title}
                 </Heading>
             </Box>
-            <Stack 
-              my={6} 
-              direction={'row'} 
-              spacing={4} 
-              align={'center'}
-            >
-              <Avatar
+            <Stack my={6} direction={'row'} spacing={2} align={'center'}>
+              <Image
+                borderRadius='brandRadius.avatar'
+                boxSize='30px'
+                htmlHeight='30px'
+                htmlWidth='30px'
                 src={author.node.avatar.url}
                 alt={'Author'}
-                size={'sm'}  
-                width={'6'}
-                height={'6'}
               />
-              <Stack 
-                direction={'column'} 
-                spacing={0} 
-                fontSize={'sm'}
-              >
+              <Stack direction={'column'} spacing={-1} fontSize={'small'}>
                 <Link to={"../../author/" + author.node.slug}>
-                  <Text fontWeight={600}>
-                      {author.node.name}
+                  <Text fontWeight={600} color={useColorModeValue('gray.800', 'gray.100')}>
+                    {author.node.name}
                   </Text>
                 </Link>
-                <Text color={'gray.500'}><time>{post.date}</time></Text>
+                <Text color={useColorModeValue('gray.700', 'gray.300')}><time>{post.date}</time></Text>
               </Stack>
             </Stack>
           </Fade>

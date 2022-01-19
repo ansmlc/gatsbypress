@@ -13,12 +13,12 @@ return (
         <Button 
             minW={{ base: "100%", sm: "200px"}}
             rounded={'brandRadius.button'}
-            shadow="md"
+            shadow="xl"
             size={'lg'}
             fontWeight={'bold'}
             px={6}
             colorScheme={'brand'}
-            backgroundColor={'#D93C3C'}
+            backgroundColor={'brand.500'}
             rightIcon={arrowRight ? <BiRightArrowAlt /> : ''}
             leftIcon={arrowLeft ? <BiLeftArrowAlt /> : ''}
         >

@@ -49,7 +49,7 @@ const Footer = function ({ data }) {
         <SimpleGrid
           templateColumns={{ sm: '1fr 1fr', md: '2fr 1fr 1fr 1fr 1fr' }}
           spacing={8}>
-          <Stack spacing={6}>
+          <Stack spacing={4}>
             <Logo
               siteWpTitle={wpTitle}
               staticLogo={staticLogo}

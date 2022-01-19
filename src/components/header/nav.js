@@ -78,11 +78,12 @@ return (
                 
                 <LightMode>
                     <Button
-                        colorScheme={'brand'}
+                        borderColor={'brand.400'}
+                        color={'brand.400'}
                         variant={'outline'}
                         rounded={'brandRadius.button'}
                         borderWidth={'2px'}
-                        _hover={{ bg: "red.600", color: "white" }}
+                        _hover={{ bg: "red.500", color: "white" }}
                     >
                         Subscribe
                     </Button>

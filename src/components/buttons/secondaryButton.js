@@ -14,7 +14,7 @@ return (
         <Button 
             minW={{ base: "100%", sm: "200px"}}
             rounded={'brandRadius.button'}
-            shadow="md"
+            shadow="xl"
             size={'lg'}
             fontWeight={'bold'}
             px={6}
