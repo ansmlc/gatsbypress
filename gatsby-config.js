@@ -52,7 +52,7 @@ module.exports = {
          // replace this url with the url of your wordpress install
          // http://127.0.0.1/wpgatsby/graphql
 
-         url: `https://www.amulali.mojweb.com.hr/graphql`,
+         url: `https://amulali.mojweb.com.hr/graphql`,
       },
    },
     `gatsby-plugin-react-helmet`,
