@@ -65,10 +65,6 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
     </Link>}
     </AspectRatio>
     <Box p="6">
-    {
-        // Limit number of tags and lines
-        // Truncate text in case of large tags
-      }
       <Text             
         noOfLines={1} 
         isTruncated
@@ -103,7 +99,7 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
         textDecoration={'underline'}
         textDecorationThickness={'4px'}
         textDecorationColor={useColorModeValue('brand.400', 'brand.500')}
-        textUnderlineOffset={'-2px'}
+        paddingBottom={'2px'}
       >
         <Link
             to={"../../post/" + postSlug}>
@@ -112,7 +108,7 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
       </Heading>
       <Box
         mb="4"
-        noOfLines={[3]}
+        noOfLines={3}
         color={useColorModeValue('gray.700', 'gray.300')}
         fontSize="small"
       >
