@@ -44,20 +44,28 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
     maxW="md"
     maxH="max-content"
   >
+    <AspectRatio ratio={16/9}>
     {postImage ?
-        <GatsbyImage
-          borderRadius="brandRadius.image"
+    <Link to={"../../post/" + postSlug}>
+        <Image
+          as={GatsbyImage}
           image={postImage}
           alt={postTitle}
-        />
+          borderRadius={'brandRadius.image'}
+          overflow={"hidden"}
+          borderBottomRadius="0"  />
+    </Link>
     :
     <Link to={"../../post/" + postSlug}>
         <Image
           src="https://via.placeholder.com/1920x1080"
           alt={postTitle || "placeholder image"}
           borderRadius={'brandRadius.image'} 
+          borderBottomLeftRadius={0}
+          borderBottomRightRadius={0}
           />
     </Link>}
+    </AspectRatio>
     <Box p="6">
       <Text             
         noOfLines={1} 
