@@ -45,22 +45,17 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
     maxH="max-content"
   >
     {postImage ?
-    <Link to={"../../post/" + postSlug}>
         <Image
           as={GatsbyImage}
           image={postImage}
           alt={postTitle}
-          borderRadius={'brandRadius.image'}
-          />
-    </Link>
+        />
     :
     <Link to={"../../post/" + postSlug}>
         <Image
           src="https://via.placeholder.com/1920x1080"
           alt={postTitle || "placeholder image"}
           borderRadius={'brandRadius.image'} 
-          borderBottomLeftRadius={0}
-          borderBottomRightRadius={0}
           />
     </Link>}
     <Box p="6">
