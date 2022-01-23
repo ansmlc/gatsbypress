@@ -24,10 +24,10 @@ const Crumb = ({ pageContext, data }) => {
                     as={Link}
                     to={props.path}
                     key={props.key}
-                    aria-current={ props.active ? 'page' : 'false'}
+                    aria-current={ props.isactiveitem === 1 ?  'page' : 'false' }
                 >
                     {
-                        props.active ? 
+                        props.isactiveitem === 1 ?
                         <Text 
                             color={'inherit'}
                             maxW={{base: "100px", md: "200px"}} 
@@ -58,7 +58,7 @@ const Crumb = ({ pageContext, data }) => {
                                 key={crumb.key}
                                 path={crumb.path}
                                 title={crumb.title}
-                                active={crumb.active}
+                                isactiveitem={crumb.isactiveitem}
                             />
                         )
                     :null
@@ -74,7 +74,7 @@ const Crumb = ({ pageContext, data }) => {
                     key: "page-single", 
                     path: "#",
                     title: data?.title,
-                    active: true
+                    isactiveitem: 1
                 }
             ]
         },
@@ -95,7 +95,7 @@ const Crumb = ({ pageContext, data }) => {
                     key: "single-post",
                     path: "#",
                     title: data?.title,
-                    active: true
+                    isactiveitem: 1
                 },
             ]
         },
@@ -106,7 +106,7 @@ const Crumb = ({ pageContext, data }) => {
                     key: "page-blog",
                     path: "#",
                     title: "Blog",
-                    active: true
+                    isactiveitem: 1
                 }
             ]
         },
@@ -122,7 +122,7 @@ const Crumb = ({ pageContext, data }) => {
                     key: "page-category",
                     path: "#",
                     title: pageContext?.category,
-                    active: true
+                    isactiveitem: 1
                 }
             ]
         },
@@ -138,7 +138,7 @@ const Crumb = ({ pageContext, data }) => {
                     key: "page-tag",
                     path: "#",
                     title: pageContext?.tag,
-                    active: true
+                    isactiveitem: 1
                 }
             ]
         },
@@ -149,7 +149,7 @@ const Crumb = ({ pageContext, data }) => {
                     key: "page-author",
                     path: "#",
                     title: data?.name,
-                    active: true
+                    isactiveitem: 1
                 }
             ]
         }

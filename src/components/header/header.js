@@ -8,10 +8,11 @@ import {
   Collapse,
   useDisclosure
 } from "@chakra-ui/react"
-import Nav from "./nav";
+import NavMobile from "./navMobile";
 import NavToggle from "./navToggle";
 import ColorModeToggle from "./colorModeToggle";
 import Logo from "./logo"
+import NavDesktop from "./navDesktop";
 
 const Header = function ({ data })  {
   const items = data?.allWpMenu?.nodes[0]?.menuItems?.nodes
@@ -34,7 +35,7 @@ const Header = function ({ data })  {
         <Flex
           as="nav"
           align="center"
-          wrap="wrap"
+          wrap={"wrap"}
           h="100%"
           w="100%"
           py={4}
@@ -47,30 +48,26 @@ const Header = function ({ data })  {
               customLogoComponent={customLogoComponent}
             />
           </Box>
-
           <Spacer/>
-
           <Box>
             <Box mr="4" display={{ base: 'inline-block', md: 'none'}}>
               <ColorModeToggle />   
             </Box>  
-            <Box display={{ base: 'inline-block', md: 'initial'}}>
+            <Box display={{ base: 'inline-block', md: 'none'}}>
               <NavToggle onToggle={onToggle} isOpen={isOpen}/>   
             </Box> 
           </Box>
-
-          <Collapse in={isOpen} animateOpacity unmountOnExit>
-            <Nav items={items} isOpen={isOpen}></Nav>
-          </Collapse>
-
-          <Box display={{ base: 'none', md: 'initial'}}>
-            <Nav items={items} isOpen={isOpen}></Nav>
+          <Box width="100%" display={{ base: 'flex', md: 'none'}}>
+            <Collapse in={isOpen} animateOpacity unmountOnExit>
+              <NavMobile items={items} isOpen={isOpen}></NavMobile>
+            </Collapse>
           </Box>
-
-          <Box ml="6" display={{ base: 'none', md: 'initial'}}>
+          <Box display={{ base: 'none', md: 'block'}}>
+            <NavDesktop items={items}></NavDesktop>
+          </Box>
+          <Box ml="6" display={{ base: 'none', md: 'block'}}>
             <ColorModeToggle/>
           </Box>  
-          
         </Flex>
       </Container>
     </Box>

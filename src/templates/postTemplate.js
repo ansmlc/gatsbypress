@@ -127,23 +127,22 @@ export default function BlogPost({ data, pageContext }) {
           className="wysiwyg"
           padding={{ base: 6, md: 12 }}
           paddingY={{ base: 6 }}
-        ><div dangerouslySetInnerHTML={{ __html: post.content }}/>
-          <Box mt="6">
-            {tags?.nodes.map( tag => (
-            <Box 
-              display="inline" 
-              marginRight="3"
-              key={tag.slug}
-            >
-              <Link to={"../../tag/" + tag.slug}>
-                <Badge 
-                  rounded={'brandRadius.badge'}
-                  colorScheme="cyan">{"# " + tag.name}
-                </Badge>
-              </Link>
-            </Box>
-            ))}
+        ><div dangerouslySetInnerHTML={{ __html: post.content }}/></Box>
+        <Box m={{ base: 6, md: 12 }}>
+          {tags?.nodes.map( tag => (
+          <Box 
+            display="inline" 
+            marginRight="3"
+            key={tag.slug}
+          >
+            <Link to={"../../tag/" + tag.slug}>
+              <Badge 
+                rounded={'brandRadius.badge'}
+                colorScheme="cyan">{"# " + tag.name}
+              </Badge>
+            </Link>
           </Box>
+          ))}
         </Box>
       </Card>
       <UserCard avatarSize={'lg'} user={author}/>

@@ -11,13 +11,10 @@ import {
 import SocialLinks from "../cta/socialLinks"
 import { AnchorLink } from "gatsby-plugin-anchor-links"
 
-const Nav = ({ isOpen, items }) => {
-
+const NavMobile = ({ isOpen, items }) => {
 const prefixPage = '../../page'
 const menuItems = items
-
 let pageMenuItems = []
-
 menuItems?.map(item => (
     !item.url.includes('category')?
     pageMenuItems.push(item)
@@ -27,21 +24,19 @@ menuItems?.map(item => (
 
 return (
 <Box
-    display={{ base: isOpen ? "flex" : "none", md: "flex" }}
-    opacity={{ base: isOpen ? '100' : '0', md: '100' }}
+    display={{ base: isOpen ? "flex" : "none", md: 'none' }}
+    opacity={{ base: isOpen ? '100' : '0', md: '0' }}
     alignItems="center"
-   //  flexBasis={{ base: "100%", md: "auto" }}
 >
     <Stack
-        fontSize={{ base: "normal", md: "sm"}}
-        spacing={{ base: 6, md: 8}}
+        spacing={6}
         textAlign={'left'}
-        justify={["center", "center", "flex-end", "flex-end"]}
-        direction={["column", "column", "row", "row"]}
-        p={[8, 8, 0, 0]}
-        marginTop={{ base: "2", md: "0"}}
+        justify={"center"}
+        direction={"column"}
+        p={"8"}
+        mt={"2"}
         textTransform="uppercase"
-        alignItems={{ base: 'start', md: 'center'}}
+        alignItems={"start"}
     >
         <Box min-width="150px">
             <Link
@@ -90,7 +85,7 @@ return (
                 </LightMode>
             </AnchorLink>
         </Box>
-        <Box paddingTop="6" display={{ base: "flex", md: "none" }}>
+        <Box pt="6" display={"flex"}>
             <SocialLinks />
         </Box>
     </Stack>
@@ -98,4 +93,4 @@ return (
 )
 }
 
-export default Nav
+export default NavMobile
