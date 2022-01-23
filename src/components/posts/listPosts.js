@@ -58,7 +58,7 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
     <Link to={"../../post/" + postSlug}>
         <Image
           src="https://via.placeholder.com/1920x1080"
-          alt={postTitle || ""}
+          alt={postTitle || "placeholder image"}
           borderRadius={'brandRadius.image'} 
           borderBottomLeftRadius={0}
           borderBottomRightRadius={0}
@@ -113,7 +113,7 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
         color={useColorModeValue('gray.700', 'gray.300')}
         fontSize="small"
       >
-        <p dangerouslySetInnerHTML={{ __html: postExcerpt }} />
+        <div dangerouslySetInnerHTML={{ __html: postExcerpt }} />
       </Box>
       <Box>
       <PostAuthor 

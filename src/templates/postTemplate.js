@@ -7,22 +7,20 @@ import {
   getImage } from "gatsby-plugin-image"
 import Layout from "../components/layout/layout"
 import Crumb from "../components/layout/breadcrumbs.js"
-import UserCard from "../components/user/userCard"
+import UserDescription from "../components/posts/user/userDescription"
 import Seo from "../components/cta/seo"
 import NextAndPreviousPost from "../components/posts/nextAndPreviousPost"
 import "@wordpress/block-library/build-style/style.css"
 import "../.././node_modules/wysiwyg.css/wysiwyg.css"
 import { Fade } from "react-awesome-reveal"
 import Card from "../components/layout/card"
+import UserAndDate from "../components/posts/user/userAndDate"
 import {
   Badge, 
   Box, 
-  Text, 
   Image,
   AspectRatio,
-  Stack,
   Heading,
-  useColorModeValue
  } from "@chakra-ui/react"
 
  export const query = graphql`
@@ -62,8 +60,9 @@ import {
 `
 export default function BlogPost({ data, pageContext }) {
   const post = data.allWpPost.nodes[0]
+  const postDate = post?.date
   const tags = data.allWpPost.edges[0].node.tags
-  const author = data.allWpPost.edges[0].node.author
+  const user = data.allWpPost.edges[0].node.author
   const image = post?.featuredImage?.node?.localFile
   const previousPostSlug = pageContext?.previousPostSlug
   const nextPostSlug = pageContext?.nextPostSlug
@@ -81,24 +80,7 @@ export default function BlogPost({ data, pageContext }) {
                   {post.title}
                 </Heading>
             </Box>
-            <Stack my={6} direction={'row'} spacing={2} align={'center'}>
-              <Image
-                borderRadius='brandRadius.avatar'
-                boxSize='30px'
-                htmlHeight='30px'
-                htmlWidth='30px'
-                src={author.node.avatar.url}
-                alt={'Author'}
-              />
-              <Stack direction={'column'} spacing={-1} fontSize={'small'}>
-                <Link to={"../../author/" + author.node.slug}>
-                  <Text fontWeight={600} color={useColorModeValue('gray.800', 'gray.100')}>
-                    {author.node.name}
-                  </Text>
-                </Link>
-                <Text color={useColorModeValue('gray.700', 'gray.300')}><time>{post.date}</time></Text>
-              </Stack>
-            </Stack>
+          <UserAndDate user={user} date={postDate} />
           </Fade>
       <Card 
         as="article"
@@ -145,11 +127,11 @@ export default function BlogPost({ data, pageContext }) {
           ))}
         </Box>
       </Card>
-      <UserCard avatarSize={'lg'} user={author}/>
+      <UserDescription user={user}/>
       <NextAndPreviousPost
         previousPostSlug={previousPostSlug}
         nextPostSlug={nextPostSlug}
       />
-    </Layout>
+    </Layout> 
   )
 }

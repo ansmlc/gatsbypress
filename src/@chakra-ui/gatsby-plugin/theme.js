@@ -70,6 +70,35 @@ const theme = extendTheme({
   },
   styles: {
     global: (props) => ({
+      // Style content field in postTemplate.js & pageTemplate.js
+      ".wysiwyg": {
+        ".blocks-gallery-item__caption": {
+          borderRadius: "xl",
+        },
+        ".gatsby-image-wrapper": {
+          marginBottom: "6"
+        },
+        ".blocks-gallery-grid": {
+          ml: '0',
+          my: '2',
+          ".gatsby-image-wrapper": {
+            marginBottom: 0
+          }
+        },
+        img: {
+          borderRadius: "xl"
+        },
+        a: { 
+          color: "secondary.500",
+          textDecoration: "underline"
+        },
+      },
+      ".mailchimpMessage": {
+        a: {
+          textDecoration: "underline",
+          color: "secondary.600"
+        }
+      },
       body: {
         backgroundColor: props.colorMode === "dark" ? "gray.800" : "gray.50",
       },
@@ -102,29 +131,6 @@ const theme = extendTheme({
           color: props.colorMode === "dark" ? "gray.50" : "gray.800",
         }
       },
-      // Style content field in postTemplate.js & pageTemplate.js
-      ".wysiwyg": {
-        ".blocks-gallery-item__caption": {
-          borderRadius: "xl",
-        },
-        ".blocks-gallery-grid": {
-          ml: '0',
-          my: '2'
-        },
-        img: {
-          borderRadius: "xl",
-        },
-        a: {
-          color: "secondary.500",
-          textDecoration: "underline"
-        },
-      },
-      ".mailchimpMessage": {
-        a: {
-          textDecoration: "underline",
-          color: "secondary.600"
-        }
-      }
     }),
   },
 })
