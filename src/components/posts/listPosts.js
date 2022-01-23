@@ -51,8 +51,8 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
           as={GatsbyImage}
           image={postImage}
           alt={postTitle}
-          borderRadius={'brandRadius.image'}
           overflow={"hidden"}
+          borderRadius={'brandRadius.image'}
           borderBottomRadius="0"  />
     </Link>
     :

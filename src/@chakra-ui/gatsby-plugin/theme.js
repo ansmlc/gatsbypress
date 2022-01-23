@@ -99,6 +99,12 @@ const theme = extendTheme({
           color: "secondary.600"
         }
       },
+      ".chakra-image": {
+        img: {
+          borderRadius: "brandRadius.image",
+          borderBottomRadius: "0"
+        }
+      },
       body: {
         backgroundColor: props.colorMode === "dark" ? "gray.800" : "gray.50",
       },

@@ -11,8 +11,6 @@ const Card = ({ children, ...props }) => {
             borderRadius="brandRadius.card"
             overflow="hidden"
             boxShadow="2xl" 
-            translateZ="0"
-            mask="raidal-gradient(white, black)"
             {...props}
         >
             {children}
