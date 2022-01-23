@@ -44,7 +44,6 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
     maxW="md"
     maxH="max-content"
   >
-    <AspectRatio ratio={16/9}>
     {postImage ?
     <Link to={"../../post/" + postSlug}>
         <Image
@@ -52,7 +51,7 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
           image={postImage}
           alt={postTitle}
           borderRadius={'brandRadius.image'}
-          borderBottomRadius="0"  />
+          />
     </Link>
     :
     <Link to={"../../post/" + postSlug}>
@@ -64,7 +63,6 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
           borderBottomRightRadius={0}
           />
     </Link>}
-    </AspectRatio>
     <Box p="6">
       <Text             
         noOfLines={1} 
