@@ -45,8 +45,8 @@ const PostCard = ({ postSlug, postTitle, postExcerpt, postImage, postDate, postT
     maxH="max-content"
   >
     {postImage ?
-        <Image
-          as={GatsbyImage}
+        <GatsbyImage
+          borderRadius="brandRadius.image"
           image={postImage}
           alt={postTitle}
         />
